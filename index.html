@@ -355,7 +355,9 @@ textarea.inp{resize:vertical}
   .kpi-row,.kpi-row.five{grid-template-columns:1fr 1fr}
   .span2{grid-column:auto}
   .view{padding:14px}
+  body.nav-open .nav-overlay{display:block;position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.4)}
 }
+.nav-overlay{display:none}
 
 </style>
 </head>
@@ -1284,7 +1286,7 @@ window.App = window.App || { pages: {} };
     document.getElementById('nav').innerHTML = NAV.map(n =>
       `<button class="nav-item" data-id="${n.id}"><span class="ni">${n.icon}</span>${n.name}
         <span class="nav-dot" data-dot="${n.id}"></span></button>`).join('');
-    UI.$$('.nav-item').forEach(b => b.onclick = () => App.go(b.dataset.id));
+    UI.$$('.nav-item').forEach(b => b.onclick = () => { App.go(b.dataset.id); document.body.classList.remove('nav-open'); });
   }
 
   function updateDots() {
@@ -1417,6 +1419,10 @@ window.App = window.App || { pages: {} };
       if (App.sync.ready()) App.sync.push(); else App.go('sync');
     };
     document.getElementById('btn-menu').onclick = () => document.body.classList.toggle('nav-open');
+    const navOverlay = document.createElement('div');
+    navOverlay.className = 'nav-overlay';
+    navOverlay.onclick = () => document.body.classList.remove('nav-open');
+    document.body.appendChild(navOverlay);
     document.getElementById('demo-btn').onclick = () => UI.confirmBox(
       '载入示例数据会<b>覆盖</b>当前本机数据，确定吗？', () => App.seedDemo(), { okText: '载入', danger: true });
 
