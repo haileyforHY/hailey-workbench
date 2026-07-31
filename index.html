@@ -476,7 +476,7 @@ var LS = (function(){
         tags: ['临界生', '需家校跟进', '偏科', '待提升', '进步显著', '课堂活跃'],
         discTypes: ['迟到', '作业未交', '上课讲话', '不带课本', '顶撞老师', '违规带手机', '其他'],
         commWays: ['电话', '微信', '面谈', '家访', '家长会'],
-        supabase: { url: '', key: '', table: 'workbench', rowId: 'hailey', auto: false, interval: 60 }
+        supabase: { url: 'https://wnenjltqmvqemrbrkgub.supabase.co', key: 'sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ', table: 'workbench', rowId: 'hailey', auto: true, interval: 60 }
       }
     };
   }
@@ -3759,7 +3759,7 @@ window.App = window.App || { pages: {} };
         <div class="card">
           <div class="card-head"><h3>🔐 Supabase 配置</h3></div>
           <div class="form">
-            <p class="hint" style="margin:0 0 2px">连接只需 <b>Project URL</b> + <b>公开密钥</b> 两项。密钥只存本机浏览器，不会发往任何第三方。</p>
+            <p class="hint" style="margin:0 0 2px">已为你<b>预配置</b> Supabase 并默认开启实时自动同步——任何设备打开本工作台即自动连云端、多端一致，无需手动填写。想换项目时改这里即可。</p>
 
             <div class="cfg-group">
               <div class="cfg-group-title">① 连接信息</div>
