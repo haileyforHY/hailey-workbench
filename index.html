@@ -3662,12 +3662,31 @@ window.App = window.App || { pages: {} };
     else pull(true);
   }
 
-  // 启动时先拉云端：确保本机不落后于云端（核心防覆盖逻辑）
+  // 启动时先同步云端：比较学生数量决定拉还是推（核心防覆盖逻辑）
   async function initialSync() {
-    const applied = await pull(true);
-    if (!applied && Store.db.students.length > 0) {
-      // 云端为空或较旧，但本机有学生 → 推送到云端
-      await push(true);
+    if (!ready()) return;
+    try {
+      const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload,updated_at', { headers: headers() });
+      if (!r.ok) return;
+      const rows = await r.json();
+      if (!rows.length) {
+        // 云端无数据行：本机有学生则推送
+        if (Store.db.students.length > 0) { log('云端为空，推送本机数据'); await push(true); }
+        return;
+      }
+      const remote = rows[0];
+      const remoteStudents = ((remote.payload || {}).students || []).length;
+      const localStudents = Store.db.students.length;
+      if (remoteStudents < localStudents) {
+        // 云端学生少于本机 → 推送本机（防止空云端覆盖本机数据）
+        log('云端学生(' + remoteStudents + ')少于本机(' + localStudents + ')，推送本机数据');
+        await push(true);
+      } else {
+        // 云端学生≥本机 → 拉取云端
+        await pull(true);
+      }
+    } catch (e) {
+      log('初始同步失败：' + e.message, false);
     }
   }
 
