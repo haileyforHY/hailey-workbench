@@ -3532,7 +3532,7 @@ window.App = window.App || { pages: {} };
   let pushTimer = null;        // 改动即推的防抖定时器
   let rtDesired = false;       // 是否期望保持实时连接
   let rtStatus = 'off';        // off | connecting | open | fallback
-  let ws = null, hbTimer = null, rtRef = 0, fbTimer = null;
+  let ws = null, hbTimer = null, rtRef = 0, pollTimer = null;
 
   function cfg() { return Store.db.settings.supabase; }
 
@@ -3578,6 +3578,11 @@ window.App = window.App || { pages: {} };
 
   async function push(silent) {
     if (!ready()) { if (!silent) toast('请先配置 Supabase', 'err'); return false; }
+    // 安全防护：自动推送时，本地无学生数据则跳过，防止空数据覆盖云端
+    if (silent && Store.db.students.length === 0) {
+      log('跳过自动推送：本地无学生数据（防止覆盖云端）');
+      return false;
+    }
     try {
       const body = [{ id: cfg().rowId, payload: Store.db, updated_at: new Date().toISOString() }];
       const r = await fetch(base() + '?on_conflict=id', {
@@ -3638,23 +3643,32 @@ window.App = window.App || { pages: {} };
     }
   }
 
-  /* ---------------- 实时自动同步引擎 ---------------- */
-  // 本机任何数据变动 → 防抖后立即推；云端变动 → 实时拉（Realtime WebSocket）
+  /* ---------------- 自动同步引擎 ---------------- */
+  // 策略：① 启动先拉云端（防止空数据覆盖）② 始终定时轮询（主同步）③ Realtime 实时推送（锦上添花）
   function schedulePush() {
     if (!cfg().auto || !ready()) return;
     clearTimeout(pushTimer);
     pushTimer = setTimeout(() => { if (Store.dirty) push(true); }, 700);
   }
   function onStoreChange() {
-    if (suppressPush) return;       // 正在应用云端数据，不回推
+    if (suppressPush) return;
     schedulePush();
   }
 
-  // 云端有变动：忽略自己刚推送产生的回声；本机有未推送改动则先推（后写覆盖）
+  // 云端有变动：忽略自己刚推送产生的回声；本机有未推送改动则先推
   function onRemoteChange() {
     if (Date.now() - lastPushAt < 4000) return;
     if (Store.dirty) push(true);
     else pull(true);
+  }
+
+  // 启动时先拉云端：确保本机不落后于云端（核心防覆盖逻辑）
+  async function initialSync() {
+    const applied = await pull(true);
+    if (!applied && Store.db.students.length > 0) {
+      // 云端为空或较旧，但本机有学生 → 推送到云端
+      await push(true);
+    }
   }
 
   function realtimeURL() {
@@ -3667,12 +3681,11 @@ window.App = window.App || { pages: {} };
     if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) return;
     if (!cfg().url || !cfg().key) return;
     let url;
-    try { url = realtimeURL(); } catch { log('Realtime 地址解析失败', false); return; }
+    try { url = realtimeURL(); } catch { return; }
     rtStatus = 'connecting';
-    try { ws = new WebSocket(url); } catch (e) { log('Realtime 连接失败：' + e.message, false); useFallback(); return; }
+    try { ws = new WebSocket(url); } catch (e) { rtStatus = 'fallback'; return; }
     ws.onopen = () => {
       rtStatus = 'open';
-      stopFallback();   // 实时连上后停用轮询兜底
       const c = cfg();
       ws.send(JSON.stringify({
         topic: 'realtime:' + (c.table || 'workbench'),
@@ -3691,47 +3704,49 @@ window.App = window.App || { pages: {} };
       let msg; try { msg = JSON.parse(ev.data); } catch { return; }
       if (msg.event === 'postgres_changes') onRemoteChange();
     };
-    ws.onerror = () => { log('Realtime 连接异常', false); };
+    ws.onerror = () => {};  // 静默：轮询兜底已覆盖，不刷错误日志
     ws.onclose = () => {
       clearInterval(hbTimer); hbTimer = null; ws = null;
       if (rtDesired) {
-        useFallback();
-        setTimeout(() => { if (rtDesired && !ws) connectRT(); }, 15000); // 15s 后尝试恢复实时
+        rtStatus = 'fallback';
+        setTimeout(() => { if (rtDesired && !ws) connectRT(); }, 15000);
       }
     };
   }
 
   function disconnectRT() {
-    rtDesired = false;
     if (hbTimer) { clearInterval(hbTimer); hbTimer = null; }
     if (ws) { try { ws.close(); } catch {} ws = null; }
-    stopFallback();
   }
 
-  // 实时不可用时，用定时轮询兜底（有改动推、无改动拉）
-  function useFallback() {
-    if (!cfg().auto || !ready() || fbTimer) return;
-    rtStatus = 'fallback';
+  // 定时轮询：始终运行，无论 Realtime 是否可用（主同步保障）
+  function startPolling() {
+    stopPolling();
     const sec = Math.max(15, Number(cfg().interval) || 60);
-    fbTimer = setInterval(async () => {
+    pollTimer = setInterval(async () => {
       if (Store.dirty) await push(true); else await pull(true);
     }, sec * 1000);
-    log('实时不可用，已切换轮询兜底');
+    log('已开启定时同步（每 ' + sec + ' 秒）');
   }
-  function stopFallback() { if (fbTimer) { clearInterval(fbTimer); fbTimer = null; } }
+  function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
 
   function startAuto() {
     stopAuto();
     const c = cfg();
     if (!c.auto || !ready()) return;
     rtDesired = true;
+    rtStatus = 'fallback';
     document.addEventListener('store:change', onStoreChange);
-    connectRT();
+    initialSync();      // ① 先拉云端最新数据
+    startPolling();     // ② 始终定时轮询
+    connectRT();        // ③ 尝试 Realtime（如可用则即时同步）
   }
   function stopAuto() {
     rtDesired = false;
+    rtStatus = 'off';
     document.removeEventListener('store:change', onStoreChange);
     disconnectRT();
+    stopPolling();
     clearTimeout(pushTimer);
   }
 
@@ -3747,9 +3762,9 @@ window.App = window.App || { pages: {} };
             ${ready() ? (
               Store.dirty ? '● 有未推送修改'
               : cfg().auto ? (rtStatus === 'open' ? '● 实时同步中'
-                  : rtStatus === 'fallback' ? '● 轮询兜底中'
-                  : rtStatus === 'connecting' ? '● 实时连接中…'
-                  : '● 已同步')
+                  : rtStatus === 'fallback' ? '● 定时同步中'
+                  : rtStatus === 'connecting' ? '● 连接中…'
+                  : '● 定时同步中')
               : '● 已配置（手动）'
             ) : '○ 未配置'}</span>
         </div>
@@ -3776,7 +3791,7 @@ window.App = window.App || { pages: {} };
               <label class="check-inline"><input type="checkbox" id="sb-auto" ${c.auto ? 'checked' : ''}> 开启实时自动同步</label>
               <label>轮询兜底间隔（秒）<input class="inp" type="number" id="sb-int" value="${c.interval}" min="15"></label>
             </div>
-            <p class="hint">开启后：本机任何数据改动立即推送到 Supabase，并实时监听云端变化自动拉取（多设备即时一致）；实时断开时自动改用轮询兜底。</p>
+            <p class="hint">开启后：本机数据改动自动推送，并定时拉取云端变化保持多端一致。打开时自动拉取云端最新数据，空数据不会覆盖云端。</p>
             <div class="btn-row">
               <button class="btn" id="sb-save">💾 保存配置</button>
               <button class="btn" id="sb-test">🔌 测试连接</button>
