@@ -1436,6 +1436,19 @@ window.App = window.App || { pages: {} };
   }
 
   document.addEventListener('DOMContentLoaded', init);
+
+  /* Auto-import data from data.json when ?seed=1 is in URL */
+  (function() {
+    if (new URLSearchParams(location.search).get('seed') !== '1') return;
+    if (LS.getItem('hailey_workbench_v1')) {
+      var existing = JSON.parse(LS.getItem('hailey_workbench_v1'));
+      if (existing.students && existing.students.length > 0) return; // already has data
+    }
+    fetch('data.json').then(function(r) { return r.json(); }).then(function(db) {
+      LS.setItem('hailey_workbench_v1', JSON.stringify(db));
+      location.search = '';
+    }).catch(function(e) { console.warn('Auto-import failed:', e); });
+  })();
 })();
 
 </script>
