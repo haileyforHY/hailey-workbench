@@ -431,8 +431,8 @@ var LS = (function(){
   }
 
   const DEFAULT_PARTS = [
-    { name: 'A卷', full: 100 },
-    { name: 'B卷', full: 50 }
+    { name: '英语A', full: 100 },
+    { name: '英语B', full: 50 }
   ];
 
   function currentTerm() {
@@ -506,19 +506,30 @@ var LS = (function(){
     db = defaultDB();
   }
 
-  /* 2026-08-25 题型结构迁移：试卷统一为 A卷(100) + B卷(50) = 150 分
-     旧「选择题」列即 A卷、「主观题」列即 B卷，按位置改名，分数不动；
+  /* 2026-08-25 题型结构迁移：试卷统一为 英语A(100) + 英语B(50) = 150 分
+     用户 Excel 列名为「英语A」「英语B」（即A卷/B卷）。
+     旧「选择题」列即英语A、「主观题」列即英语B，按位置改名，分数不动；
      旧默认7项（选择题+主观题+5小题）整体重置为新默认。幂等：改过就不再变。 */
   function migrateParts() {
-    const RENAME = { '选择题': { name: 'A卷', full: 100 }, '英语A卷': { name: 'A卷', full: 100 }, '主观题': { name: 'B卷', full: 50 } };
+    const RENAME = {
+      '选择题': { name: '英语A', full: 100 },
+      '英语A卷': { name: '英语A', full: 100 },
+      'A卷': { name: '英语A', full: 100 },
+      '主观题': { name: '英语B', full: 50 },
+      'B卷': { name: '英语B', full: 50 }
+    };
     const rename = (parts) => Array.isArray(parts) && parts.some(p => p && RENAME[p.name])
       ? parts.map(p => (p && RENAME[p.name]) ? Object.assign({}, p, RENAME[p.name]) : p)
       : parts;
-    const isOldDefault = (parts) => Array.isArray(parts) &&
-      parts.some(p => p && p.name === '选择题') && parts.some(p => p && p.name === '主观题');
-    if (isOldDefault(db.settings.parts)) db.settings.parts = DEFAULT_PARTS.map(p => Object.assign({}, p));
-    else db.settings.parts = rename(db.settings.parts) || db.settings.parts;
-    (db.exams || []).forEach(ex => { ex.parts = rename(ex.parts) || ex.parts; });
+    /* 旧默认7项：第0列选择题、第1列主观题 → 直接收成 英语A/英语B 两列，
+       已录分数的第0/1个分项正好对应，后面小题分数保留在数据里不显示 */
+    const isOldDefault = (parts) => Array.isArray(parts) && parts.length >= 2 &&
+      parts[0] && parts[0].name === '选择题' && parts[1] && parts[1].name === '主观题';
+    const NEW = () => [{ name: '英语A', full: 100 }, { name: '英语B', full: 50 }];
+    db.settings.parts = isOldDefault(db.settings.parts) ? NEW() : (rename(db.settings.parts) || db.settings.parts);
+    (db.exams || []).forEach(ex => {
+      ex.parts = isOldDefault(ex.parts) ? NEW() : (rename(ex.parts) || ex.parts);
+    });
   }
   migrateParts();
 
@@ -1106,15 +1117,15 @@ var LS = (function(){
 
   // 重点关注分类：全卷及格生 + A卷合格生
   // 全卷及格生：总分 ≥ 该场考试的低线（每次考试的低线不一样，自动跟随）
-  // A卷合格生：A卷分项（名称含"A卷"，如"A卷"/"英语A卷"）得分在 50-70 分之间，不使用选择题分数
+  // A卷合格生：英语A列（即A卷，Excel列名「英语A」，兼容"A卷"/"英语A卷"）得分在 50-70 分之间
   function focusStudents(ex) {
     const st = examStats(ex);
     if (!st || !st.all) return { fullPass: [], aPass: [], passLine: null, hasAPart: false };
     const passLine = (st.lines && st.lines.low) || 90; // 全卷及格线 = 本场考试低线
 
-    // 只找名称含"A卷"的分项（Excel 里的 A 卷分数），不匹配"选择题"
+    // 找英语A列（即A卷，满分100），兼容"A卷"/"英语A卷"等旧叫法
     const partNames = (st.parts || []).map(p => p.name);
-    const aPartIdx = partNames.findIndex(n => /A卷/i.test(n));
+    const aPartIdx = partNames.findIndex(n => /A卷|英语A/i.test(n));
 
     const fullPass = [];
     const aPass = [];
@@ -1870,7 +1881,7 @@ window.App = window.App || { pages: {} };
     const ap = state.classId ? fs.aPass.filter(s => s.classId === state.classId) : fs.aPass;
     const showCls = !state.classId;
     const chip = (s, cls) => `<a class="pill ${cls}" data-stu="${s.studentId}" style="cursor:pointer;text-decoration:none">
-      ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · A卷${s.aScore}` : ''}${showCls ? ` · ${esc(Store.className(s.classId).replace(/^初三/, ''))}` : ''}</a>`;
+      ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · ${esc(s.partName || '英语A')}${s.aScore}` : ''}${showCls ? ` · ${esc(Store.className(s.classId).replace(/^初三/, ''))}` : ''}</a>`;
     return `<div class="grid-2">
       <div class="card">
         <div class="card-head"><h3>✅ 全卷及格学生</h3><span class="muted sm">最近考试总分 ≥${fs.passLine}分（本场低线）· ${fp.length} 人</span></div>
@@ -1880,11 +1891,11 @@ window.App = window.App || { pages: {} };
         <p class="hint">💡 及格线跟随每场考试的低线自动变化，成绩上传后自动更新</p>
       </div>
       <div class="card">
-        <div class="card-head"><h3>📝 A卷合格关注学生</h3><span class="muted sm">最近考试A卷 50-70分 · ${ap.length} 人</span></div>
+        <div class="card-head"><h3>📝 A卷合格关注学生</h3><span class="muted sm">最近考试英语A(A卷) 50-70分 · ${ap.length} 人</span></div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
           ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
         </div>
-        <p class="hint">💡 使用试卷里「A卷」一列的分数（满分100），成绩上传后自动更新</p>
+        <p class="hint">💡 使用试卷里「英语A」一列的分数（即A卷，满分100），成绩上传后自动更新</p>
       </div>
     </div>`;
   }
@@ -3062,10 +3073,10 @@ window.App = window.App || { pages: {} };
     const rows = cid ? allRows.filter(r => r.classId === cid) : allRows;
     if (!rows.length) return empty('暂无成绩', '📋');
 
-    /* 固定分项列定义：A卷 100 + B卷 50 = 150 */
+    /* 固定分项列定义：英语A 100 + 英语B 50 = 150（与Excel列名一致） */
     const fixedParts = [
-      { name: 'A卷', full: 100 },
-      { name: 'B卷', full: 50 }
+      { name: '英语A', full: 100 },
+      { name: '英语B', full: 50 }
     ];
     /* 当前考试的 parts 映射：name → index */
     const exPartMap = {};
