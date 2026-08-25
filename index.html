@@ -2605,6 +2605,9 @@ window.App = window.App || { pages: {} };
           ${exams.length ? `<select class="inp" id="x-exam" style="max-width:220px">
             ${exams.map(e => `<option value="${e.id}"${ex && e.id === ex.id ? ' selected' : ''}>${esc(e.name)}（${esc(e.date)}）</option>`).join('')}
           </select>` : ''}
+          ${ex ? `<select class="inp" id="x-filtercls" style="max-width:140px">
+            ${classOptions(state.classId, '全部班级')}
+          </select>` : ''}
           ${ex ? `<button class="btn" id="x-scores">📝 录入成绩</button>
                   <button class="btn" id="x-edit">⚙️ 考试设置</button>` : ''}
           <button class="btn primary" id="x-new">＋ 新建考试</button>
@@ -2619,46 +2622,73 @@ window.App = window.App || { pages: {} };
     if (!st.all) return `<div class="card">${empty('该考试还没有成绩，点「录入成绩」开始', '📝')}</div>`;
     const lines = st.lines;
     const clsIds = Object.keys(st.byClass);
+    const cid = state.classId;
+    const isClassMode = !!cid;
+
+    /* 当前数据源：选了班就用该班统计，否则用全年级 */
+    const scope = isClassMode ? st.byClass[cid] : st.all;
+    if (!scope) return `<div class="card">${empty('该班级暂无成绩数据', '📋')}</div>`;
+    const scopeRows = isClassMode ? st.rows.filter(r => r.classId === cid) : st.rows;
+    const scopeName = isClassMode ? Store.className(cid) : '年级';
 
     /* 上线统计 */
-    const lineBars = Charts.bar({
-      labels: clsIds.map(id => Store.className(id)).concat(['年级合计']),
-      data: clsIds.map(id => st.byClass[id].lineCount.high).concat([st.all.lineCount.high]),
-      suffix: ' 人', height: 200
-    });
+    const lineBars = isClassMode
+      ? Charts.bar({
+          labels: ['高线', '中线', '低线'],
+          data: ['high', 'mid', 'low'].map(k => scope.lineCount[k]),
+          colors: ['#6366f1', '#0ea5e9', '#10b981'],
+          suffix: ' 人', height: 200
+        })
+      : Charts.bar({
+          labels: clsIds.map(id => Store.className(id)).concat(['年级合计']),
+          data: clsIds.map(id => st.byClass[id].lineCount.high).concat([st.all.lineCount.high]),
+          suffix: ' 人', height: 200
+        });
 
-    /* 题型雷达：各班对比 */
-    const radar = Charts.radar({
-      axes: st.parts.map(p => p.name),
-      series: clsIds.map((id, i) => ({ name: Store.className(id), data: st.byClass[id].partRate })),
-      max: 100, size: 340
-    });
+    /* 题型雷达 */
+    const radar = isClassMode
+      ? Charts.radar({
+          axes: st.parts.map(p => p.name),
+          series: [
+            { name: scopeName + '平均', data: scope.partRate },
+            { name: '年级平均', data: st.all.partRate, color: '#94a3b8' }
+          ],
+          max: 100, size: 340
+        })
+      : Charts.radar({
+          axes: st.parts.map(p => p.name),
+          series: clsIds.map((id, i) => ({ name: Store.className(id), data: st.byClass[id].partRate })),
+          max: 100, size: 340
+        });
 
     /* 临界生 */
-    const bl = An.borderline(ex, Store.db.settings.band);
+    const blAll = An.borderline(ex, Store.db.settings.band);
+    const bl = isClassMode ? blAll.filter(b => b.classId === cid) : blAll;
     const lineName = { high: '高线', mid: '中线', low: '低线' };
 
-    /* 强弱项（年级） */
-    const partRank = st.parts.map((p, i) => ({ name: p.name, rate: st.all.partRate[i], avg: st.all.partAvg[i], full: p.full }))
+    /* 强弱项 */
+    const partRank = st.parts.map((p, i) => ({ name: p.name, rate: scope.partRate[i], avg: scope.partAvg[i], full: p.full }))
       .sort((a, b) => a.rate - b.rate);
 
     /* 总分排名柱状图 */
-    const sortedRows = st.rows.slice().sort((a, b) => b.total - a.total);
-    const rankChart = scoreRankChart(sortedRows, lines);
+    const sortedRows = scopeRows.slice().sort((a, b) => b.total - a.total);
+    const rankChart = scoreRankChart(sortedRows, lines, isClassMode ? cid : null);
 
     /* 总分分布柱状图 */
-    const distChart = scoreDistChart(st.rows, clsIds, lines);
+    const distChart = isClassMode
+      ? scoreDistChartSingle(scopeRows, lines, cid)
+      : scoreDistChart(st.rows, clsIds, lines);
 
     return `
       <div class="kpi-row">
-        ${kpi('参考人数', st.all.count + ' 人', '🧑‍🎓')}
-        ${kpi('年级平均', st.all.avg + ' 分', '📊')}
-        ${kpi('最高 / 最低', st.all.max + ' / ' + st.all.min, '🏅')}
-        ${kpi(`高线(${lines.high})上线`, st.all.lineCount.high + ' 人 · ' + UI.pct(st.all.lineCount.high, st.all.count) + '%', '🎯')}
+        ${kpi('参考人数', scope.count + ' 人', '🧑‍🎓')}
+        ${kpi(isClassMode ? '班级平均' : '年级平均', scope.avg + ' 分', '📊')}
+        ${kpi('最高 / 最低', scope.max + ' / ' + scope.min, '🏅')}
+        ${kpi(`高线(${lines.high})上线`, scope.lineCount.high + ' 人 · ' + UI.pct(scope.lineCount.high, scope.count) + '%', '🎯')}
       </div>
 
       <div class="card">
-        <div class="card-head"><h3>📊 总分分布对比</h3><span class="muted sm">各分数段人数 · 两班对比</span></div>
+        <div class="card-head"><h3>📊 总分分布</h3><span class="muted sm">${isClassMode ? esc(scopeName) + ' · 各分数段人数' : '各分数段人数 · 两班对比'}</span></div>
         ${distChart}
       </div>
 
@@ -2667,6 +2697,7 @@ window.App = window.App || { pages: {} };
         ${rankChart}
       </div>
 
+      ${isClassMode ? '' : `
       <div class="card">
         <div class="card-head"><h3>🏫 班级对比</h3>
           <span class="muted sm">分数线：高 ${lines.high} / 中 ${lines.mid} / 低 ${lines.low}</span></div>
@@ -2686,16 +2717,16 @@ window.App = window.App || { pages: {} };
             <td>${st.all.max}</td><td>${st.all.min}</td>
             ${['high', 'mid', 'low'].map(k => `<td>${st.all.lineCount[k]} 人 <span class="muted sm">${UI.pct(st.all.lineCount[k], st.all.count)}%</span></td>`).join('')}
           </tr></tbody></table></div>
-      </div>
+      </div>`}
 
       <div class="grid-2">
-        <div class="card"><div class="card-head"><h3>🎯 高线上线人数</h3></div>${lineBars}</div>
-        <div class="card"><div class="card-head"><h3>🕸 分题型得分率</h3><span class="muted sm">各班对比</span></div>${radar}</div>
+        <div class="card"><div class="card-head"><h3>🎯 上线人数</h3>${isClassMode ? `<span class="muted sm">${esc(scopeName)}</span>` : ''}</div>${lineBars}</div>
+        <div class="card"><div class="card-head"><h3>🕸 分题型得分率</h3><span class="muted sm">${isClassMode ? esc(scopeName) + ' vs 年级' : '各班对比'}</span></div>${radar}</div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-head"><h3>⚡ 年级强弱项</h3></div>
+          <div class="card-head"><h3>⚡ ${isClassMode ? esc(scopeName) : '年级'}强弱项</h3></div>
           <div class="table-wrap"><table class="tbl">
             <thead><tr><th>题型</th><th>满分</th><th>平均</th><th>得分率</th></tr></thead>
             <tbody>${partRank.slice().reverse().map((p, i) => `<tr>
@@ -2705,17 +2736,17 @@ window.App = window.App || { pages: {} };
               <td>${Charts.meter(p.rate, 100, p.rate >= 80 ? '#10b981' : p.rate >= 65 ? '#f59e0b' : '#ef4444')}
                   <span class="sm">${p.rate}%</span></td></tr>`).join('')}
             </tbody></table></div>
-          <p class="hint">💡 建议优先补：<b>${esc(partRank.slice(0, 2).map(p => p.name).join('、'))}</b>（年级得分率最低）</p>
+          <p class="hint">💡 建议优先补：<b>${esc(partRank.slice(0, 2).map(p => p.name).join('、'))}</b>（${isClassMode ? esc(scopeName) : '年级'}得分率最低）</p>
         </div>
 
         <div class="card">
           <div class="card-head"><h3>🔶 临界生（差 ${Store.db.settings.band} 分内）</h3>
             <button class="btn xs" id="x-band">调整分差</button></div>
           ${bl.length ? `<div class="table-wrap max360"><table class="tbl">
-            <thead><tr><th>学生</th><th>班级</th><th>总分</th><th>目标线</th><th>差距</th><th style="width:80px"></th></tr></thead>
+            <thead><tr><th>学生</th>${isClassMode ? '' : '<th>班级</th>'}<th>总分</th><th>目标线</th><th>差距</th><th style="width:80px"></th></tr></thead>
             <tbody>${bl.map(b => `<tr>
               <td><a class="link" data-stu="${b.studentId}">${esc(b.name)}</a></td>
-              <td>${esc(Store.className(b.classId))}</td><td><b>${b.total}</b></td>
+              ${isClassMode ? '' : `<td>${esc(Store.className(b.classId))}</td>`}<td><b>${b.total}</b></td>
               <td><span class="pill ${b.line}">${lineName[b.line]} ${b.lineScore}</span></td>
               <td class="bad"><b>-${b.gap}</b></td>
               <td><button class="btn xs" data-mark="${b.studentId}">加关注</button></td></tr>`).join('')}
@@ -2725,19 +2756,18 @@ window.App = window.App || { pages: {} };
 
       <div class="card">
         <div class="card-head"><h3>👤 个人分析</h3>
-          <select class="inp" id="x-stu" style="max-width:220px"><option value="">选择学生…</option>${UI.studentOptions(state.stu)}</select></div>
+          <select class="inp" id="x-stu" style="max-width:220px"><option value="">选择学生…</option>${UI.studentOptions(state.stu, cid)}</select></div>
         ${state.stu ? personal(state.stu) : '<p class="hint">选择学生查看个人趋势、题型雷达与强弱项。</p>'}
       </div>
 
       <div class="card">
-        <div class="card-head"><h3>📋 成绩明细</h3>
-          <select class="inp" id="x-cls" style="max-width:160px">${classOptions(state.classId, '全部班级')}</select></div>
+        <div class="card-head"><h3>📋 成绩明细</h3></div>
         ${detailTable(st)}
       </div>`;
   }
 
   /* ------------- 总分排名榜（SVG 柱状图） ------------- */
-  function scoreRankChart(rows, lines) {
+  function scoreRankChart(rows, lines, cid) {
     if (!rows.length) return `<div class="chart-empty">暂无数据</div>`;
     const W = 740, H = 280, pl = 40, pr = 12, pt = 10, pb = 50;
     const iw = W - pl - pr, ih = H - pt - pb;
@@ -2779,7 +2809,7 @@ window.App = window.App || { pages: {} };
     });
 
     return `<div class="chart"><svg viewBox="0 0 ${W} ${H}">${grid}${bars}${labels}</svg></div>
-      <div class="chart-legend row"><span><i style="background:#6366f1"></i>初三四班</span><span><i style="background:#f59e0b"></i>初三八班</span></div>`;
+      ${cid ? '' : '<div class="chart-legend row"><span><i style="background:#6366f1"></i>初三四班</span><span><i style="background:#f59e0b"></i>初三八班</span></div>'}`;
   }
 
   /* ------------- 总分分布柱状图（分段对比） ------------- */
@@ -2828,6 +2858,46 @@ window.App = window.App || { pages: {} };
       <div class="chart-legend row"><span><i style="background:#6366f1"></i>初三四班</span><span><i style="background:#f59e0b"></i>初三八班</span></div>`;
   }
 
+  /* ------------- 总分分布柱状图（单班） ------------- */
+  function scoreDistChartSingle(rows, lines, cid) {
+    const bins = [[0,30],[30,60],[60,90],[90,110],[110,130],[130,150]];
+    const clsColors = { cls_4: '#6366f1', cls_8: '#f59e0b' };
+    const color = clsColors[cid] || '#6366f1';
+    const binData = bins.map(([lo, hi]) => {
+      const v = rows.filter(x => x.total >= lo && x.total < hi + 0.1).length;
+      return { label: `${lo}-${hi}`, count: v };
+    });
+
+    const W = 520, H = 200, pl = 44, pr = 12, pt = 10, pb = 40;
+    const iw = W - pl - pr, ih = H - pt - pb;
+    const maxVal = Math.max(5, ...binData.map(b => b.count));
+    const groups = binData.length;
+    const bw = Math.min(48, iw / groups * 0.6);
+
+    let grid = '';
+    for (let i = 0; i <= 4; i++) {
+      const yy = pt + (ih * i) / 4;
+      grid += `<line x1="${pl}" y1="${yy}" x2="${W - pr}" y2="${yy}" class="grid"/>
+        <text x="${pl - 6}" y="${yy + 4}" class="ax-y">${Math.round(maxVal * (4 - i) / 4)}</text>`;
+    }
+
+    let bars = '', labels = '';
+    binData.forEach((b, gi) => {
+      const cx = pl + (iw / groups) * (gi + 0.5);
+      const v = b.count;
+      const h = (v / maxVal) * ih;
+      labels += `<text x="${cx.toFixed(1)}" y="${H - 12}" class="ax-x" text-anchor="middle" font-size="10">${b.label}</text>`;
+      bars += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${(pt + ih - h).toFixed(1)}"
+        width="${bw.toFixed(1)}" height="${Math.max(h, 0).toFixed(1)}" rx="4"
+        fill="${color}" opacity=".82"><title>${b.label}分：${v}人</title></rect>`;
+      if (v > 0) {
+        bars += `<text x="${cx.toFixed(1)}" y="${(pt + ih - h - 5).toFixed(1)}" text-anchor="middle" font-size="11" font-weight="bold" fill="${color}">${v}</text>`;
+      }
+    });
+
+    return `<div class="chart"><svg viewBox="0 0 ${W} ${H}">${grid}${bars}${labels}</svg></div>`;
+  }
+
   function kpi(label, value, icon, tone) {
     return `<div class="kpi ${tone || ''}"><div class="kpi-ico">${icon}</div>
       <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
@@ -2838,14 +2908,15 @@ window.App = window.App || { pages: {} };
       .slice().sort((a, b) => b.total - a.total);
     if (!rows.length) return empty('暂无成绩', '📋');
     const hasRank = rows.some(r => r.gradeRank);
+    const showClass = !state.classId;
     return `<div class="table-wrap ${hasRank ? '' : 'max480'}"><table class="tbl">
-      <thead><tr><th style="width:52px">名次</th><th>姓名</th><th>班级</th><th>总分</th>
+      <thead><tr><th style="width:52px">名次</th><th>姓名</th>${showClass ? '<th>班级</th>' : ''}<th>总分</th>
         ${hasRank ? '<th>年排</th>' : ''}
         ${st.parts.map(p => `<th>${esc(p.name)}<span class="muted sm">/${p.full}</span></th>`).join('')}</tr></thead>
       <tbody>${rows.map((r, i) => `<tr class="${r.total >= st.lines.high ? 'row-high' : ''}">
         <td class="muted">${i + 1}</td>
         <td><a class="link" data-stu="${r.studentId}">${esc(r.name)}</a>${r.focus ? ' ⭐' : ''}</td>
-        <td>${esc(Store.className(r.classId))}</td>
+        ${showClass ? `<td>${esc(Store.className(r.classId))}</td>` : ''}
         <td><b>${r.total}</b></td>
         ${hasRank ? `<td class="muted">${r.gradeRank || '—'}</td>` : ''}
         ${st.parts.map((p, j) => {
@@ -3139,7 +3210,7 @@ window.App = window.App || { pages: {} };
     const b1 = $('#x-edit', view); if (b1) b1.onclick = () => editExam(ex.id);
     const b2 = $('#x-scores', view); if (b2) b2.onclick = () => enterScores(ex.id);
     const s1 = $('#x-stu', view); if (s1) s1.onchange = e => { state.stu = e.target.value; App.render(); };
-    const s2 = $('#x-cls', view); if (s2) s2.onchange = e => { state.classId = e.target.value; App.render(); };
+    const fc = $('#x-filtercls', view); if (fc) fc.onchange = e => { state.classId = e.target.value; state.stu = ''; App.render(); };
     const bd = $('#x-band', view); if (bd) bd.onclick = () => modal({
       title: '临界生分差', width: 360,
       body: `<div class="form"><label>距离分数线多少分算临界生
