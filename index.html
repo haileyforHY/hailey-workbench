@@ -432,11 +432,12 @@ var LS = (function(){
 
   const DEFAULT_PARTS = [
     { name: '选择题', full: 100 },
-    { name: '听力表格', full: 0 },
-    { name: '短文填空', full: 0 },
-    { name: '阅读表达', full: 0 },
-    { name: '回答问题', full: 0 },
-    { name: '作文', full: 0 }
+    { name: '主观题', full: 50 },
+    { name: '听力表格', full: 10 },
+    { name: '短文填空', full: 10 },
+    { name: '阅读表达', full: 10 },
+    { name: '回答问题', full: 10 },
+    { name: '作文', full: 10 }
   ];
 
   function currentTerm() {
@@ -478,7 +479,7 @@ var LS = (function(){
       settings: {
         parts: DEFAULT_PARTS,
         lines: { high: 130, mid: 110, low: 90 },
-        fullScore: 120,
+        fullScore: 150,
         band: 8,                  // 临界生分差
         periods: 8,               // 每天节次
         days: 5,                  // 周几到周几
@@ -1351,7 +1352,7 @@ window.App = window.App || { pages: {} };
     ['开学摸底', '第一次月考', '期中考试'].forEach((name, ei) => {
       const scores = Store.students().map(s => {
         const base = 55 + Math.random() * 55 + ei * 3;
-        const ps = parts.map(p => Math.round(Math.min(p.full, p.full * (base / 120) * (0.75 + Math.random() * 0.5)) * 2) / 2);
+        const ps = parts.map(p => Math.round(Math.min(p.full, p.full * (base / 150) * (0.75 + Math.random() * 0.5)) * 2) / 2);
         return { studentId: s.id, total: Math.round(ps.reduce((a, b) => a + b, 0) * 10) / 10, parts: ps };
       });
       Store.push('exams', {
@@ -2921,26 +2922,66 @@ window.App = window.App || { pages: {} };
   }
 
   function detailTable(st) {
-    const rows = (state.classId ? st.rows.filter(r => r.classId === state.classId) : st.rows)
-      .slice().sort((a, b) => b.total - a.total);
+    const cid = state.classId;
+    const allRows = st.rows.slice().sort((a, b) => b.total - a.total);
+    /* 班级排名：在全班中按总分降序的位置 */
+    const classRanked = {};
+    Store.classes().forEach(c => {
+      const cr = st.rows.filter(r => r.classId === c.id).slice().sort((a, b) => b.total - a.total);
+      cr.forEach((r, i) => { classRanked[r.studentId] = i + 1; });
+    });
+    const rows = cid ? allRows.filter(r => r.classId === cid) : allRows;
     if (!rows.length) return empty('暂无成绩', '📋');
-    const hasRank = rows.some(r => r.gradeRank);
-    const showClass = !state.classId;
-    return `<div class="table-wrap ${hasRank ? '' : 'max480'}"><table class="tbl">
-      <thead><tr><th style="width:52px">名次</th><th>姓名</th>${showClass ? '<th>班级</th>' : ''}<th>总分</th>
-        ${hasRank ? '<th>年排</th>' : ''}
-        ${st.parts.map(p => `<th>${esc(p.name)}<span class="muted sm">/${p.full}</span></th>`).join('')}</tr></thead>
-      <tbody>${rows.map((r, i) => `<tr class="${r.total >= st.lines.high ? 'row-high' : ''}">
-        <td class="muted">${i + 1}</td>
-        <td><a class="link" data-stu="${r.studentId}">${esc(r.name)}</a>${r.focus ? ' ⭐' : ''}</td>
-        ${showClass ? `<td>${esc(Store.className(r.classId))}</td>` : ''}
-        <td><b>${r.total}</b></td>
-        ${hasRank ? `<td class="muted">${r.gradeRank || '—'}</td>` : ''}
-        ${st.parts.map((p, j) => {
-          const v = (r.parts || [])[j] || 0;
-          const rate = p.full ? v / p.full : 0;
-          return `<td class="${rate < 0.6 ? 'cell-bad' : rate >= 0.9 ? 'cell-good' : ''}">${v}</td>`;
-        }).join('')}</tr>`).join('')}
+
+    /* 固定7个分项列定义 */
+    const fixedParts = [
+      { name: '选择题', full: 100 },
+      { name: '主观题', full: 50 },
+      { name: '听力表格', full: 10 },
+      { name: '短文填空', full: 10 },
+      { name: '阅读表达', full: 10 },
+      { name: '回答问题', full: 10 },
+      { name: '作文', full: 10 }
+    ];
+    /* 当前考试的 parts 映射：name → index */
+    const exPartMap = {};
+    (st.parts || []).forEach((p, i) => { exPartMap[p.name] = i; });
+    const hasParts = (st.parts || []).length > 0;
+
+    /* 分项取值：优先按名称匹配，无匹配则返回 null */
+    const partVal = (r, partName) => {
+      const idx = exPartMap[partName];
+      if (idx === undefined) return null;
+      const v = (r.parts || [])[idx];
+      if (v === undefined || v === null || v === '') return null;
+      return v;
+    };
+    const cell = (v) => v === null ? '<span class="muted">/</span>' : String(v);
+
+    return `<div class="table-wrap"><table class="tbl">
+      <thead><tr>
+        <th style="width:80px">姓名</th>
+        <th style="width:56px">班级排名</th>
+        <th style="width:56px">年级排名</th>
+        <th>总分<span class="muted sm">/150</span></th>
+        ${fixedParts.map(p => `<th>${esc(p.name)}<span class="muted sm">/${p.full}</span></th>`).join('')}
+      </tr></thead>
+      <tbody>${rows.map(r => {
+        const clsRank = classRanked[r.studentId] || '';
+        const gr = r.gradeRank || '';
+        const total = r.total !== undefined ? r.total : '';
+        return `<tr class="${total !== '' && total >= st.lines.high ? 'row-high' : ''}">
+          <td><a class="link" data-stu="${r.studentId}">${esc(r.name)}</a>${r.focus ? ' ⭐' : ''}</td>
+          <td class="muted">${clsRank || '<span class="muted">/</span>'}</td>
+          <td class="muted">${gr || '<span class="muted">/</span>'}</td>
+          <td><b>${total !== '' ? total : '<span class="muted">/</span>'}</b></td>
+          ${fixedParts.map(p => {
+            const v = hasParts ? partVal(r, p.name) : null;
+            const rate = v !== null && p.full ? v / p.full : 0;
+            return `<td class="${v !== null && rate < 0.6 ? 'cell-bad' : v !== null && rate >= 0.9 ? 'cell-good' : ''}">${cell(v)}</td>`;
+          }).join('')}
+        </tr>`;
+      }).join('')}
       </tbody></table></div>`;
   }
 
