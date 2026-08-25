@@ -483,7 +483,7 @@ var LS = (function(){
         band: 8,                  // 临界生分差
         periods: 8,               // 每天节次
         days: 5,                  // 周几到周几
-        tags: ['临界生', '高线指标生', 'A卷合格生', '需家校跟进', '偏科', '待提升', '进步显著', '课堂活跃'],
+        tags: ['临界生', '全卷及格生', 'A卷合格生', '需家校跟进', '偏科', '待提升', '进步显著', '课堂活跃'],
         discTypes: ['迟到', '作业未交', '上课讲话', '不带课本', '顶撞老师', '违规带手机', '其他'],
         commWays: ['电话', '微信', '面谈', '家访', '家长会'],
         supabase: { url: 'https://wnenjltqmvqemrbrkgub.supabase.co', key: 'sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ', table: 'workbench', rowId: 'hailey', auto: true, interval: 60 }
@@ -1092,35 +1092,33 @@ var LS = (function(){
     return out.sort((a, b2) => order[a.line] - order[b2.line] || a.gap - b2.gap);
   }
 
-  // 重点关注分类：高线指标生 + A卷合格生
-  // 高线指标生：总分在 lines.high ± 10 分范围内
+  // 重点关注分类：全卷及格生 + A卷合格生
+  // 全卷及格生：总分 ≥ 90 分
   // A卷合格生：选择题（或"英语A卷"）得分在 50-70 分之间
   function focusStudents(ex) {
     const st = examStats(ex);
-    if (!st || !st.all) return { highLine: [], aPass: [] };
-    const lines = st.lines;
-    const highLineBand = 10; // 高线上下10分
+    if (!st || !st.all) return { fullPass: [], aPass: [] };
+    const passLine = 90; // 全卷及格线
 
     // 找到"A卷"/"选择题"分项的索引
     const partNames = (st.parts || []).map(p => p.name);
     const aPartIdx = partNames.findIndex(n => n === '选择题' || n === '英语A卷' || n === 'A卷');
 
-    const highLine = [];
+    const fullPass = [];
     const aPass = [];
     st.rows.forEach(r => {
       const total = r.total || 0;
-      // 高线指标生：总分在高线±10分
-      if (Math.abs(total - lines.high) <= highLineBand) {
-        highLine.push({
+      // 全卷及格生：总分 ≥ 90
+      if (total >= passLine) {
+        fullPass.push({
           studentId: r.studentId, name: r.name, classId: r.classId,
-          total, lineScore: lines.high,
-          gap: Math.round((total - lines.high) * 10) / 10
+          total, lineScore: passLine
         });
       }
-      // A卷合格生：选择题/A卷得分 60 分及以上
+      // A卷合格生：选择题/A卷得分在 50-70 分之间
       if (aPartIdx >= 0) {
         const aScore = (r.parts || [])[aPartIdx];
-        if (aScore !== undefined && aScore !== null && aScore >= 60) {
+        if (aScore !== undefined && aScore !== null && aScore >= 50 && aScore <= 70) {
           aPass.push({
             studentId: r.studentId, name: r.name, classId: r.classId,
             total, aScore, partName: partNames[aPartIdx]
@@ -1129,25 +1127,25 @@ var LS = (function(){
       }
     });
 
-    highLine.sort((a, b) => Math.abs(a.gap) - Math.abs(b.gap));
+    fullPass.sort((a, b) => b.total - a.total);
     aPass.sort((a, b) => b.total - a.total);
-    return { highLine, aPass };
+    return { fullPass, aPass };
   }
 
   // 自动更新学生重点关注标签
   function autoFocusStudents(ex) {
-    const { highLine, aPass } = focusStudents(ex);
-    const highIds = new Set(highLine.map(s => s.studentId));
+    const { fullPass, aPass } = focusStudents(ex);
+    const passIds = new Set(fullPass.map(s => s.studentId));
     const aPassIds = new Set(aPass.map(s => s.studentId));
 
-    // 获取所有当前已有标签的学生，清理旧的自动标签
+    // 获取所有当前已有标签的学生，清理旧的自动标签（含已废弃的"高线指标生"）
     Store.students().forEach(s => {
-      const tags = (s.tags || []).filter(t => t !== '高线指标生' && t !== 'A卷合格生');
+      const tags = (s.tags || []).filter(t => t !== '高线指标生' && t !== 'A卷合格生' && t !== '全卷及格生');
       let newTags = tags.slice();
       let needUpdate = false;
 
-      if (highIds.has(s.id)) {
-        newTags.push('高线指标生');
+      if (passIds.has(s.id)) {
+        newTags.push('全卷及格生');
         needUpdate = true;
       }
       if (aPassIds.has(s.id)) {
@@ -1156,8 +1154,8 @@ var LS = (function(){
       }
 
       // 如果学生有自动标签，设为 focus；如果之前只有自动标签且现在没有了，也保留 focus（手动加的不动）
-      const wasAutoFocus = (s.tags || []).some(t => t === '高线指标生' || t === 'A卷合格生');
-      const hasAutoNow = highIds.has(s.id) || aPassIds.has(s.id);
+      const wasAutoFocus = (s.tags || []).some(t => t === '高线指标生' || t === 'A卷合格生' || t === '全卷及格生');
+      const hasAutoNow = passIds.has(s.id) || aPassIds.has(s.id);
 
       if (newTags.length !== (s.tags || []).length || newTags.some(t => !(s.tags || []).includes(t))) {
         needUpdate = true;
@@ -1169,7 +1167,7 @@ var LS = (function(){
       }
     });
 
-    return { highLine, aPass };
+    return { fullPass, aPass };
   }
 
   // 按最近一次有成绩的考试自动更新关注标签（供页面渲染时调用，幂等：无变化不写库）
@@ -1769,8 +1767,8 @@ window.App = window.App || { pages: {} };
   }
 
   function render(view) {
-    /* 每次打开页面，自动按最近一次考试更新「高线指标生 / A卷合格生」标签（无变化不写库） */
-    if (An.autoFocusLatest) An.autoFocusLatest();
+    /* 每次打开页面，自动按最近一次考试更新「全卷及格生 / A卷合格生」标签（无变化不写库） */
+    const fs = An.autoFocusLatest ? An.autoFocusLatest() : null;
     const list = pool();
     const profiles = list.map(s => An.studentProfile(s.id));
     const riskN = profiles.filter(p => p.risks.some(r => r.level === 'danger')).length;
@@ -1793,6 +1791,8 @@ window.App = window.App || { pages: {} };
         ${kpi('待补过关', profiles.reduce((a, p) => a + p.pending.length, 0) + ' 项', '🔁')}
         ${kpi('本月违纪', profiles.reduce((a, p) => a + p.disc30.length, 0) + ' 次', '⚠️')}
       </div>
+
+      ${fs ? focusGroups(fs) : ''}
 
       <div class="card">
         <div class="toolbar">
@@ -1850,6 +1850,31 @@ window.App = window.App || { pages: {} };
   function kpi(label, value, icon, tone) {
     return `<div class="kpi ${tone || ''}"><div class="kpi-ico">${icon}</div>
       <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
+  }
+
+  /* ------------- 自动分类模块：全卷及格生 + A卷合格生（按最近一次考试） ------------- */
+  function focusGroups(fs) {
+    const fp = state.classId ? fs.fullPass.filter(s => s.classId === state.classId) : fs.fullPass;
+    const ap = state.classId ? fs.aPass.filter(s => s.classId === state.classId) : fs.aPass;
+    const showCls = !state.classId;
+    const chip = (s, cls) => `<a class="pill ${cls}" data-stu="${s.studentId}" style="cursor:pointer;text-decoration:none">
+      ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · A卷${s.aScore}` : ''}${showCls ? ` · ${esc(Store.className(s.classId).replace(/^初三/, ''))}` : ''}</a>`;
+    return `<div class="grid-2">
+      <div class="card">
+        <div class="card-head"><h3>✅ 全卷及格学生</h3><span class="muted sm">最近考试总分 ≥90分 · ${fp.length} 人</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
+          ${fp.length ? fp.map(s => chip(s, 'ok')).join('') : '<span class="muted">暂无学生</span>'}
+        </div>
+        <p class="hint">💡 每次成绩上传后自动更新，点击姓名可查看学生档案</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>📝 A卷合格关注学生</h3><span class="muted sm">最近考试A卷 50-70分 · ${ap.length} 人</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
+          ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : '<span class="muted">暂无学生</span>'}
+        </div>
+        <p class="hint">💡 每次成绩上传后自动更新，点击姓名可查看学生档案</p>
+      </div>
+    </div>`;
   }
 
   function bind(view) {
@@ -2695,8 +2720,6 @@ window.App = window.App || { pages: {} };
   }
 
   function render(view) {
-    /* 打开成绩分析时，自动按最近一次考试更新「高线指标生 / A卷合格生」标签（无变化不写库） */
-    if (An.autoFocusLatest) An.autoFocusLatest();
     const exams = Store.db.exams.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     const ex = currentExam();
     if (ex) state.examId = ex.id;
@@ -2769,11 +2792,6 @@ window.App = window.App || { pages: {} };
     const blAll = An.borderline(ex, Store.db.settings.band);
     const bl = isClassMode ? blAll.filter(b => b.classId === cid) : blAll;
     const lineName = { high: '高线', mid: '中线', low: '低线' };
-
-    /* 自动关注分类：高线指标生 + A卷合格生 */
-    const fsAll = An.focusStudents(ex);
-    const fsHigh = isClassMode ? fsAll.highLine.filter(s => s.classId === cid) : fsAll.highLine;
-    const fsAPass = isClassMode ? fsAll.aPass.filter(s => s.classId === cid) : fsAll.aPass;
 
     /* 强弱项 */
     const partRank = st.parts.map((p, i) => ({ name: p.name, rate: scope.partRate[i], avg: scope.partAvg[i], full: p.full }))
@@ -2867,38 +2885,6 @@ window.App = window.App || { pages: {} };
               <td class="bad"><b>-${b.gap}</b></td>
               <td><button class="btn xs" data-mark="${b.studentId}">加关注</button></td></tr>`).join('')}
             </tbody></table></div>` : empty('暂无临界生', '🎯')}
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-head"><h3>🎯 高线指标生</h3>
-            <span class="muted sm">总分在高线(${lines.high})±10分 · ${fsHigh.length} 人</span></div>
-          ${fsHigh.length ? `<div class="table-wrap max360"><table class="tbl">
-            <thead><tr><th>学生</th>${isClassMode ? '' : '<th>班级</th>'}<th>总分</th><th>与高线差</th></tr></thead>
-            <tbody>${fsHigh.map(s => `<tr>
-              <td><a class="link" data-stu="${s.studentId}">${esc(s.name)}</a></td>
-              ${isClassMode ? '' : `<td>${esc(Store.className(s.classId))}</td>`}
-              <td><b>${s.total}</b></td>
-              <td class="${s.gap >= 0 ? 'good' : 'bad'}">${s.gap >= 0 ? '+' : ''}${s.gap}</td>
-            </tr>`).join('')}
-            </tbody></table></div>` : empty('暂无高线指标生', '🎯')}
-          <p class="hint">💡 总分在 ${lines.high - 10}～${lines.high + 10} 分之间的学生，冲刺高线的关键群体</p>
-        </div>
-
-        <div class="card">
-          <div class="card-head"><h3>📝 A卷合格生</h3>
-            <span class="muted sm">选择题得分 ≥60分 · ${fsAPass.length} 人</span></div>
-          ${fsAPass.length ? `<div class="table-wrap max360"><table class="tbl">
-            <thead><tr><th>学生</th>${isClassMode ? '' : '<th>班级</th>'}<th>总分</th><th>选择题</th></tr></thead>
-            <tbody>${fsAPass.map(s => `<tr>
-              <td><a class="link" data-stu="${s.studentId}">${esc(s.name)}</a></td>
-              ${isClassMode ? '' : `<td>${esc(Store.className(s.classId))}</td>`}
-              <td><b>${s.total}</b></td>
-              <td><span class="pill warn">${s.aScore}</span></td>
-            </tr>`).join('')}
-            </tbody></table></div>` : empty('暂无A卷合格生', '📝')}
-          <p class="hint">💡 选择题得分 60 分及以上的学生，基础题已达标</p>
         </div>
       </div>
 
