@@ -1582,9 +1582,9 @@
       }
     ],
     "lines": {
-      "high": 100,
-      "mid": 80,
-      "low": 60
+      "high": 130,
+      "mid": 110,
+      "low": 90
     },
     "fullScore": 120,
     "band": 8,
