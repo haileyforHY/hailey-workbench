@@ -533,6 +533,17 @@ var LS = (function(){
   }
   migrateParts();
 
+  /* 2026-08-25 分数线修正：全卷及格线统一为90分（全局设置 low=90）
+     修复之前错误的 lines.low=60，只改设置不改考试数据 */
+  function migrateLines() {
+    if (!db.settings || !db.settings.lines) return;
+    if (db.settings.lines.low === 60) {
+      db.settings.lines = Object.assign({}, db.settings.lines, { low: 90 });
+      persist(); // 写回本地存储
+    }
+  }
+  migrateLines();
+
   let timer = null;
   let dirty = false;
 
