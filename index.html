@@ -431,13 +431,8 @@ var LS = (function(){
   }
 
   const DEFAULT_PARTS = [
-    { name: '选择题', full: 100 },
-    { name: '主观题', full: 50 },
-    { name: '听力表格', full: 10 },
-    { name: '短文填空', full: 10 },
-    { name: '阅读表达', full: 10 },
-    { name: '回答问题', full: 10 },
-    { name: '作文', full: 10 }
+    { name: 'A卷', full: 100 },
+    { name: 'B卷', full: 50 }
   ];
 
   function currentTerm() {
@@ -511,6 +506,22 @@ var LS = (function(){
     db = defaultDB();
   }
 
+  /* 2026-08-25 题型结构迁移：试卷统一为 A卷(100) + B卷(50) = 150 分
+     旧「选择题」列即 A卷、「主观题」列即 B卷，按位置改名，分数不动；
+     旧默认7项（选择题+主观题+5小题）整体重置为新默认。幂等：改过就不再变。 */
+  function migrateParts() {
+    const RENAME = { '选择题': { name: 'A卷', full: 100 }, '英语A卷': { name: 'A卷', full: 100 }, '主观题': { name: 'B卷', full: 50 } };
+    const rename = (parts) => Array.isArray(parts) && parts.some(p => p && RENAME[p.name])
+      ? parts.map(p => (p && RENAME[p.name]) ? Object.assign({}, p, RENAME[p.name]) : p)
+      : parts;
+    const isOldDefault = (parts) => Array.isArray(parts) &&
+      parts.some(p => p && p.name === '选择题') && parts.some(p => p && p.name === '主观题');
+    if (isOldDefault(db.settings.parts)) db.settings.parts = DEFAULT_PARTS.map(p => Object.assign({}, p));
+    else db.settings.parts = rename(db.settings.parts) || db.settings.parts;
+    (db.exams || []).forEach(ex => { ex.parts = rename(ex.parts) || ex.parts; });
+  }
+  migrateParts();
+
   let timer = null;
   let dirty = false;
 
@@ -537,6 +548,7 @@ var LS = (function(){
 
     setDB(next) {
       db = deepMerge(defaultDB(), next || {});
+      migrateParts(); // 云端/导入的数据可能还是旧「选择题」结构，拉下来统一迁移
       LS.setItem(KEY, JSON.stringify(db));
       dirty = false;
       document.dispatchEvent(new CustomEvent('store:change'));
@@ -1872,7 +1884,7 @@ window.App = window.App || { pages: {} };
         <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
           ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
         </div>
-        <p class="hint">💡 使用试卷里「A卷」一列的分数（非选择题），成绩上传后自动更新</p>
+        <p class="hint">💡 使用试卷里「A卷」一列的分数（满分100），成绩上传后自动更新</p>
       </div>
     </div>`;
   }
@@ -3050,15 +3062,10 @@ window.App = window.App || { pages: {} };
     const rows = cid ? allRows.filter(r => r.classId === cid) : allRows;
     if (!rows.length) return empty('暂无成绩', '📋');
 
-    /* 固定7个分项列定义 */
+    /* 固定分项列定义：A卷 100 + B卷 50 = 150 */
     const fixedParts = [
-      { name: '选择题', full: 100 },
-      { name: '主观题', full: 50 },
-      { name: '听力表格', full: 10 },
-      { name: '短文填空', full: 10 },
-      { name: '阅读表达', full: 10 },
-      { name: '回答问题', full: 10 },
-      { name: '作文', full: 10 }
+      { name: 'A卷', full: 100 },
+      { name: 'B卷', full: 50 }
     ];
     /* 当前考试的 parts 映射：name → index */
     const exPartMap = {};
@@ -3225,7 +3232,7 @@ window.App = window.App || { pages: {} };
         </div>
         <div class="row-between"><b>题型与满分</b>
           <div><button class="btn xs" id="e-addpart">＋ 题型</button>
-          <button class="btn xs ghost" id="e-reset">恢复默认7项</button></div></div>
+          <button class="btn xs ghost" id="e-reset">恢复默认题型</button></div></div>
         <div id="e-parts">${parts.map(partRow).join('')}</div>
         <p class="hint">题型合计满分：<b id="e-full">${parts.reduce((a, p) => a + Number(p.full || 0), 0)}</b> 分</p>
         ${ex ? `<button class="btn danger ghost block" id="e-del">🗑 删除该场考试</button>` : ''}
@@ -3308,9 +3315,9 @@ window.App = window.App || { pages: {} };
                <button class="btn xs ghost" id="sc-sum">用分项求和填总分</button></div>
         </div>
         <div id="sc-pastebox" style="display:none">
-          <p class="hint">每行一名学生，可用 Tab / 逗号 / 空格分隔。列顺序：<b>姓名 → 总分 → ${parts.map(p => p.name).join(' → ')}</b>；
-             只填「姓名 总分」也可以；只填分项时会自动求和。</p>
-          <textarea class="inp mono" id="sc-text" rows="6" placeholder="张小雨	108	28	9	8	24	9	12	18"></textarea>
+          <p class="hint">每行一名学生，可用 Tab / 逗号 / 空格分隔。列顺序：<b>姓名 → 总分 → ${parts.map(p => p.name).join(' → ')}</b>。
+             姓名/学号前后多出的排名列会<b>自动忽略、按行尾对齐</b>；只填「姓名 总分」也可以。</p>
+          <textarea class="inp mono" id="sc-text" rows="6" placeholder="${pasteSample(parts)}"></textarea>
           <button class="btn xs primary" id="sc-parse">识别并填入表格</button>
         </div>
         <div id="sc-table">${table(classId)}</div>
@@ -3344,14 +3351,25 @@ window.App = window.App || { pages: {} };
     };
   }
 
+  /* 按题型满分生成粘贴示例 */
+  function pasteSample(parts) {
+    const ps = parts.map(p => Math.round(p.full * 0.6));
+    return '张小雨\t' + ps.reduce((a, b) => a + b, 0) + '\t' + ps.join('\t');
+  }
+
   function parseScores(text, wrap, parts) {
     const lines = String(text).replace(/\r/g, '').split('\n').map(l => l.trim()).filter(Boolean);
     let n = 0;
     lines.forEach(line => {
       const cells = line.split(/\t|,|，|;|；| +/).map(s => s.trim()).filter(s => s !== '');
       if (!cells.length) return;
+      /* 自动跳过开头的纯数字列（学号/序号） */
+      while (cells.length > 1 && /^\d+$/.test(cells[0])) cells.shift();
       const name = cells.shift();
-      const nums = cells.map(Number).filter(v => !isNaN(v));
+      let nums = cells.map(Number).filter(v => !isNaN(v));
+      if (!nums.length) return;
+      /* 多余的排名列（如 姓名 排名 排名 总分 A卷 B卷）：按行尾（分项数+1）列对齐 */
+      if (nums.length > parts.length + 1) nums = nums.slice(-(parts.length + 1));
       const tr = UI.$$('#sc-body tr', wrap).find(tr => UI.$$('td', tr)[1].textContent.trim() === name);
       if (!tr) return;
       let total = null, ps = [];
