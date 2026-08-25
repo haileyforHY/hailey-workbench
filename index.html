@@ -1941,7 +1941,7 @@ window.App = window.App || { pages: {} };
   /* ------------- 分数线设置 ------------- */
   function openLineSettings() {
     const fl = Store.db.settings.focusLines || { pass: 90, aLow: 50, aHigh: 70 };
-    const mm = modal({
+    modal({
       title: '⚙️ 设置重点关注分数线',
       width: 480,
       body: `<div class="form">
@@ -1961,11 +1961,9 @@ window.App = window.App || { pages: {} };
         Store.save();
         toast('分数线已更新');
         App.render();
-        return false; // 不关闭弹窗，方便继续修改
+        return false;
       }
     });
-    // 一键关闭
-    $(mm).find('.modal-close').click();
   }
 
   function bind(view) {
