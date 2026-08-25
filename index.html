@@ -1116,12 +1116,12 @@ var LS = (function(){
   }
 
   // 重点关注分类：全卷及格生 + A卷合格生
-  // 全卷及格生：总分 ≥ 该场考试的低线（每次考试的低线不一样，自动跟随）
+  // 全卷及格生：总分 ≥ 全局设置的分档低线（固定90分），不因单场考试的低线改动而变
   // A卷合格生：英语A列（即A卷，Excel列名「英语A」，兼容"A卷"/"英语A卷"）得分在 50-70 分之间
   function focusStudents(ex) {
     const st = examStats(ex);
     if (!st || !st.all) return { fullPass: [], aPass: [], passLine: null, hasAPart: false };
-    const passLine = (st.lines && st.lines.low) || 90; // 全卷及格线 = 本场考试低线
+    const passLine = Store.db.settings.lines && Store.db.settings.lines.low; // 全卷及格线 = 全局设置低线（默认90）
 
     // 找英语A列（即A卷，满分100），兼容"A卷"/"英语A卷"等旧叫法
     const partNames = (st.parts || []).map(p => p.name);
