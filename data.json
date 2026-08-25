@@ -1,0 +1,1472 @@
+{
+  "meta": {
+    "version": 1,
+    "teacher": "Hailey",
+    "subject": "英语",
+    "term": "2026-2027 学年",
+    "gradYear": 2027,
+    "updatedAt": "2026-08-25T17:45:14.174021"
+  },
+  "classes": [
+    {
+      "id": "cls_4",
+      "name": "初三四班",
+      "grade": "初三",
+      "gradYear": 2027
+    },
+    {
+      "id": "cls_8",
+      "name": "初三八班",
+      "grade": "初三",
+      "gradYear": 2027
+    }
+  ],
+  "students": [
+    {
+      "id": "stu_914e9b05",
+      "classId": "cls_4",
+      "name": "李欣怡",
+      "no": "1",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f83c671e",
+      "classId": "cls_4",
+      "name": "刘璐",
+      "no": "2",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_0fa2b551",
+      "classId": "cls_4",
+      "name": "李轲",
+      "no": "3",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_6522270d",
+      "classId": "cls_4",
+      "name": "蔡佳欣",
+      "no": "4",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_31860e88",
+      "classId": "cls_4",
+      "name": "徐鼎洋",
+      "no": "5",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_d2e59daa",
+      "classId": "cls_4",
+      "name": "段茹轩",
+      "no": "6",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_4f8c2901",
+      "classId": "cls_4",
+      "name": "吕睿彤",
+      "no": "7",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_14f41b19",
+      "classId": "cls_4",
+      "name": "陈立言",
+      "no": "8",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_4346202e",
+      "classId": "cls_4",
+      "name": "贺浩轩",
+      "no": "9",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_8f113478",
+      "classId": "cls_4",
+      "name": "朱泽兰",
+      "no": "10",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_1412fa5b",
+      "classId": "cls_4",
+      "name": "张锦怡",
+      "no": "11",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_d5d98fd8",
+      "classId": "cls_4",
+      "name": "唐闻博",
+      "no": "12",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_4f70447a",
+      "classId": "cls_4",
+      "name": "王子丹",
+      "no": "13",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f8e764ef",
+      "classId": "cls_4",
+      "name": "赖思辰",
+      "no": "14",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_59b78c6a",
+      "classId": "cls_4",
+      "name": "张佳宜",
+      "no": "15",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_88c14594",
+      "classId": "cls_4",
+      "name": "唐浩仁",
+      "no": "16",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_fe0fa301",
+      "classId": "cls_4",
+      "name": "戚嘉航",
+      "no": "17",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_a31521ab",
+      "classId": "cls_4",
+      "name": "梁心蕊",
+      "no": "18",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_8d71d833",
+      "classId": "cls_4",
+      "name": "姚嘉杰",
+      "no": "19",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_206ff598",
+      "classId": "cls_4",
+      "name": "黄婉婷",
+      "no": "20",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_4f6191d7",
+      "classId": "cls_4",
+      "name": "傅茂涵",
+      "no": "21",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_a4b1f79c",
+      "classId": "cls_4",
+      "name": "杨汶平",
+      "no": "22",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_4d0357e0",
+      "classId": "cls_4",
+      "name": "荣博文",
+      "no": "23",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_8feece3a",
+      "classId": "cls_4",
+      "name": "罗钧耀",
+      "no": "24",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_69a5893e",
+      "classId": "cls_4",
+      "name": "吴贤丞",
+      "no": "25",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_23333e0f",
+      "classId": "cls_4",
+      "name": "朱宇晨",
+      "no": "26",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_21c3db5a",
+      "classId": "cls_4",
+      "name": "张恒溢",
+      "no": "27",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_833e52bc",
+      "classId": "cls_4",
+      "name": "张思瑞",
+      "no": "28",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_db4ca9d8",
+      "classId": "cls_4",
+      "name": "熊文浚",
+      "no": "29",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_dd97438e",
+      "classId": "cls_4",
+      "name": "陈泓州",
+      "no": "30",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_90445adf",
+      "classId": "cls_4",
+      "name": "马天仪",
+      "no": "31",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_c0f993d5",
+      "classId": "cls_4",
+      "name": "向泽成",
+      "no": "32",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f3cc0f37",
+      "classId": "cls_4",
+      "name": "马梓瑞",
+      "no": "33",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_af6dbd84",
+      "classId": "cls_4",
+      "name": "罗欣月",
+      "no": "34",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_ccb1123b",
+      "classId": "cls_4",
+      "name": "伍民炜",
+      "no": "35",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_256a58f4",
+      "classId": "cls_4",
+      "name": "汪羽辰",
+      "no": "36",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_de83481d",
+      "classId": "cls_8",
+      "name": "吕沛翰",
+      "no": "1",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_49946f36",
+      "classId": "cls_8",
+      "name": "罗星佑",
+      "no": "2",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_cad1c13b",
+      "classId": "cls_8",
+      "name": "李民赫",
+      "no": "3",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_0838b86a",
+      "classId": "cls_8",
+      "name": "王梓涵",
+      "no": "4",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f0fe83a0",
+      "classId": "cls_8",
+      "name": "吕睿昕",
+      "no": "5",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_3c1b9880",
+      "classId": "cls_8",
+      "name": "杨啟彤",
+      "no": "6",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_15c9f5a7",
+      "classId": "cls_8",
+      "name": "贺思宇",
+      "no": "7",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_fbda36f9",
+      "classId": "cls_8",
+      "name": "罗文轩",
+      "no": "8",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_ef1234c7",
+      "classId": "cls_8",
+      "name": "梁心怡",
+      "no": "9",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_6b6cd926",
+      "classId": "cls_8",
+      "name": "黄诗瑶",
+      "no": "10",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_3e98aa37",
+      "classId": "cls_8",
+      "name": "陈梓瑶",
+      "no": "11",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_018001a0",
+      "classId": "cls_8",
+      "name": "郭欣沂",
+      "no": "12",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_27803590",
+      "classId": "cls_8",
+      "name": "陈诗文",
+      "no": "13",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f5c39344",
+      "classId": "cls_8",
+      "name": "周钰倩",
+      "no": "14",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_7dc7f6b0",
+      "classId": "cls_8",
+      "name": "叶耀林",
+      "no": "15",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_1ce9c91a",
+      "classId": "cls_8",
+      "name": "潘潇雅",
+      "no": "16",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_1446e824",
+      "classId": "cls_8",
+      "name": "曹橙曦",
+      "no": "17",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_fbd1adea",
+      "classId": "cls_8",
+      "name": "刘思枘",
+      "no": "18",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_02e6a1c4",
+      "classId": "cls_8",
+      "name": "程炜森",
+      "no": "19",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_2750d3cc",
+      "classId": "cls_8",
+      "name": "张钧淏",
+      "no": "20",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_76720588",
+      "classId": "cls_8",
+      "name": "杨欣",
+      "no": "21",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_e7eedbde",
+      "classId": "cls_8",
+      "name": "谢沉林",
+      "no": "22",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_f493e327",
+      "classId": "cls_8",
+      "name": "王子祥",
+      "no": "23",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_1c7c8407",
+      "classId": "cls_8",
+      "name": "赵晨",
+      "no": "24",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_40f282a4",
+      "classId": "cls_8",
+      "name": "谭若熙",
+      "no": "25",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_32989fc0",
+      "classId": "cls_8",
+      "name": "周鸿瑄",
+      "no": "26",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_a6794ea1",
+      "classId": "cls_8",
+      "name": "余馨蕾",
+      "no": "27",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_358f545a",
+      "classId": "cls_8",
+      "name": "罗清朗文",
+      "no": "28",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_d06fb60a",
+      "classId": "cls_8",
+      "name": "虞恩玥",
+      "no": "29",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_09acf8c4",
+      "classId": "cls_8",
+      "name": "马辰越",
+      "no": "30",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_c6e4426b",
+      "classId": "cls_8",
+      "name": "陈俊翔",
+      "no": "31",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_133a508f",
+      "classId": "cls_8",
+      "name": "王馨悦",
+      "no": "32",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_bfc58bae",
+      "classId": "cls_8",
+      "name": "程思禧",
+      "no": "33",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_29087d1c",
+      "classId": "cls_8",
+      "name": "徐东辰",
+      "no": "34",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_523e679c",
+      "classId": "cls_8",
+      "name": "曾凡淋",
+      "no": "35",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_9e836fd4",
+      "classId": "cls_8",
+      "name": "张耀添",
+      "no": "36",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_45370564",
+      "classId": "cls_8",
+      "name": "龙晨菲",
+      "no": "37",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_b300a0c7",
+      "classId": "cls_8",
+      "name": "刘谨睿",
+      "no": "38",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    },
+    {
+      "id": "stu_7ab7ddd2",
+      "classId": "cls_8",
+      "name": "林毅峰",
+      "no": "39",
+      "parentPhone": "",
+      "parentName": "",
+      "tags": [],
+      "focus": false,
+      "note": ""
+    }
+  ],
+  "checks": [],
+  "retests": [],
+  "exams": [
+    {
+      "id": "exam_8b_english_final",
+      "name": "初二下期末英语",
+      "date": "2026-06-30",
+      "scope": "all",
+      "parts": [
+        {
+          "name": "英语",
+          "full": 120
+        }
+      ],
+      "lines": {
+        "high": 100,
+        "mid": 80,
+        "low": 60
+      },
+      "scores": [
+        {
+          "studentId": "stu_914e9b05",
+          "total": 116.5,
+          "parts": [
+            116.5
+          ]
+        },
+        {
+          "studentId": "stu_f83c671e",
+          "total": 108.0,
+          "parts": [
+            108.0
+          ]
+        },
+        {
+          "studentId": "stu_0fa2b551",
+          "total": 101.0,
+          "parts": [
+            101.0
+          ]
+        },
+        {
+          "studentId": "stu_6522270d",
+          "total": 93.25,
+          "parts": [
+            93.25
+          ]
+        },
+        {
+          "studentId": "stu_31860e88",
+          "total": 81.25,
+          "parts": [
+            81.25
+          ]
+        },
+        {
+          "studentId": "stu_d2e59daa",
+          "total": 85.0,
+          "parts": [
+            85.0
+          ]
+        },
+        {
+          "studentId": "stu_4f8c2901",
+          "total": 76.0,
+          "parts": [
+            76.0
+          ]
+        },
+        {
+          "studentId": "stu_14f41b19",
+          "total": 32.5,
+          "parts": [
+            32.5
+          ]
+        },
+        {
+          "studentId": "stu_4346202e",
+          "total": 45.5,
+          "parts": [
+            45.5
+          ]
+        },
+        {
+          "studentId": "stu_8f113478",
+          "total": 92.75,
+          "parts": [
+            92.75
+          ]
+        },
+        {
+          "studentId": "stu_1412fa5b",
+          "total": 35.75,
+          "parts": [
+            35.75
+          ]
+        },
+        {
+          "studentId": "stu_d5d98fd8",
+          "total": 56.0,
+          "parts": [
+            56.0
+          ]
+        },
+        {
+          "studentId": "stu_4f70447a",
+          "total": 56.25,
+          "parts": [
+            56.25
+          ]
+        },
+        {
+          "studentId": "stu_f8e764ef",
+          "total": 55.0,
+          "parts": [
+            55.0
+          ]
+        },
+        {
+          "studentId": "stu_59b78c6a",
+          "total": 67.0,
+          "parts": [
+            67.0
+          ]
+        },
+        {
+          "studentId": "stu_88c14594",
+          "total": 40.25,
+          "parts": [
+            40.25
+          ]
+        },
+        {
+          "studentId": "stu_fe0fa301",
+          "total": 36.25,
+          "parts": [
+            36.25
+          ]
+        },
+        {
+          "studentId": "stu_a31521ab",
+          "total": 59.5,
+          "parts": [
+            59.5
+          ]
+        },
+        {
+          "studentId": "stu_8d71d833",
+          "total": 48.0,
+          "parts": [
+            48.0
+          ]
+        },
+        {
+          "studentId": "stu_206ff598",
+          "total": 43.5,
+          "parts": [
+            43.5
+          ]
+        },
+        {
+          "studentId": "stu_4f6191d7",
+          "total": 38.0,
+          "parts": [
+            38.0
+          ]
+        },
+        {
+          "studentId": "stu_a4b1f79c",
+          "total": 46.75,
+          "parts": [
+            46.75
+          ]
+        },
+        {
+          "studentId": "stu_4d0357e0",
+          "total": 60.0,
+          "parts": [
+            60.0
+          ]
+        },
+        {
+          "studentId": "stu_8feece3a",
+          "total": 47.25,
+          "parts": [
+            47.25
+          ]
+        },
+        {
+          "studentId": "stu_69a5893e",
+          "total": 40.5,
+          "parts": [
+            40.5
+          ]
+        },
+        {
+          "studentId": "stu_23333e0f",
+          "total": 23.0,
+          "parts": [
+            23.0
+          ]
+        },
+        {
+          "studentId": "stu_21c3db5a",
+          "total": 32.0,
+          "parts": [
+            32.0
+          ]
+        },
+        {
+          "studentId": "stu_833e52bc",
+          "total": 26.5,
+          "parts": [
+            26.5
+          ]
+        },
+        {
+          "studentId": "stu_db4ca9d8",
+          "total": 34.0,
+          "parts": [
+            34.0
+          ]
+        },
+        {
+          "studentId": "stu_dd97438e",
+          "total": 34.0,
+          "parts": [
+            34.0
+          ]
+        },
+        {
+          "studentId": "stu_90445adf",
+          "total": 18.5,
+          "parts": [
+            18.5
+          ]
+        },
+        {
+          "studentId": "stu_c0f993d5",
+          "total": 39.5,
+          "parts": [
+            39.5
+          ]
+        },
+        {
+          "studentId": "stu_f3cc0f37",
+          "total": 45.5,
+          "parts": [
+            45.5
+          ]
+        },
+        {
+          "studentId": "stu_af6dbd84",
+          "total": 32.0,
+          "parts": [
+            32.0
+          ]
+        },
+        {
+          "studentId": "stu_ccb1123b",
+          "total": 40.0,
+          "parts": [
+            40.0
+          ]
+        },
+        {
+          "studentId": "stu_256a58f4",
+          "total": 33.25,
+          "parts": [
+            33.25
+          ]
+        },
+        {
+          "studentId": "stu_de83481d",
+          "total": 117.5,
+          "parts": [
+            117.5
+          ]
+        },
+        {
+          "studentId": "stu_49946f36",
+          "total": 82.5,
+          "parts": [
+            82.5
+          ]
+        },
+        {
+          "studentId": "stu_cad1c13b",
+          "total": 99.0,
+          "parts": [
+            99.0
+          ]
+        },
+        {
+          "studentId": "stu_0838b86a",
+          "total": 101.0,
+          "parts": [
+            101.0
+          ]
+        },
+        {
+          "studentId": "stu_f0fe83a0",
+          "total": 98.5,
+          "parts": [
+            98.5
+          ]
+        },
+        {
+          "studentId": "stu_3c1b9880",
+          "total": 76.0,
+          "parts": [
+            76.0
+          ]
+        },
+        {
+          "studentId": "stu_15c9f5a7",
+          "total": 88.25,
+          "parts": [
+            88.25
+          ]
+        },
+        {
+          "studentId": "stu_fbda36f9",
+          "total": 72.75,
+          "parts": [
+            72.75
+          ]
+        },
+        {
+          "studentId": "stu_ef1234c7",
+          "total": 82.75,
+          "parts": [
+            82.75
+          ]
+        },
+        {
+          "studentId": "stu_6b6cd926",
+          "total": 43.5,
+          "parts": [
+            43.5
+          ]
+        },
+        {
+          "studentId": "stu_3e98aa37",
+          "total": 81.0,
+          "parts": [
+            81.0
+          ]
+        },
+        {
+          "studentId": "stu_018001a0",
+          "total": 74.25,
+          "parts": [
+            74.25
+          ]
+        },
+        {
+          "studentId": "stu_27803590",
+          "total": 80.5,
+          "parts": [
+            80.5
+          ]
+        },
+        {
+          "studentId": "stu_f5c39344",
+          "total": 68.5,
+          "parts": [
+            68.5
+          ]
+        },
+        {
+          "studentId": "stu_7dc7f6b0",
+          "total": 49.75,
+          "parts": [
+            49.75
+          ]
+        },
+        {
+          "studentId": "stu_1ce9c91a",
+          "total": 47.0,
+          "parts": [
+            47.0
+          ]
+        },
+        {
+          "studentId": "stu_1446e824",
+          "total": 69.0,
+          "parts": [
+            69.0
+          ]
+        },
+        {
+          "studentId": "stu_fbd1adea",
+          "total": 47.0,
+          "parts": [
+            47.0
+          ]
+        },
+        {
+          "studentId": "stu_02e6a1c4",
+          "total": 41.75,
+          "parts": [
+            41.75
+          ]
+        },
+        {
+          "studentId": "stu_2750d3cc",
+          "total": 38.5,
+          "parts": [
+            38.5
+          ]
+        },
+        {
+          "studentId": "stu_76720588",
+          "total": 47.0,
+          "parts": [
+            47.0
+          ]
+        },
+        {
+          "studentId": "stu_e7eedbde",
+          "total": 50.5,
+          "parts": [
+            50.5
+          ]
+        },
+        {
+          "studentId": "stu_f493e327",
+          "total": 23.0,
+          "parts": [
+            23.0
+          ]
+        },
+        {
+          "studentId": "stu_1c7c8407",
+          "total": 39.25,
+          "parts": [
+            39.25
+          ]
+        },
+        {
+          "studentId": "stu_40f282a4",
+          "total": 37.25,
+          "parts": [
+            37.25
+          ]
+        },
+        {
+          "studentId": "stu_32989fc0",
+          "total": 62.5,
+          "parts": [
+            62.5
+          ]
+        },
+        {
+          "studentId": "stu_a6794ea1",
+          "total": 39.5,
+          "parts": [
+            39.5
+          ]
+        },
+        {
+          "studentId": "stu_358f545a",
+          "total": 34.5,
+          "parts": [
+            34.5
+          ]
+        },
+        {
+          "studentId": "stu_d06fb60a",
+          "total": 31.5,
+          "parts": [
+            31.5
+          ]
+        },
+        {
+          "studentId": "stu_09acf8c4",
+          "total": 48.0,
+          "parts": [
+            48.0
+          ]
+        },
+        {
+          "studentId": "stu_c6e4426b",
+          "total": 33.75,
+          "parts": [
+            33.75
+          ]
+        },
+        {
+          "studentId": "stu_133a508f",
+          "total": 31.75,
+          "parts": [
+            31.75
+          ]
+        },
+        {
+          "studentId": "stu_bfc58bae",
+          "total": 36.25,
+          "parts": [
+            36.25
+          ]
+        },
+        {
+          "studentId": "stu_29087d1c",
+          "total": 26.5,
+          "parts": [
+            26.5
+          ]
+        },
+        {
+          "studentId": "stu_523e679c",
+          "total": 35.75,
+          "parts": [
+            35.75
+          ]
+        },
+        {
+          "studentId": "stu_9e836fd4",
+          "total": 33.75,
+          "parts": [
+            33.75
+          ]
+        },
+        {
+          "studentId": "stu_45370564",
+          "total": 19.5,
+          "parts": [
+            19.5
+          ]
+        },
+        {
+          "studentId": "stu_b300a0c7",
+          "total": 30.0,
+          "parts": [
+            30.0
+          ]
+        },
+        {
+          "studentId": "stu_7ab7ddd2",
+          "total": 32.0,
+          "parts": [
+            32.0
+          ]
+        }
+      ]
+    }
+  ],
+  "comms": [],
+  "todos": [],
+  "discipline": [],
+  "timetable": {},
+  "settings": {
+    "parts": [
+      {
+        "name": "选择题",
+        "full": 100
+      },
+      {
+        "name": "听力表格",
+        "full": 0
+      },
+      {
+        "name": "短文填空",
+        "full": 0
+      },
+      {
+        "name": "阅读表达",
+        "full": 0
+      },
+      {
+        "name": "回答问题",
+        "full": 0
+      },
+      {
+        "name": "作文",
+        "full": 0
+      }
+    ],
+    "lines": {
+      "high": 100,
+      "mid": 80,
+      "low": 60
+    },
+    "fullScore": 120,
+    "band": 8,
+    "periods": 8,
+    "days": 5,
+    "tags": [
+      "临界生",
+      "需家校跟进",
+      "偏科",
+      "待提升",
+      "进步显著",
+      "课堂活跃"
+    ],
+    "discTypes": [
+      "迟到",
+      "作业未交",
+      "上课讲话",
+      "不带课本",
+      "顶撞老师",
+      "违规带手机",
+      "其他"
+    ],
+    "commWays": [
+      "电话",
+      "微信",
+      "面谈",
+      "家访",
+      "家长会"
+    ],
+    "supabase": {
+      "url": "https://wnenjltqmvqemrbrkgub.supabase.co",
+      "key": "sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ",
+      "table": "workbench",
+      "rowId": "hailey",
+      "auto": true,
+      "interval": 60
+    }
+  }
+}
