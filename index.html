@@ -1093,29 +1093,29 @@ var LS = (function(){
   }
 
   // 重点关注分类：全卷及格生 + A卷合格生
-  // 全卷及格生：总分 ≥ 90 分
-  // A卷合格生：选择题（或"英语A卷"）得分在 50-70 分之间
+  // 全卷及格生：总分 ≥ 该场考试的低线（每次考试的低线不一样，自动跟随）
+  // A卷合格生：A卷分项（名称含"A卷"，如"A卷"/"英语A卷"）得分在 50-70 分之间，不使用选择题分数
   function focusStudents(ex) {
     const st = examStats(ex);
-    if (!st || !st.all) return { fullPass: [], aPass: [] };
-    const passLine = 90; // 全卷及格线
+    if (!st || !st.all) return { fullPass: [], aPass: [], passLine: null, hasAPart: false };
+    const passLine = (st.lines && st.lines.low) || 90; // 全卷及格线 = 本场考试低线
 
-    // 找到"A卷"/"选择题"分项的索引
+    // 只找名称含"A卷"的分项（Excel 里的 A 卷分数），不匹配"选择题"
     const partNames = (st.parts || []).map(p => p.name);
-    const aPartIdx = partNames.findIndex(n => n === '选择题' || n === '英语A卷' || n === 'A卷');
+    const aPartIdx = partNames.findIndex(n => /A卷/i.test(n));
 
     const fullPass = [];
     const aPass = [];
     st.rows.forEach(r => {
       const total = r.total || 0;
-      // 全卷及格生：总分 ≥ 90
+      // 全卷及格生：总分 ≥ 本场低线
       if (total >= passLine) {
         fullPass.push({
           studentId: r.studentId, name: r.name, classId: r.classId,
           total, lineScore: passLine
         });
       }
-      // A卷合格生：选择题/A卷得分在 50-70 分之间
+      // A卷合格生：A卷分项得分在 50-70 分之间
       if (aPartIdx >= 0) {
         const aScore = (r.parts || [])[aPartIdx];
         if (aScore !== undefined && aScore !== null && aScore >= 50 && aScore <= 70) {
@@ -1129,7 +1129,7 @@ var LS = (function(){
 
     fullPass.sort((a, b) => b.total - a.total);
     aPass.sort((a, b) => b.total - a.total);
-    return { fullPass, aPass };
+    return { fullPass, aPass, passLine, hasAPart: aPartIdx >= 0 };
   }
 
   // 自动更新学生重点关注标签
@@ -1861,18 +1861,18 @@ window.App = window.App || { pages: {} };
       ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · A卷${s.aScore}` : ''}${showCls ? ` · ${esc(Store.className(s.classId).replace(/^初三/, ''))}` : ''}</a>`;
     return `<div class="grid-2">
       <div class="card">
-        <div class="card-head"><h3>✅ 全卷及格学生</h3><span class="muted sm">最近考试总分 ≥90分 · ${fp.length} 人</span></div>
+        <div class="card-head"><h3>✅ 全卷及格学生</h3><span class="muted sm">最近考试总分 ≥${fs.passLine}分（本场低线）· ${fp.length} 人</span></div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
           ${fp.length ? fp.map(s => chip(s, 'ok')).join('') : '<span class="muted">暂无学生</span>'}
         </div>
-        <p class="hint">💡 每次成绩上传后自动更新，点击姓名可查看学生档案</p>
+        <p class="hint">💡 及格线跟随每场考试的低线自动变化，成绩上传后自动更新</p>
       </div>
       <div class="card">
         <div class="card-head"><h3>📝 A卷合格关注学生</h3><span class="muted sm">最近考试A卷 50-70分 · ${ap.length} 人</span></div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
-          ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : '<span class="muted">暂无学生</span>'}
+          ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
         </div>
-        <p class="hint">💡 每次成绩上传后自动更新，点击姓名可查看学生档案</p>
+        <p class="hint">💡 使用试卷里「A卷」一列的分数（非选择题），成绩上传后自动更新</p>
       </div>
     </div>`;
   }
