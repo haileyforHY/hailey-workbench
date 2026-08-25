@@ -1875,29 +1875,48 @@ window.App = window.App || { pages: {} };
       <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
   }
 
-  /* ------------- 自动分类模块：全卷及格生 + A卷合格生（按最近一次考试） ------------- */
+  /* ------------- 自动分类模块：按班级分组，全卷及格生 / A卷合格生 分开展示 ------------- */
   function focusGroups(fs) {
-    const fp = state.classId ? fs.fullPass.filter(s => s.classId === state.classId) : fs.fullPass;
-    const ap = state.classId ? fs.aPass.filter(s => s.classId === state.classId) : fs.aPass;
-    const showCls = !state.classId;
+    const classes = state.classId
+      ? Store.classes().filter(c => c.id === state.classId)
+      : Store.classes();
     const chip = (s, cls) => `<a class="pill ${cls}" data-stu="${s.studentId}" style="cursor:pointer;text-decoration:none">
-      ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · ${esc(s.partName || '英语A')}${s.aScore}` : ''}${showCls ? ` · ${esc(Store.className(s.classId).replace(/^初三/, ''))}` : ''}</a>`;
-    return `<div class="grid-2">
-      <div class="card">
-        <div class="card-head"><h3>✅ 全卷及格学生</h3><span class="muted sm">最近考试总分 ≥${fs.passLine}分（本场低线）· ${fp.length} 人</span></div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
-          ${fp.length ? fp.map(s => chip(s, 'ok')).join('') : '<span class="muted">暂无学生</span>'}
+      ${esc(s.name)} ${s.total}分${s.aScore !== undefined ? ` · ${esc(s.partName || '英语A')}${s.aScore}` : ''}</a>`;
+
+    const byClass = classes.map(c => {
+      const fp = fs.fullPass.filter(s => s.classId === c.id);
+      const ap = fs.aPass.filter(s => s.classId === c.id);
+      return `<div class="card">
+        <div class="card-head"><h3>🏫 ${esc(c.name)}</h3>
+          <span class="muted sm">及格 ${fp.length} 人 · A卷合格 ${ap.length} 人</span></div>
+
+        <div class="fg-sec">
+          <div class="fg-title ok">✅ 全卷及格学生 <span class="muted sm">总分 ≥${fs.passLine}分（本场低线）</span></div>
+          <div class="fg-chips">
+            ${fp.length ? fp.map(s => chip(s, 'ok')).join('') : '<span class="muted">暂无学生</span>'}
+          </div>
         </div>
-        <p class="hint">💡 及格线跟随每场考试的低线自动变化，成绩上传后自动更新</p>
-      </div>
-      <div class="card">
-        <div class="card-head"><h3>📝 A卷合格关注学生</h3><span class="muted sm">最近考试英语A(A卷) 50-70分 · ${ap.length} 人</span></div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 2px">
-          ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
+
+        <div class="fg-sec">
+          <div class="fg-title warn">📝 A卷合格关注学生 <span class="muted sm">英语A(A卷) 50-70分</span></div>
+          <div class="fg-chips">
+            ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
+          </div>
         </div>
-        <p class="hint">💡 使用试卷里「英语A」一列的分数（即A卷，满分100），成绩上传后自动更新</p>
-      </div>
-    </div>`;
+      </div>`;
+    }).join('');
+
+    return `
+      <style>
+        .fg-sec{padding:10px 0 4px}
+        .fg-sec + .fg-sec{border-top:1px dashed var(--line,#e2e8f0);margin-top:6px;padding-top:12px}
+        .fg-title{font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .fg-title.ok{color:#059669}
+        .fg-title.warn{color:#d97706}
+        .fg-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
+      </style>
+      ${byClass || '<div class="card"><p class="hint">暂无班级数据</p></div>'}
+      <p class="hint" style="margin-top:4px">💡 及格线跟随每场考试的低线自动变化；A卷分数取「英语A」列（满分100），成绩上传后自动更新</p>`;
   }
 
   function bind(view) {
