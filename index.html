@@ -1172,6 +1172,15 @@ var LS = (function(){
     return { highLine, aPass };
   }
 
+  // 按最近一次有成绩的考试自动更新关注标签（供页面渲染时调用，幂等：无变化不写库）
+  function autoFocusLatest() {
+    const exs = (Store.db.exams || [])
+      .filter(e => (e.scores || []).length)
+      .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    if (!exs.length) return null;
+    return autoFocusStudents(exs[0]);
+  }
+
   // 个人历次考试
   function studentExams(studentId) {
     return D().exams
@@ -1317,7 +1326,7 @@ var LS = (function(){
 
   window.An = {
     checks, recordRate, studentPass, scopeMatrix,
-    exam, examStats, borderline, focusStudents, autoFocusStudents, studentExams, strengthWeakness, scoreTrendDelta,
+    exam, examStats, borderline, focusStudents, autoFocusStudents, autoFocusLatest, studentExams, strengthWeakness, scoreTrendDelta,
     disciplineCount, disciplineWarnings, followUps, lastComm,
     QUAD, topTodos, studentProfile, passAlerts
   };
@@ -1760,6 +1769,8 @@ window.App = window.App || { pages: {} };
   }
 
   function render(view) {
+    /* 每次打开页面，自动按最近一次考试更新「高线指标生 / A卷合格生」标签（无变化不写库） */
+    if (An.autoFocusLatest) An.autoFocusLatest();
     const list = pool();
     const profiles = list.map(s => An.studentProfile(s.id));
     const riskN = profiles.filter(p => p.risks.some(r => r.level === 'danger')).length;
@@ -2684,6 +2695,8 @@ window.App = window.App || { pages: {} };
   }
 
   function render(view) {
+    /* 打开成绩分析时，自动按最近一次考试更新「高线指标生 / A卷合格生」标签（无变化不写库） */
+    if (An.autoFocusLatest) An.autoFocusLatest();
     const exams = Store.db.exams.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     const ex = currentExam();
     if (ex) state.examId = ex.id;
@@ -2918,7 +2931,8 @@ window.App = window.App || { pages: {} };
       const shortName = r.name.length > 2 ? r.name.slice(0, 2) : r.name;
       bars += `<rect x="${(cx - bw / 2).toFixed(1)}" y="${(pt + ih - h).toFixed(1)}"
         width="${bw.toFixed(1)}" height="${Math.max(h, 1).toFixed(1)}" rx="3" fill="${color}" opacity=".85">
-        <title>#${i + 1} ${esc(r.name)} · ${r.total}分</title></rect>`;
+        <title>#${i + 1} ${esc(r.name)} · ${r.total}分</title></rect>
+        <text x="${cx.toFixed(1)}" y="${Math.max(pt + 8, pt + ih - h - 3).toFixed(1)}" text-anchor="middle" font-size="8.5" fill="#334155" font-weight="600">${r.total}</text>`;
     });
 
     // Grid + axis
