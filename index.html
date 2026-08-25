@@ -474,6 +474,8 @@ var LS = (function(){
       settings: {
         parts: DEFAULT_PARTS,
         lines: { high: 130, mid: 110, low: 90 },
+        // 重点关注学生手动设置分数线
+        focusLines: { pass: 90, aLow: 50, aHigh: 70 },  // 全卷及格线、A卷合格低分、A卷合格高分
         fullScore: 150,
         band: 8,                  // 临界生分差
         periods: 8,               // 每天节次
@@ -1127,12 +1129,17 @@ var LS = (function(){
   }
 
   // 重点关注分类：全卷及格生 + A卷合格生
-  // 全卷及格生：总分 ≥ 全局设置的分档低线（固定90分），不因单场考试的低线改动而变
-  // A卷合格生：英语A列（即A卷，Excel列名「英语A」，兼容"A卷"/"英语A卷"）得分在 50-70 分之间
+  // 全卷及格生：总分 ≥ 手动设置的全卷及格线（settings.focusLines.pass）
+  // A卷合格生：英语A列得分在 手动设置的 [aLow, aHigh] 之间
   function focusStudents(ex) {
     const st = examStats(ex);
     if (!st || !st.all) return { fullPass: [], aPass: [], passLine: null, hasAPart: false };
-    const passLine = Store.db.settings.lines && Store.db.settings.lines.low; // 全卷及格线 = 全局设置低线（默认90）
+
+    // 读取手动设置的分数线
+    const focusLines = Store.db.settings.focusLines || { pass: 90, aLow: 50, aHigh: 70 };
+    const passLine = focusLines.pass || 90;
+    const aLow = focusLines.aLow || 50;
+    const aHigh = focusLines.aHigh || 70;
 
     // 找英语A列（即A卷，满分100），兼容"A卷"/"英语A卷"等旧叫法
     const partNames = (st.parts || []).map(p => p.name);
@@ -1142,17 +1149,17 @@ var LS = (function(){
     const aPass = [];
     st.rows.forEach(r => {
       const total = r.total || 0;
-      // 全卷及格生：总分 ≥ 本场低线
+      // 全卷及格生：总分 ≥ 手动设置及格线
       if (total >= passLine) {
         fullPass.push({
           studentId: r.studentId, name: r.name, classId: r.classId,
           total, lineScore: passLine
         });
       }
-      // A卷合格生：A卷分项得分在 50-70 分之间
+      // A卷合格生：A卷分项得分在手动设置的范围内
       if (aPartIdx >= 0) {
         const aScore = (r.parts || [])[aPartIdx];
-        if (aScore !== undefined && aScore !== null && aScore >= 50 && aScore <= 70) {
+        if (aScore !== undefined && aScore !== null && aScore >= aLow && aScore <= aHigh) {
           aPass.push({
             studentId: r.studentId, name: r.name, classId: r.classId,
             total, aScore, partName: partNames[aPartIdx]
@@ -1163,7 +1170,7 @@ var LS = (function(){
 
     fullPass.sort((a, b) => b.total - a.total);
     aPass.sort((a, b) => b.total - a.total);
-    return { fullPass, aPass, passLine, hasAPart: aPartIdx >= 0 };
+    return { fullPass, aPass, passLine, aLow, aHigh, hasAPart: aPartIdx >= 0 };
   }
 
   // 自动更新学生重点关注标签
@@ -1811,6 +1818,7 @@ window.App = window.App || { pages: {} };
       <div class="page-head">
         <div><h2>⭐ 重点关注学生</h2><p class="sub">过关 · 成绩 · 违纪 · 家校 全维度追踪</p></div>
         <div class="head-actions">
+          <button class="btn ghost" id="k-settings">⚙️ 设置分数线</button>
           <div class="seg">
             <button class="${state.scope === 'focus' ? 'on' : ''}" data-scope="focus">重点名单</button>
             <button class="${state.scope === 'all' ? 'on' : ''}" data-scope="all">全部学生</button>
@@ -1902,14 +1910,14 @@ window.App = window.App || { pages: {} };
           <span class="muted sm">及格 ${fp.length} 人 · A卷合格 ${ap.length} 人</span></div>
 
         <div class="fg-sec">
-          <div class="fg-title ok">✅ 全卷及格学生 <span class="muted sm">总分 ≥${fs.passLine}分（本场低线）</span></div>
+          <div class="fg-title ok">✅ 全卷及格学生 <span class="muted sm">总分 ≥${fs.passLine}分</span></div>
           <div class="fg-chips">
             ${fp.length ? fp.map(s => chip(s, 'ok')).join('') : '<span class="muted">暂无学生</span>'}
           </div>
         </div>
 
         <div class="fg-sec">
-          <div class="fg-title warn">📝 A卷合格关注学生 <span class="muted sm">英语A(A卷) 50-70分</span></div>
+          <div class="fg-title warn">📝 A卷合格关注学生 <span class="muted sm">英语A ${fs.aLow}-${fs.aHigh}分</span></div>
           <div class="fg-chips">
             ${ap.length ? ap.map(s => chip(s, 'warn')).join('') : `<span class="muted">${fs.hasAPart ? '暂无学生' : '本场考试没有录入A卷分数'}</span>`}
           </div>
@@ -1927,11 +1935,42 @@ window.App = window.App || { pages: {} };
         .fg-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
       </style>
       ${byClass || '<div class="card"><p class="hint">暂无班级数据</p></div>'}
-      <p class="hint" style="margin-top:4px">💡 及格线固定为全局设置的90分；A卷分数取「英语A」列（满分100），成绩上传后自动更新</p>`;
+      <p class="hint" style="margin-top:4px">💡 点击「⚙️ 设置分数线」可自定义全卷及格线和A卷合格区间，成绩上传后自动重新分类</p>`;
+  }
+
+  /* ------------- 分数线设置 ------------- */
+  function openLineSettings() {
+    const fl = Store.db.settings.focusLines || { pass: 90, aLow: 50, aHigh: 70 };
+    const mm = modal({
+      title: '⚙️ 设置重点关注分数线',
+      width: 480,
+      body: `<div class="form">
+        <div class="grid3">
+          <label>全卷及格线（≥分）<input class="inp" type="number" id="fs-pass" value="${fl.pass}"></label>
+          <label>A卷合格低分<input class="inp" type="number" id="fs-alow" value="${fl.aLow}"></label>
+          <label>A卷合格高分<input class="inp" type="number" id="fs-ahigh" value="${fl.aHigh}"></label>
+        </div>
+        <p class="hint">💡 全卷及格：总分 ≥ 及格线；A卷合格：英语A得分在 [低分, 高分] 区间内</p>
+      </div>`,
+      okText: '保存',
+      onOk: (wrap) => {
+        const pass = Number(UI.$('#fs-pass', wrap).value) || 90;
+        const aLow = Number(UI.$('#fs-alow', wrap).value) || 50;
+        const aHigh = Number(UI.$('#fs-ahigh', wrap).value) || 70;
+        Store.db.settings.focusLines = { pass, aLow, aHigh };
+        Store.save();
+        toast('分数线已更新');
+        App.render();
+        return false; // 不关闭弹窗，方便继续修改
+      }
+    });
+    // 一键关闭
+    $(mm).find('.modal-close').click();
   }
 
   function bind(view) {
     const { $, $$ } = UI;
+    $('#k-settings', view).onclick = openLineSettings;
     $$('[data-scope]', view).forEach(b => b.onclick = () => { state.scope = b.dataset.scope; App.render(); });
     $('#k-cls', view).onchange = e => { state.classId = e.target.value; App.render(); };
     $('#k-tag', view).onchange = e => { state.tag = e.target.value; App.render(); };
