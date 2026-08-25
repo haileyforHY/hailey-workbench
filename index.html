@@ -188,6 +188,16 @@ textarea.inp{resize:vertical}
 .kpi[data-go]:hover{transform:translateY(-2px);border-color:#c9cdf0}
 .kpi-ico{width:38px;height:38px;border-radius:11px;background:var(--pri-soft);display:grid;place-items:center;font-size:18px;flex:0 0 38px}
 .kpi-v{font-size:19px;font-weight:680;line-height:1.25}
+
+/* 分数线快捷条 */
+.line-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;box-shadow:var(--sh)}
+.line-bar-label{font-weight:600;font-size:13px;color:var(--muted);flex:0 0 auto}
+.line-tag{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+.line-tag.high{background:#fef2f2;color:#ef4444}
+.line-tag.mid{background:#fffbeb;color:#f59e0b}
+.line-tag.low{background:#f0fdf4;color:#10b981}
+.line-tag input{font-weight:700;color:inherit;border:1px solid currentColor;opacity:.5;padding:2px 6px;border-radius:5px}
+.line-tag input:focus{opacity:1;outline:none}
 .kpi-l{font-size:12px;color:var(--muted)}
 .kpi.warn .kpi-ico{background:#fff5e5}
 .kpi.danger .kpi-ico{background:#ffeef0}
@@ -2680,11 +2690,18 @@ window.App = window.App || { pages: {} };
       : scoreDistChart(st.rows, clsIds, lines);
 
     return `
+      <div class="line-bar" id="x-lines">
+        <span class="line-bar-label">📐 分数线：</span>
+        <label class="line-tag high"><span>高线</span><input class="inp" type="number" id="x-lh" value="${lines.high}" style="width:64px"></label>
+        <label class="line-tag mid"><span>中线</span><input class="inp" type="number" id="x-lm" value="${lines.mid}" style="width:64px"></label>
+        <label class="line-tag low"><span>低线</span><input class="inp" type="number" id="x-ll" value="${lines.low}" style="width:64px"></label>
+        <button class="btn xs primary" id="x-lsave">保存</button>
+      </div>
       <div class="kpi-row">
         ${kpi('参考人数', scope.count + ' 人', '🧑‍🎓')}
         ${kpi(isClassMode ? '班级平均' : '年级平均', scope.avg + ' 分', '📊')}
-        ${kpi('最高 / 最低', scope.max + ' / ' + scope.min, '🏅')}
-        ${kpi(`高线(${lines.high})上线`, scope.lineCount.high + ' 人 · ' + UI.pct(scope.lineCount.high, scope.count) + '%', '🎯')}
+        ${kpi('高线上线', scope.lineCount.high + ' 人 · ' + UI.pct(scope.lineCount.high, scope.count) + '%', '🎯', 'good')}
+        ${kpi('低线上线', scope.lineCount.low + ' 人 · ' + UI.pct(scope.lineCount.low, scope.count) + '%', '✅', 'ok')}
       </div>
 
       <div class="card">
@@ -3211,6 +3228,14 @@ window.App = window.App || { pages: {} };
     const b2 = $('#x-scores', view); if (b2) b2.onclick = () => enterScores(ex.id);
     const s1 = $('#x-stu', view); if (s1) s1.onchange = e => { state.stu = e.target.value; App.render(); };
     const fc = $('#x-filtercls', view); if (fc) fc.onchange = e => { state.classId = e.target.value; state.stu = ''; App.render(); };
+    const ls = $('#x-lsave', view); if (ls) ls.onclick = () => {
+      const h = Number($('#x-lh', view).value);
+      const m = Number($('#x-lm', view).value);
+      const l = Number($('#x-ll', view).value);
+      if (!h || !m || !l) { toast('分数线不能为空或0', 'err'); return; }
+      Store.patch('exams', ex.id, { lines: { high: h, mid: m, low: l } });
+      toast('分数线已更新'); App.render();
+    };
     const bd = $('#x-band', view); if (bd) bd.onclick = () => modal({
       title: '临界生分差', width: 360,
       body: `<div class="form"><label>距离分数线多少分算临界生
