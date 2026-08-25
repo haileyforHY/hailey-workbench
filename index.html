@@ -391,7 +391,7 @@ textarea.inp{resize:vertical}
 <div id="modal-root"></div>
 <div id="toast-root"></div>
 
-<script>/* === js/store.js === */
+<script>
 var LS = (function(){
   try {
     var t = '__ls_probe__';
@@ -658,7 +658,7 @@ var LS = (function(){
 })();
 
 </script>
-<script>/* === js/ui.js === */
+<script>
 /* ===========================================================
  * ui.js — 通用工具：DOM、日期、弹窗、提示
  * =========================================================== */
@@ -790,7 +790,7 @@ var LS = (function(){
 })();
 
 </script>
-<script>/* === js/charts.js === */
+<script>
 /* ===========================================================
  * charts.js — 零依赖 SVG 图表（折线 / 雷达 / 柱状 / 环形）
  * 全部返回 HTML 字符串，直接插入即可
@@ -963,7 +963,7 @@ var LS = (function(){
 })();
 
 </script>
-<script>/* === js/analytics.js === */
+<script>
 /* ===========================================================
  * analytics.js — 统计与分析（过关率 / 成绩 / 预警）
  * =========================================================== */
@@ -1232,7 +1232,7 @@ var LS = (function(){
 })();
 
 </script>
-<script>/* === js/app.js === */
+<script>
 /* ===========================================================
  * app.js — 路由、侧栏、初始化、示例数据
  * =========================================================== */
@@ -1452,7 +1452,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/dashboard.js === */
+<script>
 /* ===========================================================
  * pages/dashboard.js — 📊 总览仪表盘
  * =========================================================== */
@@ -1625,7 +1625,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/focus.js === */
+<script>
 /* ===========================================================
  * pages/focus.js — ⭐ 重点关注学生 + 学生全维度档案
  * =========================================================== */
@@ -1891,7 +1891,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/students.js === */
+<script>
 /* ===========================================================
  * pages/students.js — 班级与学生名单
  * =========================================================== */
@@ -2331,7 +2331,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/checks.js === */
+<script>
 /* ===========================================================
  * pages/checks.js — 听写过关 / 背诵过关（共用一套逻辑）
  * =========================================================== */
@@ -2576,7 +2576,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/exams.js === */
+<script>
 /* ===========================================================
  * pages/exams.js — 成绩分析
  * =========================================================== */
@@ -2832,14 +2832,17 @@ window.App = window.App || { pages: {} };
     const rows = (state.classId ? st.rows.filter(r => r.classId === state.classId) : st.rows)
       .slice().sort((a, b) => b.total - a.total);
     if (!rows.length) return empty('暂无成绩', '📋');
-    return `<div class="table-wrap max480"><table class="tbl">
+    const hasRank = rows.some(r => r.gradeRank);
+    return `<div class="table-wrap ${hasRank ? '' : 'max480'}"><table class="tbl">
       <thead><tr><th style="width:52px">名次</th><th>姓名</th><th>班级</th><th>总分</th>
+        ${hasRank ? '<th>年排</th>' : ''}
         ${st.parts.map(p => `<th>${esc(p.name)}<span class="muted sm">/${p.full}</span></th>`).join('')}</tr></thead>
       <tbody>${rows.map((r, i) => `<tr class="${r.total >= st.lines.high ? 'row-high' : ''}">
         <td class="muted">${i + 1}</td>
         <td><a class="link" data-stu="${r.studentId}">${esc(r.name)}</a>${r.focus ? ' ⭐' : ''}</td>
         <td>${esc(Store.className(r.classId))}</td>
         <td><b>${r.total}</b></td>
+        ${hasRank ? `<td class="muted">${r.gradeRank || '—'}</td>` : ''}
         ${st.parts.map((p, j) => {
           const v = (r.parts || [])[j] || 0;
           const rate = p.full ? v / p.full : 0;
@@ -3094,7 +3097,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/comm.js === */
+<script>
 /* ===========================================================
  * pages/comm.js — 家校沟通记录 + 家长电话簿
  * =========================================================== */
@@ -3257,7 +3260,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/tasks.js === */
+<script>
 /* ===========================================================
  * pages/tasks.js — ✅ 待办四象限 & ⚠️ 违纪记录
  * =========================================================== */
@@ -3519,7 +3522,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/timetable.js === */
+<script>
 /* ===========================================================
  * pages/timetable.js — 我的课表
  * =========================================================== */
@@ -3635,7 +3638,7 @@ window.App = window.App || { pages: {} };
 })();
 
 </script>
-<script>/* === js/pages/sync.js === */
+<script>
 /* ===========================================================
  * pages/sync.js — ☁️ Supabase 云端同步 + ⚙️ 偏好设置
  * 单用户私有：一行 JSON 存全部数据
