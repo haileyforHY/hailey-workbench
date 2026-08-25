@@ -5,7 +5,7 @@
     "subject": "英语",
     "term": "2026-2027 学年",
     "gradYear": 2027,
-    "updatedAt": "2026-08-25T17:45:14.174021"
+    "updatedAt": "2026-08-25T17:54:56.791764"
   },
   "classes": [
     {
@@ -858,8 +858,12 @@
       "scope": "all",
       "parts": [
         {
-          "name": "英语",
-          "full": 120
+          "name": "英语A卷",
+          "full": 90
+        },
+        {
+          "name": "英语B卷",
+          "full": 30
         }
       ],
       "lines": {
@@ -872,526 +876,676 @@
           "studentId": "stu_914e9b05",
           "total": 116.5,
           "parts": [
-            116.5
-          ]
+            86.5,
+            30.0
+          ],
+          "gradeRank": 62
         },
         {
           "studentId": "stu_f83c671e",
           "total": 108.0,
           "parts": [
-            108.0
-          ]
+            85.5,
+            22.5
+          ],
+          "gradeRank": 88
         },
         {
           "studentId": "stu_0fa2b551",
           "total": 101.0,
           "parts": [
-            101.0
-          ]
+            81.5,
+            19.5
+          ],
+          "gradeRank": 110
         },
         {
           "studentId": "stu_6522270d",
           "total": 93.25,
           "parts": [
-            93.25
-          ]
+            80.0,
+            13.25
+          ],
+          "gradeRank": 135
         },
         {
           "studentId": "stu_31860e88",
           "total": 81.25,
           "parts": [
-            81.25
-          ]
+            63.0,
+            18.25
+          ],
+          "gradeRank": 173
         },
         {
           "studentId": "stu_d2e59daa",
           "total": 85.0,
           "parts": [
-            85.0
-          ]
+            69.5,
+            15.5
+          ],
+          "gradeRank": 160
         },
         {
           "studentId": "stu_4f8c2901",
           "total": 76.0,
           "parts": [
-            76.0
-          ]
+            61.5,
+            14.5
+          ],
+          "gradeRank": 184
         },
         {
           "studentId": "stu_14f41b19",
           "total": 32.5,
           "parts": [
-            32.5
-          ]
+            30.5,
+            2.0
+          ],
+          "gradeRank": 335
         },
         {
           "studentId": "stu_4346202e",
           "total": 45.5,
           "parts": [
-            45.5
-          ]
+            44.5,
+            1.0
+          ],
+          "gradeRank": 262
         },
         {
           "studentId": "stu_8f113478",
           "total": 92.75,
           "parts": [
-            92.75
-          ]
+            70.5,
+            22.25
+          ],
+          "gradeRank": 137
         },
         {
           "studentId": "stu_1412fa5b",
           "total": 35.75,
           "parts": [
-            35.75
-          ]
+            32.0,
+            3.75
+          ],
+          "gradeRank": 319
         },
         {
           "studentId": "stu_d5d98fd8",
           "total": 56.0,
           "parts": [
-            56.0
-          ]
+            48.5,
+            7.5
+          ],
+          "gradeRank": 230
         },
         {
           "studentId": "stu_4f70447a",
           "total": 56.25,
           "parts": [
-            56.25
-          ]
+            50.5,
+            5.75
+          ],
+          "gradeRank": 228
         },
         {
           "studentId": "stu_f8e764ef",
           "total": 55.0,
           "parts": [
-            55.0
-          ]
+            46.0,
+            9.0
+          ],
+          "gradeRank": 232
         },
         {
           "studentId": "stu_59b78c6a",
           "total": 67.0,
           "parts": [
-            67.0
-          ]
+            58.5,
+            8.5
+          ],
+          "gradeRank": 212
         },
         {
           "studentId": "stu_88c14594",
           "total": 40.25,
           "parts": [
-            40.25
-          ]
+            36.5,
+            3.75
+          ],
+          "gradeRank": 284
         },
         {
           "studentId": "stu_fe0fa301",
           "total": 36.25,
           "parts": [
-            36.25
-          ]
+            35.5,
+            0.75
+          ],
+          "gradeRank": 315
         },
         {
           "studentId": "stu_a31521ab",
           "total": 59.5,
           "parts": [
-            59.5
-          ]
+            55.0,
+            4.5
+          ],
+          "gradeRank": 223
         },
         {
           "studentId": "stu_8d71d833",
           "total": 48.0,
           "parts": [
-            48.0
-          ]
+            44.0,
+            4.0
+          ],
+          "gradeRank": 252
         },
         {
           "studentId": "stu_206ff598",
           "total": 43.5,
           "parts": [
-            43.5
-          ]
+            39.5,
+            4.0
+          ],
+          "gradeRank": 271
         },
         {
           "studentId": "stu_4f6191d7",
           "total": 38.0,
           "parts": [
-            38.0
-          ]
+            36.0,
+            2.0
+          ],
+          "gradeRank": 300
         },
         {
           "studentId": "stu_a4b1f79c",
           "total": 46.75,
           "parts": [
-            46.75
-          ]
+            42.0,
+            4.75
+          ],
+          "gradeRank": 259
         },
         {
           "studentId": "stu_4d0357e0",
           "total": 60.0,
           "parts": [
-            60.0
-          ]
+            53.0,
+            7.0
+          ],
+          "gradeRank": 222
         },
         {
           "studentId": "stu_8feece3a",
           "total": 47.25,
           "parts": [
-            47.25
-          ]
+            45.5,
+            1.75
+          ],
+          "gradeRank": 255
         },
         {
           "studentId": "stu_69a5893e",
           "total": 40.5,
           "parts": [
-            40.5
-          ]
+            34.5,
+            6.0
+          ],
+          "gradeRank": 282
         },
         {
           "studentId": "stu_23333e0f",
           "total": 23.0,
           "parts": [
-            23.0
-          ]
+            22.0,
+            1.0
+          ],
+          "gradeRank": 359
         },
         {
           "studentId": "stu_21c3db5a",
           "total": 32.0,
           "parts": [
-            32.0
-          ]
+            31.0,
+            1.0
+          ],
+          "gradeRank": 337
         },
         {
           "studentId": "stu_833e52bc",
           "total": 26.5,
           "parts": [
-            26.5
-          ]
+            26.5,
+            0.0
+          ],
+          "gradeRank": 352
         },
         {
           "studentId": "stu_db4ca9d8",
           "total": 34.0,
           "parts": [
-            34.0
-          ]
+            33.5,
+            0.5
+          ],
+          "gradeRank": 325
         },
         {
           "studentId": "stu_dd97438e",
           "total": 34.0,
           "parts": [
-            34.0
-          ]
+            32.5,
+            1.5
+          ],
+          "gradeRank": 325
         },
         {
           "studentId": "stu_90445adf",
           "total": 18.5,
           "parts": [
-            18.5
-          ]
+            16.0,
+            2.5
+          ],
+          "gradeRank": 363
         },
         {
           "studentId": "stu_c0f993d5",
           "total": 39.5,
           "parts": [
-            39.5
-          ]
+            39.5,
+            0.0
+          ],
+          "gradeRank": 288
         },
         {
           "studentId": "stu_f3cc0f37",
           "total": 45.5,
           "parts": [
-            45.5
-          ]
+            45.5,
+            0.0
+          ],
+          "gradeRank": 262
         },
         {
           "studentId": "stu_af6dbd84",
           "total": 32.0,
           "parts": [
-            32.0
-          ]
+            30.5,
+            1.5
+          ],
+          "gradeRank": 337
         },
         {
           "studentId": "stu_ccb1123b",
           "total": 40.0,
           "parts": [
-            40.0
-          ]
+            40.0,
+            0.0
+          ],
+          "gradeRank": 285
         },
         {
           "studentId": "stu_256a58f4",
           "total": 33.25,
           "parts": [
-            33.25
-          ]
+            31.5,
+            1.75
+          ],
+          "gradeRank": 332
         },
         {
           "studentId": "stu_de83481d",
           "total": 117.5,
           "parts": [
-            117.5
-          ]
+            86.5,
+            31.0
+          ],
+          "gradeRank": 57
         },
         {
           "studentId": "stu_49946f36",
           "total": 82.5,
           "parts": [
-            82.5
-          ]
+            72.0,
+            10.5
+          ],
+          "gradeRank": 169
         },
         {
           "studentId": "stu_cad1c13b",
           "total": 99.0,
           "parts": [
-            99.0
-          ]
+            83.0,
+            16.0
+          ],
+          "gradeRank": 114
         },
         {
           "studentId": "stu_0838b86a",
           "total": 101.0,
           "parts": [
-            101.0
-          ]
+            78.0,
+            23.0
+          ],
+          "gradeRank": 110
         },
         {
           "studentId": "stu_f0fe83a0",
           "total": 98.5,
           "parts": [
-            98.5
-          ]
+            75.5,
+            23.0
+          ],
+          "gradeRank": 117
         },
         {
           "studentId": "stu_3c1b9880",
           "total": 76.0,
           "parts": [
-            76.0
-          ]
+            59.5,
+            16.5
+          ],
+          "gradeRank": 184
         },
         {
           "studentId": "stu_15c9f5a7",
           "total": 88.25,
           "parts": [
-            88.25
-          ]
+            69.0,
+            19.25
+          ],
+          "gradeRank": 150
         },
         {
           "studentId": "stu_fbda36f9",
           "total": 72.75,
           "parts": [
-            72.75
-          ]
+            67.0,
+            5.75
+          ],
+          "gradeRank": 192
         },
         {
           "studentId": "stu_ef1234c7",
           "total": 82.75,
           "parts": [
-            82.75
-          ]
+            67.0,
+            15.75
+          ],
+          "gradeRank": 167
         },
         {
           "studentId": "stu_6b6cd926",
           "total": 43.5,
           "parts": [
-            43.5
-          ]
+            42.5,
+            1.0
+          ],
+          "gradeRank": 271
         },
         {
           "studentId": "stu_3e98aa37",
           "total": 81.0,
           "parts": [
-            81.0
-          ]
+            70.75,
+            10.25
+          ],
+          "gradeRank": 174
         },
         {
           "studentId": "stu_018001a0",
           "total": 74.25,
           "parts": [
-            74.25
-          ]
+            66.5,
+            7.75
+          ],
+          "gradeRank": 187
         },
         {
           "studentId": "stu_27803590",
           "total": 80.5,
           "parts": [
-            80.5
-          ]
+            63.5,
+            17.0
+          ],
+          "gradeRank": 176
         },
         {
           "studentId": "stu_f5c39344",
           "total": 68.5,
           "parts": [
-            68.5
-          ]
+            52.5,
+            16.0
+          ],
+          "gradeRank": 209
         },
         {
           "studentId": "stu_7dc7f6b0",
           "total": 49.75,
           "parts": [
-            49.75
-          ]
+            47.5,
+            2.25
+          ],
+          "gradeRank": 249
         },
         {
           "studentId": "stu_1ce9c91a",
           "total": 47.0,
           "parts": [
-            47.0
-          ]
+            42.0,
+            5.0
+          ],
+          "gradeRank": 256
         },
         {
           "studentId": "stu_1446e824",
           "total": 69.0,
           "parts": [
-            69.0
-          ]
+            57.0,
+            12.0
+          ],
+          "gradeRank": 206
         },
         {
           "studentId": "stu_fbd1adea",
           "total": 47.0,
           "parts": [
-            47.0
-          ]
+            42.5,
+            4.5
+          ],
+          "gradeRank": 256
         },
         {
           "studentId": "stu_02e6a1c4",
           "total": 41.75,
           "parts": [
-            41.75
-          ]
+            34.0,
+            7.75
+          ],
+          "gradeRank": 280
         },
         {
           "studentId": "stu_2750d3cc",
           "total": 38.5,
           "parts": [
-            38.5
-          ]
+            36.5,
+            2.0
+          ],
+          "gradeRank": 294
         },
         {
           "studentId": "stu_76720588",
           "total": 47.0,
           "parts": [
-            47.0
-          ]
+            43.0,
+            4.0
+          ],
+          "gradeRank": 256
         },
         {
           "studentId": "stu_e7eedbde",
           "total": 50.5,
           "parts": [
-            50.5
-          ]
+            48.5,
+            2.0
+          ],
+          "gradeRank": 248
         },
         {
           "studentId": "stu_f493e327",
           "total": 23.0,
           "parts": [
-            23.0
-          ]
+            20.5,
+            2.5
+          ],
+          "gradeRank": 359
         },
         {
           "studentId": "stu_1c7c8407",
           "total": 39.25,
           "parts": [
-            39.25
-          ]
+            37.5,
+            1.75
+          ],
+          "gradeRank": 290
         },
         {
           "studentId": "stu_40f282a4",
           "total": 37.25,
           "parts": [
-            37.25
-          ]
+            33.5,
+            3.75
+          ],
+          "gradeRank": 309
         },
         {
           "studentId": "stu_32989fc0",
           "total": 62.5,
           "parts": [
-            62.5
-          ]
+            57.5,
+            5.0
+          ],
+          "gradeRank": 217
         },
         {
           "studentId": "stu_a6794ea1",
           "total": 39.5,
           "parts": [
-            39.5
-          ]
+            38.5,
+            1.0
+          ],
+          "gradeRank": 288
         },
         {
           "studentId": "stu_358f545a",
           "total": 34.5,
           "parts": [
-            34.5
-          ]
+            33.5,
+            1.0
+          ],
+          "gradeRank": 323
         },
         {
           "studentId": "stu_d06fb60a",
           "total": 31.5,
           "parts": [
-            31.5
-          ]
+            31.5,
+            0.0
+          ],
+          "gradeRank": 341
         },
         {
           "studentId": "stu_09acf8c4",
           "total": 48.0,
           "parts": [
-            48.0
-          ]
+            45.5,
+            2.5
+          ],
+          "gradeRank": 252
         },
         {
           "studentId": "stu_c6e4426b",
           "total": 33.75,
           "parts": [
-            33.75
-          ]
+            32.5,
+            1.25
+          ],
+          "gradeRank": 327
         },
         {
           "studentId": "stu_133a508f",
           "total": 31.75,
           "parts": [
-            31.75
-          ]
+            30.5,
+            1.25
+          ],
+          "gradeRank": 340
         },
         {
           "studentId": "stu_bfc58bae",
           "total": 36.25,
           "parts": [
-            36.25
-          ]
+            30.5,
+            5.75
+          ],
+          "gradeRank": 315
         },
         {
           "studentId": "stu_29087d1c",
           "total": 26.5,
           "parts": [
-            26.5
-          ]
+            26.0,
+            0.5
+          ],
+          "gradeRank": 352
         },
         {
           "studentId": "stu_523e679c",
           "total": 35.75,
           "parts": [
-            35.75
-          ]
+            33.5,
+            2.25
+          ],
+          "gradeRank": 319
         },
         {
           "studentId": "stu_9e836fd4",
           "total": 33.75,
           "parts": [
-            33.75
-          ]
+            32.0,
+            1.75
+          ],
+          "gradeRank": 327
         },
         {
           "studentId": "stu_45370564",
           "total": 19.5,
           "parts": [
-            19.5
-          ]
+            17.5,
+            2.0
+          ],
+          "gradeRank": 362
         },
         {
           "studentId": "stu_b300a0c7",
           "total": 30.0,
           "parts": [
-            30.0
-          ]
+            29.0,
+            1.0
+          ],
+          "gradeRank": 347
         },
         {
           "studentId": "stu_7ab7ddd2",
           "total": 32.0,
           "parts": [
-            32.0
-          ]
+            32.0,
+            0.0
+          ],
+          "gradeRank": 337
         }
       ]
     }
