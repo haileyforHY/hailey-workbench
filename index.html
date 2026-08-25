@@ -1117,10 +1117,10 @@ var LS = (function(){
           gap: Math.round((total - lines.high) * 10) / 10
         });
       }
-      // A卷合格生：选择题/A卷得分在 50-70 分
+      // A卷合格生：选择题/A卷得分 60 分及以上
       if (aPartIdx >= 0) {
         const aScore = (r.parts || [])[aPartIdx];
-        if (aScore !== undefined && aScore !== null && aScore >= 50 && aScore <= 70) {
+        if (aScore !== undefined && aScore !== null && aScore >= 60) {
           aPass.push({
             studentId: r.studentId, name: r.name, classId: r.classId,
             total, aScore, partName: partNames[aPartIdx]
@@ -2875,7 +2875,7 @@ window.App = window.App || { pages: {} };
 
         <div class="card">
           <div class="card-head"><h3>📝 A卷合格生</h3>
-            <span class="muted sm">选择题得分 50-70分 · ${fsAPass.length} 人</span></div>
+            <span class="muted sm">选择题得分 ≥60分 · ${fsAPass.length} 人</span></div>
           ${fsAPass.length ? `<div class="table-wrap max360"><table class="tbl">
             <thead><tr><th>学生</th>${isClassMode ? '' : '<th>班级</th>'}<th>总分</th><th>选择题</th></tr></thead>
             <tbody>${fsAPass.map(s => `<tr>
@@ -2885,7 +2885,7 @@ window.App = window.App || { pages: {} };
               <td><span class="pill warn">${s.aScore}</span></td>
             </tr>`).join('')}
             </tbody></table></div>` : empty('暂无A卷合格生', '📝')}
-          <p class="hint">💡 选择题得分在 50-70 分的学生，夯实基础题可快速提分</p>
+          <p class="hint">💡 选择题得分 60 分及以上的学生，基础题已达标</p>
         </div>
       </div>
 
