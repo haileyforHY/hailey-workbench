@@ -1093,6 +1093,7 @@ var LS = (function(){
         const rank = cls ? cls.ranked.findIndex(r => r.studentId === studentId) + 1 : 0;
         return {
           exam: e, total: row.total || 0, parts: row.parts || [], rank,
+          gradeRank: row.gradeRank || null,
           classCount: cls ? cls.count : 0, classAvg: cls ? cls.avg : 0,
           partRate: (e.parts || st.parts).map((p, i) => Math.round((((row.parts || [])[i] || 0) / (p.full || 1)) * 1000) / 10),
           classPartRate: cls ? cls.partRate : []
@@ -2809,6 +2810,7 @@ window.App = window.App || { pages: {} };
     binData.forEach((b, gi) => {
       const cx = pl + (iw / groups) * (gi + 0.5);
       labels += `<text x="${cx.toFixed(1)}" y="${H - 12}" class="ax-x" text-anchor="middle" font-size="10">${b.label}</text>`;
+      labels += `<text x="${cx.toFixed(1)}" y="${H - 24}" text-anchor="middle" font-size="9" fill="#64748b">共${b.total}人</text>`;
       clsIds.forEach((id, ci) => {
         const v = b[id] || 0;
         const h = (v / maxVal) * ih;
@@ -2816,6 +2818,9 @@ window.App = window.App || { pages: {} };
         bars += `<rect x="${(x - bw / 2 + 2).toFixed(1)}" y="${(pt + ih - h).toFixed(1)}"
           width="${(bw - 4).toFixed(1)}" height="${Math.max(h, 0).toFixed(1)}" rx="3"
           fill="${clsColors[id]}" opacity=".82"><title>${esc(Store.className(id))} · ${b.label}分：${v}人</title></rect>`;
+        if (v > 0) {
+          bars += `<text x="${x.toFixed(1)}" y="${(pt + ih - h - 4).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="bold" fill="${clsColors[id]}">${v}</text>`;
+        }
       });
     });
 
@@ -2856,14 +2861,31 @@ window.App = window.App || { pages: {} };
     if (!list.length) return `<p class="hint">该学生暂无成绩记录。</p>`;
     const sw = An.strengthWeakness(sid);
     const last = list[list.length - 1];
+    const hasGradeRank = list.some(x => x.gradeRank);
+    const hasParts = list.some(x => x.parts && x.parts.length >= 2);
+    const partNames = (last.exam.parts || []).map(p => p.name);
+
+    /* 总分趋势线 */
     const trend = Charts.line({
       labels: list.map(x => x.exam.name),
       series: [
         { name: '个人总分', data: list.map(x => x.total) },
         { name: '班级平均', data: list.map(x => x.classAvg), color: '#94a3b8' }
       ],
-      height: 230, suffix: ' 分'
+      height: 220, suffix: ' 分'
     });
+
+    /* 分题型趋势线 */
+    const abTrend = hasParts ? Charts.line({
+      labels: list.map(x => x.exam.name),
+      series: partNames.map((name, i) => ({
+        name: name,
+        data: list.map(x => (x.parts || [])[i] || 0)
+      })),
+      height: 180, suffix: ' 分', area: false
+    }) : '';
+
+    /* 雷达图 */
     const radar = Charts.radar({
       axes: sw.items.map(i => i.name),
       series: [
@@ -2872,14 +2894,47 @@ window.App = window.App || { pages: {} };
       ], max: 100, size: 330
     });
     const delta = An.scoreTrendDelta(sid);
+
+    /* 变化明细表 */
+    const reversed = list.slice().reverse();
+    const chg = (cur, prev, lowerBetter) => {
+      if (prev === undefined || prev === null || cur === undefined || cur === null) return '';
+      const d = cur - prev;
+      if (d === 0) return ' <span class="muted sm">→</span>';
+      const good = lowerBetter ? d < 0 : d > 0;
+      return ` <span class="${good ? 'good' : 'bad'} sm">${d > 0 ? '↑' : '↓'}${Math.abs(d)}</span>`;
+    };
+
+    let th = '<th>考试</th><th>总分</th>';
+    if (hasParts) partNames.forEach(n => th += `<th>${esc(n)}</th>`);
+    if (hasGradeRank) th += '<th>年排</th>';
+    th += '<th>班名</th><th>班均</th>';
+
+    const detailRows = reversed.map((x, i) => {
+      const p = reversed[i + 1];
+      return `<tr>
+        <td>${esc(x.exam.name)}</td>
+        <td><b>${x.total}</b>${p ? chg(x.total, p.total, false) : ''}</td>
+        ${hasParts ? partNames.map((_, j) => {
+          const v = (x.parts || [])[j] || 0;
+          const pv = p ? (p.parts || [])[j] : null;
+          return `<td>${v}${p ? chg(v, pv, false) : ''}</td>`;
+        }).join('') : ''}
+        ${hasGradeRank ? `<td>${x.gradeRank || '—'}${p && p.gradeRank ? chg(x.gradeRank, p.gradeRank, true) : ''}</td>` : ''}
+        <td>${x.rank}/${x.classCount}${p ? chg(x.rank, p.rank, true) : ''}</td>
+        <td class="muted">${x.classAvg}</td>
+      </tr>`;
+    }).join('');
+
     return `<div class="grid-2">
-        <div>${trend}
-          <div class="table-wrap max200"><table class="tbl mini">
-            <thead><tr><th>考试</th><th>总分</th><th>班名</th><th>班均</th></tr></thead>
-            <tbody>${list.slice().reverse().map(x => `<tr><td>${esc(x.exam.name)}</td><td><b>${x.total}</b></td>
-              <td>${x.rank}/${x.classCount}</td><td class="muted">${x.classAvg}</td></tr>`).join('')}</tbody></table></div>
+        <div>
+          <p class="hint" style="margin:0 0 6px"><b>📈 总分趋势</b></p>
+          ${trend}
+          ${hasParts ? `<p class="hint" style="margin:10px 0 6px"><b>📊 分题型得分趋势</b></p>${abTrend}` : ''}
         </div>
-        <div>${radar}
+        <div>
+          <p class="hint" style="margin:0 0 6px"><b>🕸 题型得分率对比</b></p>
+          ${radar}
           <div class="sw-box">
             ${delta ? `<div class="sw-line">较上次：<b class="${delta.delta >= 0 ? 'good' : 'bad'}">${delta.delta >= 0 ? '+' : ''}${delta.delta} 分</b>
               ${delta.rankDelta ? `　班名 <b class="${delta.rankDelta > 0 ? 'good' : 'bad'}">${delta.rankDelta > 0 ? '↑' : '↓'}${Math.abs(delta.rankDelta)}</b>` : ''}</div>` : ''}
@@ -2888,6 +2943,13 @@ window.App = window.App || { pages: {} };
             ${sw.belowClass.length ? `<div class="sw-line">📉 明显落后班均：${esc(sw.belowClass.map(i => `${i.name}(${i.delta}%)`).join('、'))}</div>` : ''}
           </div>
         </div>
+      </div>
+      <div style="margin-top:10px">
+        <p class="hint" style="margin:0 0 6px"><b>📋 历次考试变化明细</b>　<span class="muted sm">↑进步(绿) ↓退步(红)　年排/班名数字越小越好</span></p>
+        <div class="table-wrap"><table class="tbl mini">
+          <thead><tr>${th}</tr></thead>
+          <tbody>${detailRows}</tbody>
+        </table></div>
       </div>`;
   }
 
@@ -3084,7 +3146,14 @@ window.App = window.App || { pages: {} };
         <input class="inp" type="number" id="b-v" value="${Store.db.settings.band}"></label></div>`,
       onOk: w => { Store.db.settings.band = Number(UI.$('#b-v', w).value) || 8; Store.save(); App.render(); }
     });
-    $$('[data-stu]', view).forEach(b => b.onclick = () => App.openStudent(b.dataset.stu));
+    $$('[data-stu]', view).forEach(b => b.onclick = () => {
+      state.stu = b.dataset.stu;
+      App.render();
+      setTimeout(() => {
+        const el = document.getElementById('x-stu');
+        if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }, 80);
+    });
     $$('[data-mark]', view).forEach(b => b.onclick = () => {
       const s = Store.student(b.dataset.mark);
       const tags = new Set(s.tags || []); tags.add('临界生');
