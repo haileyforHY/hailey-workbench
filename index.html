@@ -265,17 +265,45 @@ textarea.inp{resize:vertical}
 .q1{border-top:3px solid var(--bad)}.q2{border-top:3px solid var(--pri)}
 .q3{border-top:3px solid var(--warn)}.q4{border-top:3px solid #94a3b8}
 
+/* To do list（按时间排序） */
+.td-group{margin-bottom:6px}
+.td-ghead{display:flex;align-items:center;gap:8px;font-weight:650;font-size:13px;padding:8px 2px 6px;border-bottom:1px dashed var(--line);margin-bottom:6px}
+.td-ghead.bad{color:var(--bad)}
+.td-ghead.warn{color:var(--warn)}
+.td-gbody{display:flex;flex-direction:column;gap:6px}
+.todo-row{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:10px;background:#fafbff;border:1px solid transparent;transition:.18s}
+.todo-row:hover{border-color:var(--line);background:#fff}
+.todo-row.overdue{background:#fff6f6}
+.todo-row.finishing{opacity:0;transform:translateX(26px)}
+.todo-row.done{background:#f6faf7;border-color:#e3f3e9}
+.todo-row.done .todo-t{color:var(--muted)}
+.todo-row .ck{width:17px;height:17px;margin-top:2px;flex:0 0 auto;cursor:pointer;accent-color:var(--ok)}
+.todo-row .icon-btn{opacity:.35;transition:.15s}
+.todo-row:hover .icon-btn{opacity:1}
+.badge.ghost{background:#f1f3f9;color:var(--muted)}
+.badge.warn{background:#fff4e0;color:#b45309}
+
 /* 课表 */
 .timetable td{text-align:center;height:66px;cursor:pointer;transition:.12s;min-width:110px}
-.timetable td:hover{background:var(--pri-soft)}
+.timetable td:hover{filter:brightness(.985)}
 .timetable td.has{background:#fbfcff}
 .timetable td.today,.timetable th.today{background:#fffdf3}
-.timetable td.today.has{background:#fff8e6}
-.p-th{background:#fafbff!important;font-size:12px;color:var(--muted);width:66px}
+.timetable td.dragging{opacity:.4;transform:scale(.96)}
+.timetable td.over{outline:2px dashed var(--pri);outline-offset:-3px}
+.p-th{background:#fafbff!important;font-size:12px;color:var(--muted);width:104px;cursor:pointer}
+.p-th:hover{background:#f2f4ff!important}
+.sl-name{font-size:13px;font-weight:650;color:#4a5068}
+.sl-time{font-size:11px;color:var(--muted);margin-top:1px}
+.tt-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:2px 2px 10px;font-size:12.5px}
+.tt-legend .lg{display:flex;align-items:center;gap:5px}
+.tt-legend .lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.tt-tip{margin-left:auto}
 .tt-cls{font-weight:650;font-size:13px}
 .tt-ct{font-size:12px;color:#5a6079}
 .tt-room{font-size:11px;color:var(--muted)}
 .tt-add{color:#d5d8e8;font-size:16px}
+.slot-row{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.slot-row .inp:first-child{flex:1}
 .today-row{display:flex;gap:10px;flex-wrap:wrap}
 .course-chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:linear-gradient(120deg,#fff,#fafbff)}
 .course-chip b{color:var(--pri)}
@@ -478,8 +506,25 @@ var LS = (function(){
         focusLines: { pass: 90, aLow: 50, aHigh: 70 },  // 全卷及格线、A卷合格低分、A卷合格高分
         fullScore: 150,
         band: 8,                  // 临界生分差
-        periods: 8,               // 每天节次
+        periods: 8,               // 兼容旧字段：每天节次（实际以 slots 长度为准）
         days: 5,                  // 周几到周几
+        // 课表时段：{name, time} 一行一个，可自由增删 / 拖动行
+        slots: [
+          { name: '早读', time: '07:25-07:55' },
+          { name: '第一节', time: '08:00-08:40' },
+          { name: '第二节', time: '09:10-09:50' },
+          { name: '第三节', time: '10:00-10:40' },
+          { name: '第四节', time: '10:50-11:30' },
+          { name: '第五节', time: '11:40-12:20' },
+          { name: '午辅', time: '12:40-13:00' },
+          { name: '第六节', time: '14:00-14:40' },
+          { name: '第七节', time: '14:50-15:30' },
+          { name: '第八节', time: '15:45-16:25' },
+          { name: '第九节', time: '16:35-17:15' },
+          { name: '晚辅', time: '17:50-19:00' },
+          { name: '自习', time: '19:00-20:00' },
+          { name: '培优', time: '20:00-20:40' }
+        ],
         tags: ['临界生', '全卷及格生', 'A卷合格生', '需家校跟进', '偏科', '待提升', '进步显著', '课堂活跃'],
         discTypes: ['迟到', '作业未交', '上课讲话', '不带课本', '顶撞老师', '违规带手机', '其他'],
         commWays: ['电话', '微信', '面谈', '家访', '家长会'],
@@ -1387,7 +1432,7 @@ window.App = window.App || { pages: {} };
     { id: 'recitation', icon: '📖', name: '背诵过关' },
     { id: 'exams', icon: '📈', name: '成绩分析' },
     { id: 'comm', icon: '📞', name: '家校沟通' },
-    { id: 'todos', icon: '✅', name: '待办四象限' },
+    { id: 'todos', icon: '✅', name: '待办清单' },
     { id: 'discipline', icon: '⚠️', name: '违纪记录' },
     { id: 'timetable', icon: '🗓️', name: '我的课表' },
     { id: 'sync', icon: '☁️', name: '云端同步' }
@@ -1670,7 +1715,7 @@ window.App = window.App || { pages: {} };
           ${todos.length ? `<div class="list tight">${todos.map(t => `
             <div class="list-item">
               <div><input type="checkbox" data-tdone="${t.id}">
-                <span class="dot" style="background:${An.QUAD[t.quadrant].color}"></span>
+                <span class="dot" style="background:${(An.QUAD[t.quadrant] || An.QUAD[1]).color}"></span>
                 ${esc(t.title)}</div>
               ${t.due ? `<span class="badge ${t.due < UI.today() ? 'danger' : ''}">${esc(t.due)}</span>` : ''}
             </div>`).join('')}</div>` : `<p class="hint">待办清空了，厉害 🎉</p>`}
@@ -3698,44 +3743,72 @@ window.App = window.App || { pages: {} };
   const { esc, toast, modal, confirmBox, empty, classOptions } = UI;
   const Q = An.QUAD;
 
-  /* =============== 待办 =============== */
-  const tState = { showDone: false };
+  /* =============== 待办（按时间排序的 To do list） =============== */
+  const tState = { showDone: true };
+
+  // 按截止日期分组
+  const GROUPS = [
+    { k: 'overdue', n: '⏰ 已逾期', tone: 'bad' },
+    { k: 'today', n: '📅 今天', tone: 'warn' },
+    { k: 'tomorrow', n: '🌤 明天', tone: '' },
+    { k: 'week', n: '🗓 本周内', tone: '' },
+    { k: 'later', n: '🔜 以后', tone: '' },
+    { k: 'nodate', n: '📝 未定日期', tone: '' }
+  ];
+
+  function groupOf(t) {
+    const today = UI.today();
+    if (!t.due) return 'nodate';
+    if (t.due < today) return 'overdue';
+    if (t.due === today) return 'today';
+    if (t.due === UI.addDays(today, 1)) return 'tomorrow';
+    if (t.due <= UI.addDays(today, 7)) return 'week';
+    return 'later';
+  }
+
+  // 先按日期、再按具体时间排序
+  function byTime(a, b) {
+    const da = a.due || '9999-99-99', db = b.due || '9999-99-99';
+    if (da !== db) return da.localeCompare(db);
+    const ta = a.time || '00:00', tb = b.time || '00:00';
+    if (ta !== tb) return ta.localeCompare(tb);
+    return (a.createdAt || '').localeCompare(b.createdAt || '');
+  }
 
   function renderTodos(view) {
     const all = Store.db.todos;
-    const open = all.filter(t => !t.done);
-    const done = all.filter(t => t.done).sort((a, b) => (b.doneAt || '').localeCompare(a.doneAt || ''));
+    const open = all.filter(t => !t.done).sort(byTime);
+    const done = all.filter(t => t.done).sort((a, b) => (b.doneAt || '').localeCompare(a.doneAt || '') || byTime(a, b));
     const overdue = open.filter(t => t.due && t.due < UI.today());
+    const today = UI.today();
 
-    const cell = (q) => {
-      const list = open.filter(t => Number(t.quadrant) === q)
-        .sort((a, b) => (a.due || '9999').localeCompare(b.due || '9999'));
-      return `<div class="quad q${q}">
-        <div class="quad-head"><span class="dot" style="background:${Q[q].color}"></span>${Q[q].name}
-          <span class="muted sm">${list.length}</span>
-          <button class="icon-btn xs" data-addq="${q}" title="添加">＋</button></div>
-        <div class="quad-body">
-          ${list.length ? list.map(t => `
-            <div class="todo ${t.due && t.due < UI.today() ? 'overdue' : ''}">
-              <input type="checkbox" data-done="${t.id}">
-              <div class="todo-main">
-                <div class="todo-t">${esc(t.title)}</div>
-                <div class="todo-m">
-                  ${t.due ? `<span class="badge ${t.due < UI.today() ? 'danger' : ''}">${esc(t.due)}</span>` : ''}
-                  ${t.source ? `<span class="chip sm">${esc(srcName(t.source))}</span>` : ''}
-                </div>
-              </div>
-              <button class="icon-btn" data-edit="${t.id}">✎</button>
-              <button class="icon-btn danger" data-del="${t.id}">🗑</button>
-            </div>`).join('') : `<div class="quad-empty">暂无</div>`}
-        </div></div>`;
-    };
+    const rowHtml = (t) => `
+      <div class="todo-row ${groupOf(t) === 'overdue' ? 'overdue' : ''}" data-id="${t.id}">
+        <input type="checkbox" class="ck" data-done="${t.id}">
+        <div class="todo-main">
+          <div class="todo-t">${esc(t.title)}</div>
+          <div class="todo-m">
+            ${t.due ? `<span class="badge ${t.due < today ? 'danger' : t.due === today ? 'warn' : ''}">${esc(t.due)}${t.time ? ' ' + esc(t.time) : ''}</span>` : '<span class="badge ghost">未定日期</span>'}
+            ${t.source ? `<span class="chip sm">${esc(srcName(t.source))}</span>` : ''}
+          </div>
+        </div>
+        <button class="icon-btn" data-edit="${t.id}">✎</button>
+        <button class="icon-btn danger" data-del="${t.id}">🗑</button>
+      </div>`;
+
+    const sections = GROUPS.map(g => {
+      const list = open.filter(t => groupOf(t) === g.k);
+      if (!list.length) return '';
+      return `<div class="td-group">
+        <div class="td-ghead ${g.tone}">${g.n}<span class="muted sm">${list.length}</span></div>
+        <div class="td-gbody">${list.map(rowHtml).join('')}</div></div>`;
+    }).join('');
 
     view.innerHTML = `
       <div class="page-head">
-        <div><h2>✅ 待办（四象限）</h2><p class="sub">重要 / 紧急 分区管理，听写背诵欠账可一键转待办</p></div>
+        <div><h2>✅ 待办清单</h2><p class="sub">按时间先后排序 · 勾选即完成，自动移入已办</p></div>
         <div class="head-actions">
-          <button class="btn" id="t-toggle">${tState.showDone ? '隐藏' : '查看'}已完成（${done.length}）</button>
+          <button class="btn" id="t-toggle">${tState.showDone ? '隐藏已办' : '显示已办'}（${done.length}）</button>
           <button class="btn primary" id="t-add">＋ 新增待办</button>
         </div>
       </div>
@@ -3743,17 +3816,27 @@ window.App = window.App || { pages: {} };
       <div class="kpi-row">
         ${kpi('未完成', open.length + ' 项', '📝')}
         ${kpi('已逾期', overdue.length + ' 项', '⏰', overdue.length ? 'danger' : '')}
-        ${kpi('今日到期', open.filter(t => t.due === UI.today()).length + ' 项', '📅')}
+        ${kpi('今日到期', open.filter(t => t.due === today).length + ' 项', '📅')}
         ${kpi('已完成', done.length + ' 项', '🎉')}
       </div>
 
-      <div class="quad-grid">${[1, 2, 3, 4].map(cell).join('')}</div>
+      <div class="card">
+        <div class="card-head"><h3>📝 待办清单</h3><span class="muted sm">共 ${open.length} 项</span></div>
+        ${open.length ? sections : empty('待办清空了，厉害 🎉', '✅')}
+      </div>
 
-      ${tState.showDone ? `<div class="card"><div class="card-head"><h3>🎉 已完成</h3>
-        <button class="btn xs ghost" id="t-clear">清空已完成</button></div>
-        ${done.length ? `<div class="list">${done.map(t => `<div class="list-item done">
-          <div><span class="strike">${esc(t.title)}</span> <span class="muted sm">${esc(t.doneAt || '')}</span></div>
-          <button class="btn xs" data-undo="${t.id}">恢复</button></div>`).join('')}</div>` : empty('暂无', '✅')}
+      ${tState.showDone ? `<div class="card">
+        <div class="card-head"><h3>🎉 已办</h3>
+          <div><button class="btn xs ghost" id="t-clear">清空已办</button></div></div>
+        ${done.length ? `<div class="td-gbody">${done.map(t => `
+          <div class="todo-row done">
+            <input type="checkbox" class="ck" checked data-undo="${t.id}">
+            <div class="todo-main">
+              <div class="todo-t strike">${esc(t.title)}</div>
+              <div class="todo-m"><span class="muted sm">完成于 ${esc(t.doneAt || '')}${t.due ? ' · 原定 ' + esc(t.due) : ''}</span></div>
+            </div>
+            <button class="icon-btn danger" data-del="${t.id}">🗑</button>
+          </div>`).join('')}</div>` : empty('还没有已完成的事项', '🎉')}
       </div>` : ''}`;
 
     bindTodos(view);
@@ -3763,7 +3846,7 @@ window.App = window.App || { pages: {} };
     return { dictation: '听写欠账', recitation: '背诵欠账', discipline: '违纪跟进', comm: '家校跟进' }[s] || s;
   }
 
-  function editTodo(id, quadrant) {
+  function editTodo(id, presetDue) {
     const t = id ? Store.db.todos.find(x => x.id === id) : null;
     modal({
       title: t ? '编辑待办' : '＋ 新增待办',
@@ -3771,18 +3854,22 @@ window.App = window.App || { pages: {} };
       body: `<div class="form">
         <label>内容<input class="inp" id="t-title" value="${esc(t ? t.title : '')}" placeholder="如：找李明谈心 / 批改八班作文"></label>
         <div class="grid2">
-          <label>象限<select class="inp" id="t-q">
-            ${[1, 2, 3, 4].map(q => `<option value="${q}"${String((t ? t.quadrant : quadrant) || 1) === String(q) ? ' selected' : ''}>${Q[q].name}</option>`).join('')}
-          </select></label>
-          <label>截止日期<input class="inp" type="date" id="t-due" value="${esc(t ? t.due : UI.today())}"></label>
+          <label>日期<input class="inp" type="date" id="t-due" value="${esc(t ? t.due : (presetDue || UI.today()))}"></label>
+          <label>时间（可选）<input class="inp" type="time" id="t-time" value="${esc(t ? (t.time || '') : '')}"></label>
         </div>
+        <label class="check-inline"><input type="checkbox" id="t-nodate"> 未定日期（只排进清单，不设期限）</label>
       </div>`,
       onOk: (wrap) => {
         const title = UI.$('#t-title', wrap).value.trim();
         if (!title) { toast('请填写内容', 'err'); return false; }
-        const data = { title, quadrant: Number(UI.$('#t-q', wrap).value), due: UI.$('#t-due', wrap).value };
+        const nodate = UI.$('#t-nodate', wrap).checked;
+        const data = {
+          title,
+          due: nodate ? '' : UI.$('#t-due', wrap).value,
+          time: nodate ? '' : UI.$('#t-time', wrap).value
+        };
         if (t) Store.patch('todos', t.id, data);
-        else Store.push('todos', Object.assign({ done: false, createdAt: UI.today() }, data), 'todo');
+        else Store.push('todos', Object.assign({ done: false, createdAt: UI.today(), quadrant: 1 }, data), 'todo');
         toast('已保存'); App.render();
       }
     });
@@ -3790,12 +3877,15 @@ window.App = window.App || { pages: {} };
 
   function bindTodos(view) {
     const { $, $$ } = UI;
-    $('#t-add', view).onclick = () => editTodo(null, 1);
+    $('#t-add', view).onclick = () => editTodo(null);
     $('#t-toggle', view).onclick = () => { tState.showDone = !tState.showDone; App.render(); };
-    $$('[data-addq]', view).forEach(b => b.onclick = () => editTodo(null, Number(b.dataset.addq)));
     $$('[data-done]', view).forEach(c => c.onchange = () => {
-      Store.patch('todos', c.dataset.done, { done: true, doneAt: UI.today() });
-      toast('完成一项 🎉'); App.render();
+      const row = c.closest('.todo-row');
+      if (row) row.classList.add('finishing');   // 勾选动画，随后自动移入已办
+      setTimeout(() => {
+        Store.patch('todos', c.dataset.done, { done: true, doneAt: UI.today() });
+        toast('完成一项 🎉'); App.render();
+      }, 280);
     });
     $$('[data-undo]', view).forEach(b => b.onclick = () => { Store.patch('todos', b.dataset.undo, { done: false, doneAt: '' }); App.render(); });
     $$('[data-edit]', view).forEach(b => b.onclick = () => editTodo(b.dataset.edit));
@@ -3954,11 +4044,35 @@ window.App = window.App || { pages: {} };
 </script>
 <script>
 /* ===========================================================
- * pages/timetable.js — 我的课表
+ * pages/timetable.js — 我的课表（带时间段 · 班级配色 · 可拖动调课）
  * =========================================================== */
 (function () {
   const { esc, toast, modal, classOptions } = UI;
   const DAYS = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+
+  // 班级配色：按班级顺序自动分配，不同班级不同颜色
+  const PALETTE = [
+    { c: '#6366f1', bg: '#eef0ff' }, // 靛蓝
+    { c: '#10b981', bg: '#e6f9f1' }, // 绿
+    { c: '#f59e0b', bg: '#fff6e5' }, // 橙
+    { c: '#ec4899', bg: '#fdeef7' }, // 粉
+    { c: '#0ea5e9', bg: '#e6f5fd' }, // 蓝
+    { c: '#8b5cf6', bg: '#f2ecff' }  // 紫
+  ];
+
+  function clsIdx(id) {
+    const i = Store.classes().findIndex(c => c.id === id);
+    return i < 0 ? 0 : i;
+  }
+  function clsColor(id) { return PALETTE[clsIdx(id) % PALETTE.length]; }
+
+  function slots() {
+    const s = Store.db.settings.slots;
+    if (Array.isArray(s) && s.length) return s;
+    // 兼容旧数据：没有 slots 就按 periods 生成空时段
+    return Array.from({ length: Store.db.settings.periods || 8 }, (_, i) => ({ name: '第' + (i + 1) + '节', time: '' }));
+  }
+  function rowCount() { return slots().length; }
 
   function key(d, p) { return d + '-' + p; }
 
@@ -3966,7 +4080,7 @@ window.App = window.App || { pages: {} };
     const wd = UI.weekday();
     const tt = Store.db.timetable;
     const out = [];
-    for (let p = 1; p <= Store.db.settings.periods; p++) {
+    for (let p = 1; p <= rowCount(); p++) {
       const c = tt[key(wd, p)];
       if (c && (c.classId || c.content)) out.push(Object.assign({ period: p }, c));
     }
@@ -3978,58 +4092,72 @@ window.App = window.App || { pages: {} };
     const wd = UI.weekday();
     const days = DAYS.slice(0, s.days);
     const tt = Store.db.timetable;
+    const sl = slots();
 
-    const rows = [];
-    for (let p = 1; p <= s.periods; p++) {
-      rows.push(`<tr><th class="p-th">第${p}节</th>${days.map((d, i) => {
-        const dnum = i + 1;
+    const rows = sl.map((slot, i) => {
+      const p = i + 1;
+      return `<tr><th class="p-th" data-slot="${p}" title="点击编辑时段">
+          <div class="sl-name">${esc(slot.name || ('第' + p + '节'))}</div>
+          ${slot.time ? `<div class="sl-time">${esc(slot.time)}</div>` : ''}
+        </th>${days.map((d, di) => {
+        const dnum = di + 1;
         const c = tt[key(dnum, p)] || {};
         const has = c.classId || c.content;
-        return `<td class="tt-cell ${dnum === wd ? 'today' : ''} ${has ? 'has' : ''}" data-d="${dnum}" data-p="${p}">
-          ${has ? `<div class="tt-cls">${esc(c.classId ? Store.className(c.classId) : '')}</div>
+        const col = c.classId ? clsColor(c.classId) : null;
+        return `<td class="tt-cell ${dnum === wd ? 'today' : ''} ${has ? 'has' : ''}"
+            data-d="${dnum}" data-p="${p}" draggable="true"
+            ${col ? `style="background:${col.bg};box-shadow:inset 3px 0 0 ${col.c}"` : ''}>
+          ${has ? `<div class="tt-cls" ${col ? `style="color:${col.c}"` : ''}>${esc(c.classId ? Store.className(c.classId) : '')}</div>
                    <div class="tt-ct">${esc(c.content || '')}</div>
                    ${c.room ? `<div class="tt-room">📍${esc(c.room)}</div>` : ''}`
             : '<span class="tt-add">＋</span>'}
         </td>`;
-      }).join('')}</tr>`);
-    }
+      }).join('')}</tr>`;
+    }).join('');
 
     const tc = todayCourses();
     view.innerHTML = `
       <div class="page-head">
-        <div><h2>🗓️ 我的课表</h2><p class="sub">点任意格子即可编辑 · 今天是 ${DAYS[wd - 1]}</p></div>
+        <div><h2>🗓️ 我的课表</h2><p class="sub">拖动格子即可调课 · 点格子编辑 · 今天 ${DAYS[wd - 1]}</p></div>
         <div class="head-actions">
           <label class="inline-lab">天数
             <select class="inp xs" id="tt-days">${[5, 6, 7].map(n => `<option value="${n}"${s.days === n ? ' selected' : ''}>${n}</option>`).join('')}</select></label>
-          <label class="inline-lab">节次
-            <select class="inp xs" id="tt-periods">${[6, 7, 8, 9, 10].map(n => `<option value="${n}"${s.periods === n ? ' selected' : ''}>${n}</option>`).join('')}</select></label>
+          <button class="btn" id="tt-slots">🕐 编辑时段</button>
           <button class="btn ghost danger" id="tt-clear">清空课表</button>
         </div>
       </div>
 
       <div class="card">
         <div class="card-head"><h3>📌 今日课程（${DAYS[wd - 1]}）</h3></div>
-        ${tc.length ? `<div class="today-row">${tc.map(c => `
-          <div class="course-chip"><b>第${c.period}节</b>
+        ${tc.length ? `<div class="today-row">${tc.map(c => {
+      const col = c.classId ? clsColor(c.classId) : null;
+      return `<div class="course-chip" ${col ? `style="border-color:${col.c}33;background:${col.bg}"` : ''}>
+            <b ${col ? `style="color:${col.c}"` : ''}>${esc(sl[c.period - 1] ? sl[c.period - 1].name : '第' + c.period + '节')}</b>
             <span>${esc(c.classId ? Store.className(c.classId) : '')}</span>
-            <em>${esc(c.content || '')}</em>${c.room ? `<i>📍${esc(c.room)}</i>` : ''}</div>`).join('')}</div>`
-        : `<p class="hint">今天没有排课，好好休息 ☕</p>`}
+            <em>${esc(c.content || '')}</em>${c.room ? `<i>📍${esc(c.room)}</i>` : ''}</div>`;
+    }).join('')}</div>`
+          : `<p class="hint">今天没有排课，好好休息 ☕</p>`}
       </div>
 
       <div class="card">
+        <div class="tt-legend">
+          ${Store.classes().map(c => `<span class="lg"><i style="background:${clsColor(c.id).c}"></i>${esc(c.name)}</span>`).join('')}
+          <span class="muted sm tt-tip">💡 按住任意有课的格子拖到别的格子即可对调</span>
+        </div>
         <div class="table-wrap"><table class="tbl timetable">
           <thead><tr><th class="p-th"></th>${days.map((d, i) => `<th class="${i + 1 === wd ? 'today' : ''}">${d}</th>`).join('')}</tr></thead>
-          <tbody>${rows.join('')}</tbody></table></div>
+          <tbody>${rows}</tbody></table></div>
       </div>`;
 
     bind(view);
   }
 
+  /* -------- 编辑某一格 -------- */
   function editCell(d, p) {
     const k = key(d, p);
     const c = Store.db.timetable[k] || {};
     modal({
-      title: `${DAYS[d - 1]} 第${p}节`,
+      title: `${DAYS[d - 1]} · ${(slots()[p - 1] || {}).name || ('第' + p + '节')}`,
       width: 420,
       body: `<div class="form">
         <label>班级<select class="inp" id="tt-c">${classOptions(c.classId, '（不选）')}</select></label>
@@ -4049,22 +4177,118 @@ window.App = window.App || { pages: {} };
     UI.$('#tt-del').onclick = () => {
       delete Store.db.timetable[k];
       Store.save();
-      UI.$$('.modal-mask.show [data-close]')[0].click();
       App.render();
+      UI.$$('.modal-mask.show [data-close]')[0].click();
+    };
+  }
+
+  /* -------- 拖动调课：两格内容对调 -------- */
+  function swap(a, b) {
+    if (a.d === b.d && a.p === b.p) return;
+    const ka = key(a.d, a.p), kb = key(b.d, b.p);
+    const A = Store.db.timetable[ka];
+    const B = Store.db.timetable[kb];
+    if (!A && !B) return;
+    if (A) Store.db.timetable[kb] = A; else delete Store.db.timetable[kb];
+    if (B) Store.db.timetable[ka] = B; else delete Store.db.timetable[ka];
+    Store.save();
+    App.render();
+    toast('已调课 ✅');
+  }
+
+  /* -------- 编辑时段（名称 / 时间 / 增删 / 上下移动） -------- */
+  function editSlots() {
+    const list = slots().map(s => ({ name: s.name || '', time: s.time || '' }));
+
+    const rowHtml = (s) => `<div class="slot-row">
+      <input class="inp" value="${esc(s.name)}" data-sn placeholder="时段名，如 早读">
+      <input class="inp" value="${esc(s.time)}" data-st placeholder="时间，如 08:00-08:40" style="width:150px">
+      <button class="icon-btn" data-up title="上移">↑</button>
+      <button class="icon-btn" data-down title="下移">↓</button>
+      <button class="icon-btn danger" data-rm>✕</button></div>`;
+
+    modal({
+      title: '🕐 编辑时段',
+      width: 560,
+      body: `<div class="form">
+        <p class="hint">改完点保存。可改名称/时间、调顺序、增删。</p>
+        <div id="slot-list">${list.map(rowHtml).join('')}</div>
+        <button class="btn xs block" id="slot-add">＋ 增加时段</button>
+      </div>`,
+      onOk: (wrap) => {
+        const next = UI.$$('.slot-row', wrap).map(r => ({
+          name: UI.$('[data-sn]', r).value.trim() || '未命名',
+          time: UI.$('[data-st]', r).value.trim()
+        }));
+        if (!next.length) { toast('至少保留一个时段', 'err'); return false; }
+        Store.db.settings.slots = next;
+        Store.db.settings.periods = next.length;
+        Store.save(); App.render(); toast('时段已更新');
+      }
+    });
+
+    const wrap = UI.$$('.modal-mask.show')[0] || document;
+    const box = UI.$('#slot-list', wrap);
+    const bindRows = () => UI.$$('.slot-row', wrap).forEach(r => {
+      UI.$('[data-rm]', r).onclick = () => { r.remove(); };
+      UI.$('[data-up]', r).onclick = () => { if (r.previousElementSibling) box.insertBefore(r, r.previousElementSibling); };
+      UI.$('[data-down]', r).onclick = () => { if (r.nextElementSibling && r.nextElementSibling.id !== 'slot-add') box.insertBefore(r.nextElementSibling, r); };
+    });
+    bindRows();
+    UI.$('#slot-add', wrap).onclick = () => {
+      const div = document.createElement('div');
+      div.innerHTML = rowHtml({ name: '', time: '' });
+      box.appendChild(div.firstElementChild);
+      bindRows();
     };
   }
 
   function bind(view) {
     const { $, $$ } = UI;
-    $$('.tt-cell', view).forEach(td => td.onclick = () => editCell(Number(td.dataset.d), Number(td.dataset.p)));
+    $$('.tt-cell', view).forEach(td => {
+      td.ondragstart = e => {
+        drag.src = { d: Number(td.dataset.d), p: Number(td.dataset.p) };
+        e.dataTransfer.effectAllowed = 'move';
+        try { e.dataTransfer.setData('text/plain', JSON.stringify(drag.src)); } catch (_) { }
+        td.classList.add('dragging');
+      };
+      td.ondragend = () => { td.classList.remove('dragging'); $$('.tt-cell', view).forEach(x => x.classList.remove('over')); };
+      td.ondragover = e => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; td.classList.add('over'); };
+      td.ondragleave = () => td.classList.remove('over');
+      td.ondrop = e => {
+        e.preventDefault();
+        td.classList.remove('over');
+        const to = { d: Number(td.dataset.d), p: Number(td.dataset.p) };
+        swap(drag.src || {}, to);
+      };
+      td.onclick = () => editCell(Number(td.dataset.d), Number(td.dataset.p));
+    });
+    $$('.p-th[data-slot]', view).forEach(th => th.onclick = () => {
+      const p = Number(th.dataset.slot);
+      const s = slots()[p - 1] || {};
+      modal({
+        title: '编辑时段', width: 420,
+        body: `<div class="form">
+          <label>名称<input class="inp" id="s-n" value="${esc(s.name || '')}" placeholder="如 早读"></label>
+          <label>时间<input class="inp" id="s-t" value="${esc(s.time || '')}" placeholder="如 07:25-07:55"></label>
+        </div>`,
+        onOk: (w) => {
+          const arr = Store.db.settings.slots || [];
+          arr[p - 1] = { name: UI.$('#s-n', w).value.trim() || ('第' + p + '节'), time: UI.$('#s-t', w).value.trim() };
+          Store.db.settings.slots = arr; Store.save(); App.render();
+        }
+      });
+    });
     $('#tt-days', view).onchange = e => { Store.db.settings.days = Number(e.target.value); Store.save(); App.render(); };
-    $('#tt-periods', view).onchange = e => { Store.db.settings.periods = Number(e.target.value); Store.save(); App.render(); };
+    $('#tt-slots', view).onclick = editSlots;
     $('#tt-clear', view).onclick = () => UI.confirmBox('确定清空整张课表？', () => {
       Store.db.timetable = {}; Store.save(); toast('已清空'); App.render();
     }, { danger: true, okText: '清空' });
   }
 
-  App.pages.timetable = { title: '我的课表', render, todayCourses, DAYS };
+  const drag = { src: null };
+
+  App.pages.timetable = { title: '我的课表', render, todayCourses, DAYS, slots, clsColor };
 })();
 
 </script>
