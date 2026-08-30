@@ -1194,11 +1194,13 @@ var LS = (function(){
     const aPass = [];
     st.rows.forEach(r => {
       const total = r.total || 0;
-      // 全卷及格生：总分 ≥ 手动设置及格线
+      // 全卷及格生：总分 ≥ 手动设置及格线（同时带上英语A分数，方便导出和查看）
       if (total >= passLine) {
         fullPass.push({
           studentId: r.studentId, name: r.name, classId: r.classId,
-          total, lineScore: passLine
+          total, lineScore: passLine,
+          aScore: aPartIdx >= 0 ? (r.parts || [])[aPartIdx] : undefined,
+          partName: partNames[aPartIdx]
         });
       }
       // A卷合格生：A卷分项得分在手动设置的范围内
@@ -1220,7 +1222,8 @@ var LS = (function(){
 
   // 自动更新学生重点关注标签
   function autoFocusStudents(ex) {
-    const { fullPass, aPass } = focusStudents(ex);
+    const r = focusStudents(ex);
+    const { fullPass, aPass } = r;
     const passIds = new Set(fullPass.map(s => s.studentId));
     const aPassIds = new Set(aPass.map(s => s.studentId));
 
@@ -1253,7 +1256,7 @@ var LS = (function(){
       }
     });
 
-    return { fullPass, aPass };
+    return Object.assign({}, r, { exam: { id: ex.id, name: ex.name, date: ex.date || '' } });
   }
 
   // 按最近一次有成绩的考试自动更新关注标签（供页面渲染时调用，幂等：无变化不写库）
@@ -1905,7 +1908,7 @@ window.App = window.App || { pages: {} };
         : empty(state.scope === 'focus' ? '重点名单还是空的，去名单里点 ★ 或用「智能推荐」快速生成' : '没有符合条件的学生', '⭐')}
       </div>`;
 
-    bind(view);
+    bind(view, fs);
   }
 
   function row(p) {
@@ -1941,6 +1944,7 @@ window.App = window.App || { pages: {} };
 
   /* ------------- 自动分类模块：按班级分组，全卷及格生 / A卷合格生 分开展示 ------------- */
   function focusGroups(fs) {
+    const ex = fs.exam;   // 名单所依据的那场考试
     const classes = state.classId
       ? Store.classes().filter(c => c.id === state.classId)
       : Store.classes();
@@ -1950,9 +1954,11 @@ window.App = window.App || { pages: {} };
     const byClass = classes.map(c => {
       const fp = fs.fullPass.filter(s => s.classId === c.id);
       const ap = fs.aPass.filter(s => s.classId === c.id);
+      const n = mergeCount(fs, c.id);
       return `<div class="card">
         <div class="card-head"><h3>🏫 ${esc(c.name)}</h3>
-          <span class="muted sm">及格 ${fp.length} 人 · A卷合格 ${ap.length} 人</span></div>
+          <span class="muted sm">及格 ${fp.length} 人 · A卷合格 ${ap.length} 人（不重复 ${n} 人）</span>
+          <button class="btn xs" data-expcls="${c.id}">📤 导出本班</button></div>
 
         <div class="fg-sec">
           <div class="fg-title ok">✅ 全卷及格学生 <span class="muted sm">总分 ≥${fs.passLine}分</span></div>
@@ -1978,9 +1984,77 @@ window.App = window.App || { pages: {} };
         .fg-title.ok{color:#059669}
         .fg-title.warn{color:#d97706}
         .fg-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 4px}
+        .fg-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+        .fg-bar-txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:250px}
+        .fg-bar-txt>b{font-size:14.5px}
       </style>
+      <div class="card fg-bar">
+        <div class="fg-bar-txt">
+          <b>🎯 重点关注名单</b>
+          <span class="muted sm">名单依据：<b>${esc(ex ? ex.name : '—')}</b>${ex && ex.date ? '（' + esc(ex.date) + '）' : ''}
+            · 全卷及格 ≥${fs.passLine} 分 · A卷 ${fs.aLow}-${fs.aHigh} 分 · 共 ${total(fs)} 人</span>
+          <span class="muted sm">每次录入新考试成绩后，名单会自动按最新一场考试重算</span>
+        </div>
+        <button class="btn primary" id="fg-export">📤 导出名单表格</button>
+      </div>
       ${byClass || '<div class="card"><p class="hint">暂无班级数据</p></div>'}
-      <p class="hint" style="margin-top:4px">💡 点击「⚙️ 设置分数线」可自定义全卷及格线和A卷合格区间，成绩上传后自动重新分类</p>`;
+      <p class="hint" style="margin-top:4px">💡 点击「⚙️ 设置分数线」可自定义全卷及格线和A卷合格区间；导出为 CSV，Excel / WPS / 手机表格 App 都能直接打开</p>`;
+  }
+
+  /* 合并「全卷及格生」与「A卷合格生」，一人可能同时命中两类 */
+  function mergeList(fs, cid) {
+    const map = new Map();
+    const put = (s, cat) => {
+      if (cid && s.classId !== cid) return;
+      if (!map.has(s.studentId)) {
+        map.set(s.studentId, {
+          st: Store.student(s.studentId) || {},
+          classId: s.classId, cats: [], total: null, aScore: null
+        });
+      }
+      const it = map.get(s.studentId);
+      if (!it.cats.includes(cat)) it.cats.push(cat);
+      if (s.total !== undefined && s.total !== null) it.total = s.total;
+      if (s.aScore !== undefined && s.aScore !== null) it.aScore = s.aScore;
+    };
+    (fs.fullPass || []).forEach(s => put(s, '全卷及格生'));
+    (fs.aPass || []).forEach(s => put(s, 'A卷合格生'));
+    return Array.from(map.values()).sort((a, b) =>
+      String(a.classId).localeCompare(String(b.classId)) ||
+      String(a.st.no || '').padStart(4, '0').localeCompare(String(b.st.no || '').padStart(4, '0')));
+  }
+  function total(fs) { return mergeList(fs, state.classId).length; }
+  function mergeCount(fs, cid) { return mergeList(fs, cid).length; }
+
+  /* ------------- 导出名单表格（CSV，带 BOM，Excel 直接打开不乱码） ------------- */
+  function exportFocus(fs, cid) {
+    const list = mergeList(fs, cid);
+    if (!list.length) { toast('当前没有可导出的学生', 'err'); return; }
+    const ex = fs.exam || {};
+    const head = ['班级', '学号', '姓名', '关注类别', '总分', '英语A', '家长姓名', '家长电话', '家长二姓名', '家长二电话', '标签', '备注'];
+    const cell = v => {
+      const s = String(v === undefined || v === null ? '' : v).replace(/"/g, '""');
+      // 电话用 ="..." 包裹，避免 Excel 变成科学计数法
+      return /^1\d{10}$/.test(s) ? '"=""' + s + '""' : '"' + s + '"';
+    };
+    const rows = list.map(it => [
+      Store.className(it.classId), it.st.no || '', it.st.name || '',
+      it.cats.join('+'), it.total === null ? '' : it.total,
+      it.aScore === null ? '' : it.aScore,
+      it.st.parentName || '', it.st.parentPhone || '',
+      it.st.parentName2 || '', it.st.parentPhone2 || '',
+      (it.st.tags || []).join(' '), it.st.note || ''
+    ].map(cell).join(','));
+
+    const csv = '\ufeff' + [head.map(h => '"' + h + '"').join(',')].concat(rows).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    const tag = [ex.name || '重点关注名单', ex.date || UI.today()].join('_').replace(/[\\/:*?"<>|]/g, '');
+    a.href = URL.createObjectURL(blob);
+    a.download = `重点关注名单_${tag}${cid ? '_' + Store.className(cid) : ''}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast(`已导出 ${list.length} 人 ✅`);
   }
 
   /* ------------- 分数线设置 ------------- */
@@ -2011,9 +2085,15 @@ window.App = window.App || { pages: {} };
     });
   }
 
-  function bind(view) {
+  function bind(view, fs) {
     const { $, $$ } = UI;
     $('#k-settings', view).onclick = openLineSettings;
+    const expAll = $('#fg-export', view);
+    if (expAll && fs) expAll.onclick = () => exportFocus(fs, state.classId);
+    $$('[data-expcls]', view).forEach(b => b.onclick = e => {
+      e.stopPropagation();
+      if (fs) exportFocus(fs, b.dataset.expcls);
+    });
     $$('[data-scope]', view).forEach(b => b.onclick = () => { state.scope = b.dataset.scope; App.render(); });
     $('#k-cls', view).onchange = e => { state.classId = e.target.value; App.render(); };
     $('#k-tag', view).onchange = e => { state.tag = e.target.value; App.render(); };
@@ -2297,8 +2377,9 @@ window.App = window.App || { pages: {} };
                 <td class="muted">${esc(s.no)}</td>
                 <td><a class="link" data-view="${s.id}">${esc(s.name)}</a></td>
                 <td>${esc(Store.className(s.classId))}</td>
-                <td>${esc(s.parentName)}</td>
-                <td>${s.parentPhone ? `<a class="tel" href="tel:${esc(s.parentPhone)}">${esc(s.parentPhone)}</a>` : '<span class="muted">—</span>'}</td>
+                <td>${esc(s.parentName)}${s.parentName2 ? `<div class="muted sm">${esc(s.parentName2)}</div>` : ''}</td>
+                <td>${s.parentPhone ? `<a class="tel" href="tel:${esc(s.parentPhone)}">${esc(s.parentPhone)}</a>` : '<span class="muted">—</span>'}
+                    ${s.parentPhone2 ? `<div class="sm"><a class="tel" href="tel:${esc(s.parentPhone2)}">${esc(s.parentPhone2)}</a></div>` : ''}</td>
                 <td>${(s.tags || []).map(UI.tagChip).join('') || '<span class="muted">—</span>'}</td>
                 <td class="muted ellip" title="${esc(s.note)}">${esc(s.note)}</td>
                 <td class="nowrap">
@@ -2387,8 +2468,10 @@ window.App = window.App || { pages: {} };
         <label>姓名<input class="inp" id="s-name" value="${esc(s ? s.name : '')}"></label>
         <label>学号<input class="inp" id="s-no" value="${esc(s ? s.no : '')}"></label>
         <label>班级<select class="inp" id="s-cls">${classOptions(s ? s.classId : (Store.classes()[0] || {}).id)}</select></label>
-        <label>家长称呼<input class="inp" id="s-pname" value="${esc(s ? s.parentName : '')}" placeholder="如：王妈妈"></label>
-        <label>家长电话<input class="inp" id="s-phone" value="${esc(s ? s.parentPhone : '')}"></label>
+        <label>家长一称呼<input class="inp" id="s-pname" value="${esc(s ? s.parentName : '')}" placeholder="如：王妈妈"></label>
+        <label>家长一电话<input class="inp" id="s-phone" value="${esc(s ? s.parentPhone : '')}"></label>
+        <label>家长二称呼<input class="inp" id="s-pname2" value="${esc(s ? (s.parentName2 || '') : '')}" placeholder="选填"></label>
+        <label>家长二电话<input class="inp" id="s-phone2" value="${esc(s ? (s.parentPhone2 || '') : '')}"></label>
         <label class="check-inline"><input type="checkbox" id="s-focus" ${s && s.focus ? 'checked' : ''}> ⭐ 列入重点关注</label>
         <label class="span2">标签
           <div class="tag-picker" id="s-tags">
@@ -2405,6 +2488,8 @@ window.App = window.App || { pages: {} };
           classId: UI.$('#s-cls', wrap).value,
           parentName: UI.$('#s-pname', wrap).value.trim(),
           parentPhone: UI.$('#s-phone', wrap).value.trim(),
+          parentName2: UI.$('#s-pname2', wrap).value.trim(),
+          parentPhone2: UI.$('#s-phone2', wrap).value.trim(),
           focus: UI.$('#s-focus', wrap).checked,
           tags: UI.$$('#s-tags input:checked', wrap).map(i => i.value),
           note: UI.$('#s-note', wrap).value.trim()
