@@ -4474,7 +4474,9 @@ window.App = window.App || { pages: {} };
       if (!remote.payload) { if (!silent) toast('云端数据为空', 'err'); return false; }
       const localTime = Store.db.meta.updatedAt || '';
       const remoteTime = (remote.payload.meta && remote.payload.meta.updatedAt) || remote.updated_at || '';
-      if (silent && remoteTime <= localTime) return false;   // 实时/轮询：云端不新就不覆盖
+      // 用时间戳比较，避免 ISO 字符串精度不一致（如 .123Z 与 .123456Z）导致误判"云端不新"
+      const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
+      if (silent && ts(remoteTime) <= ts(localTime)) return false;   // 实时/轮询：云端不新就不覆盖
 
       const apply = () => {
         suppressPush = true;   // 应用云端数据时不要触发"改动即推"
