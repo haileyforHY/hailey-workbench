@@ -2699,12 +2699,14 @@ window.App = window.App || { pages: {} };
     const week = UI.weekRange();
     const weekRecs = An.checks(kind, st.classId, week.start, week.end);
     const totalAgg = list.reduce((a, c) => { const r = An.recordRate(c); a.t += r.total; a.p += r.pass; return a; }, { t: 0, p: 0 });
+    const wb = (Store.db.settings.wordBank && Store.db.settings.wordBank.words) || [];
 
     view.innerHTML = `
       <div class="page-head">
         <div><h2>${m.icon} ${m.title}</h2><p class="sub">按班记录 · 未过关自动进入二次待办池</p></div>
         <div class="head-actions">
           <select class="inp" id="c-cls" style="max-width:160px">${classOptions(st.classId, '全部班级')}</select>
+          <button class="btn" id="c-library">📚 单词库/默写表</button>
           <button class="btn primary" id="c-add">＋ 新建${m.unit}记录</button>
         </div>
       </div>
@@ -2892,6 +2894,7 @@ window.App = window.App || { pages: {} };
     const { $, $$ } = UI, st = state[kind];
     $('#c-cls', view).onchange = e => { st.classId = e.target.value; App.render(); };
     $('#c-add', view).onclick = () => editRecord(kind, null);
+    $('#c-library', view).onclick = () => openWordLibrary();
     $('#c-stu', view).onchange = e => { st.stu = e.target.value; App.render(); };
     $$('[data-edit]', view).forEach(b => b.onclick = () => editRecord(kind, b.dataset.edit));
     $$('[data-stu]', view).forEach(b => b.onclick = () => App.openStudent(b.dataset.stu));
@@ -2917,6 +2920,142 @@ window.App = window.App || { pages: {} };
       toast(n ? `已生成 ${n} 条待办` : '待办已存在，无需重复生成');
       App.render();
     };
+  }
+
+  /* ===========================================================
+   * 单词库：勾选生成听写默写表（中译英 / 英译中 / 双默写 / 打乱）
+   * =========================================================== */
+  function openWordLibrary() {
+    const wb = Store.db.settings.wordBank;
+    if (!wb || !wb.words || !wb.words.length) {
+      toast('词库未配置', 'err'); return;
+    }
+    const total = wb.words.length;
+    const unitOpts = '<option value="0">全部单元</option>' +
+      (wb.units || []).map(u => `<option value="${u.id}">Unit ${u.id} · ${esc(u.name)}</option>`).join('');
+
+    modal({
+      title: '📚 单词库 · 勾选生成听写默写表',
+      width: 760,
+      body: `<div class="form">
+        <div class="toolbar">
+          <label>单元<select class="inp" id="wl-unit">${unitOpts}</select></label>
+          <input class="inp" id="wl-kw" placeholder="搜索单词或释义" style="max-width:200px">
+          <span class="muted sm">已选 <b id="wl-count">0</b> / <b id="wl-total">${total}</b> 词</span>
+          <span class="flex1"></span>
+          <button class="btn xs" id="wl-all">全选</button>
+          <button class="btn xs ghost" id="wl-none">清空</button>
+        </div>
+        <div id="wl-list" class="wl-list" style="max-height:360px;overflow-y:auto;border:1px solid var(--line,#e2e8f0);border-radius:8px"></div>
+        <hr>
+        <div class="toolbar">
+          <label class="radio"><input type="radio" name="wl-mode" value="cne" checked> 中译英（看中文写英文）</label>
+          <label class="radio"><input type="radio" name="wl-mode" value="enc"> 英译中（看英文写中文）</label>
+          <label class="radio"><input type="radio" name="wl-mode" value="bi"> 双默写（中↔英）</label>
+          <span class="flex1"></span>
+          <label class="check-inline"><input type="checkbox" id="wl-shuffle" checked> 打乱顺序</label>
+        </div>
+        <div class="toolbar">
+          <label>标题<input class="inp xs" id="wl-title" value="${esc((wb.source || '听写默写表').slice(0, 28))}" style="width:240px"></label>
+          <label>每行<input class="inp xs" type="number" id="wl-cols" min="1" max="8" value="2" style="width:60px"></label>题
+        </div>
+      </div>`,
+      okText: '📄 生成默写表（打印）',
+      onOk: generateDictation
+    });
+
+    const wrap = UI.$$('.modal-mask.show')[0];
+    const render = () => {
+      const u = Number(UI.$('#wl-unit', wrap).value);
+      const kw = UI.$('#wl-kw', wrap).value.trim().toLowerCase();
+      const list = wb.words.filter(w => (!u || w.unit === u) && (!kw || w.w.toLowerCase().includes(kw) || w.cn.includes(kw)));
+      UI.$('#wl-list', wrap).innerHTML = list.length ?
+        `<table class="tbl compact"><thead><tr><th style="width:34px"></th><th>单词</th><th>词性</th><th>释义</th><th class="muted">Unit</th></tr></thead><tbody>${
+          list.map(w => `<tr>
+            <td><input type="checkbox" class="wl-cb" value="${esc(w.w)}" data-cne="${esc(w.cn)}" checked></td>
+            <td><b>${esc(w.w)}</b></td>
+            <td class="muted sm">${esc(w.pos || '')}</td>
+            <td>${esc(w.cn)}</td>
+            <td class="muted sm">U${w.unit}</td>
+          </tr>`).join('')
+        }</tbody></table>` : '<p class="hint">无匹配单词</p>';
+      UI.$('#wl-total', wrap).textContent = total;
+      const upd = () => UI.$('#wl-count', wrap).textContent = UI.$$('.wl-cb:checked', wrap).length;
+      UI.$$('.wl-cb', wrap).forEach(c => c.onchange = upd);
+      upd();
+    };
+    UI.$('#wl-unit', wrap).onchange = render;
+    UI.$('#wl-kw', wrap).oninput = render;
+    UI.$('#wl-all', wrap).onclick = () => { UI.$$('.wl-cb', wrap).forEach(c => c.checked = true); render(); };
+    UI.$('#wl-none', wrap).onclick = () => { UI.$$('.wl-cb', wrap).forEach(c => c.checked = false); render(); };
+    render();
+  }
+
+  function generateDictation(wrap) {
+    const list = Array.from(UI.$$('.wl-cb:checked', wrap)).map(c => ({ w: c.value, cn: c.dataset.cne }));
+    if (!list.length) { toast('请至少勾选一个单词', 'err'); return false; }
+    const mode = (UI.$$('input[name=wl-mode]:checked', wrap)[0] || {}).value || 'cne';
+    const shuffle = UI.$('#wl-shuffle', wrap).checked;
+    const title = (UI.$('#wl-title', wrap).value || '').trim() || '听写默写表';
+    const cols = Math.min(8, Math.max(1, Number(UI.$('#wl-cols', wrap).value) || 2));
+    if (shuffle) {
+      for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+    }
+    const html = renderDictationHtml(title, list, mode, cols);
+    const win = window.open('', '_blank');
+    if (!win) { toast('浏览器拦截了新窗口，请允许弹窗', 'err'); return false; }
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    toast('已生成，请在新窗口打印 📄');
+    return false;
+  }
+
+  function renderDictationHtml(title, list, mode, cols) {
+    const headerCells = [];
+    if (mode === 'cne') headerCells.push('中文', '英文');
+    else if (mode === 'enc') headerCells.push('英文', '中文');
+    else headerCells.push('中文', '英文', '英文', '中文');
+
+    const rows = [];
+    list.forEach((it, i) => {
+      if (mode === 'cne') {
+        rows.push(`<td class="dt">${i + 1}. __________________</td><td class="dt">${esc(it.cn)}</td>`);
+      } else if (mode === 'enc') {
+        rows.push(`<td class="dt">${i + 1}. __________________</td><td class="dt">${esc(it.w)}</td>`);
+      } else {
+        rows.push(`<td class="dt">${i + 1}. __________________</td><td class="dt">${esc(it.cn)}</td>
+                   <td class="dt">__________________</td><td class="dt">${esc(it.w)}</td>`);
+      }
+    });
+    const groupSize = (mode === 'bi') ? Math.max(1, Math.floor(8 / cols)) : cols;
+    let table = '<tr>' + headerCells.map(h => '<th>' + h + '</th>').join('') + '</tr>';
+    for (let i = 0; i < rows.length; i += groupSize) {
+      table += '<tr>' + rows.slice(i, i + groupSize).join('') + '</tr>';
+    }
+    const modeLabel = { cne: '中译英（看中文写英文）', enc: '英译中（看英文写中文）', bi: '双默写（中↔英）' }[mode];
+    return `<!doctype html><html lang=zh-CN><head><meta charset=utf-8>
+<title>${esc(title)}</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:24px;color:#222;max-width:960px;margin:auto}
+h1{font-size:20px;margin:0 0 6px}
+.meta{color:#666;margin-bottom:16px;font-size:13px}
+.print{position:fixed;top:18px;right:18px;padding:8px 16px;background:#6366f1;color:#fff;border:0;border-radius:8px;cursor:pointer;font-size:14px}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{border:1px solid #d0d4dc;padding:10px;vertical-align:top}
+th{background:#f4f5fa;font-size:12px;color:#555}
+td.dt{font-size:13px;line-height:1.6}
+@media print{ .print{display:none} body{padding:8px} th{background:#f0f0f0} }
+</style></head><body>
+<button class="print" onclick="window.print()">🖨 打印 / 另存为 PDF</button>
+<h1>${esc(title)}</h1>
+<p class="meta">共 <b>${list.length}</b> 词 · 模式：${modeLabel}${shuffle ? '（已打乱）' : ''} · ${new Date().toLocaleString()}</p>
+<table>${table}</table>
+<p class="meta" style="margin-top:20px">姓名：________________  班级：____________  得分：______ / ${list.length}</p>
+</body></html>`;
   }
 
   App.pages.dictation = { title: '听写过关', render: v => render(v, 'dictation') };
