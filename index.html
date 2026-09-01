@@ -397,6 +397,14 @@ textarea.inp{resize:vertical}
 }
 .nav-overlay{display:none}
 
+/* 上课进度记录 */
+.pg-cls{padding:10px 0;border-top:1px dashed var(--line);}
+.pg-cls:first-child{border-top:0}
+.pg-cls-h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.pg-cls .toolbar{gap:10px;flex-wrap:wrap}
+tr.today-row-hl{background:#fffdf3}
+tr.today-row-hl:hover{background:#fff8e6}
+
 </style>
 </head>
 <body>
@@ -498,6 +506,7 @@ var LS = (function(){
       comms: [],      // {id,studentId,date,way,topic,content,needFollow,followDate,followDone}
       todos: [],      // {id,title,quadrant:1..4,due,done,source,refId,createdAt}
       discipline: [], // {id,studentId,date,type,detail,handled}
+      progress: [],   // {id,date,classId,unit,content,note} 上课进度记录（每天每班一条）
       timetable: {},  // {'1-3': {classId,content,room}}
       settings: {
         parts: DEFAULT_PARTS,
@@ -1438,6 +1447,7 @@ window.App = window.App || { pages: {} };
     { id: 'todos', icon: '✅', name: '待办清单' },
     { id: 'discipline', icon: '⚠️', name: '违纪记录' },
     { id: 'timetable', icon: '🗓️', name: '我的课表' },
+    { id: 'progress', icon: '📍', name: '上课进度' },
     { id: 'sync', icon: '☁️', name: '云端同步' }
   ];
 
@@ -1615,7 +1625,7 @@ window.App = window.App || { pages: {} };
 
     document.addEventListener('keydown', e => {
       if (e.target.matches('input,textarea,select')) return;
-      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable' };
+      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable', '-': 'progress' };
       if (map[e.key]) App.go(map[e.key]);
     });
 
@@ -4513,6 +4523,228 @@ td.dt{font-size:13px;line-height:1.6}
   const drag = { src: null };
 
   App.pages.timetable = { title: '我的课表', render, todayCourses, DAYS, slots, clsColor };
+})();
+
+</script>
+<script>
+/* ===========================================================
+ * pages/progress.js — 📍 上课进度记录（每天结束记录两个班各上到哪里）
+ * =========================================================== */
+(function () {
+  const { esc, toast, modal, confirmBox, empty } = UI;
+  const state = { showAll: false };
+
+  // 单元取自词库（没有则用默认）
+  function units() {
+    const wb = Store.db.settings.wordBank;
+    if (wb && wb.units && wb.units.length) return wb.units;
+    return [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({ id: i, name: 'Unit ' + i }));
+  }
+  function unitName(id) {
+    const u = units().find(x => String(x.id) === String(id));
+    return u ? u.name : (id ? 'Unit ' + id : '');
+  }
+
+  // 某天某班的记录
+  function recordOf(date, cid) {
+    return (Store.db.progress || []).find(p => p.date === date && p.classId === cid);
+  }
+
+  // 按日期聚合：{date: {clsId: record}}
+  function byDate() {
+    const map = {};
+    (Store.db.progress || []).forEach(p => {
+      (map[p.date] = map[p.date] || {})[p.classId] = p;
+    });
+    return Object.keys(map).sort((a, b) => b.localeCompare(a)).map(d => ({ date: d, rec: map[d] }));
+  }
+
+  // 两班进度差：用单元号相减（0 表示同步）
+  function gap(rec) {
+    const cls = Store.classes();
+    if (cls.length < 2) return null;
+    const a = rec[cls[0].id], b = rec[cls[1].id];
+    if (!a || !b || !a.unit || !b.unit) return null;
+    const d = Number(a.unit) - Number(b.unit);
+    return d === 0 ? null : { d, fast: d > 0 ? cls[0].name : cls[1].name, slow: d > 0 ? cls[1].name : cls[0].name };
+  }
+
+  function render(view) {
+    const dates = byDate();
+    const cls = Store.classes();
+    const today = UI.today();
+    const showDates = state.showAll ? dates : dates.slice(0, 14);
+
+    // 最近一次记录（用于 KPI）
+    const latest = dates[0];
+    const thisWeek = UI.weekRange();
+    const weekN = dates.filter(d => d.date >= thisWeek.start && d.date <= thisWeek.end).length;
+
+    view.innerHTML = `
+      <div class="page-head">
+        <div><h2>📍 上课进度</h2><p class="sub">每天结束记一笔 · 两个班各上到哪里，一眼看出进度差</p></div>
+        <div class="head-actions">
+          <button class="btn" id="p-history">${state.showAll ? '最近 14 天' : '查看全部'}（${dates.length}）</button>
+          <button class="btn primary" id="p-add">＋ 记录今天进度</button>
+        </div>
+      </div>
+
+      <div class="kpi-row">
+        ${kpi('累计记录', dates.length + ' 天', '📅')}
+        ${kpi('本周记录', weekN + ' 天', '🗓️')}
+        ${kpi('最近记录', latest ? latest.date : '—', '🕐')}
+        ${kpi('今日进度', recordOf(today, (cls[0] || {}).id) ? '已记' : '未记', '✅',
+          recordOf(today, (cls[0] || {}).id) ? '' : 'warn')}
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>📝 快速记录</h3><span class="muted sm">填完直接保存，同一天重复保存会覆盖</span></div>
+        <form class="form" id="p-form">
+          <div class="toolbar">
+            <label>日期<input class="inp" type="date" id="p-date" value="${today}" style="width:150px"></label>
+            <span class="flex1"></span>
+          </div>
+          <div id="p-classes">${cls.map(c => clsRow(c, today)).join('')}</div>
+          <div class="toolbar">
+            <span class="flex1"></span>
+            <button type="button" class="btn primary" id="p-save">💾 保存进度</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🗂 进度时间线</h3><span class="muted sm">共 ${dates.length} 天</span></div>
+        ${showDates.length ? `<div class="table-wrap"><table class="tbl">
+          <thead><tr>
+            <th style="width:110px">日期</th>
+            ${cls.map(c => `<th>${esc(c.name)}</th>`).join('')}
+            <th style="width:130px">进度差</th>
+            <th style="width:90px">操作</th>
+          </tr></thead>
+          <tbody>${showDates.map(row => {
+            const g = gap(row.rec);
+            return `<tr class="${row.date === today ? 'today-row-hl' : ''}">
+              <td><b>${esc(row.date)}</b>${row.date === today ? ' <span class="badge sm">今天</span>' : ''}</td>
+              ${cls.map(c => {
+                const r = row.rec[c.id];
+                return `<td>${r ? `<div><b>${esc(r.unit ? r.unit + ' · ' : '')}</b>${esc(r.content || '')}</div>
+                  ${r.note ? `<div class="muted sm">${esc(r.note)}</div>` : ''}`
+                  : '<span class="muted">—</span>'}</td>`;
+              }).join('')}
+              <td>${g ? `<span class="pill warn">${esc(g.fast)} 快 ${Math.abs(g.d)} 单元</span>` : '<span class="pill ok">同步</span>'}</td>
+              <td class="nowrap"><button class="icon-btn" data-edit="${row.date}">✎</button>
+                <button class="icon-btn danger" data-del="${row.date}">🗑</button></td>
+            </tr>`;
+          }).join('')}</tbody></table></div>` : empty('还没有进度记录，上面记一笔吧', '📍')}
+      </div>`;
+
+    bind(view);
+  }
+
+  function clsRow(c, date) {
+    const r = recordOf(date, c.id) || {};
+    const opts = '<option value="">（不填）</option>' +
+      units().map(u => `<option value="${u.id}"${String(r.unit || '') === String(u.id) ? ' selected' : ''}>${esc(u.name)}</option>`).join('');
+    return `<div class="pg-cls">
+      <div class="pg-cls-h"><b>${esc(c.name)}</b>
+        ${r.content ? '<span class="muted sm">今天已记</span>' : ''}</div>
+      <div class="toolbar">
+        <label>单元<select class="inp" data-unit="${c.id}">${opts}</select></label>
+        <label>上到哪里<input class="inp" data-content="${c.id}" value="${esc(r.content || '')}"
+          placeholder="如：Section A 1a-2d 完成" style="min-width:180px"></label>
+        <label>备注<input class="inp" data-note="${c.id}" value="${esc(r.note || '')}"
+          placeholder="如：听力没讲完" style="min-width:150px"></label>
+      </div></div>`;
+  }
+
+  function kpi(label, value, icon, tone) {
+    return `<div class="kpi ${tone || ''}"><div class="kpi-ico">${icon}</div>
+      <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
+  }
+
+  /* -------- 编辑某天（弹窗，两个班一起改） -------- */
+  function editDay(date) {
+    const cls = Store.classes();
+    const body = cls.map(c => {
+      const r = recordOf(date, c.id) || {};
+      const opts = '<option value="">（不填）</option>' +
+        units().map(u => `<option value="${u.id}"${String(r.unit || '') === String(u.id) ? ' selected' : ''}>${esc(u.name)}</option>`).join('');
+      return `<div class="pg-cls">
+        <div class="pg-cls-h"><b>${esc(c.name)}</b></div>
+        <label>单元<select class="inp" id="pg-u-${c.id}">${opts}</select></label>
+        <label>上到哪里<input class="inp" id="pg-c-${c.id}" value="${esc(r.content || '')}" placeholder="如：Section A 1a-2d 完成"></label>
+        <label>备注<input class="inp" id="pg-n-${c.id}" value="${esc(r.note || '')}" placeholder="选填"></label>
+      </div>`;
+    }).join('');
+
+    modal({
+      title: '📍 ' + date + ' 上课进度',
+      width: 560,
+      body: `<div class="form">${body}</div>`,
+      onOk: (wrap) => {
+        Store.classes().forEach(c => {
+          saveOne(date, c.id, {
+            unit: UI.$('#pg-u-' + c.id, wrap).value,
+            content: UI.$('#pg-c-' + c.id, wrap).value.trim(),
+            note: UI.$('#pg-n-' + c.id, wrap).value.trim()
+          });
+        });
+        Store.save(); toast('已保存'); App.render();
+      }
+    });
+  }
+
+  // 写入/覆盖某天某班（内容全空则删除该条）
+  function saveOne(date, cid, data) {
+    const list = Store.db.progress || (Store.db.progress = []);
+    const i = list.findIndex(p => p.date === date && p.classId === cid);
+    const empty = !data.unit && !data.content && !data.note;
+    if (i >= 0) {
+      if (empty) list.splice(i, 1);
+      else Object.assign(list[i], data);
+    } else if (!empty) {
+      Store.push('progress', Object.assign({ date, classId: cid }, data), 'pg');
+    }
+  }
+
+  function bind(view) {
+    const { $, $$ } = UI;
+    $('#p-add', view).onclick = () => editDay(UI.today());
+    $('#p-history', view).onclick = () => { state.showAll = !state.showAll; App.render(); };
+
+    // 日期切换 → 重新载入该天已有内容
+    const dateInput = $('#p-date', view);
+    dateInput.onchange = () => {
+      const d = dateInput.value || UI.today();
+      $('#p-classes', view).innerHTML = Store.classes().map(c => clsRow(c, d)).join('');
+    };
+
+    $('#p-save', view).onclick = () => {
+      const d = dateInput.value || UI.today();
+      let n = 0;
+      Store.classes().forEach(c => {
+        const u = $('[data-unit="' + c.id + '"]', view);
+        const ct = $('[data-content="' + c.id + '"]', view);
+        const nt = $('[data-note="' + c.id + '"]', view);
+        if (!u || !ct) return;
+        const data = { unit: u.value, content: ct.value.trim(), note: nt ? nt.value.trim() : '' };
+        if (data.unit || data.content || data.note) n++;
+        saveOne(d, c.id, data);
+      });
+      Store.save();
+      toast(n ? `已保存 ${n} 个班的进度 ✅` : '内容为空，未保存');
+      App.render();
+    };
+
+    $$('[data-edit]', view).forEach(b => b.onclick = () => editDay(b.dataset.edit));
+    $$('[data-del]', view).forEach(b => b.onclick = () => confirmBox(
+      `删除 <b>${esc(b.dataset.del)}</b> 这一天的进度记录？`, () => {
+        Store.db.progress = (Store.db.progress || []).filter(p => p.date !== b.dataset.del);
+        Store.save(); toast('已删除'); App.render();
+      }, { danger: true, okText: '删除' }));
+  }
+
+  App.pages.progress = { title: '上课进度', render };
 })();
 
 </script>
