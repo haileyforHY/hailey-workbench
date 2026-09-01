@@ -5,7 +5,7 @@
   "teacher": "Hailey",
   "version": 1,
   "gradYear": 2027,
-  "updatedAt": "2026-08-31T10:42:23.071Z"
+  "updatedAt": "2026-09-01T14:32:48.786Z"
  },
  "comms": [],
  "exams": [
@@ -710,14 +710,6 @@
  ],
  "todos": [
   {
-   "id": "todo_l4lyoghugc",
-   "due": "2026-08-25",
-   "done": false,
-   "title": "备课第一单元Section A",
-   "quadrant": 1,
-   "createdAt": "2026-08-25"
-  },
-  {
    "id": "todo_l4y9l745qe",
    "due": "2026-08-25",
    "done": true,
@@ -734,6 +726,64 @@
    "title": "下午八九节初三启动会",
    "quadrant": 1,
    "createdAt": "2026-08-29"
+  },
+  {
+   "id": "todo_civx0lvpx7",
+   "due": "2026-09-01",
+   "done": true,
+   "time": "09:40",
+   "title": "发练习册",
+   "doneAt": "2026-09-01",
+   "quadrant": 1,
+   "createdAt": "2026-08-31"
+  },
+  {
+   "id": "todo_1mb3muied0",
+   "due": "2026-09-01",
+   "done": true,
+   "time": "",
+   "title": "讲学科要求",
+   "doneAt": "2026-09-01",
+   "quadrant": 1,
+   "createdAt": "2026-09-01"
+  },
+  {
+   "id": "todo_1pstf4ck3f",
+   "due": "2026-11-19",
+   "done": false,
+   "time": "",
+   "title": "半期五校联考",
+   "quadrant": 1,
+   "createdAt": "2026-09-01"
+  },
+  {
+   "id": "todo_1q3aiuk39r",
+   "due": "2026-12-18",
+   "done": false,
+   "time": "",
+   "title": "完成行课",
+   "quadrant": 1,
+   "createdAt": "2026-09-01"
+  },
+  {
+   "id": "todo_63o5xch0zv",
+   "due": "2026-09-01",
+   "done": true,
+   "time": "",
+   "title": "opening page",
+   "doneAt": "2026-09-01",
+   "quadrant": 1,
+   "createdAt": "2026-09-01"
+  },
+  {
+   "id": "todo_63zyv7puzp",
+   "due": "2026-09-01",
+   "done": true,
+   "time": "",
+   "title": "作业布置 记单词 前二十个",
+   "doneAt": "2026-09-01",
+   "quadrant": 1,
+   "createdAt": "2026-09-01"
   }
  ],
  "checks": [],
@@ -797,7 +847,7 @@
   "slots": [
    {
     "name": "早读",
-    "time": "07:40-07:55"
+    "time": "07:30-07:55"
    },
    {
     "name": "第一节",
@@ -917,1795 +967,10 @@
    ],
    "words": [
     {
-     "w": "calendar",
-     "cn": "日历",
+     "w": "hill",
+     "cn": "山丘",
      "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "camera",
-     "cn": "照相机；摄影机",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "cancel",
-     "cn": "取消；终止",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "capital",
-     "cn": "首都",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "cartoon",
-     "cn": "动画片；漫画",
-     "pos": "n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "case",
-     "cn": "情况；事例",
-     "pos": "n.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "century",
-     "cn": "世纪",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "certain",
-     "cn": "某（些）；确定的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "chain",
-     "cn": "链条",
-     "pos": "n.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "champion",
-     "cn": "冠军",
-     "pos": "n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "cheap",
-     "cn": "便宜的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "cheer",
-     "cn": "喝彩；欢呼",
-     "pos": "v.",
-     "page": 79,
-     "unit": 8
-    },
-    {
-     "w": "chemist",
-     "cn": "化学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "childhood",
-     "cn": "童年",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "citizen",
-     "cn": "市民；公民",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "classical",
-     "cn": "古典乐的；古典的",
-     "pos": "adj.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "click",
-     "cn": "点击",
-     "pos": "v.",
-     "page": 28,
-     "unit": 3
-    },
-    {
-     "w": "collection",
-     "cn": "收集物；收藏品",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "come across",
-     "cn": "遇见；发现",
-     "pos": "v.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "comment",
-     "cn": "评论；批评",
-     "pos": "v.&n.",
-     "page": 7,
-     "unit": 1
-    },
-    {
-     "w": "company",
-     "cn": "公司；陪伴",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "compete",
-     "cn": "比赛；竞争",
-     "pos": "v.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "competition",
-     "cn": "比赛",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "complete",
-     "cn": "完成；完整的",
-     "pos": "v.&adj.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "composer",
-     "cn": "作曲家",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "conclusion",
-     "cn": "总结",
-     "pos": "n.",
-     "page": 7,
-     "unit": 1
-    },
-    {
-     "w": "contribution",
-     "cn": "贡献；捐款",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "convenient",
-     "cn": "方便的",
-     "pos": "adj.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "cooperate",
-     "cn": "合作；协作",
-     "pos": "v.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "corn",
-     "cn": "玉米；谷物",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "courage",
-     "cn": "勇气",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "crazy",
-     "cn": "疯狂的",
-     "pos": "adj.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "creation",
-     "cn": "创造；作品",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "crowd",
-     "cn": "人群；观众",
-     "pos": "n.",
-     "page": 79,
-     "unit": 8
-    },
-    {
-     "w": "daughter",
-     "cn": "女儿",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "dialogue",
-     "cn": "对话；对白",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "dictionary",
-     "cn": "词典；字典",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "digital",
-     "cn": "数字的",
-     "pos": "adj.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "discovery",
-     "cn": "发现",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "discuss",
-     "cn": "讨论；谈论",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "discussion",
-     "cn": "讨论",
-     "pos": "n.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "disease",
-     "cn": "疾病",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "divide",
-     "cn": "分；分成",
-     "pos": "v.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "dolphin",
-     "cn": "海豚",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "download",
-     "cn": "下载",
-     "pos": "v.&n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "dramatic",
-     "cn": "激动的；出人意料的",
-     "pos": "adj.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "drown",
-     "cn": "淹死；溺死",
-     "pos": "v.",
-     "page": 79,
-     "unit": 8
-    },
-    {
-     "w": "dynasty",
-     "cn": "朝代；王朝",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "ease",
-     "cn": "容易；自在",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "eastern",
-     "cn": "东部的；东方的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "economic",
-     "cn": "经济的；经济学的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "effective",
-     "cn": "有效的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "efficiently",
-     "cn": "效率高地",
-     "pos": "adv.",
-     "page": 27,
-     "unit": 3
-    },
-    {
-     "w": "electric",
-     "cn": "电的；令人激动的",
-     "pos": "adj.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "electronic",
-     "cn": "电子的",
-     "pos": "adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "engine",
-     "cn": "发动机",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "enjoyable",
-     "cn": "使人快乐的",
-     "pos": "adj.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "expectation",
-     "cn": "期望；希望",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "expensive",
-     "cn": "昂贵的；价格高的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "experiment",
-     "cn": "实验；试验",
-     "pos": "n.&v.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "exploration",
-     "cn": "探索",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "fair",
-     "cn": "公平的；合理的",
-     "pos": "adj.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "fall asleep",
-     "cn": "入睡",
-     "pos": "v.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "farmland",
-     "cn": "耕地",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "feedback",
-     "cn": "反馈的意见",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "fibre",
-     "cn": "纤维",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "figure",
-     "cn": "人物；数字",
-     "pos": "n.&v.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "figure skating",
-     "cn": "花样滑冰",
-     "pos": "n.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "file",
-     "cn": "文件",
-     "pos": "n.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "finger",
-     "cn": "手指",
-     "pos": "n.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "flat",
-     "cn": "公寓；平坦的",
-     "pos": "n.&adj.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "flight",
-     "cn": "飞行；航班",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "flowing",
-     "cn": "流畅的；松散的",
-     "pos": "adj.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "folk",
-     "cn": "民间的；人们",
-     "pos": "adj.&n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "forever",
-     "cn": "永远",
-     "pos": "adv.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "frozen",
-     "cn": "冻结的；冰冷的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "fuel",
-     "cn": "燃料",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "fully",
-     "cn": "完全地",
-     "pos": "adv.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "funeral",
-     "cn": "葬礼",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "gain",
-     "cn": "获得；取得",
-     "pos": "v.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "galaxy",
-     "cn": "星系",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "general",
-     "cn": "总的；大体的",
-     "pos": "adj.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "genius",
-     "cn": "天才人物；天赋",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "geology",
-     "cn": "地质；地质学",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "gifted",
-     "cn": "有天赋的",
-     "pos": "adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "glider",
-     "cn": "滑翔机",
-     "pos": "n.",
-     "page": 49,
-     "unit": 5
-    },
-    {
-     "w": "go through",
-     "cn": "经历；仔细察看",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "god",
-     "cn": "神",
-     "pos": "n.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "gold",
-     "cn": "金；金色的",
-     "pos": "n.&adj.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "golden",
-     "cn": "金色的",
-     "pos": "adj.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "government",
-     "cn": "政府",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "gradually",
-     "cn": "逐渐地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "grammar",
-     "cn": "语法",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "grandson",
-     "cn": "孙子；外孙",
-     "pos": "n.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "grapevine",
-     "cn": "葡萄藤；葡萄树",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "graph",
-     "cn": "图表",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "greatly",
-     "cn": "大大地；非常",
-     "pos": "adv.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "Greek",
-     "cn": "希腊的；希腊人",
-     "pos": "adj.&n.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "greenhouse",
-     "cn": "温室",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "growth",
-     "cn": "成长；增长",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "guidance",
-     "cn": "指导",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "gunshot",
-     "cn": "枪声；炮弹",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "happen",
-     "cn": "发生；碰巧",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "harmony",
-     "cn": "和谐；和睦",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "herself",
-     "cn": "她自己",
-     "pos": "pron.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "high-speed train",
-     "cn": "高速列车",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "highway",
-     "cn": "公路",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "historian",
-     "cn": "历史学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "hole",
-     "cn": "洞；孔",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "housing",
-     "cn": "住房；住宅",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "human being",
-     "cn": "人类",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "hunger",
-     "cn": "饥饿",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "ideal",
-     "cn": "理想的；理想",
-     "pos": "adj.&n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "image",
-     "cn": "图像；形象",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "imagination",
-     "cn": "想象；想象力",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "in addition",
-     "cn": "另外；此外",
-     "pos": "adv.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "in case",
-     "cn": "以防万一",
-     "pos": "conj.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "in general",
-     "cn": "总的来说",
-     "pos": "adv.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "in part",
-     "cn": "部分地",
-     "pos": "adv.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "in wonder",
-     "cn": "惊奇地",
-     "pos": "adv.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "increase",
-     "cn": "增长；增加",
-     "pos": "v.&n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "inspiring",
-     "cn": "鼓舞人心的；激励的",
-     "pos": "adj.",
-     "page": 11,
-     "unit": 2
-    },
-    {
-     "w": "invent",
-     "cn": "发明；编造",
-     "pos": "v.",
-     "page": 44,
-     "unit": 5
-    },
-    {
-     "w": "invention",
-     "cn": "发明；创造",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "inventor",
-     "cn": "发明家",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "itself",
-     "cn": "它自己",
-     "pos": "pron.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "jazz",
-     "cn": "爵士乐",
-     "pos": "n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "judge",
-     "cn": "裁判员；判断",
-     "pos": "n.&v.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "junior",
-     "cn": "初级的；低年级的",
-     "pos": "adj.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "jute",
-     "cn": "黄麻纤维",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "keep in mind",
-     "cn": "记住",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "Kenyan",
-     "cn": "肯尼亚的；肯尼亚人",
-     "pos": "adj.&n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "keyboard",
-     "cn": "电子琴；键盘",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "kindness",
-     "cn": "善良",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "lack",
-     "cn": "缺乏",
-     "pos": "v.&n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "laptop",
-     "cn": "笔记本电脑",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "later on",
-     "cn": "后来；其后",
-     "pos": "adv.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "launch",
-     "cn": "发射；发起",
-     "pos": "v.&n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "layer",
-     "cn": "层；表层",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "lead to",
-     "cn": "导致；造成",
-     "pos": "v.",
-     "page": 47,
-     "unit": 5
-    },
-    {
-     "w": "learner",
-     "cn": "学习者",
-     "pos": "n.",
-     "page": 21,
-     "unit": 3
-    },
-    {
-     "w": "leave behind",
-     "cn": "留下；遗留",
-     "pos": "v.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "lecture",
-     "cn": "讲座；讲课",
-     "pos": "n.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "likely",
-     "cn": "很可能；可能的",
-     "pos": "adv.&adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "link",
-     "cn": "链接；联系",
-     "pos": "n.&v.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "liquid",
-     "cn": "液体；液体的",
-     "pos": "n.&adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "live",
-     "cn": "现场直播的",
-     "pos": "adj.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "live on",
-     "cn": "继续存在；继续活着",
-     "pos": "v.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "long-term",
-     "cn": "长期的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "look down on",
-     "cn": "轻视；蔑视",
-     "pos": "v.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "look up",
-     "cn": "查阅；检查",
-     "pos": "v.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "look up to",
-     "cn": "钦佩；仰慕",
-     "pos": "v.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "lorry",
-     "cn": "卡车",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "lover",
-     "cn": "情人；爱好者",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "lyric",
-     "cn": "歌词；抒情的",
-     "pos": "n.&adj.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "magazine",
-     "cn": "杂志；期刊",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "mall",
-     "cn": "购物商场",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "manager",
-     "cn": "经理",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "mankind",
-     "cn": "人类",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "man-made",
-     "cn": "人造的；非天然的",
-     "pos": "adj.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "manned",
-     "cn": "载人的",
-     "pos": "adj.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "mascot",
-     "cn": "吉祥物",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "master",
-     "cn": "能手；掌握",
-     "pos": "n.&v.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "material",
-     "cn": "材料；资料",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "medal",
-     "cn": "奖章；勋章",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "melt",
-     "cn": "融化；逐渐消失",
-     "pos": "v.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "memorize",
-     "cn": "记住；记忆",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "method",
-     "cn": "方法",
-     "pos": "n.",
-     "page": 25,
-     "unit": 3
-    },
-    {
-     "w": "mindset",
-     "cn": "观念模式",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "miracle",
-     "cn": "奇迹",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "mission",
-     "cn": "任务；使命",
-     "pos": "n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "mix up",
-     "cn": "混淆；弄乱",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "motto",
-     "cn": "口号；格言",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "movement",
-     "cn": "运动；活动",
-     "pos": "n.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "mysterious",
-     "cn": "神秘的；奇怪的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "narrow",
-     "cn": "狭窄的",
-     "pos": "adj.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "nation",
-     "cn": "国家；民族",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "necessary",
-     "cn": "必要的；必需的",
-     "pos": "adj.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "neither",
-     "cn": "两者都不",
-     "pos": "adv.&conj.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "newspaper",
-     "cn": "报纸",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "none",
-     "cn": "没有一个；毫无",
-     "pos": "pron.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "nor",
-     "cn": "也不",
-     "pos": "conj.&adv.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "notebook",
-     "cn": "笔记本；笔记本电脑",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "nowadays",
-     "cn": "现在；目前",
-     "pos": "adv.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "nut",
-     "cn": "坚果",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "officer",
-     "cn": "官员；军官",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "on board",
-     "cn": "在船（或车、飞机）上",
-     "pos": "adv.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "one-size-fits-all",
-     "cn": "通用的",
-     "pos": "adj.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "open up",
-     "cn": "打开；开放",
-     "pos": "v.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "opera",
-     "cn": "歌剧；歌剧院",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "operate",
-     "cn": "操作；运转",
-     "pos": "v.",
-     "page": 59,
-     "unit": 6
-    },
-    {
-     "w": "organize",
-     "cn": "处理；组织",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "outdoor",
-     "cn": "户外的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "outline",
-     "cn": "提纲；概述",
-     "pos": "n.&v.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "papermaking",
-     "cn": "造纸工艺；造纸业",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "pardon",
-     "cn": "原谅",
-     "pos": "v.&interj.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "passage",
-     "cn": "段落；走廊",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "password",
-     "cn": "密码；口令",
-     "pos": "n.",
-     "page": 37,
-     "unit": 4
-    },
-    {
-     "w": "performance",
-     "cn": "演出；表演",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "performer",
-     "cn": "表演者",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "period",
-     "cn": "时期；一段时间",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "physicist",
-     "cn": "物理学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "pianist",
-     "cn": "钢琴家",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "picnic",
-     "cn": "野餐",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "piece",
-     "cn": "一片；一篇",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "pioneer",
-     "cn": "先驱；先锋",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "pipe",
-     "cn": "管道；管子",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "plastic",
-     "cn": "塑料；塑料的",
-     "pos": "n.&adj.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "podcast",
-     "cn": "播客",
-     "pos": "n.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "poet",
-     "cn": "诗人",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "policewoman",
-     "cn": "女警察",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "Polish",
-     "cn": "波兰的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "pop",
-     "cn": "流行音乐；蹦出",
-     "pos": "n.&v.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "port",
-     "cn": "港口城市；港口",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "position",
-     "cn": "位置；安置",
-     "pos": "n.&v.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "pride",
-     "cn": "自豪；骄傲",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "print",
-     "cn": "印刷品；打印",
-     "pos": "v.&n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "printer",
-     "cn": "打印机；印刷公司",
-     "pos": "n.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "produce",
-     "cn": "生产；养育",
-     "pos": "v.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "product",
-     "cn": "产品",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "production",
-     "cn": "生产；制作",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "profession",
-     "cn": "职业；行业",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "project",
-     "cn": "专题研究；项目",
-     "pos": "n.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "pronunciation",
-     "cn": "发音；读音",
-     "pos": "n.",
-     "page": 28,
-     "unit": 3
-    },
-    {
-     "w": "proudly",
-     "cn": "自豪地；壮观地",
-     "pos": "adv.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "publish",
-     "cn": "刊登；出版",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "pull-up",
-     "cn": "引体向上",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "purple",
-     "cn": "紫色；紫色的",
-     "pos": "n.&adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "put sth to good use",
-     "cn": "有效使用（或利用）某物",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "pyramid",
-     "cn": "金字塔",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "radio",
-     "cn": "无线电；收音机",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "rail",
-     "cn": "铁路",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "railway",
-     "cn": "铁路",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "rap",
-     "cn": "说唱乐；表演说唱乐",
-     "pos": "v.&n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "rapid",
-     "cn": "迅速的；瞬间的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "rapidly",
-     "cn": "迅速地；快速地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "rating",
-     "cn": "评分；等级",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "react",
-     "cn": "作出反应；回应",
-     "pos": "v.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "reality",
-     "cn": "现实；事实",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "recall",
-     "cn": "回忆起；回想起",
-     "pos": "v.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "recent",
-     "cn": "最近的；最新的",
-     "pos": "adj.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "recognize",
-     "cn": "辨认出；认可",
-     "pos": "v.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "reform",
-     "cn": "改革；变革",
-     "pos": "v.&n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "region",
-     "cn": "区域；地区",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "relay",
-     "cn": "接力赛",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "require",
-     "cn": "要求；需要",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "resource",
-     "cn": "资源；资料",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "responsible",
-     "cn": "作为原因的；有责任的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "responsible for",
-     "cn": "引起某事的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "result in",
-     "cn": "造成；导致",
-     "pos": "v.",
-     "page": 47,
-     "unit": 5
-    },
-    {
-     "w": "retell",
-     "cn": "复述；重述",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "rhythm",
-     "cn": "节奏；韵律",
-     "pos": "n.",
-     "page": 61,
-     "unit": 7
-    },
-    {
-     "w": "rocket",
-     "cn": "火箭",
-     "pos": "n.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "Roman",
-     "cn": "古罗马的；罗马人",
-     "pos": "adj.&n.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "romantic",
-     "cn": "浪漫的；爱情的",
-     "pos": "adj.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "root",
-     "cn": "根",
-     "pos": "n.",
-     "page": 3,
+     "page": 2,
      "unit": 1
     },
     {
@@ -2716,32 +981,39 @@
      "unit": 1
     },
     {
-     "w": "rover",
-     "cn": "探测器；漫游者",
+     "w": "corn",
+     "cn": "玉米；谷物",
      "pos": "n.",
-     "page": 52,
-     "unit": 6
+     "page": 3,
+     "unit": 1
     },
     {
-     "w": "run out",
-     "cn": "用完；耗尽",
-     "pos": "v.",
-     "page": 32,
-     "unit": 4
+     "w": "farmland",
+     "cn": "耕地",
+     "pos": "n.",
+     "page": 3,
+     "unit": 1
     },
     {
-     "w": "runner",
-     "cn": "参加赛跑的人",
+     "w": "government",
+     "cn": "政府",
      "pos": "n.",
-     "page": 73,
-     "unit": 8
+     "page": 3,
+     "unit": 1
     },
     {
-     "w": "sadness",
-     "cn": "悲伤",
+     "w": "lack",
+     "cn": "缺乏",
+     "pos": "v.&n.",
+     "page": 3,
+     "unit": 1
+    },
+    {
+     "w": "root",
+     "cn": "根",
      "pos": "n.",
-     "page": 32,
-     "unit": 4
+     "page": 3,
+     "unit": 1
     },
     {
      "w": "sandstorm",
@@ -2758,122 +1030,10 @@
      "unit": 1
     },
     {
-     "w": "satellite",
-     "cn": "人造卫星；卫星",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "satisfy",
-     "cn": "使（某人）满意",
-     "pos": "v.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "schoolmate",
-     "cn": "同学",
-     "pos": "n.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "schoolwork",
-     "cn": "学校作业",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "scientific",
-     "cn": "科学（上）的",
-     "pos": "adj.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "seed",
-     "cn": "种子",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "set a record",
-     "cn": "创造纪录",
-     "pos": "v.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "set foot on",
-     "cn": "访问；参观（某地）",
-     "pos": "v.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "shape",
-     "cn": "塑造；形状",
-     "pos": "v.&n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "shelf",
-     "cn": "（墙壁、书橱等的）架子；搁板",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
      "w": "shortage",
      "cn": "短缺",
      "pos": "n.",
      "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "short-term",
-     "cn": "短期的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "shot-put",
-     "cn": "推铅球",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "sing along",
-     "cn": "随着唱",
-     "pos": "v.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "smooth",
-     "cn": "顺利的；光滑的",
-     "pos": "adj.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "socialism",
-     "cn": "社会主义",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "socialist",
-     "cn": "社会主义的；社会主义者",
-     "pos": "adj.&n.",
-     "page": 4,
      "unit": 1
     },
     {
@@ -2884,53 +1044,312 @@
      "unit": 1
     },
     {
-     "w": "solar",
-     "cn": "太阳的；太阳能的",
-     "pos": "adj.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "songbook",
-     "cn": "歌曲集",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "soul",
-     "cn": "真挚情感；灵魂",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "spacecraft",
-     "cn": "宇宙飞船",
-     "pos": "n.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "spaceship",
-     "cn": "（航天）飞船",
-     "pos": "n.",
-     "page": 58,
-     "unit": 6
-    },
-    {
-     "w": "speed",
-     "cn": "速度；加速",
+     "w": "support",
+     "cn": "支持",
      "pos": "v.&n.",
-     "page": 23,
-     "unit": 3
+     "page": 3,
+     "unit": 1
     },
     {
-     "w": "speed up",
-     "cn": "加速",
-     "pos": "v.",
-     "page": 46,
-     "unit": 5
+     "w": "greatly",
+     "cn": "大大地；非常",
+     "pos": "adv.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "greenhouse",
+     "cn": "温室",
+     "pos": "n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "highway",
+     "cn": "公路",
+     "pos": "n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "housing",
+     "cn": "住房；住宅",
+     "pos": "n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "product",
+     "cn": "产品",
+     "pos": "n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "railway",
+     "cn": "铁路",
+     "pos": "n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "socialist",
+     "cn": "社会主义的；社会主义者",
+     "pos": "adj.&n.",
+     "page": 4,
+     "unit": 1
+    },
+    {
+     "w": "digital",
+     "cn": "数字的",
+     "pos": "adj.",
+     "page": 5,
+     "unit": 1
+    },
+    {
+     "w": "track",
+     "cn": "小路；轨道",
+     "pos": "n.",
+     "page": 5,
+     "unit": 1
+    },
+    {
+     "w": "tunnel",
+     "cn": "隧道；地下通道",
+     "pos": "n.",
+     "page": 5,
+     "unit": 1
+    },
+    {
+     "w": "wide",
+     "cn": "宽的；宽阔的",
+     "pos": "adj.",
+     "page": 5,
+     "unit": 1
+    },
+    {
+     "w": "capital",
+     "cn": "首都",
+     "pos": "n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "complete",
+     "cn": "完成；完整的",
+     "pos": "v.&adj.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "convenient",
+     "cn": "方便的",
+     "pos": "adj.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "ease",
+     "cn": "容易；自在",
+     "pos": "n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "Kenyan",
+     "cn": "肯尼亚的；肯尼亚人",
+     "pos": "adj.&n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "link",
+     "cn": "链接；联系",
+     "pos": "n.&v.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "lorry",
+     "cn": "卡车",
+     "pos": "n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "manager",
+     "cn": "经理",
+     "pos": "n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "port",
+     "cn": "港口城市；港口",
+     "pos": "n.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "with ease",
+     "cn": "轻而易举地",
+     "pos": "adv.",
+     "page": 6,
+     "unit": 1
+    },
+    {
+     "w": "comment",
+     "cn": "评论；批评",
+     "pos": "v.&n.",
+     "page": 7,
+     "unit": 1
+    },
+    {
+     "w": "conclusion",
+     "cn": "总结",
+     "pos": "n.",
+     "page": 7,
+     "unit": 1
+    },
+    {
+     "w": "man-made",
+     "cn": "人造的；非天然的",
+     "pos": "adj.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "miracle",
+     "cn": "奇迹",
+     "pos": "n.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "narrow",
+     "cn": "狭窄的",
+     "pos": "adj.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "rail",
+     "cn": "铁路",
+     "pos": "n.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "the Olympics",
+     "cn": "奥林匹克运动会",
+     "pos": "n.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "villager",
+     "cn": "村民",
+     "pos": "n.",
+     "page": 8,
+     "unit": 1
+    },
+    {
+     "w": "discussion",
+     "cn": "讨论",
+     "pos": "n.",
+     "page": 9,
+     "unit": 1
+    },
+    {
+     "w": "flat",
+     "cn": "公寓；平坦的",
+     "pos": "n.&adj.",
+     "page": 9,
+     "unit": 1
+    },
+    {
+     "w": "junior",
+     "cn": "初级的；低年级的",
+     "pos": "adj.",
+     "page": 9,
+     "unit": 1
+    },
+    {
+     "w": "inspiring",
+     "cn": "鼓舞人心的；激励的",
+     "pos": "adj.",
+     "page": 11,
+     "unit": 2
+    },
+    {
+     "w": "calendar",
+     "cn": "日历",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "chemist",
+     "cn": "化学家",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "discovery",
+     "cn": "发现",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "historian",
+     "cn": "历史学家",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "hunger",
+     "cn": "饥饿",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "physicist",
+     "cn": "物理学家",
+     "pos": "n.",
+     "page": 12,
+     "unit": 2
+    },
+    {
+     "w": "century",
+     "cn": "世纪",
+     "pos": "n.",
+     "page": 13,
+     "unit": 2
+    },
+    {
+     "w": "disease",
+     "cn": "疾病",
+     "pos": "n.",
+     "page": 13,
+     "unit": 2
+    },
+    {
+     "w": "nation",
+     "cn": "国家；民族",
+     "pos": "n.",
+     "page": 13,
+     "unit": 2
+    },
+    {
+     "w": "pioneer",
+     "cn": "先驱；先锋",
+     "pos": "n.",
+     "page": 13,
+     "unit": 2
     },
     {
      "w": "spread",
@@ -2940,59 +1359,304 @@
      "unit": 2
     },
     {
-     "w": "squirrel",
-     "cn": "松鼠",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "stable",
-     "cn": "稳定的；稳固的",
+     "w": "wounded",
+     "cn": "受伤的；负伤的",
      "pos": "adj.",
-     "page": 33,
-     "unit": 4
+     "page": 13,
+     "unit": 2
     },
     {
-     "w": "step by step",
-     "cn": "逐步地",
-     "pos": "adv.",
-     "page": 24,
-     "unit": 3
+     "w": "courage",
+     "cn": "勇气",
+     "pos": "n.",
+     "page": 14,
+     "unit": 2
     },
     {
-     "w": "sticky",
-     "cn": "黏（性）的；闷热的",
+     "w": "live",
+     "cn": "现场直播的",
      "pos": "adj.",
-     "page": 48,
-     "unit": 5
+     "page": 14,
+     "unit": 2
     },
     {
-     "w": "stone",
-     "cn": "石头；岩石",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "strategy",
-     "cn": "策略",
-     "pos": "n.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "style",
-     "cn": "风格；方式",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "suggest",
-     "cn": "建议；提议",
+     "w": "look up to",
+     "cn": "钦佩；仰慕",
      "pos": "v.",
-     "page": 25,
+     "page": 14,
+     "unit": 2
+    },
+    {
+     "w": "pyramid",
+     "cn": "金字塔",
+     "pos": "n.",
+     "page": 14,
+     "unit": 2
+    },
+    {
+     "w": "wisdom",
+     "cn": "智慧；学问",
+     "pos": "n.",
+     "page": 14,
+     "unit": 2
+    },
+    {
+     "w": "childhood",
+     "cn": "童年",
+     "pos": "n.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "dynasty",
+     "cn": "朝代；王朝",
+     "pos": "n.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "necessary",
+     "cn": "必要的；必需的",
+     "pos": "adj.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "region",
+     "cn": "区域；地区",
+     "pos": "n.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "seed",
+     "cn": "种子",
+     "pos": "n.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "western",
+     "cn": "西方的；西部的",
+     "pos": "adj.",
+     "page": 15,
+     "unit": 2
+    },
+    {
+     "w": "collection",
+     "cn": "收集物；收藏品",
+     "pos": "n.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "exploration",
+     "cn": "探索",
+     "pos": "n.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "forever",
+     "cn": "永远",
+     "pos": "adv.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "leave behind",
+     "cn": "留下；遗留",
+     "pos": "v.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "live on",
+     "cn": "继续存在；继续活着",
+     "pos": "v.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "radio",
+     "cn": "无线电；收音机",
+     "pos": "n.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "scientific",
+     "cn": "科学（上）的",
+     "pos": "adj.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "whole",
+     "cn": "所有的；完全的",
+     "pos": "adj.",
+     "page": 16,
+     "unit": 2
+    },
+    {
+     "w": "daughter",
+     "cn": "女儿",
+     "pos": "n.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "flight",
+     "cn": "飞行；航班",
+     "pos": "n.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "herself",
+     "cn": "她自己",
+     "pos": "pron.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "hole",
+     "cn": "洞；孔",
+     "pos": "n.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "socialism",
+     "cn": "社会主义",
+     "pos": "n.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "universe",
+     "cn": "宇宙",
+     "pos": "n.",
+     "page": 18,
+     "unit": 2
+    },
+    {
+     "w": "inventor",
+     "cn": "发明家",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "kindness",
+     "cn": "善良",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "mankind",
+     "cn": "人类",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "period",
+     "cn": "时期；一段时间",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "thinker",
+     "cn": "思想家",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "woodwork",
+     "cn": "木工手艺",
+     "pos": "n.",
+     "page": 19,
+     "unit": 2
+    },
+    {
+     "w": "learner",
+     "cn": "学习者",
+     "pos": "n.",
+     "page": 21,
+     "unit": 3
+    },
+    {
+     "w": "experiment",
+     "cn": "实验；试验",
+     "pos": "n.&v.",
+     "page": 22,
+     "unit": 3
+    },
+    {
+     "w": "project",
+     "cn": "专题研究；项目",
+     "pos": "n.",
+     "page": 22,
+     "unit": 3
+    },
+    {
+     "w": "website",
+     "cn": "网站",
+     "pos": "n.",
+     "page": 22,
+     "unit": 3
+    },
+    {
+     "w": "dialogue",
+     "cn": "对话；对白",
+     "pos": "n.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "dictionary",
+     "cn": "词典；字典",
+     "pos": "n.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "general",
+     "cn": "总的；大体的",
+     "pos": "adj.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "grammar",
+     "cn": "语法",
+     "pos": "n.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "in general",
+     "cn": "总的来说",
+     "pos": "adv.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "look up",
+     "cn": "查阅；检查",
+     "pos": "v.",
+     "page": 23,
+     "unit": 3
+    },
+    {
+     "w": "speed",
+     "cn": "速度；加速",
+     "pos": "v.&n.",
+     "page": 23,
      "unit": 3
     },
     {
@@ -3003,11 +1667,60 @@
      "unit": 3
     },
     {
-     "w": "suitable",
-     "cn": "合适的；适宜的",
+     "w": "come across",
+     "cn": "遇见；发现",
+     "pos": "v.",
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "enjoyable",
+     "cn": "使人快乐的",
      "pos": "adj.",
-     "page": 46,
-     "unit": 5
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "podcast",
+     "cn": "播客",
+     "pos": "n.",
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "step by step",
+     "cn": "逐步地",
+     "pos": "adv.",
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "strategy",
+     "cn": "策略",
+     "pos": "n.",
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "zero",
+     "cn": "零；最低程度",
+     "pos": "num.",
+     "page": 24,
+     "unit": 3
+    },
+    {
+     "w": "method",
+     "cn": "方法",
+     "pos": "n.",
+     "page": 25,
+     "unit": 3
+    },
+    {
+     "w": "suggest",
+     "cn": "建议；提议",
+     "pos": "v.",
+     "page": 25,
+     "unit": 3
     },
     {
      "w": "summarize",
@@ -3015,6 +1728,573 @@
      "pos": "v.",
      "page": 25,
      "unit": 3
+    },
+    {
+     "w": "feedback",
+     "cn": "反馈的意见",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "growth",
+     "cn": "成长；增长",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "guidance",
+     "cn": "指导",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "in addition",
+     "cn": "另外；此外",
+     "pos": "adv.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "in part",
+     "cn": "部分地",
+     "pos": "adv.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "internet",
+     "cn": "互联网",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "material",
+     "cn": "材料；资料",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "mindset",
+     "cn": "观念模式",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "resource",
+     "cn": "资源；资料",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "textbook",
+     "cn": "教科书；课本",
+     "pos": "n.",
+     "page": 26,
+     "unit": 3
+    },
+    {
+     "w": "efficiently",
+     "cn": "效率高地",
+     "pos": "adv.",
+     "page": 27,
+     "unit": 3
+    },
+    {
+     "w": "take advantage of",
+     "cn": "利用",
+     "pos": "v.",
+     "page": 27,
+     "unit": 3
+    },
+    {
+     "w": "valley",
+     "cn": "山谷；溪谷",
+     "pos": "n.",
+     "page": 27,
+     "unit": 3
+    },
+    {
+     "w": "click",
+     "cn": "点击",
+     "pos": "v.",
+     "page": 28,
+     "unit": 3
+    },
+    {
+     "w": "pronunciation",
+     "cn": "发音；读音",
+     "pos": "n.",
+     "page": 28,
+     "unit": 3
+    },
+    {
+     "w": "magazine",
+     "cn": "杂志；期刊",
+     "pos": "n.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "newspaper",
+     "cn": "报纸",
+     "pos": "n.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "open up",
+     "cn": "打开；开放",
+     "pos": "v.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "print",
+     "cn": "印刷品；打印",
+     "pos": "v.&n.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "recent",
+     "cn": "最近的；最新的",
+     "pos": "adj.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "schoolwork",
+     "cn": "学校作业",
+     "pos": "n.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "shelf",
+     "cn": "（墙壁、书橱等的）架子；搁板",
+     "pos": "n.",
+     "page": 29,
+     "unit": 3
+    },
+    {
+     "w": "lecture",
+     "cn": "讲座；讲课",
+     "pos": "n.",
+     "page": 32,
+     "unit": 4
+    },
+    {
+     "w": "position",
+     "cn": "位置；安置",
+     "pos": "n.&v.",
+     "page": 32,
+     "unit": 4
+    },
+    {
+     "w": "react",
+     "cn": "作出反应；回应",
+     "pos": "v.",
+     "page": 32,
+     "unit": 4
+    },
+    {
+     "w": "run out",
+     "cn": "用完；耗尽",
+     "pos": "v.",
+     "page": 32,
+     "unit": 4
+    },
+    {
+     "w": "sadness",
+     "cn": "悲伤",
+     "pos": "n.",
+     "page": 32,
+     "unit": 4
+    },
+    {
+     "w": "chain",
+     "cn": "链条",
+     "pos": "n.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "memorize",
+     "cn": "记住；记忆",
+     "pos": "v.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "mix up",
+     "cn": "混淆；弄乱",
+     "pos": "v.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "put sth to good use",
+     "cn": "有效使用（或利用）某物",
+     "pos": "v.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "retell",
+     "cn": "复述；重述",
+     "pos": "v.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "stable",
+     "cn": "稳定的；稳固的",
+     "pos": "adj.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "tick",
+     "cn": "打勾；钩号",
+     "pos": "v.&n.",
+     "page": 33,
+     "unit": 4
+    },
+    {
+     "w": "case",
+     "cn": "情况；事例",
+     "pos": "n.",
+     "page": 34,
+     "unit": 4
+    },
+    {
+     "w": "go through",
+     "cn": "经历；仔细察看",
+     "pos": "v.",
+     "page": 34,
+     "unit": 4
+    },
+    {
+     "w": "grandson",
+     "cn": "孙子；外孙",
+     "pos": "n.",
+     "page": 34,
+     "unit": 4
+    },
+    {
+     "w": "happen",
+     "cn": "发生；碰巧",
+     "pos": "v.",
+     "page": 34,
+     "unit": 4
+    },
+    {
+     "w": "keep in mind",
+     "cn": "记住",
+     "pos": "v.",
+     "page": 34,
+     "unit": 4
+    },
+    {
+     "w": "grapevine",
+     "cn": "葡萄藤；葡萄树",
+     "pos": "n.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "gunshot",
+     "cn": "枪声；炮弹",
+     "pos": "n.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "mouth",
+     "cn": "嘴",
+     "pos": "n.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "opera",
+     "cn": "歌剧；歌剧院",
+     "pos": "n.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "pardon",
+     "cn": "原谅",
+     "pos": "v.&interj.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "picnic",
+     "cn": "野餐",
+     "pos": "n.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "recall",
+     "cn": "回忆起；回想起",
+     "pos": "v.",
+     "page": 35,
+     "unit": 4
+    },
+    {
+     "w": "discuss",
+     "cn": "讨论；谈论",
+     "pos": "v.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "effective",
+     "cn": "有效的",
+     "pos": "adj.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "engine",
+     "cn": "发动机",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "fuel",
+     "cn": "燃料",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "graph",
+     "cn": "图表",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "image",
+     "cn": "图像；形象",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "likely",
+     "cn": "很可能；可能的",
+     "pos": "adv.&adj.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "long-term",
+     "cn": "长期的",
+     "pos": "adj.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "organize",
+     "cn": "处理；组织",
+     "pos": "v.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "passage",
+     "cn": "段落；走廊",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "short-term",
+     "cn": "短期的",
+     "pos": "adj.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "technique",
+     "cn": "技巧",
+     "pos": "n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "to start with",
+     "cn": "首先",
+     "pos": "adv.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "view",
+     "cn": "观看；观点；视野",
+     "pos": "v.&n.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "wear out",
+     "cn": "使疲乏；磨损",
+     "pos": "v.",
+     "page": 36,
+     "unit": 4
+    },
+    {
+     "w": "paper",
+     "cn": "纸",
+     "pos": "n.",
+     "page": 37,
+     "unit": 4
+    },
+    {
+     "w": "password",
+     "cn": "密码；口令",
+     "pos": "n.",
+     "page": 37,
+     "unit": 4
+    },
+    {
+     "w": "dolphin",
+     "cn": "海豚",
+     "pos": "n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "increase",
+     "cn": "增长；增加",
+     "pos": "v.&n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "mall",
+     "cn": "购物商场",
+     "pos": "n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "notebook",
+     "cn": "笔记本；笔记本电脑",
+     "pos": "n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "nut",
+     "cn": "坚果",
+     "pos": "n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "recognize",
+     "cn": "辨认出；认可",
+     "pos": "v.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "squirrel",
+     "cn": "松鼠",
+     "pos": "n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "wild",
+     "cn": "野生的；自然生长的",
+     "pos": "adj.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "wound",
+     "cn": "使受伤；伤口",
+     "pos": "v.&n.",
+     "page": 38,
+     "unit": 4
+    },
+    {
+     "w": "divide",
+     "cn": "分；分成",
+     "pos": "v.",
+     "page": 39,
+     "unit": 4
+    },
+    {
+     "w": "fully",
+     "cn": "完全地",
+     "pos": "adv.",
+     "page": 39,
+     "unit": 4
+    },
+    {
+     "w": "one-size-fits-all",
+     "cn": "通用的",
+     "pos": "adj.",
+     "page": 39,
+     "unit": 4
+    },
+    {
+     "w": "outline",
+     "cn": "提纲；概述",
+     "pos": "n.&v.",
+     "page": 39,
+     "unit": 4
+    },
+    {
+     "w": "camera",
+     "cn": "照相机；摄影机",
+     "pos": "n.",
+     "page": 42,
+     "unit": 5
+    },
+    {
+     "w": "high-speed train",
+     "cn": "高速列车",
+     "pos": "n.",
+     "page": 42,
+     "unit": 5
+    },
+    {
+     "w": "invention",
+     "cn": "发明；创造",
+     "pos": "n.",
+     "page": 42,
+     "unit": 5
+    },
+    {
+     "w": "itself",
+     "cn": "它自己",
+     "pos": "pron.",
+     "page": 42,
+     "unit": 5
+    },
+    {
+     "w": "laptop",
+     "cn": "笔记本电脑",
+     "pos": "n.",
+     "page": 42,
+     "unit": 5
     },
     {
      "w": "sunglass",
@@ -3031,11 +2311,88 @@
      "unit": 5
     },
     {
-     "w": "support",
-     "cn": "支持",
-     "pos": "v.&n.",
-     "page": 3,
-     "unit": 1
+     "w": "file",
+     "cn": "文件",
+     "pos": "n.",
+     "page": 43,
+     "unit": 5
+    },
+    {
+     "w": "plastic",
+     "cn": "塑料；塑料的",
+     "pos": "n.&adj.",
+     "page": 43,
+     "unit": 5
+    },
+    {
+     "w": "printer",
+     "cn": "打印机；印刷公司",
+     "pos": "n.",
+     "page": 43,
+     "unit": 5
+    },
+    {
+     "w": "produce",
+     "cn": "生产；养育",
+     "pos": "v.",
+     "page": 43,
+     "unit": 5
+    },
+    {
+     "w": "invent",
+     "cn": "发明；编造",
+     "pos": "v.",
+     "page": 44,
+     "unit": 5
+    },
+    {
+     "w": "eastern",
+     "cn": "东部的；东方的",
+     "pos": "adj.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "economic",
+     "cn": "经济的；经济学的",
+     "pos": "adj.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "frozen",
+     "cn": "冻结的；冰冷的",
+     "pos": "adj.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "gain",
+     "cn": "获得；取得",
+     "pos": "v.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "layer",
+     "cn": "层；表层",
+     "pos": "n.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "melt",
+     "cn": "融化；逐渐消失",
+     "pos": "v.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "pipe",
+     "cn": "管道；管子",
+     "pos": "n.",
+     "page": 45,
+     "unit": 5
     },
     {
      "w": "suppose",
@@ -3045,6 +2402,468 @@
      "unit": 5
     },
     {
+     "w": "telephone",
+     "cn": "电话",
+     "pos": "n.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "tourism",
+     "cn": "旅游业",
+     "pos": "n.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "wheel",
+     "cn": "车轮；轮子",
+     "pos": "n.",
+     "page": 45,
+     "unit": 5
+    },
+    {
+     "w": "certain",
+     "cn": "某（些）；确定的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "cheap",
+     "cn": "便宜的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "creation",
+     "cn": "创造；作品",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "expensive",
+     "cn": "昂贵的；价格高的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "fibre",
+     "cn": "纤维",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "ideal",
+     "cn": "理想的；理想",
+     "pos": "adj.&n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "jute",
+     "cn": "黄麻纤维",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "later on",
+     "cn": "后来；其后",
+     "pos": "adv.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "liquid",
+     "cn": "液体；液体的",
+     "pos": "n.&adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "none",
+     "cn": "没有一个；毫无",
+     "pos": "pron.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "officer",
+     "cn": "官员；军官",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "papermaking",
+     "cn": "造纸工艺；造纸业",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "rapid",
+     "cn": "迅速的；瞬间的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "reality",
+     "cn": "现实；事实",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "responsible",
+     "cn": "作为原因的；有责任的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "responsible for",
+     "cn": "引起某事的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "shape",
+     "cn": "塑造；形状",
+     "pos": "v.&n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "speed up",
+     "cn": "加速",
+     "pos": "v.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "stone",
+     "cn": "石头；岩石",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "suitable",
+     "cn": "合适的；适宜的",
+     "pos": "adj.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "ware",
+     "cn": "制品；陶器",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "workshop",
+     "cn": "作坊；讲习班",
+     "pos": "n.",
+     "page": 46,
+     "unit": 5
+    },
+    {
+     "w": "lead to",
+     "cn": "导致；造成",
+     "pos": "v.",
+     "page": 47,
+     "unit": 5
+    },
+    {
+     "w": "result in",
+     "cn": "造成；导致",
+     "pos": "v.",
+     "page": 47,
+     "unit": 5
+    },
+    {
+     "w": "company",
+     "cn": "公司；陪伴",
+     "pos": "n.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "gradually",
+     "cn": "逐渐地",
+     "pos": "adv.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "production",
+     "cn": "生产；制作",
+     "pos": "n.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "rapidly",
+     "cn": "迅速地；快速地",
+     "pos": "adv.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "songbook",
+     "cn": "歌曲集",
+     "pos": "n.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "sticky",
+     "cn": "黏（性）的；闷热的",
+     "pos": "adj.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "widely",
+     "cn": "广泛地；普遍地",
+     "pos": "adv.",
+     "page": 48,
+     "unit": 5
+    },
+    {
+     "w": "glider",
+     "cn": "滑翔机",
+     "pos": "n.",
+     "page": 49,
+     "unit": 5
+    },
+    {
+     "w": "launch",
+     "cn": "发射；发起",
+     "pos": "v.&n.",
+     "page": 52,
+     "unit": 6
+    },
+    {
+     "w": "manned",
+     "cn": "载人的",
+     "pos": "adj.",
+     "page": 52,
+     "unit": 6
+    },
+    {
+     "w": "mission",
+     "cn": "任务；使命",
+     "pos": "n.",
+     "page": 52,
+     "unit": 6
+    },
+    {
+     "w": "rover",
+     "cn": "探测器；漫游者",
+     "pos": "n.",
+     "page": 52,
+     "unit": 6
+    },
+    {
+     "w": "telescope",
+     "cn": "望远镜",
+     "pos": "n.",
+     "page": 52,
+     "unit": 6
+    },
+    {
+     "w": "fall asleep",
+     "cn": "入睡",
+     "pos": "v.",
+     "page": 53,
+     "unit": 6
+    },
+    {
+     "w": "movement",
+     "cn": "运动；活动",
+     "pos": "n.",
+     "page": 53,
+     "unit": 6
+    },
+    {
+     "w": "tie",
+     "cn": "系上；领带",
+     "pos": "v.&n.",
+     "page": 53,
+     "unit": 6
+    },
+    {
+     "w": "weightless",
+     "cn": "失重的；无重量的",
+     "pos": "adj.",
+     "page": 53,
+     "unit": 6
+    },
+    {
+     "w": "crazy",
+     "cn": "疯狂的",
+     "pos": "adj.",
+     "page": 54,
+     "unit": 6
+    },
+    {
+     "w": "geology",
+     "cn": "地质；地质学",
+     "pos": "n.",
+     "page": 54,
+     "unit": 6
+    },
+    {
+     "w": "human being",
+     "cn": "人类",
+     "pos": "n.",
+     "page": 54,
+     "unit": 6
+    },
+    {
+     "w": "satellite",
+     "cn": "人造卫星；卫星",
+     "pos": "n.",
+     "page": 54,
+     "unit": 6
+    },
+    {
+     "w": "cancel",
+     "cn": "取消；终止",
+     "pos": "v.",
+     "page": 55,
+     "unit": 6
+    },
+    {
+     "w": "publish",
+     "cn": "刊登；出版",
+     "pos": "v.",
+     "page": 55,
+     "unit": 6
+    },
+    {
+     "w": "require",
+     "cn": "要求；需要",
+     "pos": "v.",
+     "page": 55,
+     "unit": 6
+    },
+    {
+     "w": "rocket",
+     "cn": "火箭",
+     "pos": "n.",
+     "page": 55,
+     "unit": 6
+    },
+    {
+     "w": "solar",
+     "cn": "太阳的；太阳能的",
+     "pos": "adj.",
+     "page": 55,
+     "unit": 6
+    },
+    {
+     "w": "god",
+     "cn": "神",
+     "pos": "n.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "in case",
+     "cn": "以防万一",
+     "pos": "conj.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "on board",
+     "cn": "在船（或车、飞机）上",
+     "pos": "adv.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "spacecraft",
+     "cn": "宇宙飞船",
+     "pos": "n.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "star",
+     "cn": "星；恒星",
+     "pos": "n.&adj.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "trillion",
+     "cn": "万亿；兆",
+     "pos": "n.",
+     "page": 56,
+     "unit": 6
+    },
+    {
+     "w": "cooperate",
+     "cn": "合作；协作",
+     "pos": "v.",
+     "page": 57,
+     "unit": 6
+    },
+    {
+     "w": "expectation",
+     "cn": "期望；希望",
+     "pos": "n.",
+     "page": 57,
+     "unit": 6
+    },
+    {
+     "w": "galaxy",
+     "cn": "星系",
+     "pos": "n.",
+     "page": 57,
+     "unit": 6
+    },
+    {
+     "w": "imagination",
+     "cn": "想象；想象力",
+     "pos": "n.",
+     "page": 57,
+     "unit": 6
+    },
+    {
+     "w": "set foot on",
+     "cn": "访问；参观（某地）",
+     "pos": "v.",
+     "page": 57,
+     "unit": 6
+    },
+    {
+     "w": "ship",
+     "cn": "（大）船；舰",
+     "pos": "n.",
+     "page": 58,
+     "unit": 6
+    },
+    {
+     "w": "spaceship",
+     "cn": "（航天）飞船",
+     "pos": "n.",
+     "page": 58,
+     "unit": 6
+    },
+    {
      "w": "survey",
      "cn": "测量；民意调查",
      "pos": "v.&n.",
@@ -3052,32 +2871,319 @@
      "unit": 6
     },
     {
-     "w": "swimming",
-     "cn": "游泳",
+     "w": "operate",
+     "cn": "操作；运转",
+     "pos": "v.",
+     "page": 59,
+     "unit": 6
+    },
+    {
+     "w": "rhythm",
+     "cn": "节奏；韵律",
      "pos": "n.",
-     "page": 74,
-     "unit": 8
+     "page": 61,
+     "unit": 7
     },
     {
-     "w": "take advantage of",
-     "cn": "利用",
-     "pos": "v.",
-     "page": 27,
-     "unit": 3
-    },
-    {
-     "w": "take the lead",
-     "cn": "带头",
-     "pos": "v.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "talented",
-     "cn": "有才能的；天才的",
+     "w": "classical",
+     "cn": "古典乐的；古典的",
      "pos": "adj.",
-     "page": 76,
-     "unit": 8
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "folk",
+     "cn": "民间的；人们",
+     "pos": "adj.&n.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "jazz",
+     "cn": "爵士乐",
+     "pos": "n.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "lyric",
+     "cn": "歌词；抒情的",
+     "pos": "n.&adj.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "pop",
+     "cn": "流行音乐；蹦出",
+     "pos": "n.&v.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "rap",
+     "cn": "说唱乐；表演说唱乐",
+     "pos": "v.&n.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "sing along",
+     "cn": "随着唱",
+     "pos": "v.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "traditional",
+     "cn": "传统的；习俗的",
+     "pos": "adj.",
+     "page": 62,
+     "unit": 7
+    },
+    {
+     "w": "electric",
+     "cn": "电的；令人激动的",
+     "pos": "adj.",
+     "page": 63,
+     "unit": 7
+    },
+    {
+     "w": "keyboard",
+     "cn": "电子琴；键盘",
+     "pos": "n.",
+     "page": 63,
+     "unit": 7
+    },
+    {
+     "w": "piece",
+     "cn": "一片；一篇",
+     "pos": "n.",
+     "page": 63,
+     "unit": 7
+    },
+    {
+     "w": "style",
+     "cn": "风格；方式",
+     "pos": "n.",
+     "page": 63,
+     "unit": 7
+    },
+    {
+     "w": "trumpet",
+     "cn": "小号；喇叭",
+     "pos": "n.",
+     "page": 63,
+     "unit": 7
+    },
+    {
+     "w": "golden",
+     "cn": "金色的",
+     "pos": "adj.",
+     "page": 64,
+     "unit": 7
+    },
+    {
+     "w": "lover",
+     "cn": "情人；爱好者",
+     "pos": "n.",
+     "page": 64,
+     "unit": 7
+    },
+    {
+     "w": "performance",
+     "cn": "演出；表演",
+     "pos": "n.",
+     "page": 64,
+     "unit": 7
+    },
+    {
+     "w": "performer",
+     "cn": "表演者",
+     "pos": "n.",
+     "page": 64,
+     "unit": 7
+    },
+    {
+     "w": "romantic",
+     "cn": "浪漫的；爱情的",
+     "pos": "adj.",
+     "page": 64,
+     "unit": 7
+    },
+    {
+     "w": "composer",
+     "cn": "作曲家",
+     "pos": "n.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "download",
+     "cn": "下载",
+     "pos": "v.&n.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "electronic",
+     "cn": "电子的",
+     "pos": "adj.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "gifted",
+     "cn": "有天赋的",
+     "pos": "adj.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "poet",
+     "cn": "诗人",
+     "pos": "n.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "policewoman",
+     "cn": "女警察",
+     "pos": "n.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "purple",
+     "cn": "紫色；紫色的",
+     "pos": "n.&adj.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "rating",
+     "cn": "评分；等级",
+     "pos": "n.",
+     "page": 65,
+     "unit": 7
+    },
+    {
+     "w": "genius",
+     "cn": "天才人物；天赋",
+     "pos": "n.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "look down on",
+     "cn": "轻视；蔑视",
+     "pos": "v.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "mysterious",
+     "cn": "神秘的；奇怪的",
+     "pos": "adj.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "outdoor",
+     "cn": "户外的",
+     "pos": "adj.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "pianist",
+     "cn": "钢琴家",
+     "pos": "n.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "Polish",
+     "cn": "波兰的",
+     "pos": "adj.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "proudly",
+     "cn": "自豪地；壮观地",
+     "pos": "adv.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "soul",
+     "cn": "真挚情感；灵魂",
+     "pos": "n.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "widen",
+     "cn": "使变宽；扩展",
+     "pos": "v.",
+     "page": 66,
+     "unit": 7
+    },
+    {
+     "w": "contribution",
+     "cn": "贡献；捐款",
+     "pos": "n.",
+     "page": 67,
+     "unit": 7
+    },
+    {
+     "w": "funeral",
+     "cn": "葬礼",
+     "pos": "n.",
+     "page": 67,
+     "unit": 7
+    },
+    {
+     "w": "profession",
+     "cn": "职业；行业",
+     "pos": "n.",
+     "page": 67,
+     "unit": 7
+    },
+    {
+     "w": "young and old",
+     "cn": "老老少少",
+     "pos": "n.",
+     "page": 67,
+     "unit": 7
+    },
+    {
+     "w": "cartoon",
+     "cn": "动画片；漫画",
+     "pos": "n.",
+     "page": 68,
+     "unit": 7
+    },
+    {
+     "w": "champion",
+     "cn": "冠军",
+     "pos": "n.",
+     "page": 68,
+     "unit": 7
+    },
+    {
+     "w": "fair",
+     "cn": "公平的；合理的",
+     "pos": "adj.",
+     "page": 68,
+     "unit": 7
+    },
+    {
+     "w": "flowing",
+     "cn": "流畅的；松散的",
+     "pos": "adj.",
+     "page": 68,
+     "unit": 7
     },
     {
      "w": "tap",
@@ -3094,95 +3200,102 @@
      "unit": 7
     },
     {
-     "w": "technique",
-     "cn": "技巧",
+     "w": "finger",
+     "cn": "手指",
      "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "telephone",
-     "cn": "电话",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "telescope",
-     "cn": "望远镜",
-     "pos": "n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "textbook",
-     "cn": "教科书；课本",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "the Olympics",
-     "cn": "奥林匹克运动会",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "thinker",
-     "cn": "思想家",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "tick",
-     "cn": "打勾；钩号",
-     "pos": "v.&n.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "tie",
-     "cn": "系上；领带",
-     "pos": "v.&n.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "to start with",
-     "cn": "首先",
-     "pos": "adv.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "tourism",
-     "cn": "旅游业",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "track",
-     "cn": "小路；轨道",
-     "pos": "n.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "traditional",
-     "cn": "传统的；习俗的",
-     "pos": "adj.",
-     "page": 62,
+     "page": 69,
      "unit": 7
     },
     {
-     "w": "trillion",
-     "cn": "万亿；兆",
+     "w": "nowadays",
+     "cn": "现在；目前",
+     "pos": "adv.",
+     "page": 69,
+     "unit": 7
+    },
+    {
+     "w": "schoolmate",
+     "cn": "同学",
      "pos": "n.",
-     "page": 56,
-     "unit": 6
+     "page": 69,
+     "unit": 7
+    },
+    {
+     "w": "competition",
+     "cn": "比赛",
+     "pos": "n.",
+     "page": 72,
+     "unit": 8
+    },
+    {
+     "w": "pull-up",
+     "cn": "引体向上",
+     "pos": "n.",
+     "page": 72,
+     "unit": 8
+    },
+    {
+     "w": "relay",
+     "cn": "接力赛",
+     "pos": "n.",
+     "page": 72,
+     "unit": 8
+    },
+    {
+     "w": "shot-put",
+     "cn": "推铅球",
+     "pos": "n.",
+     "page": 72,
+     "unit": 8
+    },
+    {
+     "w": "judge",
+     "cn": "裁判员；判断",
+     "pos": "n.&v.",
+     "page": 73,
+     "unit": 8
+    },
+    {
+     "w": "runner",
+     "cn": "参加赛跑的人",
+     "pos": "n.",
+     "page": 73,
+     "unit": 8
+    },
+    {
+     "w": "smooth",
+     "cn": "顺利的；光滑的",
+     "pos": "adj.",
+     "page": 73,
+     "unit": 8
+    },
+    {
+     "w": "take the lead",
+     "cn": "带头",
+     "pos": "v.",
+     "page": 73,
+     "unit": 8
+    },
+    {
+     "w": "figure",
+     "cn": "人物；数字",
+     "pos": "n.&v.",
+     "page": 74,
+     "unit": 8
+    },
+    {
+     "w": "figure skating",
+     "cn": "花样滑冰",
+     "pos": "n.",
+     "page": 74,
+     "unit": 8
+    },
+    {
+     "w": "swimming",
+     "cn": "游泳",
+     "pos": "n.",
+     "page": 74,
+     "unit": 8
     },
     {
      "w": "truly",
@@ -3192,11 +3305,25 @@
      "unit": 8
     },
     {
-     "w": "trumpet",
-     "cn": "小号；喇叭",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
+     "w": "compete",
+     "cn": "比赛；竞争",
+     "pos": "v.",
+     "page": 75,
+     "unit": 8
+    },
+    {
+     "w": "neither",
+     "cn": "两者都不",
+     "pos": "adv.&conj.",
+     "page": 75,
+     "unit": 8
+    },
+    {
+     "w": "nor",
+     "cn": "也不",
+     "pos": "conj.&adv.",
+     "page": 75,
+     "unit": 8
     },
     {
      "w": "tryout",
@@ -3206,13 +3333,6 @@
      "unit": 8
     },
     {
-     "w": "tunnel",
-     "cn": "隧道；地下通道",
-     "pos": "n.",
-     "page": 5,
-     "unit": 1
-    },
-    {
      "w": "unique",
      "cn": "独一无二的；罕见的",
      "pos": "adj.",
@@ -3220,137 +3340,88 @@
      "unit": 8
     },
     {
-     "w": "universe",
-     "cn": "宇宙",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
+     "w": "dramatic",
+     "cn": "激动的；出人意料的",
+     "pos": "adj.",
+     "page": 76,
+     "unit": 8
     },
     {
-     "w": "valley",
-     "cn": "山谷；溪谷",
-     "pos": "n.",
-     "page": 27,
-     "unit": 3
+     "w": "gold",
+     "cn": "金；金色的",
+     "pos": "n.&adj.",
+     "page": 76,
+     "unit": 8
     },
     {
-     "w": "view",
-     "cn": "观看；观点；视野",
+     "w": "in wonder",
+     "cn": "惊奇地",
+     "pos": "adv.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "mascot",
+     "cn": "吉祥物",
+     "pos": "n.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "medal",
+     "cn": "奖章；勋章",
+     "pos": "n.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "motto",
+     "cn": "口号；格言",
+     "pos": "n.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "set a record",
+     "cn": "创造纪录",
+     "pos": "v.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "talented",
+     "cn": "有才能的；天才的",
+     "pos": "adj.",
+     "page": 76,
+     "unit": 8
+    },
+    {
+     "w": "citizen",
+     "cn": "市民；公民",
+     "pos": "n.",
+     "page": 77,
+     "unit": 8
+    },
+    {
+     "w": "harmony",
+     "cn": "和谐；和睦",
+     "pos": "n.",
+     "page": 77,
+     "unit": 8
+    },
+    {
+     "w": "pride",
+     "cn": "自豪；骄傲",
+     "pos": "n.",
+     "page": 77,
+     "unit": 8
+    },
+    {
+     "w": "reform",
+     "cn": "改革；变革",
      "pos": "v.&n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "villager",
-     "cn": "村民",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "ware",
-     "cn": "制品；陶器",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "wear out",
-     "cn": "使疲乏；磨损",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "website",
-     "cn": "网站",
-     "pos": "n.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "weightless",
-     "cn": "失重的；无重量的",
-     "pos": "adj.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "western",
-     "cn": "西方的；西部的",
-     "pos": "adj.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "wheel",
-     "cn": "车轮；轮子",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "whole",
-     "cn": "所有的；完全的",
-     "pos": "adj.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "wide",
-     "cn": "宽的；宽阔的",
-     "pos": "adj.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "widely",
-     "cn": "广泛地；普遍地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "widen",
-     "cn": "使变宽；扩展",
-     "pos": "v.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "wild",
-     "cn": "野生的；自然生长的",
-     "pos": "adj.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "wisdom",
-     "cn": "智慧；学问",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "with ease",
-     "cn": "轻而易举地",
-     "pos": "adv.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "woodwork",
-     "cn": "木工手艺",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "workshop",
-     "cn": "作坊；讲习班",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
+     "page": 77,
+     "unit": 8
     },
     {
      "w": "worldwide",
@@ -3360,74 +3431,53 @@
      "unit": 8
     },
     {
-     "w": "wound",
-     "cn": "使受伤；伤口",
-     "pos": "v.&n.",
-     "page": 38,
-     "unit": 4
+     "w": "Greek",
+     "cn": "希腊的；希腊人",
+     "pos": "adj.&n.",
+     "page": 78,
+     "unit": 8
     },
     {
-     "w": "wounded",
-     "cn": "受伤的；负伤的",
-     "pos": "adj.",
-     "page": 13,
-     "unit": 2
+     "w": "master",
+     "cn": "能手；掌握",
+     "pos": "n.&v.",
+     "page": 78,
+     "unit": 8
     },
     {
-     "w": "young and old",
-     "cn": "老老少少",
+     "w": "Roman",
+     "cn": "古罗马的；罗马人",
+     "pos": "adj.&n.",
+     "page": 78,
+     "unit": 8
+    },
+    {
+     "w": "satisfy",
+     "cn": "使（某人）满意",
+     "pos": "v.",
+     "page": 78,
+     "unit": 8
+    },
+    {
+     "w": "cheer",
+     "cn": "喝彩；欢呼",
+     "pos": "v.",
+     "page": 79,
+     "unit": 8
+    },
+    {
+     "w": "crowd",
+     "cn": "人群；观众",
      "pos": "n.",
-     "page": 67,
-     "unit": 7
+     "page": 79,
+     "unit": 8
     },
     {
-     "w": "zero",
-     "cn": "零；最低程度",
-     "pos": "num.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "hill",
-     "cn": "山丘",
-     "pos": "n.",
-     "page": 2,
-     "unit": 1
-    },
-    {
-     "w": "internet",
-     "cn": "互联网",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "mouth",
-     "cn": "嘴",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "paper",
-     "cn": "纸",
-     "pos": "n.",
-     "page": 37,
-     "unit": 4
-    },
-    {
-     "w": "star",
-     "cn": "星；恒星",
-     "pos": "n.&adj.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "ship",
-     "cn": "（大）船；舰",
-     "pos": "n.",
-     "page": 58,
-     "unit": 6
+     "w": "drown",
+     "cn": "淹死；溺死",
+     "pos": "v.",
+     "page": 79,
+     "unit": 8
     }
    ],
    "source": "2026 秋人教版英语九年级上册（正式版）",
@@ -4425,45 +4475,6 @@
    "parentName2": "袁萍",
    "parentPhone": "18615799911",
    "parentPhone2": "18982214962"
-  },
-  {
-   "id": "stu_7fbde7bf",
-   "no": "40",
-   "name": "胡梓轩",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "胡兵",
-   "parentName2": "谭霞",
-   "parentPhone": "13908073206",
-   "parentPhone2": "15281036878"
-  },
-  {
-   "id": "stu_3dac0f37",
-   "no": "41",
-   "name": "李馥含",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "李丹怡",
-   "parentName2": "李华正",
-   "parentPhone": "15002892996",
-   "parentPhone2": "18121851318"
-  },
-  {
-   "id": "stu_d0c77427",
-   "no": "42",
-   "name": "张嫄琳",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "唐文书",
-   "parentName2": "张贵强",
-   "parentPhone": "13378224466",
-   "parentPhone2": "15983489631"
   }
  ],
  "timetable": {
@@ -4483,11 +4494,6 @@
    "content": ""
   },
   "1-6": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-7": {
    "room": "",
    "classId": "cls_4",
    "content": ""
@@ -4547,22 +4553,12 @@
    "classId": "cls_8",
    "content": ""
   },
+  "5-7": {
+   "room": "",
+   "classId": "cls_4",
+   "content": ""
+  },
   "5-8": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-12": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-13": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-14": {
    "room": "",
    "classId": "cls_4",
    "content": ""
@@ -4578,6 +4574,21 @@
    "content": ""
   },
   "3-11": {
+   "room": "",
+   "classId": "cls_4",
+   "content": ""
+  },
+  "3-12": {
+   "room": "",
+   "classId": "cls_4",
+   "content": ""
+  },
+  "3-13": {
+   "room": "",
+   "classId": "cls_4",
+   "content": ""
+  },
+  "3-14": {
    "room": "",
    "classId": "cls_4",
    "content": ""
@@ -4598,5 +4609,38 @@
    "content": ""
   }
  },
- "discipline": []
+ "discipline": [
+  {
+   "id": "disc_be1o6krtjg",
+   "date": "2026-09-01",
+   "type": "其他",
+   "detail": "下午第一节上课睡觉",
+   "handled": false,
+   "studentId": "stu_ccb1123b"
+  },
+  {
+   "id": "disc_beyb9dhwoa",
+   "date": "2026-09-01",
+   "type": "其他",
+   "detail": "下午第一节上课睡觉",
+   "handled": false,
+   "studentId": "stu_fvlwfmr1a7"
+  },
+  {
+   "id": "disc_bfjv9vng9c",
+   "date": "2026-09-01",
+   "type": "其他",
+   "detail": "下午第一节上课睡觉",
+   "handled": false,
+   "studentId": "stu_fwhr2s9fut"
+  },
+  {
+   "id": "disc_bgfolpardf",
+   "date": "2026-09-01",
+   "type": "其他",
+   "detail": "下午第一节上课睡觉",
+   "handled": false,
+   "studentId": "stu_256a58f4"
+  }
+ ]
 }
