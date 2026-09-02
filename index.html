@@ -5354,25 +5354,50 @@ alter publication supabase_realtime add table workbench;</pre>
     };
   }
 
-  /* 保存为「含当前数据的 U 盘版」：把当前 DB 重新内嵌进本页 HTML 并下载，
-     用户拷回 U 盘覆盖原文件；联网后把该文件发给我即可更新云端+网址。 */
+  /* 移动端友好的文件保存：iOS 不支持 a[download]+blob，改走系统分享「存储到文件」 */
+  function saveHtmlFile(filename, text) {
+    const blob = new Blob(['﻿' + text], { type: 'text/html;charset=utf-8' });
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isIOS && navigator.share) {
+      navigator.share({ files: [new File([blob], filename, { type: 'text/html' })], title: filename })
+        .then(() => toast('已调起系统分享：选「存储到文件」即可保存到手机 ✅'))
+        .catch(() => { const u = URL.createObjectURL(blob); window.open(u); toast('已打开文件页，长按 → 存储到文件'); });
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  /* 保存为「含当前数据的 U 盘版」：把当前 DB 重新内嵌进本页 HTML 并下载。
+     关键：生成的文件必须自带 IIFE 引导脚本，把 __PORTABLE_DB__ 写入 localStorage，
+     否则换设备打开时 Store 只从 localStorage 读、数据会全空。
+     （线上版本身无内嵌引导，曾因此生成出打不开数据的文件——已修复：
+      此处统一构造完整引导块，原文件有标记则替换、无则注入到 </head> 前。） */
   function savePortable() {
     try {
       const dbJson = JSON.stringify(Store.db)
         .replace(/<\/script>/gi, '<\\/script>')
         .replace(/<\/(\w)/g, '<\\/$1');
+      const seed = '/*__PSEED_START__*/\n<script>\n'
+        + 'window.__PORTABLE_MODE__=true;\n'
+        + 'window.__PORTABLE_DB__=' + dbJson + ';\n'
+        + '(function(){try{var K="hailey_workbench_v1",raw=localStorage.getItem(K),ok=false;'
+        + 'if(raw){var o=JSON.parse(raw);ok=!!(o&&o.students&&o.students.length);}'
+        + 'if(!ok&&window.__PORTABLE_DB__){localStorage.setItem(K,JSON.stringify(window.__PORTABLE_DB__));'
+        + 'console.log("[便携版] 已载入内嵌数据");}}catch(e){}})();\n'
+        + '<\/script>\n/*__PSEED_END__*/';
       const html = document.documentElement.outerHTML;
       let out;
-      if (/window\.__PORTABLE_DB__\s*=/.test(html)) {
-        out = html.replace(/window\.__PORTABLE_DB__\s*=\s*[\s\S]*?;\n/,
-                            'window.__PORTABLE_DB__=' + dbJson + ';\n');
+      if (html.indexOf('/*__PSEED_START__*/') >= 0) {
+        out = html.replace(/\/\*__PSEED_START__\*\/[\s\S]*?\/\*__PSEED_END__\*\//, seed);
       } else {
-        // 兜底：当前文件未内嵌数据时，注入到 <head> 末尾
-        const tag = '<script>window.__PORTABLE_DB__=' + dbJson + ';<\/script>';
-        out = html.replace('</head>', tag + '</head>');
+        out = html.replace('</head>', seed + '</head>');
       }
-      if (!/__PORTABLE_DB__/.test(out)) throw new Error('未能写入数据');
-      UI.download('hailey-workbench-便携版.html', out, 'text/html');
+      if (out.indexOf('__PORTABLE_DB__') < 0) throw new Error('未能写入数据');
+      saveHtmlFile('hailey-workbench-便携版.html', out);
       toast('已生成含最新数据的 U 盘版，拷回 U 盘覆盖即可 ✅');
     } catch (e) {
       toast('保存失败：' + e.message, 'err');
