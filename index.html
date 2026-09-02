@@ -405,6 +405,15 @@ textarea.inp{resize:vertical}
 tr.today-row-hl{background:#fffdf3}
 tr.today-row-hl:hover{background:#fff8e6}
 
+/* 听写/背诵：已过关 & 未过关名单 */
+.name-grid{display:flex;flex-wrap:wrap;gap:6px;padding:4px 0}
+.name-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:8px;
+  font-size:13px;cursor:pointer;text-decoration:none;border:1px solid var(--line);background:#fafbff}
+.name-chip:hover{border-color:var(--pri)}
+.name-chip .muted{font-size:11px}
+.name-chip.ok{background:#eafaf1;border-color:#c6ecd8;color:#0f7a4a}
+.name-chip.bad{background:#fff3f3;border-color:#f7cfcf;color:#b02525}
+
 </style>
 </head>
 <body>
@@ -675,15 +684,24 @@ var LS = (function(){
       const exist = rec.id && db.checks.find(c => c.id === rec.id);
       let item;
       if (exist) { Object.assign(exist, rec); item = exist; }
-      else { item = Object.assign({ id: uid('chk') }, rec); db.checks.push(item); }
+      else {
+        // 注意：不能用 Object.assign({id:uid()}, rec) —— 若 rec 自带 id:undefined 会把 id 覆盖成 undefined，
+        // 导致记录没有 id、删除按钮失效（历史 bug）。
+        item = Object.assign({}, rec);
+        if (!item.id) item.id = uid('chk');
+        db.checks.push(item);
+      }
       this.syncRetests(item);
       save();
       return item;
     },
     removeCheck(id) {
+      if (!id || id === 'null' || id === 'undefined') return false;
+      const before = db.checks.length;
       db.checks = db.checks.filter(c => c.id !== id);
       db.retests = db.retests.filter(r => r.srcId !== id);
       save();
+      return db.checks.length < before;
     },
     // 未过关 -> 二次待办池；过关 -> 自动销项
     syncRetests(rec) {
@@ -2710,6 +2728,7 @@ window.App = window.App || { pages: {} };
     const weekRecs = An.checks(kind, st.classId, week.start, week.end);
     const totalAgg = list.reduce((a, c) => { const r = An.recordRate(c); a.t += r.total; a.p += r.pass; return a; }, { t: 0, p: 0 });
     const wb = (Store.db.settings.wordBank && Store.db.settings.wordBank.words) || [];
+    const stx = stats(kind, st.classId);
 
     view.innerHTML = `
       <div class="page-head">
@@ -2730,8 +2749,25 @@ window.App = window.App || { pages: {} };
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-head"><h3>🔁 二次待办池</h3>
-            <div><button class="btn xs" id="c-topodo">生成待办</button></div></div>
+          <div class="card-head"><h3>✅ 已过关 <span class="muted sm">${st.passed.length} 人</span></h3>
+            <button class="btn xs" id="c-exp-pass">📤 导出名单</button></div>
+          ${st.passed.length ? `<div class="name-grid">${st.passed.map(sid => nameChip(sid, 'ok')).join('')}</div>`
+          : empty('还没有过关记录', '✅')}
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${st.failed.length} 人</span></h3>
+            <button class="btn xs" id="c-exp-fail">📤 导出名单</button></div>
+          ${st.failed.length ? `<div class="name-grid">${st.failed.map(sid => nameChip(sid, 'bad')).join('')}</div>
+            <p class="hint">补过后会自动移到「已过关」。点名字可看该生详情。</p>`
+          : empty('全部过关，厉害 🎉', '🎉')}
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🔁 二次待办池 <span class="muted sm">${pending.length} 项</span></h3>
+          <div><button class="btn xs" id="c-exp-pend">📤 导出名单</button>
+               <button class="btn xs" id="c-topodo">生成待办</button></div></div>
           ${pending.length ? `<div class="table-wrap max360"><table class="tbl">
             <thead><tr><th>学生</th><th>班级</th><th>范围</th><th>首次未过</th><th style="width:96px">操作</th></tr></thead>
             <tbody>${pending.sort((a, b) => a.date.localeCompare(b.date)).map(r => `
@@ -2743,10 +2779,9 @@ window.App = window.App || { pages: {} };
             </tbody></table></div>` : empty('太棒了，没有欠账 🎉', '✅')}
         </div>
 
-        <div class="card">
-          <div class="card-head"><h3>📈 过关率趋势</h3><span class="muted sm">按记录日期</span></div>
-          ${trendChart(kind, st.classId)}
-        </div>
+      <div class="card">
+        <div class="card-head"><h3>📈 过关率趋势</h3><span class="muted sm">按记录日期</span></div>
+        ${trendChart(kind, st.classId)}
       </div>
 
       <div class="card">
@@ -2778,6 +2813,85 @@ window.App = window.App || { pages: {} };
       </div>`;
 
     bind(view, kind);
+  }
+
+  /* ---------- 已过关 / 未过关 统计 ----------
+   * 有未补欠账 → 未过关；其余有过记录 → 已过关。
+   * 补过后欠账销项，学生自动从「未过关」移到「已过关」。
+   */
+  function stats(kind, classId) {
+    const checks = Store.db.checks.filter(c => c.kind === kind && (!classId || c.classId === classId));
+    const pending = Store.pendingRetests().filter(r => r.kind === kind)
+      .filter(r => !classId || (Store.student(r.studentId) || {}).classId === classId);
+    const failSet = new Set(pending.map(r => r.studentId));
+    const all = new Set();
+    checks.forEach(c => Object.keys(c.results || {}).forEach(sid => all.add(sid)));
+    const passed = Array.from(all).filter(sid => !failSet.has(sid));
+    // 按班级、学号排序，方便点名
+    const sortIds = (ids) => ids.slice().sort((a, b) => {
+      const sa = Store.student(a) || {}, sb = Store.student(b) || {};
+      return String(sa.classId).localeCompare(String(sb.classId)) ||
+        String(sa.no || '').padStart(4, '0').localeCompare(String(sb.no || '').padStart(4, '0'));
+    });
+    return { checks, pending, passed: sortIds(passed), failed: sortIds(Array.from(failSet)) };
+  }
+
+  function nameChip(sid, tone) {
+    const s = Store.student(sid) || {};
+    return `<a class="name-chip ${tone}" data-stu="${sid}" title="${esc(s.parentPhone || '')}">
+      ${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>`;
+  }
+
+  /* ---------- 补过：销项 + 归入已过关 ---------- */
+  function markPassed(rtId) {
+    const rt = Store.db.retests.find(r => r.id === rtId);
+    if (!rt) { toast('记录不存在', 'err'); return; }
+    const name = Store.studentName(rt.studentId);
+    // ① 欠账销项
+    Store.patch('retests', rtId, { done: true, doneDate: UI.today() });
+    // ② 把对应听写/背诵记录里该生改为过关，这样会归入「已过关」名单
+    const chk = Store.db.checks.find(c => c.id === rt.srcId);
+    if (chk) {
+      chk.results = chk.results || {};
+      chk.results[rt.studentId] = 1;
+    }
+    // ③ 同范围同类型的其它未补欠账一并销项（学生找老师补一次通常覆盖同一范围）
+    Store.db.retests.filter(r => !r.done && r.kind === rt.kind &&
+      r.studentId === rt.studentId && r.scope === rt.scope).forEach(r => {
+      r.done = true; r.doneDate = UI.today();
+    });
+    Store.save();
+    toast(`${name} 已补过，归入已过关 ✅`);
+    App.render();
+  }
+
+  /* ---------- 导出名单（CSV，带家长电话，方便联系） ---------- */
+  function exportNames(filename, ids, extraCol) {
+    if (!ids || !ids.length) { toast('名单是空的', 'err'); return; }
+    const cell = v => {
+      const s = String(v === undefined || v === null ? '' : v).replace(/"/g, '""');
+      return /^1\d{10}$/.test(s) ? '"=""' + s + '""' : '"' + s + '"';
+    };
+    const head = ['班级', '学号', '姓名', '家长', '家长电话', '家长二', '家长二电话'];
+    if (extraCol) head.push(extraCol, '首次未过', '欠账天数');
+    const rows = ids.map(item => {
+      const sid = typeof item === 'string' ? item : item.sid;
+      const s = Store.student(sid) || {};
+      const base = [Store.className(s.classId), s.no || '', s.name || '',
+        s.parentName || '', s.parentPhone || '', s.parentName2 || '', s.parentPhone2 || ''];
+      if (extraCol && typeof item === 'object') {
+        base.push(item.scope || '', item.date || '', UI.diffDays(UI.today(), item.date || UI.today()) + ' 天');
+      }
+      return base.map(cell).join(',');
+    });
+    const csv = '\ufeff' + [head.map(h => '"' + h + '"').join(',')].concat(rows).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename.replace(/[\\/:*?"<>|]/g, '') + '.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast(`已导出 ${ids.length} 人 📄`);
   }
 
   function kpi(label, value, icon, tone) {
@@ -2910,10 +3024,14 @@ window.App = window.App || { pages: {} };
     $$('[data-stu]', view).forEach(b => b.onclick = () => App.openStudent(b.dataset.stu));
     $$('[data-del]', view).forEach(b => b.onclick = () => confirmBox('删除这条记录？相关的待补项也会移除。',
       () => { Store.removeCheck(b.dataset.del); toast('已删除'); App.render(); }, { danger: true, okText: '删除' }));
-    $$('[data-clear]', view).forEach(b => b.onclick = () => {
-      Store.patch('retests', b.dataset.clear, { done: true, doneDate: UI.today() });
-      toast('已销项 ✅'); App.render();
-    });
+    const today = UI.today();
+    $('#c-exp-pass', view).onclick = () => exportNames(`${META[kind].title}_已过关_${today}`, stx.passed);
+    $('#c-exp-fail', view).onclick = () => exportNames(`${META[kind].title}_未过关_${today}`, stx.failed);
+    $('#c-exp-pend', view).onclick = () => exportNames(
+      `${META[kind].title}_二次待办_${today}`,
+      stx.pending.map(r => ({ sid: r.studentId, scope: r.scope, date: r.date })), '欠账范围');
+
+    $$('[data-clear]', view).forEach(b => b.onclick = () => markPassed(b.dataset.clear));
     $('#c-topodo', view).onclick = () => {
       const pending = Store.pendingRetests().filter(r => r.kind === kind);
       if (!pending.length) { toast('没有待补项'); return; }
@@ -4806,13 +4924,44 @@ td.dt{font-size:13px;line-height:1.6}
     }
   }
 
+  // 查云端学生数（用于判断本机是不是旧数据）
+  async function remoteStudentCount() {
+    try {
+      const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload',
+        { headers: headers() });
+      if (!r.ok) return -1;
+      const rows = await r.json();
+      return ((rows[0] && rows[0].payload && rows[0].payload.students) || []).length;
+    } catch (e) { return -1; }
+  }
+
   async function push(silent) {
     if (!ready()) { if (!silent) toast('请先配置 Supabase', 'err'); return false; }
-    // 安全防护：自动推送时，本地无学生数据则跳过，防止空数据覆盖云端
-    if (silent && Store.db.students.length === 0) {
+    const localN = Store.db.students.length;
+    // 安全防护 1：自动推送时，本地无学生数据则跳过，防止空数据覆盖云端
+    if (silent && localN === 0) {
       log('跳过自动推送：本地无学生数据（防止覆盖云端）');
       return false;
     }
+    // 安全防护 2：本机学生数明显少于云端 → 判定为旧数据，拒绝覆盖
+    // （旧版本曾因本机旧数据反推，把云端 82 人覆盖回 78 人）
+    const remoteN = await remoteStudentCount();
+    if (remoteN > 0 && localN < remoteN) {
+      const msg = `本机 ${localN} 人 < 云端 ${remoteN} 人，疑似旧数据，已阻止覆盖云端`;
+      log(msg + '（请先点「拉取云端」）', false);
+      if (!silent) {
+        UI.confirmBox(`本机学生 <b>${localN}</b> 人，云端 <b>${remoteN}</b> 人。<br><br>
+          直接推送会<b>丢掉云端的学生和电话</b>。<br>建议先「拉取云端」，确认后再推送。<br><br>
+          仍要强制推送吗？`, () => forcePush(), { danger: true, okText: '强制推送' });
+      } else {
+        App.updateSyncBadge();
+      }
+      return false;
+    }
+    return forcePush(silent);
+  }
+
+  async function forcePush(silent) {
     try {
       const body = [{ id: cfg().rowId, payload: Store.db, updated_at: new Date().toISOString() }];
       const r = await fetch(base() + '?on_conflict=id', {
