@@ -5,7 +5,7 @@
   "teacher": "Hailey",
   "version": 1,
   "gradYear": 2027,
-  "updatedAt": "2026-09-01T14:45:35.303Z"
+  "updatedAt": "2026-09-02T14:04:43.547Z"
  },
  "comms": [],
  "exams": [
@@ -784,6 +784,16 @@
    "doneAt": "2026-09-01",
    "quadrant": 1,
    "createdAt": "2026-09-01"
+  },
+  {
+   "id": "todo_ecd617xvgd",
+   "due": "2026-09-02",
+   "done": true,
+   "time": "",
+   "title": "备grammar",
+   "doneAt": "2026-09-02",
+   "quadrant": 1,
+   "createdAt": "2026-09-02"
   }
  ],
  "checks": [],
@@ -802,7 +812,24 @@
   }
  ],
  "retests": [],
- "progress": [],
+ "progress": [
+  {
+   "id": "pg_5smprs5yhr",
+   "date": "2026-09-02",
+   "note": "",
+   "unit": "1",
+   "classId": "cls_4",
+   "content": "2d完成，练习册讲了一二课时"
+  },
+  {
+   "id": "pg_5smprhli4w",
+   "date": "2026-09-02",
+   "note": "",
+   "unit": "1",
+   "classId": "cls_8",
+   "content": "SA 2C还要再听一次，知识点没讲，练习册没讲"
+  }
+ ],
  "settings": {
   "band": 8,
   "days": 5,
@@ -892,11 +919,11 @@
    },
    {
     "name": "自习",
-    "time": "17:25-18:05"
+    "time": "17:25-17:55"
    },
    {
     "name": "晚辅",
-    "time": "18:40-19:20"
+    "time": "18:35-19:20"
    },
    {
     "name": "自习",
@@ -3505,13 +3532,14 @@
  "students": [
   {
    "id": "stu_914e9b05",
-   "no": "1",
+   "no": 1,
    "name": "李欣怡",
    "note": "",
    "tags": [
     "全卷及格生"
    ],
    "focus": true,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "张金燕",
    "parentName2": "李明亮",
@@ -3520,13 +3548,14 @@
   },
   {
    "id": "stu_f83c671e",
-   "no": "2",
+   "no": 7,
    "name": "刘璐",
    "note": "",
    "tags": [
     "全卷及格生"
    ],
    "focus": true,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "杨波",
    "parentName2": "刘亚龙",
@@ -3535,26 +3564,28 @@
   },
   {
    "id": "stu_0fa2b551",
-   "no": "3",
+   "no": 13,
    "name": "李轲",
    "note": "",
    "tags": [
     "全卷及格生"
    ],
    "focus": true,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_6522270d",
-   "no": "4",
+   "no": 20,
    "name": "蔡佳欣",
    "note": "另一联系电话：18728448133",
    "tags": [
     "全卷及格生"
    ],
    "focus": true,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "蔡学富",
    "parentName2": "",
@@ -3563,13 +3594,14 @@
   },
   {
    "id": "stu_31860e88",
-   "no": "5",
+   "no": 26,
    "name": "徐鼎洋",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "徐功宇",
    "parentName2": "李琳",
@@ -3578,13 +3610,14 @@
   },
   {
    "id": "stu_d2e59daa",
-   "no": "6",
+   "no": 33,
    "name": "段茹轩",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "熊燕",
    "parentName2": "段炳军",
@@ -3593,13 +3626,14 @@
   },
   {
    "id": "stu_4f8c2901",
-   "no": "7",
+   "no": 34,
    "name": "吕睿彤",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "吕麟",
    "parentName2": "黄娟",
@@ -3608,11 +3642,12 @@
   },
   {
    "id": "stu_14f41b19",
-   "no": "8",
+   "no": 27,
    "name": "陈立言",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "陈婧",
    "parentName2": "陈应宪",
@@ -3621,11 +3656,12 @@
   },
   {
    "id": "stu_4346202e",
-   "no": "9",
+   "no": 21,
    "name": "贺浩轩",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "陈莉",
    "parentName2": "贺志强",
@@ -3634,13 +3670,14 @@
   },
   {
    "id": "stu_8f113478",
-   "no": "10",
+   "no": 14,
    "name": "朱泽兰",
    "note": "",
    "tags": [
     "全卷及格生"
    ],
    "focus": true,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "周清谊",
    "parentName2": "朱定兵",
@@ -3649,11 +3686,12 @@
   },
   {
    "id": "stu_1412fa5b",
-   "no": "11",
+   "no": 8,
    "name": "张锦怡",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "张欣",
    "parentName2": "柯易均",
@@ -3662,11 +3700,12 @@
   },
   {
    "id": "stu_d5d98fd8",
-   "no": "12",
+   "no": 2,
    "name": "唐闻博",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "任为",
    "parentName2": "唐忠坤",
@@ -3675,13 +3714,14 @@
   },
   {
    "id": "stu_4f70447a",
-   "no": "13",
+   "no": 3,
    "name": "王子丹",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "徐露露",
    "parentName2": "王崇宇",
@@ -3690,11 +3730,12 @@
   },
   {
    "id": "stu_f8e764ef",
-   "no": "14",
+   "no": 9,
    "name": "赖思辰",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "赖绪洪",
    "parentName2": "康秀英",
@@ -3703,24 +3744,26 @@
   },
   {
    "id": "stu_59b78c6a",
-   "no": "15",
+   "no": 15,
    "name": "张佳宜",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_88c14594",
-   "no": "16",
+   "no": 22,
    "name": "唐浩仁",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "郑婷",
    "parentName2": "唐川",
@@ -3729,11 +3772,12 @@
   },
   {
    "id": "stu_fe0fa301",
-   "no": "17",
+   "no": 28,
    "name": "戚嘉航",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "贾红娟",
    "parentName2": "戚秦",
@@ -3742,13 +3786,14 @@
   },
   {
    "id": "stu_a31521ab",
-   "no": "18",
+   "no": 35,
    "name": "梁心蕊",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "王厚娟",
    "parentName2": "梁明才",
@@ -3757,11 +3802,12 @@
   },
   {
    "id": "stu_8d71d833",
-   "no": "19",
+   "no": 36,
    "name": "姚嘉杰",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "李艳",
    "parentName2": "姚建",
@@ -3770,11 +3816,12 @@
   },
   {
    "id": "stu_206ff598",
-   "no": "20",
+   "no": 29,
    "name": "黄婉婷",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "张采霞",
    "parentName2": "黄永权",
@@ -3783,11 +3830,12 @@
   },
   {
    "id": "stu_4f6191d7",
-   "no": "21",
+   "no": 23,
    "name": "傅茂涵",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "蒋冬梅",
    "parentName2": "傅强胜",
@@ -3796,11 +3844,12 @@
   },
   {
    "id": "stu_a4b1f79c",
-   "no": "22",
+   "no": 16,
    "name": "杨汶平",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "黄帮英",
    "parentName2": "杨青才",
@@ -3809,13 +3858,14 @@
   },
   {
    "id": "stu_4d0357e0",
-   "no": "23",
+   "no": 10,
    "name": "荣博文",
    "note": "",
    "tags": [
     "A卷合格生"
    ],
    "focus": true,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "赵秀芳",
    "parentName2": "荣勇",
@@ -3824,22 +3874,24 @@
   },
   {
    "id": "stu_8feece3a",
-   "no": "24",
+   "no": 4,
    "name": "罗钧耀",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_69a5893e",
-   "no": "25",
+   "no": 5,
    "name": "吴贤丞",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "吴波",
    "parentName2": "伏静",
@@ -3848,11 +3900,12 @@
   },
   {
    "id": "stu_23333e0f",
-   "no": "26",
+   "no": 11,
    "name": "朱宇晨",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "朱波",
    "parentName2": "朱凤娟",
@@ -3861,11 +3914,12 @@
   },
   {
    "id": "stu_21c3db5a",
-   "no": "27",
+   "no": 17,
    "name": "张恒溢",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "张鹏",
    "parentName2": "符勇静",
@@ -3874,11 +3928,12 @@
   },
   {
    "id": "stu_833e52bc",
-   "no": "28",
+   "no": 24,
    "name": "张思瑞",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "张小波",
    "parentName2": "",
@@ -3887,11 +3942,12 @@
   },
   {
    "id": "stu_db4ca9d8",
-   "no": "29",
+   "no": 30,
    "name": "熊文浚",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "赵小艳",
    "parentName2": "熊运福",
@@ -3900,11 +3956,12 @@
   },
   {
    "id": "stu_dd97438e",
-   "no": "30",
+   "no": 37,
    "name": "陈泓州",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "闵艳茹",
    "parentName2": "陈军",
@@ -3913,22 +3970,24 @@
   },
   {
    "id": "stu_90445adf",
-   "no": "31",
+   "no": 6,
    "name": "马天仪",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "1组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_c0f993d5",
-   "no": "32",
+   "no": 12,
    "name": "向泽成",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "2组",
    "classId": "cls_4",
    "parentName": "邱维婷",
    "parentName2": "向建",
@@ -3937,11 +3996,12 @@
   },
   {
    "id": "stu_f3cc0f37",
-   "no": "33",
+   "no": 18,
    "name": "马梓瑞",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "马毅",
    "parentName2": "苏萍",
@@ -3950,33 +4010,36 @@
   },
   {
    "id": "stu_af6dbd84",
-   "no": "34",
+   "no": 25,
    "name": "罗欣月",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "4组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_ccb1123b",
-   "no": "35",
+   "no": 31,
    "name": "伍民炜",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "",
    "parentPhone": ""
   },
   {
    "id": "stu_256a58f4",
-   "no": "36",
+   "no": 38,
    "name": "汪羽辰",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "冯文苹",
    "parentName2": "汪松苹",
@@ -4440,11 +4503,12 @@
   },
   {
    "id": "stu_fuicfv7p0i",
-   "no": "",
+   "no": 19,
    "name": "朱承熙",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "3组",
    "classId": "cls_4",
    "parentName": "朱刚",
    "parentName2": "杨雪雯",
@@ -4453,11 +4517,12 @@
   },
   {
    "id": "stu_fvlwfmr1a7",
-   "no": "",
+   "no": 32,
    "name": "伍溰虹",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "5组",
    "classId": "cls_4",
    "parentName": "蒋丽萍",
    "parentName2": "伍兵",
@@ -4466,16 +4531,31 @@
   },
   {
    "id": "stu_fwhr2s9fut",
-   "no": "",
+   "no": 39,
    "name": "邹昕然",
    "note": "",
    "tags": [],
    "focus": false,
+   "group": "6组",
    "classId": "cls_4",
    "parentName": "邹振华",
    "parentName2": "袁萍",
    "parentPhone": "18615799911",
    "parentPhone2": "18982214962"
+  },
+  {
+   "id": "stu_742e3cc1",
+   "no": 40,
+   "name": "周彦辰",
+   "note": "",
+   "tags": [],
+   "focus": false,
+   "group": "6组",
+   "classId": "cls_4",
+   "parentName": "",
+   "parentName2": "",
+   "parentPhone": "",
+   "parentPhone2": ""
   },
   {
    "id": "stu_7fbde7bf",
