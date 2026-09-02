@@ -5193,6 +5193,7 @@ td.dt{font-size:13px;line-height:1.6}
   function render(view) {
     const c = cfg();
     const s = Store.db.settings;
+    const PORTABLE = !!window.__PORTABLE_MODE__;   // 便携/U盘模式下：隐藏云端推送按钮，改用「保存U盘版」
     view.innerHTML = `
       <div class="page-head">
         <div><h2>☁️ 云端同步与设置</h2><p class="sub">数据默认只存在本机浏览器；接上你自己的 Supabase 即可多设备同步</p></div>
@@ -5234,10 +5235,9 @@ td.dt{font-size:13px;line-height:1.6}
             <div class="btn-row">
               <button class="btn" id="sb-save">💾 保存配置</button>
               <button class="btn" id="sb-test">🔌 测试连接</button>
-              <button class="btn primary" id="sb-push">⬆️ 推送到云端</button>
-              <button class="btn" id="sb-pull">⬇️ 从云端拉取</button>
+${PORTABLE ? '' : '              <button class="btn primary" id="sb-push">⬆️ 推送到云端</button>\n              <button class="btn" id="sb-pull">⬇️ 从云端拉取</button>'}
             </div>
-            <p class="hint">建议用 anon key + 行级安全（RLS），把这张表设为仅自己可访问。</p>
+${PORTABLE ? '            <p class="hint" style="color:#b06">📌 这是 U 盘离线版：不要点「推送到云端」（离线会覆盖好数据）。要更新到云端/网址，请在本页「💾 本地备份」区点 <b>保存U盘版（含当前数据）</b>，把文件发给我即可。</p>' : '            <p class="hint">建议用 anon key + 行级安全（RLS），把这张表设为仅自己可访问。</p>'}
             <details class="sql"><summary>📄 第一次使用？点开复制建表 SQL</summary>
 <pre class="code">create table if not exists workbench (
   id text primary key,
@@ -5265,8 +5265,10 @@ alter publication supabase_realtime add table workbench;</pre>
           <div class="btn-row">
             <button class="btn" id="bk-export">导出 JSON 备份</button>
             <button class="btn" id="bk-import">导入备份恢复</button>
+            <button class="btn primary" id="bk-save-portable">💾 保存U盘版（含当前数据）</button>
             <button class="btn danger ghost" id="bk-reset">清空本机数据</button>
           </div>
+          <p class="hint">「保存U盘版」会把当前所有数据重新写进这个 HTML 文件并下载——拷回 U 盘覆盖原文件即可。换电脑打开自动载入最新数据；联网后把这个文件发给我，我就能帮你更新到云端和网址。</p>
           <p class="hint">存储用量约 ${(JSON.stringify(Store.db).length / 1024).toFixed(1)} KB</p>
         </div>
       </div>
@@ -5319,6 +5321,7 @@ alter publication supabase_realtime add table workbench;</pre>
     $('#sb-clearlog', view).onclick = () => { logs = []; LS.setItem(LOG_KEY, '[]'); App.render(); };
 
     $('#bk-export', view).onclick = () => UI.download(`班级工作台备份_${UI.today()}.json`, Store.exportJSON(), 'application/json');
+    $('#bk-save-portable', view).onclick = () => savePortable();
     $('#bk-import', view).onclick = () => {
       const inp = document.createElement('input');
       inp.type = 'file'; inp.accept = '.json';
@@ -5349,6 +5352,31 @@ alter publication supabase_realtime add table workbench;</pre>
       toast('设置已保存');
       App.render();
     };
+  }
+
+  /* 保存为「含当前数据的 U 盘版」：把当前 DB 重新内嵌进本页 HTML 并下载，
+     用户拷回 U 盘覆盖原文件；联网后把该文件发给我即可更新云端+网址。 */
+  function savePortable() {
+    try {
+      const dbJson = JSON.stringify(Store.db)
+        .replace(/<\/script>/gi, '<\\/script>')
+        .replace(/<\/(\w)/g, '<\\/$1');
+      const html = document.documentElement.outerHTML;
+      let out;
+      if (/window\.__PORTABLE_DB__\s*=/.test(html)) {
+        out = html.replace(/window\.__PORTABLE_DB__\s*=\s*[\s\S]*?;\n/,
+                            'window.__PORTABLE_DB__=' + dbJson + ';\n');
+      } else {
+        // 兜底：当前文件未内嵌数据时，注入到 <head> 末尾
+        const tag = '<script>window.__PORTABLE_DB__=' + dbJson + ';<\/script>';
+        out = html.replace('</head>', tag + '</head>');
+      }
+      if (!/__PORTABLE_DB__/.test(out)) throw new Error('未能写入数据');
+      UI.download('hailey-workbench-便携版.html', out, 'text/html');
+      toast('已生成含最新数据的 U 盘版，拷回 U 盘覆盖即可 ✅');
+    } catch (e) {
+      toast('保存失败：' + e.message, 'err');
+    }
   }
 
   App.pages.sync = { title: '云端同步', render };
