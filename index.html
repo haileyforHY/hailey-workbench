@@ -4936,7 +4936,7 @@ td.dt{font-size:13px;line-height:1.6}
     } catch (e) { return { n: -1, time: '' }; }
   }
 
-  async function push(silent) {
+  async function push(silent, force) {
     if (!ready()) { if (!silent) toast('请先配置 Supabase', 'err'); return false; }
     const localN = Store.db.students.length;
     // 安全防护 1：自动推送时，本地无学生数据则跳过，防止空数据覆盖云端
@@ -4948,7 +4948,7 @@ td.dt{font-size:13px;line-height:1.6}
     const remoteN = remote.n;
     // 安全防护 2：本机学生数明显少于云端 → 判定为旧数据，拒绝覆盖
     // （旧版本曾因本机旧数据反推，把云端 82 人覆盖回 78 人）
-    if (remoteN > 0 && localN < remoteN) {
+    if (!force && remoteN > 0 && localN < remoteN) {
       const msg = `本机 ${localN} 人 < 云端 ${remoteN} 人，疑似旧数据，已阻止覆盖云端`;
       log(msg + '（请先点「拉取云端」）', false);
       if (!silent) {
@@ -4964,7 +4964,7 @@ td.dt{font-size:13px;line-height:1.6}
     // （防止"学生数相同但内容更旧"的旧 localStorage 把云端好数据覆盖掉）
     const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
     const localTime = Store.db.meta.updatedAt || '';
-    if (remoteN >= 0 && ts(remote.time) > ts(localTime)) {
+    if (!force && remoteN >= 0 && ts(remote.time) > ts(localTime)) {
       const msg = '本机数据比云端旧，已阻止覆盖云端（请先「拉取云端」）';
       log(msg, false);
       if (!silent) toast(msg, 'err'); else App.updateSyncBadge();
@@ -5019,7 +5019,7 @@ td.dt{font-size:13px;line-height:1.6}
         Store.clearDirty();
         suppressPush = false;
         log('拉取成功（云端 ' + (remoteTime || '').slice(0, 19) + '）');
-        toast('已从云端恢复 ☁️');
+        toast('已从云端恢复 ☁️' + (window.__PORTABLE_MODE__ ? '，记得点「保存U盘版」覆盖U盘文件' : ''));
         App.render();
         App.updateSyncBadge();
       };
@@ -5193,7 +5193,7 @@ td.dt{font-size:13px;line-height:1.6}
   function render(view) {
     const c = cfg();
     const s = Store.db.settings;
-    const PORTABLE = !!window.__PORTABLE_MODE__;   // 便携/U盘模式下：隐藏云端推送按钮，改用「保存U盘版」
+    const PORTABLE = !!window.__PORTABLE_MODE__;   // 便携/U盘模式：同样支持联网推送/拉取云端
     view.innerHTML = `
       <div class="page-head">
         <div><h2>☁️ 云端同步与设置</h2><p class="sub">数据默认只存在本机浏览器；接上你自己的 Supabase 即可多设备同步</p></div>
@@ -5235,9 +5235,10 @@ td.dt{font-size:13px;line-height:1.6}
             <div class="btn-row">
               <button class="btn" id="sb-save">💾 保存配置</button>
               <button class="btn" id="sb-test">🔌 测试连接</button>
-${PORTABLE ? '' : '              <button class="btn primary" id="sb-push">⬆️ 推送到云端</button>\n              <button class="btn" id="sb-pull">⬇️ 从云端拉取</button>'}
+              <button class="btn primary" id="sb-push">⬆️ 推送到云端</button>
+              <button class="btn" id="sb-pull">⬇️ 从云端拉取</button>
             </div>
-${PORTABLE ? '            <p class="hint" style="color:#b06">📌 这是 U 盘离线版：不要点「推送到云端」（离线会覆盖好数据）。要更新到云端/网址，请在本页「💾 本地备份」区点 <b>保存U盘版（含当前数据）</b>，把文件发给我即可。</p>' : '            <p class="hint">建议用 anon key + 行级安全（RLS），把这张表设为仅自己可访问。</p>'}
+${PORTABLE ? '            <p class="hint" style="color:#067">📌 <b>U 盘版联网即可自助同步</b>：<br>· 把 U 盘里的数据传上云端 → 点「⬆️ 推送到云端」（会确认一次，用 U 盘当前数据覆盖云端）<br>· 把云端最新数据取回 U 盘 → 点「⬇️ 从云端拉取」，然后在本页「💾 本地备份」区点 <b>保存U盘版</b> 覆盖 U 盘里的文件即可。</p>' : '            <p class="hint">建议用 anon key + 行级安全（RLS），把这张表设为仅自己可访问。</p>'}
             <details class="sql"><summary>📄 第一次使用？点开复制建表 SQL</summary>
 <pre class="code">create table if not exists workbench (
   id text primary key,
@@ -5268,7 +5269,7 @@ alter publication supabase_realtime add table workbench;</pre>
             <button class="btn primary" id="bk-save-portable">💾 保存U盘版（含当前数据）</button>
             <button class="btn danger ghost" id="bk-reset">清空本机数据</button>
           </div>
-          <p class="hint">「保存U盘版」会把当前所有数据重新写进这个 HTML 文件并下载——拷回 U 盘覆盖原文件即可。换电脑打开自动载入最新数据；联网后把这个文件发给我，我就能帮你更新到云端和网址。</p>
+          <p class="hint">「保存U盘版」会把当前所有数据重新写进这个 HTML 文件并下载——拷回 U 盘覆盖原文件即可。联网后最简单的方式：① 点上方「⬆️ 推送到云端」把本文件数据直接传上云端；② 点「⬇️ 从云端拉取」后，再点此按钮即可把云端最新数据存回 U 盘文件。也可直接把文件发我代更新。</p>
           <p class="hint">存储用量约 ${(JSON.stringify(Store.db).length / 1024).toFixed(1)} KB</p>
         </div>
       </div>
@@ -5313,7 +5314,15 @@ alter publication supabase_realtime add table workbench;</pre>
       Store.save();
     };
     $('#sb-test', view).onclick = () => { syncInputs(); test().then(() => App.render()); };
-    $('#sb-push', view).onclick = () => { syncInputs(); push(); };
+    $('#sb-push', view).onclick = () => {
+      syncInputs();
+      if (PORTABLE) {
+        UI.confirmBox('将用 U 盘版当前数据 <b>覆盖云端</b>。<br><br>若云端有用「保存U盘版」以外的方式产生的新数据（如另一台电脑刚改的），会被覆盖丢失。<br><br>确定用 U 盘数据覆盖云端吗？',
+          () => push(false, true), { danger: true, okText: '确定推送' });
+      } else {
+        push();
+      }
+    };
     $('#sb-pull', view).onclick = () => { syncInputs(); pull(); };
     $('#sb-copysql', view).onclick = () => {
       navigator.clipboard.writeText(UI.$('.code', view).textContent).then(() => toast('SQL 已复制'));
