@@ -2749,16 +2749,16 @@ window.App = window.App || { pages: {} };
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-head"><h3>✅ 已过关 <span class="muted sm">${st.passed.length} 人</span></h3>
+          <div class="card-head"><h3>✅ 已过关 <span class="muted sm">${stx.passed.length} 人</span></h3>
             <button class="btn xs" id="c-exp-pass">📤 导出名单</button></div>
-          ${st.passed.length ? `<div class="name-grid">${st.passed.map(sid => nameChip(sid, 'ok')).join('')}</div>`
+          ${stx.passed.length ? `<div class="name-grid">${stx.passed.map(sid => nameChip(sid, 'ok')).join('')}</div>`
           : empty('还没有过关记录', '✅')}
         </div>
 
         <div class="card">
-          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${st.failed.length} 人</span></h3>
+          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${stx.failed.length} 人</span></h3>
             <button class="btn xs" id="c-exp-fail">📤 导出名单</button></div>
-          ${st.failed.length ? `<div class="name-grid">${st.failed.map(sid => nameChip(sid, 'bad')).join('')}</div>
+          ${stx.failed.length ? `<div class="name-grid">${stx.failed.map(sid => nameChip(sid, 'bad')).join('')}</div>
             <p class="hint">补过后会自动移到「已过关」。点名字可看该生详情。</p>`
           : empty('全部过关，厉害 🎉', '🎉')}
         </div>
