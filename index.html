@@ -546,7 +546,7 @@ var LS = (function(){
         tags: ['临界生', '全卷及格生', 'A卷合格生', '需家校跟进', '偏科', '待提升', '进步显著', '课堂活跃'],
         discTypes: ['迟到', '作业未交', '上课讲话', '不带课本', '顶撞老师', '违规带手机', '其他'],
         commWays: ['电话', '微信', '面谈', '家访', '家长会'],
-        supabase: { url: 'https://wnenjltqmvqemrbrkgub.supabase.co', key: 'sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ', table: 'workbench', rowId: 'hailey', auto: true, interval: 60 }
+        supabase: { url: 'https://wnenjltqmvqemrbrkgub.supabase.co', key: 'sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ', table: 'workbench', rowId: 'hailey', auto: false, interval: 60 }
       }
     };
   }
@@ -4924,15 +4924,16 @@ td.dt{font-size:13px;line-height:1.6}
     }
   }
 
-  // 查云端学生数（用于判断本机是不是旧数据）
-  async function remoteStudentCount() {
+  // 查云端学生数 + 更新时间（用于判断本机是不是旧数据）
+  async function remoteMeta() {
     try {
-      const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload',
+      const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload,updated_at',
         { headers: headers() });
-      if (!r.ok) return -1;
+      if (!r.ok) return { n: -1, time: '' };
       const rows = await r.json();
-      return ((rows[0] && rows[0].payload && rows[0].payload.students) || []).length;
-    } catch (e) { return -1; }
+      const p = (rows[0] && rows[0].payload) || {};
+      return { n: (p.students || []).length, time: (rows[0] && rows[0].updated_at) || '' };
+    } catch (e) { return { n: -1, time: '' }; }
   }
 
   async function push(silent) {
@@ -4943,9 +4944,10 @@ td.dt{font-size:13px;line-height:1.6}
       log('跳过自动推送：本地无学生数据（防止覆盖云端）');
       return false;
     }
+    const remote = await remoteMeta();
+    const remoteN = remote.n;
     // 安全防护 2：本机学生数明显少于云端 → 判定为旧数据，拒绝覆盖
     // （旧版本曾因本机旧数据反推，把云端 82 人覆盖回 78 人）
-    const remoteN = await remoteStudentCount();
     if (remoteN > 0 && localN < remoteN) {
       const msg = `本机 ${localN} 人 < 云端 ${remoteN} 人，疑似旧数据，已阻止覆盖云端`;
       log(msg + '（请先点「拉取云端」）', false);
@@ -4956,6 +4958,16 @@ td.dt{font-size:13px;line-height:1.6}
       } else {
         App.updateSyncBadge();
       }
+      return false;
+    }
+    // 安全防护 3：本机数据的时间戳比云端旧 → 同样判定为旧数据，拒绝覆盖
+    // （防止"学生数相同但内容更旧"的旧 localStorage 把云端好数据覆盖掉）
+    const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
+    const localTime = Store.db.meta.updatedAt || '';
+    if (remoteN >= 0 && ts(remote.time) > ts(localTime)) {
+      const msg = '本机数据比云端旧，已阻止覆盖云端（请先「拉取云端」）';
+      log(msg, false);
+      if (!silent) toast(msg, 'err'); else App.updateSyncBadge();
       return false;
     }
     return forcePush(silent);
@@ -5133,13 +5145,40 @@ td.dt{font-size:13px;line-height:1.6}
   function startAuto() {
     stopAuto();
     const c = cfg();
-    if (!c.auto || !ready()) return;
-    rtDesired = true;
-    rtStatus = 'fallback';
-    document.addEventListener('store:change', onStoreChange);
-    initialSync();      // ① 先拉云端最新数据
-    startPolling();     // ② 始终定时轮询
-    connectRT();        // ③ 尝试 Realtime（如可用则即时同步）
+    // 统一关闭自动同步（用户要求），并持久化，使同步页开关显示为关闭
+    if (c.auto) { c.auto = false; Store.save(); }
+    if (!ready()) return;
+    // 自动同步已关闭：仅启动时按需拉取一次云端以恢复本机，不再轮询/实时/改动即推
+    initialPullOnce();
+  }
+
+  // 仅启动拉取一次：云端比本机新才拉取，避免覆盖本机未推送的新改动；
+  // 不开启任何自动推送 / 轮询 / 实时，防止旧数据反向覆盖云端。
+  async function initialPullOnce() {
+    try {
+      const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload,updated_at', { headers: headers() });
+      if (!r.ok) return;
+      const rows = await r.json();
+      if (!rows.length) return;
+      const remote = rows[0];
+      if (!remote.payload) return;
+      const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
+      const remoteTime = (remote.payload.meta && remote.payload.meta.updatedAt) || remote.updated_at || '';
+      const localTime = Store.db.meta.updatedAt || '';
+      if (ts(remoteTime) <= ts(localTime)) { App.updateSyncBadge(); return; }  // 本机更新，保持本机
+      suppressPush = true;
+      const keepSupabase = JSON.parse(JSON.stringify(cfg()));
+      Store.setDB(remote.payload);
+      Store.db.settings.supabase = keepSupabase;
+      Store.saveNow();
+      Store.clearDirty();
+      suppressPush = false;
+      log('已拉取云端恢复本机（自动同步已关闭，多端同步请手动推送/拉取）');
+      App.render();
+      App.updateSyncBadge();
+    } catch (e) {
+      log('初始拉取失败：' + e.message, false);
+    }
   }
   function stopAuto() {
     rtDesired = false;
@@ -5174,7 +5213,7 @@ td.dt{font-size:13px;line-height:1.6}
         <div class="card">
           <div class="card-head"><h3>🔐 Supabase 配置</h3></div>
           <div class="form">
-            <p class="hint" style="margin:0 0 2px">已为你<b>预配置</b> Supabase 并默认开启实时自动同步——任何设备打开本工作台即自动连云端、多端一致，无需手动填写。想换项目时改这里即可。</p>
+            <p class="hint" style="margin:0 0 2px">已为你<b>预配置</b> Supabase。<b>默认关闭</b>实时自动同步——多设备共享请手动点「推送到云端 / 从云端拉取」，避免旧数据反向覆盖云端。想换项目时改这里即可。</p>
 
             <div class="cfg-group">
               <div class="cfg-group-title">① 连接信息</div>
@@ -5191,7 +5230,7 @@ td.dt{font-size:13px;line-height:1.6}
               <label class="check-inline"><input type="checkbox" id="sb-auto" ${c.auto ? 'checked' : ''}> 开启实时自动同步</label>
               <label>轮询兜底间隔（秒）<input class="inp" type="number" id="sb-int" value="${c.interval}" min="15"></label>
             </div>
-            <p class="hint">开启后：本机数据改动自动推送，并定时拉取云端变化保持多端一致。打开时自动拉取云端最新数据，空数据不会覆盖云端。</p>
+            <p class="hint">勾选后将开启实时自动同步：本机改动自动推送、定时拉取云端保持多端一致。默认关闭，避免旧数据把云端好数据覆盖掉。打开页面时会先拉取一次云端以恢复本机。</p>
             <div class="btn-row">
               <button class="btn" id="sb-save">💾 保存配置</button>
               <button class="btn" id="sb-test">🔌 测试连接</button>
