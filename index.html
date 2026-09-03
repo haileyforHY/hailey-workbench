@@ -2842,7 +2842,7 @@ window.App = window.App || { pages: {} };
         </div>
       </div>`;
 
-    bind(view, kind);
+    bind(view, kind, stx);
   }
 
   /* ---------- 已过关 / 未过关 统计 ----------
@@ -2900,8 +2900,11 @@ window.App = window.App || { pages: {} };
       .filter(r => !classId || (Store.student(r.studentId) || {}).classId === classId);
     const map = {};
     pending.forEach(r => {
-      if (!map[r.srcId]) map[r.srcId] = { srcId: r.srcId, date: r.date, scope: r.scope, students: [] };
-      map[r.srcId].students.push(r.studentId);
+      // 主分组键用 srcId（每条听写记录唯一）；旧数据 srcId 为空时退化为「日期+范围」，
+      // 保证同一场听写（同日期同范围）仍归为一组，避免全部挤到一个假分组里。
+      const key = r.srcId || (r.date + '|' + r.scope);
+      if (!map[key]) map[key] = { srcId: r.srcId, date: r.date, scope: r.scope, students: [] };
+      map[key].students.push(r.studentId);
     });
     return Object.values(map).sort((a, b) => b.date.localeCompare(a.date) || String(a.scope).localeCompare(String(b.scope)));
   }
@@ -3079,7 +3082,7 @@ window.App = window.App || { pages: {} };
     UI.$('#r-allfail', wrap).onclick = () => UI.$$('.stu-chip', wrap).forEach(b => { b.dataset.v = 0; b.className = 'stu-chip fail'; UI.$('.m', b).textContent = '未过'; });
   }
 
-  function bind(view, kind) {
+  function bind(view, kind, stx) {
     const { $, $$ } = UI, st = state[kind];
     $('#c-cls', view).onchange = e => { st.classId = e.target.value; App.render(); };
     $('#c-add', view).onclick = () => editRecord(kind, null);
