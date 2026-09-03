@@ -414,6 +414,13 @@ tr.today-row-hl:hover{background:#fff8e6}
 .name-chip.ok{background:#eafaf1;border-color:#c6ecd8;color:#0f7a4a}
 .name-chip.bad{background:#fff3f3;border-color:#f7cfcf;color:#b02525}
 
+/* 听写：本次结果高亮 & 未过关分每次听写展示 */
+.focus-card{border-color:#c9cdf0;box-shadow:0 0 0 3px var(--pri-soft),var(--sh)}
+.session-list{display:flex;flex-direction:column;gap:12px;padding-top:4px}
+.session{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fafbff}
+.session-head{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mini-h{font-size:13px;font-weight:600;margin-bottom:6px}
+
 </style>
 </head>
 <body>
@@ -2734,7 +2741,7 @@ window.App = window.App || { pages: {} };
     dictation: { icon: '✏️', title: '听写过关', unit: '听写' },
     recitation: { icon: '📖', title: '背诵过关', unit: '背诵' }
   };
-  const state = { dictation: { classId: '', stu: '' }, recitation: { classId: '', stu: '' } };
+  const state = { dictation: { classId: '', stu: '', focusId: '' }, recitation: { classId: '', stu: '', focusId: '' } };
 
   function render(view, kind) {
     const m = META[kind], st = state[kind];
@@ -2764,6 +2771,8 @@ window.App = window.App || { pages: {} };
         ${kpi('涉及学生', new Set(pending.map(p => p.studentId)).size + ' 人', '🧑‍🎓')}
       </div>
 
+      ${focusCardHtml(kind, st)}
+
       <div class="grid-2">
         <div class="card">
           <div class="card-head"><h3>✅ 已过关 <span class="muted sm">${stx.passed.length} 人</span></h3>
@@ -2773,10 +2782,14 @@ window.App = window.App || { pages: {} };
         </div>
 
         <div class="card">
-          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${stx.failed.length} 人</span></h3>
+          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">分每次听写 · ${stx.failed.length} 人</span></h3>
             <button class="btn xs" id="c-exp-fail">📤 导出名单</button></div>
-          ${stx.failed.length ? `<div class="name-grid">${stx.failed.map(sid => nameChip(sid, 'bad')).join('')}</div>
-            <p class="hint">补过后会自动移到「已过关」。点名字可看该生详情。</p>`
+          ${stx.failed.length ? `<div class="session-list">${failedBySession(kind, st.classId).map(g => `
+            <div class="session">
+              <div class="session-head"><b>${esc(g.date)}</b> · ${esc(g.scope)} <span class="muted sm">${g.students.length} 人未过</span></div>
+              <div class="name-grid">${g.students.map(sid => nameChip(sid, 'bad')).join('')}</div>
+            </div>`).join('')}</div>
+            <p class="hint">按每次听写分组展示，补过后该项自动移入「已过关」。点名字可看该生详情。</p>`
           : empty('全部过关，厉害 🎉', '🎉')}
         </div>
       </div>
@@ -2857,6 +2870,40 @@ window.App = window.App || { pages: {} };
     const s = Store.student(sid) || {};
     return `<a class="name-chip ${tone}" data-stu="${sid}" title="${esc(s.parentPhone || '')}">
       ${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>`;
+  }
+
+  /* ---------- 本次听写结果高亮（新建后展示） ---------- */
+  function focusCardHtml(kind, st) {
+    const id = st.focusId;
+    if (!id) return '';
+    const rec = Store.db.checks.find(c => c.id === id);
+    if (!rec) { st.focusId = ''; return ''; }
+    const m = META[kind];
+    const sids = Object.keys(rec.results || {});
+    const passed = sids.filter(s => rec.results[s] === 1);
+    const failed = sids.filter(s => rec.results[s] === 0);
+    return `<div class="card focus-card">
+      <div class="card-head"><h3>🆕 本次${m.unit}结果 · ${esc(rec.date)} · ${esc(rec.scope)}</h3>
+        <button class="btn xs ghost" id="c-clear-focus">收起</button></div>
+      <div class="grid-2" style="margin-top:4px">
+        <div><div class="mini-h">✅ 已过关 <span class="muted sm">${passed.length} 人</span></div>
+          ${passed.length ? `<div class="name-grid">${passed.map(sid => nameChip(sid, 'ok')).join('')}</div>` : '<p class="hint">无</p>'}</div>
+        <div><div class="mini-h">❌ 未过关 <span class="muted sm">${failed.length} 人</span></div>
+          ${failed.length ? `<div class="name-grid">${failed.map(sid => nameChip(sid, 'bad')).join('')}</div>` : '<p class="hint">全员过关 🎉</p>'}</div>
+      </div>
+    </div>`;
+  }
+
+  /* ---------- 未过关按每次听写（srcId）分组 ---------- */
+  function failedBySession(kind, classId) {
+    const pending = Store.pendingRetests().filter(r => r.kind === kind)
+      .filter(r => !classId || (Store.student(r.studentId) || {}).classId === classId);
+    const map = {};
+    pending.forEach(r => {
+      if (!map[r.srcId]) map[r.srcId] = { srcId: r.srcId, date: r.date, scope: r.scope, students: [] };
+      map[r.srcId].students.push(r.studentId);
+    });
+    return Object.values(map).sort((a, b) => b.date.localeCompare(a.date) || String(a.scope).localeCompare(String(b.scope)));
   }
 
   /* ---------- 补过：销项 + 归入已过关 ---------- */
@@ -3006,13 +3053,14 @@ window.App = window.App || { pages: {} };
         const results = {};
         UI.$$('.stu-chip', wrap).forEach(b => results[b.dataset.sid] = Number(b.dataset.v));
         if (!Object.keys(results).length) { toast('该班没有学生', 'err'); return false; }
-        Store.saveCheck({
+        const saved = Store.saveCheck({
           id: rec ? rec.id : undefined, kind,
           classId: UI.$('#r-cls', wrap).value,
           date: UI.$('#r-date', wrap).value || UI.today(),
           scope, note: UI.$('#r-note', wrap).value.trim(), results
         });
         const failN = Object.values(results).filter(v => v === 0).length;
+        if (!rec) state[kind].focusId = saved.id;   // 新建后聚焦本次听写结果
         toast(`已保存${failN ? `，${failN} 人进入二次待办池` : '，全员过关 🎉'}`);
         App.render();
       }
@@ -3043,7 +3091,16 @@ window.App = window.App || { pages: {} };
       () => { Store.removeCheck(b.dataset.del); toast('已删除'); App.render(); }, { danger: true, okText: '删除' }));
     const today = UI.today();
     $('#c-exp-pass', view).onclick = () => exportNames(`${META[kind].title}_已过关_${today}`, stx.passed);
-    $('#c-exp-fail', view).onclick = () => exportNames(`${META[kind].title}_未过关_${today}`, stx.failed);
+    $('#c-exp-fail', view).onclick = () => {
+      const groups = failedBySession(kind, st.classId);
+      const items = [];
+      groups.forEach(g => g.students.forEach(sid => items.push({ sid, scope: g.scope, date: g.date })));
+      exportNames(`${META[kind].title}_未过关_${today}`, items, '未过范围');
+    };
+    const clearFocus = $('#c-clear-focus', view);
+    if (clearFocus) clearFocus.onclick = () => { st.focusId = ''; App.render(); };
+    const fc = $('.focus-card', view);
+    if (fc) fc.scrollIntoView({ block: 'start' });
     $('#c-exp-pend', view).onclick = () => exportNames(
       `${META[kind].title}_二次待办_${today}`,
       stx.pending.map(r => ({ sid: r.studentId, scope: r.scope, date: r.date })), '欠账范围');
@@ -5186,36 +5243,50 @@ td.dt{font-size:13px;line-height:1.6}
     // 统一关闭自动同步（用户要求），并持久化，使同步页开关显示为关闭
     if (c.auto) { c.auto = false; Store.save(); }
     if (!ready()) return;
-    // 自动同步已关闭：仅启动时按需拉取一次云端以恢复本机，不再轮询/实时/改动即推
-    initialPullOnce();
+    // 自动同步已关闭：仅启动时按需对账一次云端（本机新→推、云端新→拉），不再轮询/实时/改动即推
+    initialReconcile();
   }
 
-  // 仅启动拉取一次：云端比本机新才拉取，避免覆盖本机未推送的新改动；
-  // 不开启任何自动推送 / 轮询 / 实时，防止旧数据反向覆盖云端。
-  async function initialPullOnce() {
+  // 启动时智能对账一次（仍不开轮询/实时，尊重「手动为主」偏好）：
+  //   以 meta.updatedAt 时间戳为准 —— 本机更新就推上去、云端更新就拉下来，
+  //   相差 ≤60s 视为一致不动。这样即便平时没点过「推送」，打开本机最新数据的
+  //   设备也会自动把最新内容同步到云端，避免「从云端拉取却是旧数据」的情况。
+  async function initialReconcile() {
+    const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
     try {
       const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload,updated_at', { headers: headers() });
       if (!r.ok) return;
       const rows = await r.json();
-      if (!rows.length) return;
+      if (!rows.length) {
+        // 云端无数据行：本机有数据则强制推上去（single-user 私有表，首次即本机为准）
+        if (Store.db.students.length > 0) { await push(true, true); log('云端为空，已把本机最新数据推送到云端'); }
+        return;
+      }
       const remote = rows[0];
       if (!remote.payload) return;
-      const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
       const remoteTime = (remote.payload.meta && remote.payload.meta.updatedAt) || remote.updated_at || '';
       const localTime = Store.db.meta.updatedAt || '';
-      if (ts(remoteTime) <= ts(localTime)) { App.updateSyncBadge(); return; }  // 本机更新，保持本机
-      suppressPush = true;
-      const keepSupabase = JSON.parse(JSON.stringify(cfg()));
-      Store.setDB(remote.payload);
-      Store.db.settings.supabase = keepSupabase;
-      Store.saveNow();
-      Store.clearDirty();
-      suppressPush = false;
-      log('已拉取云端恢复本机（自动同步已关闭，多端同步请手动推送/拉取）');
-      App.render();
-      App.updateSyncBadge();
+      const diff = ts(localTime) - ts(remoteTime);   // >0 表示本机更新
+      if (diff > 60000) {
+        // 本机明显更新 → 推送本机最新数据到云端（force 绕过人数/时间防护，时间戳为准）
+        await push(true, true);
+        log('已把本机最新数据推送到云端（启动同步）');
+        App.render(); App.updateSyncBadge();
+      } else if (diff < -60000) {
+        // 云端明显更新 → 拉取云端覆盖本机
+        suppressPush = true;
+        const keepSupabase = JSON.parse(JSON.stringify(cfg()));
+        Store.setDB(remote.payload);
+        Store.db.settings.supabase = keepSupabase;
+        Store.saveNow();
+        Store.clearDirty();
+        suppressPush = false;
+        log('已拉取云端最新数据到本机（启动同步）');
+        App.render(); App.updateSyncBadge();
+      }
+      // 相差 ≤60s 视为一致，不改动，避免无谓覆盖
     } catch (e) {
-      log('初始拉取失败：' + e.message, false);
+      log('启动同步失败：' + e.message, false);
     }
   }
   function stopAuto() {
@@ -5330,6 +5401,7 @@ alter publication supabase_realtime add table workbench;</pre>
       </div>`;
 
     bind(view);
+    refreshStatus(view);
   }
 
   function bind(view) {
@@ -5453,6 +5525,28 @@ alter publication supabase_realtime add table workbench;</pre>
     } catch (e) {
       toast('保存失败：' + e.message, 'err');
     }
+  }
+
+  /* 同步页实时状态：显示本机/云端人数与更新时间，便于多端核对 */
+  async function refreshStatus(view) {
+    const box = UI.$('#sb-status', view);
+    if (!box) return;
+    if (!ready()) { box.innerHTML = '<span class="muted sm">未配置云端</span>'; return; }
+    box.innerHTML = '<span class="muted sm">正在读取云端状态…</span>';
+    const r = await remoteMeta();
+    if (r.n < 0) { box.innerHTML = '<span class="sm" style="color:#c0392b">连接云端失败，请检查网络</span>'; return; }
+    const fmt = s => (s ? String(s).slice(0, 19).replace('T', ' ') : '（无）');
+    const ln = Store.db.students.length, lt = fmt(Store.db.meta.updatedAt);
+    const ct = fmt(r.metaTime || r.time);
+    const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
+    const diff = ts(Store.db.meta.updatedAt) - ts(r.metaTime || r.time);
+    let hint = '';
+    if (ln !== r.n) hint = '<div class="sm" style="color:#c0392b;margin-top:4px">⚠️ 人数不一致：本机 ' + ln + ' / 云端 ' + r.n + '，先「⬇️ 从云端拉取」或「⬆️ 推送到云端」对齐</div>';
+    else if (diff > 60000) hint = '<div class="sm" style="color:#0f7a4a;margin-top:4px">✅ 本机比云端新，点「⬆️ 推送到云端」即可同步</div>';
+    else if (diff < -60000) hint = '<div class="sm" style="color:#c0392b;margin-top:4px">⬇️ 云端比本机新，点「从云端拉取」即可取回</div>';
+    else hint = '<div class="sm" style="color:#0f7a4a;margin-top:4px">✅ 本机与云端一致</div>';
+    box.innerHTML = '<div class="sm">本机 <b>' + ln + '</b> 人 · 更新于 ' + UI.esc(lt) + '</div>'
+      + '<div class="sm">云端 <b>' + r.n + '</b> 人 · 更新于 ' + UI.esc(ct) + '</div>' + hint;
   }
 
   App.pages.sync = { title: '云端同步', render };
