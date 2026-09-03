@@ -4964,7 +4964,7 @@ td.dt{font-size:13px;line-height:1.6}
     // （防止"学生数相同但内容更旧"的旧 localStorage 把云端好数据覆盖掉）
     const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
     const localTime = Store.db.meta.updatedAt || '';
-    if (!force && remoteN >= 0 && ts(remote.time) > ts(localTime)) {
+    if (!force && remoteN >= 0 && ts(remote.time) - ts(localTime) > 2000) {
       const msg = '本机数据比云端旧，已阻止覆盖云端（请先「拉取云端」）';
       log(msg, false);
       if (!silent) toast(msg, 'err'); else App.updateSyncBadge();
@@ -4975,7 +4975,9 @@ td.dt{font-size:13px;line-height:1.6}
 
   async function forcePush(silent) {
     try {
-      const body = [{ id: cfg().rowId, payload: Store.db, updated_at: new Date().toISOString() }];
+      const _now = new Date().toISOString();
+      try { Store.db.meta.updatedAt = _now; } catch (e) {}
+      const body = [{ id: cfg().rowId, payload: Store.db, updated_at: _now }];
       const r = await fetch(base() + '?on_conflict=id', {
         method: 'POST',
         headers: Object.assign({ Prefer: 'resolution=merge-duplicates,return=minimal' }, headers()),
@@ -5393,9 +5395,12 @@ alter publication supabase_realtime add table workbench;</pre>
       const seed = '/*__PSEED_START__*/\n<script>\n'
         + 'window.__PORTABLE_MODE__=true;\n'
         + 'window.__PORTABLE_DB__=' + dbJson + ';\n'
-        + '(function(){try{var K="hailey_workbench_v1",raw=localStorage.getItem(K),ok=false;'
-        + 'if(raw){var o=JSON.parse(raw);ok=!!(o&&o.students&&o.students.length);}'
-        + 'if(!ok&&window.__PORTABLE_DB__){localStorage.setItem(K,JSON.stringify(window.__PORTABLE_DB__));'
+        + '(function(){try{var K="hailey_workbench_v1",raw=localStorage.getItem(K),use=true;'
+        + 'if(raw){var o=JSON.parse(raw);'
+        + 'var a=Date.parse((o.meta&&o.meta.updatedAt)||"")||0;'
+        + 'var b=Date.parse((window.__PORTABLE_DB__.meta&&window.__PORTABLE_DB__.meta.updatedAt)||"")||0;'
+        + 'if(o&&o.students&&o.students.length&&a>=b)use=false;}'
+        + 'if(use&&window.__PORTABLE_DB__){localStorage.setItem(K,JSON.stringify(window.__PORTABLE_DB__));'
         + 'console.log("[便携版] 已载入内嵌数据");}}catch(e){}})();\n'
         + '<\/script>\n/*__PSEED_END__*/';
       const html = document.documentElement.outerHTML;
@@ -5414,6 +5419,15 @@ alter publication supabase_realtime add table workbench;</pre>
   }
 
   App.pages.sync = { title: '云端同步', render };
+
+  /* 增强：本机无学生数据且已配置云端时，打开页面后静默自动拉取一次（失败静默，不影响手动操作） */
+  setTimeout(function () {
+    try {
+      if (!ready()) return;
+      if (Store.db && Store.db.students && Store.db.students.length) return;
+      pull(true).then(function (ok) { if (ok) console.log('[自动拉取] 已从云端恢复数据'); });
+    } catch (e) { console.warn('[自动拉取] 跳过', e); }
+  }, 400);
   App.sync = { push, pull, test, startAuto, stopAuto, ready };
 })();
 

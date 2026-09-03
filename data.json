@@ -1,4766 +1,4942 @@
 {
- "meta": {
-  "term": "2026-2027 学年",
-  "subject": "英语",
-  "teacher": "Hailey",
-  "version": 1,
-  "gradYear": 2027,
-  "updatedAt": "2026-09-02T14:04:43.547Z"
- },
- "comms": [],
- "exams": [
-  {
-   "id": "exam_8b_english_final",
-   "date": "2026-06-30",
-   "name": "初二下期末英语",
-   "lines": {
-    "low": 81,
-    "mid": 88,
-    "high": 107
-   },
-   "parts": [
+  "meta": {
+    "term": "2026-2027 学年",
+    "subject": "英语",
+    "teacher": "Hailey",
+    "version": 1,
+    "gradYear": 2027,
+    "updatedAt": "2026-09-02T14:59:07.746Z"
+  },
+  "comms": [],
+  "exams": [
     {
-     "full": 100,
-     "name": "英语A"
-    },
-    {
-     "full": 30,
-     "name": "英语B卷"
+      "id": "exam_8b_english_final",
+      "date": "2026-06-30",
+      "name": "初二下期末英语",
+      "lines": {
+        "low": 81,
+        "mid": 88,
+        "high": 107
+      },
+      "parts": [
+        {
+          "full": 100,
+          "name": "英语A"
+        },
+        {
+          "full": 30,
+          "name": "英语B卷"
+        }
+      ],
+      "scope": "all",
+      "scores": [
+        {
+          "parts": [
+            86.5,
+            30
+          ],
+          "total": 116.5,
+          "gradeRank": 62,
+          "studentId": "stu_914e9b05"
+        },
+        {
+          "parts": [
+            85.5,
+            22.5
+          ],
+          "total": 108,
+          "gradeRank": 88,
+          "studentId": "stu_f83c671e"
+        },
+        {
+          "parts": [
+            81.5,
+            19.5
+          ],
+          "total": 101,
+          "gradeRank": 110,
+          "studentId": "stu_0fa2b551"
+        },
+        {
+          "parts": [
+            80,
+            13.25
+          ],
+          "total": 93.25,
+          "gradeRank": 135,
+          "studentId": "stu_6522270d"
+        },
+        {
+          "parts": [
+            63,
+            18.25
+          ],
+          "total": 81.25,
+          "gradeRank": 173,
+          "studentId": "stu_31860e88"
+        },
+        {
+          "parts": [
+            69.5,
+            15.5
+          ],
+          "total": 85,
+          "gradeRank": 160,
+          "studentId": "stu_d2e59daa"
+        },
+        {
+          "parts": [
+            61.5,
+            14.5
+          ],
+          "total": 76,
+          "gradeRank": 184,
+          "studentId": "stu_4f8c2901"
+        },
+        {
+          "parts": [
+            30.5,
+            2
+          ],
+          "total": 32.5,
+          "gradeRank": 335,
+          "studentId": "stu_14f41b19"
+        },
+        {
+          "parts": [
+            44.5,
+            1
+          ],
+          "total": 45.5,
+          "gradeRank": 262,
+          "studentId": "stu_4346202e"
+        },
+        {
+          "parts": [
+            70.5,
+            22.25
+          ],
+          "total": 92.75,
+          "gradeRank": 137,
+          "studentId": "stu_8f113478"
+        },
+        {
+          "parts": [
+            32,
+            3.75
+          ],
+          "total": 35.75,
+          "gradeRank": 319,
+          "studentId": "stu_1412fa5b"
+        },
+        {
+          "parts": [
+            48.5,
+            7.5
+          ],
+          "total": 56,
+          "gradeRank": 230,
+          "studentId": "stu_d5d98fd8"
+        },
+        {
+          "parts": [
+            50.5,
+            5.75
+          ],
+          "total": 56.25,
+          "gradeRank": 228,
+          "studentId": "stu_4f70447a"
+        },
+        {
+          "parts": [
+            46,
+            9
+          ],
+          "total": 55,
+          "gradeRank": 232,
+          "studentId": "stu_f8e764ef"
+        },
+        {
+          "parts": [
+            58.5,
+            8.5
+          ],
+          "total": 67,
+          "gradeRank": 212,
+          "studentId": "stu_59b78c6a"
+        },
+        {
+          "parts": [
+            36.5,
+            3.75
+          ],
+          "total": 40.25,
+          "gradeRank": 284,
+          "studentId": "stu_88c14594"
+        },
+        {
+          "parts": [
+            35.5,
+            0.75
+          ],
+          "total": 36.25,
+          "gradeRank": 315,
+          "studentId": "stu_fe0fa301"
+        },
+        {
+          "parts": [
+            55,
+            4.5
+          ],
+          "total": 59.5,
+          "gradeRank": 223,
+          "studentId": "stu_a31521ab"
+        },
+        {
+          "parts": [
+            44,
+            4
+          ],
+          "total": 48,
+          "gradeRank": 252,
+          "studentId": "stu_8d71d833"
+        },
+        {
+          "parts": [
+            39.5,
+            4
+          ],
+          "total": 43.5,
+          "gradeRank": 271,
+          "studentId": "stu_206ff598"
+        },
+        {
+          "parts": [
+            36,
+            2
+          ],
+          "total": 38,
+          "gradeRank": 300,
+          "studentId": "stu_4f6191d7"
+        },
+        {
+          "parts": [
+            42,
+            4.75
+          ],
+          "total": 46.75,
+          "gradeRank": 259,
+          "studentId": "stu_a4b1f79c"
+        },
+        {
+          "parts": [
+            53,
+            7
+          ],
+          "total": 60,
+          "gradeRank": 222,
+          "studentId": "stu_4d0357e0"
+        },
+        {
+          "parts": [
+            45.5,
+            1.75
+          ],
+          "total": 47.25,
+          "gradeRank": 255,
+          "studentId": "stu_8feece3a"
+        },
+        {
+          "parts": [
+            34.5,
+            6
+          ],
+          "total": 40.5,
+          "gradeRank": 282,
+          "studentId": "stu_69a5893e"
+        },
+        {
+          "parts": [
+            22,
+            1
+          ],
+          "total": 23,
+          "gradeRank": 359,
+          "studentId": "stu_23333e0f"
+        },
+        {
+          "parts": [
+            31,
+            1
+          ],
+          "total": 32,
+          "gradeRank": 337,
+          "studentId": "stu_21c3db5a"
+        },
+        {
+          "parts": [
+            26.5,
+            0
+          ],
+          "total": 26.5,
+          "gradeRank": 352,
+          "studentId": "stu_833e52bc"
+        },
+        {
+          "parts": [
+            33.5,
+            0.5
+          ],
+          "total": 34,
+          "gradeRank": 325,
+          "studentId": "stu_db4ca9d8"
+        },
+        {
+          "parts": [
+            32.5,
+            1.5
+          ],
+          "total": 34,
+          "gradeRank": 325,
+          "studentId": "stu_dd97438e"
+        },
+        {
+          "parts": [
+            16,
+            2.5
+          ],
+          "total": 18.5,
+          "gradeRank": 363,
+          "studentId": "stu_90445adf"
+        },
+        {
+          "parts": [
+            39.5,
+            0
+          ],
+          "total": 39.5,
+          "gradeRank": 288,
+          "studentId": "stu_c0f993d5"
+        },
+        {
+          "parts": [
+            45.5,
+            0
+          ],
+          "total": 45.5,
+          "gradeRank": 262,
+          "studentId": "stu_f3cc0f37"
+        },
+        {
+          "parts": [
+            30.5,
+            1.5
+          ],
+          "total": 32,
+          "gradeRank": 337,
+          "studentId": "stu_af6dbd84"
+        },
+        {
+          "parts": [
+            40,
+            0
+          ],
+          "total": 40,
+          "gradeRank": 285,
+          "studentId": "stu_ccb1123b"
+        },
+        {
+          "parts": [
+            31.5,
+            1.75
+          ],
+          "total": 33.25,
+          "gradeRank": 332,
+          "studentId": "stu_256a58f4"
+        },
+        {
+          "parts": [
+            86.5,
+            31
+          ],
+          "total": 117.5,
+          "gradeRank": 57,
+          "studentId": "stu_de83481d"
+        },
+        {
+          "parts": [
+            72,
+            10.5
+          ],
+          "total": 82.5,
+          "gradeRank": 169,
+          "studentId": "stu_49946f36"
+        },
+        {
+          "parts": [
+            83,
+            16
+          ],
+          "total": 99,
+          "gradeRank": 114,
+          "studentId": "stu_cad1c13b"
+        },
+        {
+          "parts": [
+            78,
+            23
+          ],
+          "total": 101,
+          "gradeRank": 110,
+          "studentId": "stu_0838b86a"
+        },
+        {
+          "parts": [
+            75.5,
+            23
+          ],
+          "total": 98.5,
+          "gradeRank": 117,
+          "studentId": "stu_f0fe83a0"
+        },
+        {
+          "parts": [
+            59.5,
+            16.5
+          ],
+          "total": 76,
+          "gradeRank": 184,
+          "studentId": "stu_3c1b9880"
+        },
+        {
+          "parts": [
+            69,
+            19.25
+          ],
+          "total": 88.25,
+          "gradeRank": 150,
+          "studentId": "stu_15c9f5a7"
+        },
+        {
+          "parts": [
+            67,
+            5.75
+          ],
+          "total": 72.75,
+          "gradeRank": 192,
+          "studentId": "stu_fbda36f9"
+        },
+        {
+          "parts": [
+            67,
+            15.75
+          ],
+          "total": 82.75,
+          "gradeRank": 167,
+          "studentId": "stu_ef1234c7"
+        },
+        {
+          "parts": [
+            42.5,
+            1
+          ],
+          "total": 43.5,
+          "gradeRank": 271,
+          "studentId": "stu_6b6cd926"
+        },
+        {
+          "parts": [
+            70.75,
+            10.25
+          ],
+          "total": 81,
+          "gradeRank": 174,
+          "studentId": "stu_3e98aa37"
+        },
+        {
+          "parts": [
+            66.5,
+            7.75
+          ],
+          "total": 74.25,
+          "gradeRank": 187,
+          "studentId": "stu_018001a0"
+        },
+        {
+          "parts": [
+            63.5,
+            17
+          ],
+          "total": 80.5,
+          "gradeRank": 176,
+          "studentId": "stu_27803590"
+        },
+        {
+          "parts": [
+            52.5,
+            16
+          ],
+          "total": 68.5,
+          "gradeRank": 209,
+          "studentId": "stu_f5c39344"
+        },
+        {
+          "parts": [
+            47.5,
+            2.25
+          ],
+          "total": 49.75,
+          "gradeRank": 249,
+          "studentId": "stu_7dc7f6b0"
+        },
+        {
+          "parts": [
+            42,
+            5
+          ],
+          "total": 47,
+          "gradeRank": 256,
+          "studentId": "stu_1ce9c91a"
+        },
+        {
+          "parts": [
+            57,
+            12
+          ],
+          "total": 69,
+          "gradeRank": 206,
+          "studentId": "stu_1446e824"
+        },
+        {
+          "parts": [
+            42.5,
+            4.5
+          ],
+          "total": 47,
+          "gradeRank": 256,
+          "studentId": "stu_fbd1adea"
+        },
+        {
+          "parts": [
+            34,
+            7.75
+          ],
+          "total": 41.75,
+          "gradeRank": 280,
+          "studentId": "stu_02e6a1c4"
+        },
+        {
+          "parts": [
+            36.5,
+            2
+          ],
+          "total": 38.5,
+          "gradeRank": 294,
+          "studentId": "stu_2750d3cc"
+        },
+        {
+          "parts": [
+            43,
+            4
+          ],
+          "total": 47,
+          "gradeRank": 256,
+          "studentId": "stu_76720588"
+        },
+        {
+          "parts": [
+            48.5,
+            2
+          ],
+          "total": 50.5,
+          "gradeRank": 248,
+          "studentId": "stu_e7eedbde"
+        },
+        {
+          "parts": [
+            20.5,
+            2.5
+          ],
+          "total": 23,
+          "gradeRank": 359,
+          "studentId": "stu_f493e327"
+        },
+        {
+          "parts": [
+            37.5,
+            1.75
+          ],
+          "total": 39.25,
+          "gradeRank": 290,
+          "studentId": "stu_1c7c8407"
+        },
+        {
+          "parts": [
+            33.5,
+            3.75
+          ],
+          "total": 37.25,
+          "gradeRank": 309,
+          "studentId": "stu_40f282a4"
+        },
+        {
+          "parts": [
+            57.5,
+            5
+          ],
+          "total": 62.5,
+          "gradeRank": 217,
+          "studentId": "stu_32989fc0"
+        },
+        {
+          "parts": [
+            38.5,
+            1
+          ],
+          "total": 39.5,
+          "gradeRank": 288,
+          "studentId": "stu_a6794ea1"
+        },
+        {
+          "parts": [
+            33.5,
+            1
+          ],
+          "total": 34.5,
+          "gradeRank": 323,
+          "studentId": "stu_358f545a"
+        },
+        {
+          "parts": [
+            31.5,
+            0
+          ],
+          "total": 31.5,
+          "gradeRank": 341,
+          "studentId": "stu_d06fb60a"
+        },
+        {
+          "parts": [
+            45.5,
+            2.5
+          ],
+          "total": 48,
+          "gradeRank": 252,
+          "studentId": "stu_09acf8c4"
+        },
+        {
+          "parts": [
+            32.5,
+            1.25
+          ],
+          "total": 33.75,
+          "gradeRank": 327,
+          "studentId": "stu_c6e4426b"
+        },
+        {
+          "parts": [
+            30.5,
+            1.25
+          ],
+          "total": 31.75,
+          "gradeRank": 340,
+          "studentId": "stu_133a508f"
+        },
+        {
+          "parts": [
+            30.5,
+            5.75
+          ],
+          "total": 36.25,
+          "gradeRank": 315,
+          "studentId": "stu_bfc58bae"
+        },
+        {
+          "parts": [
+            26,
+            0.5
+          ],
+          "total": 26.5,
+          "gradeRank": 352,
+          "studentId": "stu_29087d1c"
+        },
+        {
+          "parts": [
+            33.5,
+            2.25
+          ],
+          "total": 35.75,
+          "gradeRank": 319,
+          "studentId": "stu_523e679c"
+        },
+        {
+          "parts": [
+            32,
+            1.75
+          ],
+          "total": 33.75,
+          "gradeRank": 327,
+          "studentId": "stu_9e836fd4"
+        },
+        {
+          "parts": [
+            17.5,
+            2
+          ],
+          "total": 19.5,
+          "gradeRank": 362,
+          "studentId": "stu_45370564"
+        },
+        {
+          "parts": [
+            29,
+            1
+          ],
+          "total": 30,
+          "gradeRank": 347,
+          "studentId": "stu_b300a0c7"
+        },
+        {
+          "parts": [
+            32,
+            0
+          ],
+          "total": 32,
+          "gradeRank": 337,
+          "studentId": "stu_7ab7ddd2"
+        }
+      ]
     }
-   ],
-   "scope": "all",
-   "scores": [
-    {
-     "parts": [
-      86.5,
-      30
-     ],
-     "total": 116.5,
-     "gradeRank": 62,
-     "studentId": "stu_914e9b05"
-    },
-    {
-     "parts": [
-      85.5,
-      22.5
-     ],
-     "total": 108,
-     "gradeRank": 88,
-     "studentId": "stu_f83c671e"
-    },
-    {
-     "parts": [
-      81.5,
-      19.5
-     ],
-     "total": 101,
-     "gradeRank": 110,
-     "studentId": "stu_0fa2b551"
-    },
-    {
-     "parts": [
-      80,
-      13.25
-     ],
-     "total": 93.25,
-     "gradeRank": 135,
-     "studentId": "stu_6522270d"
-    },
-    {
-     "parts": [
-      63,
-      18.25
-     ],
-     "total": 81.25,
-     "gradeRank": 173,
-     "studentId": "stu_31860e88"
-    },
-    {
-     "parts": [
-      69.5,
-      15.5
-     ],
-     "total": 85,
-     "gradeRank": 160,
-     "studentId": "stu_d2e59daa"
-    },
-    {
-     "parts": [
-      61.5,
-      14.5
-     ],
-     "total": 76,
-     "gradeRank": 184,
-     "studentId": "stu_4f8c2901"
-    },
-    {
-     "parts": [
-      30.5,
-      2
-     ],
-     "total": 32.5,
-     "gradeRank": 335,
-     "studentId": "stu_14f41b19"
-    },
-    {
-     "parts": [
-      44.5,
-      1
-     ],
-     "total": 45.5,
-     "gradeRank": 262,
-     "studentId": "stu_4346202e"
-    },
-    {
-     "parts": [
-      70.5,
-      22.25
-     ],
-     "total": 92.75,
-     "gradeRank": 137,
-     "studentId": "stu_8f113478"
-    },
-    {
-     "parts": [
-      32,
-      3.75
-     ],
-     "total": 35.75,
-     "gradeRank": 319,
-     "studentId": "stu_1412fa5b"
-    },
-    {
-     "parts": [
-      48.5,
-      7.5
-     ],
-     "total": 56,
-     "gradeRank": 230,
-     "studentId": "stu_d5d98fd8"
-    },
-    {
-     "parts": [
-      50.5,
-      5.75
-     ],
-     "total": 56.25,
-     "gradeRank": 228,
-     "studentId": "stu_4f70447a"
-    },
-    {
-     "parts": [
-      46,
-      9
-     ],
-     "total": 55,
-     "gradeRank": 232,
-     "studentId": "stu_f8e764ef"
-    },
-    {
-     "parts": [
-      58.5,
-      8.5
-     ],
-     "total": 67,
-     "gradeRank": 212,
-     "studentId": "stu_59b78c6a"
-    },
-    {
-     "parts": [
-      36.5,
-      3.75
-     ],
-     "total": 40.25,
-     "gradeRank": 284,
-     "studentId": "stu_88c14594"
-    },
-    {
-     "parts": [
-      35.5,
-      0.75
-     ],
-     "total": 36.25,
-     "gradeRank": 315,
-     "studentId": "stu_fe0fa301"
-    },
-    {
-     "parts": [
-      55,
-      4.5
-     ],
-     "total": 59.5,
-     "gradeRank": 223,
-     "studentId": "stu_a31521ab"
-    },
-    {
-     "parts": [
-      44,
-      4
-     ],
-     "total": 48,
-     "gradeRank": 252,
-     "studentId": "stu_8d71d833"
-    },
-    {
-     "parts": [
-      39.5,
-      4
-     ],
-     "total": 43.5,
-     "gradeRank": 271,
-     "studentId": "stu_206ff598"
-    },
-    {
-     "parts": [
-      36,
-      2
-     ],
-     "total": 38,
-     "gradeRank": 300,
-     "studentId": "stu_4f6191d7"
-    },
-    {
-     "parts": [
-      42,
-      4.75
-     ],
-     "total": 46.75,
-     "gradeRank": 259,
-     "studentId": "stu_a4b1f79c"
-    },
-    {
-     "parts": [
-      53,
-      7
-     ],
-     "total": 60,
-     "gradeRank": 222,
-     "studentId": "stu_4d0357e0"
-    },
-    {
-     "parts": [
-      45.5,
-      1.75
-     ],
-     "total": 47.25,
-     "gradeRank": 255,
-     "studentId": "stu_8feece3a"
-    },
-    {
-     "parts": [
-      34.5,
-      6
-     ],
-     "total": 40.5,
-     "gradeRank": 282,
-     "studentId": "stu_69a5893e"
-    },
-    {
-     "parts": [
-      22,
-      1
-     ],
-     "total": 23,
-     "gradeRank": 359,
-     "studentId": "stu_23333e0f"
-    },
-    {
-     "parts": [
-      31,
-      1
-     ],
-     "total": 32,
-     "gradeRank": 337,
-     "studentId": "stu_21c3db5a"
-    },
-    {
-     "parts": [
-      26.5,
-      0
-     ],
-     "total": 26.5,
-     "gradeRank": 352,
-     "studentId": "stu_833e52bc"
-    },
-    {
-     "parts": [
-      33.5,
-      0.5
-     ],
-     "total": 34,
-     "gradeRank": 325,
-     "studentId": "stu_db4ca9d8"
-    },
-    {
-     "parts": [
-      32.5,
-      1.5
-     ],
-     "total": 34,
-     "gradeRank": 325,
-     "studentId": "stu_dd97438e"
-    },
-    {
-     "parts": [
-      16,
-      2.5
-     ],
-     "total": 18.5,
-     "gradeRank": 363,
-     "studentId": "stu_90445adf"
-    },
-    {
-     "parts": [
-      39.5,
-      0
-     ],
-     "total": 39.5,
-     "gradeRank": 288,
-     "studentId": "stu_c0f993d5"
-    },
-    {
-     "parts": [
-      45.5,
-      0
-     ],
-     "total": 45.5,
-     "gradeRank": 262,
-     "studentId": "stu_f3cc0f37"
-    },
-    {
-     "parts": [
-      30.5,
-      1.5
-     ],
-     "total": 32,
-     "gradeRank": 337,
-     "studentId": "stu_af6dbd84"
-    },
-    {
-     "parts": [
-      40,
-      0
-     ],
-     "total": 40,
-     "gradeRank": 285,
-     "studentId": "stu_ccb1123b"
-    },
-    {
-     "parts": [
-      31.5,
-      1.75
-     ],
-     "total": 33.25,
-     "gradeRank": 332,
-     "studentId": "stu_256a58f4"
-    },
-    {
-     "parts": [
-      86.5,
-      31
-     ],
-     "total": 117.5,
-     "gradeRank": 57,
-     "studentId": "stu_de83481d"
-    },
-    {
-     "parts": [
-      72,
-      10.5
-     ],
-     "total": 82.5,
-     "gradeRank": 169,
-     "studentId": "stu_49946f36"
-    },
-    {
-     "parts": [
-      83,
-      16
-     ],
-     "total": 99,
-     "gradeRank": 114,
-     "studentId": "stu_cad1c13b"
-    },
-    {
-     "parts": [
-      78,
-      23
-     ],
-     "total": 101,
-     "gradeRank": 110,
-     "studentId": "stu_0838b86a"
-    },
-    {
-     "parts": [
-      75.5,
-      23
-     ],
-     "total": 98.5,
-     "gradeRank": 117,
-     "studentId": "stu_f0fe83a0"
-    },
-    {
-     "parts": [
-      59.5,
-      16.5
-     ],
-     "total": 76,
-     "gradeRank": 184,
-     "studentId": "stu_3c1b9880"
-    },
-    {
-     "parts": [
-      69,
-      19.25
-     ],
-     "total": 88.25,
-     "gradeRank": 150,
-     "studentId": "stu_15c9f5a7"
-    },
-    {
-     "parts": [
-      67,
-      5.75
-     ],
-     "total": 72.75,
-     "gradeRank": 192,
-     "studentId": "stu_fbda36f9"
-    },
-    {
-     "parts": [
-      67,
-      15.75
-     ],
-     "total": 82.75,
-     "gradeRank": 167,
-     "studentId": "stu_ef1234c7"
-    },
-    {
-     "parts": [
-      42.5,
-      1
-     ],
-     "total": 43.5,
-     "gradeRank": 271,
-     "studentId": "stu_6b6cd926"
-    },
-    {
-     "parts": [
-      70.75,
-      10.25
-     ],
-     "total": 81,
-     "gradeRank": 174,
-     "studentId": "stu_3e98aa37"
-    },
-    {
-     "parts": [
-      66.5,
-      7.75
-     ],
-     "total": 74.25,
-     "gradeRank": 187,
-     "studentId": "stu_018001a0"
-    },
-    {
-     "parts": [
-      63.5,
-      17
-     ],
-     "total": 80.5,
-     "gradeRank": 176,
-     "studentId": "stu_27803590"
-    },
-    {
-     "parts": [
-      52.5,
-      16
-     ],
-     "total": 68.5,
-     "gradeRank": 209,
-     "studentId": "stu_f5c39344"
-    },
-    {
-     "parts": [
-      47.5,
-      2.25
-     ],
-     "total": 49.75,
-     "gradeRank": 249,
-     "studentId": "stu_7dc7f6b0"
-    },
-    {
-     "parts": [
-      42,
-      5
-     ],
-     "total": 47,
-     "gradeRank": 256,
-     "studentId": "stu_1ce9c91a"
-    },
-    {
-     "parts": [
-      57,
-      12
-     ],
-     "total": 69,
-     "gradeRank": 206,
-     "studentId": "stu_1446e824"
-    },
-    {
-     "parts": [
-      42.5,
-      4.5
-     ],
-     "total": 47,
-     "gradeRank": 256,
-     "studentId": "stu_fbd1adea"
-    },
-    {
-     "parts": [
-      34,
-      7.75
-     ],
-     "total": 41.75,
-     "gradeRank": 280,
-     "studentId": "stu_02e6a1c4"
-    },
-    {
-     "parts": [
-      36.5,
-      2
-     ],
-     "total": 38.5,
-     "gradeRank": 294,
-     "studentId": "stu_2750d3cc"
-    },
-    {
-     "parts": [
-      43,
-      4
-     ],
-     "total": 47,
-     "gradeRank": 256,
-     "studentId": "stu_76720588"
-    },
-    {
-     "parts": [
-      48.5,
-      2
-     ],
-     "total": 50.5,
-     "gradeRank": 248,
-     "studentId": "stu_e7eedbde"
-    },
-    {
-     "parts": [
-      20.5,
-      2.5
-     ],
-     "total": 23,
-     "gradeRank": 359,
-     "studentId": "stu_f493e327"
-    },
-    {
-     "parts": [
-      37.5,
-      1.75
-     ],
-     "total": 39.25,
-     "gradeRank": 290,
-     "studentId": "stu_1c7c8407"
-    },
-    {
-     "parts": [
-      33.5,
-      3.75
-     ],
-     "total": 37.25,
-     "gradeRank": 309,
-     "studentId": "stu_40f282a4"
-    },
-    {
-     "parts": [
-      57.5,
-      5
-     ],
-     "total": 62.5,
-     "gradeRank": 217,
-     "studentId": "stu_32989fc0"
-    },
-    {
-     "parts": [
-      38.5,
-      1
-     ],
-     "total": 39.5,
-     "gradeRank": 288,
-     "studentId": "stu_a6794ea1"
-    },
-    {
-     "parts": [
-      33.5,
-      1
-     ],
-     "total": 34.5,
-     "gradeRank": 323,
-     "studentId": "stu_358f545a"
-    },
-    {
-     "parts": [
-      31.5,
-      0
-     ],
-     "total": 31.5,
-     "gradeRank": 341,
-     "studentId": "stu_d06fb60a"
-    },
-    {
-     "parts": [
-      45.5,
-      2.5
-     ],
-     "total": 48,
-     "gradeRank": 252,
-     "studentId": "stu_09acf8c4"
-    },
-    {
-     "parts": [
-      32.5,
-      1.25
-     ],
-     "total": 33.75,
-     "gradeRank": 327,
-     "studentId": "stu_c6e4426b"
-    },
-    {
-     "parts": [
-      30.5,
-      1.25
-     ],
-     "total": 31.75,
-     "gradeRank": 340,
-     "studentId": "stu_133a508f"
-    },
-    {
-     "parts": [
-      30.5,
-      5.75
-     ],
-     "total": 36.25,
-     "gradeRank": 315,
-     "studentId": "stu_bfc58bae"
-    },
-    {
-     "parts": [
-      26,
-      0.5
-     ],
-     "total": 26.5,
-     "gradeRank": 352,
-     "studentId": "stu_29087d1c"
-    },
-    {
-     "parts": [
-      33.5,
-      2.25
-     ],
-     "total": 35.75,
-     "gradeRank": 319,
-     "studentId": "stu_523e679c"
-    },
-    {
-     "parts": [
-      32,
-      1.75
-     ],
-     "total": 33.75,
-     "gradeRank": 327,
-     "studentId": "stu_9e836fd4"
-    },
-    {
-     "parts": [
-      17.5,
-      2
-     ],
-     "total": 19.5,
-     "gradeRank": 362,
-     "studentId": "stu_45370564"
-    },
-    {
-     "parts": [
-      29,
-      1
-     ],
-     "total": 30,
-     "gradeRank": 347,
-     "studentId": "stu_b300a0c7"
-    },
-    {
-     "parts": [
-      32,
-      0
-     ],
-     "total": 32,
-     "gradeRank": 337,
-     "studentId": "stu_7ab7ddd2"
+  ],
+  "todos": [
+    {
+      "id": "todo_l4y9l745qe",
+      "due": "2026-08-25",
+      "done": true,
+      "title": "抄一个周的教案",
+      "doneAt": "2026-08-29",
+      "quadrant": 1,
+      "createdAt": "2026-08-25"
+    },
+    {
+      "id": "todo_5dfxomulr5",
+      "due": "2026-09-10",
+      "done": false,
+      "time": "",
+      "title": "下午八九节初三启动会",
+      "quadrant": 1,
+      "createdAt": "2026-08-29"
+    },
+    {
+      "id": "todo_civx0lvpx7",
+      "due": "2026-09-01",
+      "done": true,
+      "time": "09:40",
+      "title": "发练习册",
+      "doneAt": "2026-09-01",
+      "quadrant": 1,
+      "createdAt": "2026-08-31"
+    },
+    {
+      "id": "todo_1mb3muied0",
+      "due": "2026-09-01",
+      "done": true,
+      "time": "",
+      "title": "讲学科要求",
+      "doneAt": "2026-09-01",
+      "quadrant": 1,
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "todo_1pstf4ck3f",
+      "due": "2026-11-19",
+      "done": false,
+      "time": "",
+      "title": "半期五校联考",
+      "quadrant": 1,
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "todo_1q3aiuk39r",
+      "due": "2026-12-18",
+      "done": false,
+      "time": "",
+      "title": "完成行课",
+      "quadrant": 1,
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "todo_63o5xch0zv",
+      "due": "2026-09-01",
+      "done": true,
+      "time": "",
+      "title": "opening page",
+      "doneAt": "2026-09-01",
+      "quadrant": 1,
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "todo_63zyv7puzp",
+      "due": "2026-09-01",
+      "done": true,
+      "time": "",
+      "title": "作业布置 记单词 前二十个",
+      "doneAt": "2026-09-01",
+      "quadrant": 1,
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "todo_ecd617xvgd",
+      "due": "2026-09-02",
+      "done": true,
+      "time": "",
+      "title": "备grammar",
+      "doneAt": "2026-09-02",
+      "quadrant": 1,
+      "createdAt": "2026-09-02"
+    },
+    {
+      "id": "todo_7zfckgxy3d",
+      "due": "2026-09-03",
+      "done": false,
+      "time": "",
+      "title": "批改AB卷",
+      "quadrant": 1,
+      "createdAt": "2026-09-02"
+    },
+    {
+      "id": "todo_80y96i09xc",
+      "due": "2026-09-03",
+      "done": false,
+      "time": "",
+      "title": "讲完3a-3d",
+      "quadrant": 1,
+      "createdAt": "2026-09-02"
+    },
+    {
+      "id": "todo_81797xd4wj",
+      "due": "2026-09-03",
+      "done": false,
+      "time": "",
+      "title": "评讲八班作业",
+      "quadrant": 1,
+      "createdAt": "2026-09-02"
+    },
+    {
+      "id": "todo_81o7mwr88s",
+      "due": "2026-09-03",
+      "done": false,
+      "time": "",
+      "title": "听写",
+      "quadrant": 1,
+      "createdAt": "2026-09-02"
     }
-   ]
-  }
- ],
- "todos": [
-  {
-   "id": "todo_l4y9l745qe",
-   "due": "2026-08-25",
-   "done": true,
-   "title": "抄一个周的教案",
-   "doneAt": "2026-08-29",
-   "quadrant": 1,
-   "createdAt": "2026-08-25"
-  },
-  {
-   "id": "todo_5dfxomulr5",
-   "due": "2026-09-10",
-   "done": false,
-   "time": "",
-   "title": "下午八九节初三启动会",
-   "quadrant": 1,
-   "createdAt": "2026-08-29"
-  },
-  {
-   "id": "todo_civx0lvpx7",
-   "due": "2026-09-01",
-   "done": true,
-   "time": "09:40",
-   "title": "发练习册",
-   "doneAt": "2026-09-01",
-   "quadrant": 1,
-   "createdAt": "2026-08-31"
-  },
-  {
-   "id": "todo_1mb3muied0",
-   "due": "2026-09-01",
-   "done": true,
-   "time": "",
-   "title": "讲学科要求",
-   "doneAt": "2026-09-01",
-   "quadrant": 1,
-   "createdAt": "2026-09-01"
-  },
-  {
-   "id": "todo_1pstf4ck3f",
-   "due": "2026-11-19",
-   "done": false,
-   "time": "",
-   "title": "半期五校联考",
-   "quadrant": 1,
-   "createdAt": "2026-09-01"
-  },
-  {
-   "id": "todo_1q3aiuk39r",
-   "due": "2026-12-18",
-   "done": false,
-   "time": "",
-   "title": "完成行课",
-   "quadrant": 1,
-   "createdAt": "2026-09-01"
-  },
-  {
-   "id": "todo_63o5xch0zv",
-   "due": "2026-09-01",
-   "done": true,
-   "time": "",
-   "title": "opening page",
-   "doneAt": "2026-09-01",
-   "quadrant": 1,
-   "createdAt": "2026-09-01"
-  },
-  {
-   "id": "todo_63zyv7puzp",
-   "due": "2026-09-01",
-   "done": true,
-   "time": "",
-   "title": "作业布置 记单词 前二十个",
-   "doneAt": "2026-09-01",
-   "quadrant": 1,
-   "createdAt": "2026-09-01"
-  },
-  {
-   "id": "todo_ecd617xvgd",
-   "due": "2026-09-02",
-   "done": true,
-   "time": "",
-   "title": "备grammar",
-   "doneAt": "2026-09-02",
-   "quadrant": 1,
-   "createdAt": "2026-09-02"
-  }
- ],
- "checks": [],
- "classes": [
-  {
-   "id": "cls_4",
-   "name": "初三四班",
-   "grade": "初三",
-   "gradYear": 2027
-  },
-  {
-   "id": "cls_8",
-   "name": "初三八班",
-   "grade": "初三",
-   "gradYear": 2027
-  }
- ],
- "retests": [],
- "progress": [
-  {
-   "id": "pg_5smprs5yhr",
-   "date": "2026-09-02",
-   "note": "",
-   "unit": "1",
-   "classId": "cls_4",
-   "content": "2d完成，练习册讲了一二课时"
-  },
-  {
-   "id": "pg_5smprhli4w",
-   "date": "2026-09-02",
-   "note": "",
-   "unit": "1",
-   "classId": "cls_8",
-   "content": "SA 2C还要再听一次，知识点没讲，练习册没讲"
-  }
- ],
- "settings": {
-  "band": 8,
-  "days": 5,
-  "tags": [
-   "临界生",
-   "需家校跟进",
-   "偏科",
-   "待提升",
-   "进步显著",
-   "课堂活跃"
   ],
-  "lines": {
-   "low": 90,
-   "mid": 80,
-   "high": 100
-  },
-  "parts": [
-   {
-    "full": 100,
-    "name": "英语A"
-   },
-   {
-    "full": 0,
-    "name": "听力表格"
-   },
-   {
-    "full": 0,
-    "name": "短文填空"
-   },
-   {
-    "full": 0,
-    "name": "阅读表达"
-   },
-   {
-    "full": 0,
-    "name": "回答问题"
-   },
-   {
-    "full": 0,
-    "name": "作文"
-   }
-  ],
-  "slots": [
-   {
-    "name": "早读",
-    "time": "07:30-07:55"
-   },
-   {
-    "name": "第一节",
-    "time": "08:00-08:40"
-   },
-   {
-    "name": "第二节",
-    "time": "09:10-09:50"
-   },
-   {
-    "name": "第三节",
-    "time": "10:00-10:40"
-   },
-   {
-    "name": "第四节",
-    "time": "10:50-11:30"
-   },
-   {
-    "name": "第五节",
-    "time": "11:40-12:20"
-   },
-   {
-    "name": "午辅",
-    "time": "12:40-13:00"
-   },
-   {
-    "name": "第六节",
-    "time": "14:00-14:40"
-   },
-   {
-    "name": "第七节",
-    "time": "14:50-15:30"
-   },
-   {
-    "name": "第八节",
-    "time": "15:45-16:25"
-   },
-   {
-    "name": "第九节",
-    "time": "16:35-17:15"
-   },
-   {
-    "name": "自习",
-    "time": "17:25-17:55"
-   },
-   {
-    "name": "晚辅",
-    "time": "18:35-19:20"
-   },
-   {
-    "name": "自习",
-    "time": "19:30-20:00"
-   },
-   {
-    "name": "培优",
-    "time": "20:00-20:40"
-   }
-  ],
-  "periods": 15,
-  "commWays": [
-   "电话",
-   "微信",
-   "面谈",
-   "家访",
-   "家长会"
-  ],
-  "supabase": {
-   "key": "sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ",
-   "url": "https://wnenjltqmvqemrbrkgub.supabase.co",
-   "auto": true,
-   "rowId": "hailey",
-   "table": "workbench",
-   "interval": 60
-  },
-  "wordBank": {
-   "units": [
+  "checks": [
     {
-     "id": 1,
-     "name": "The Changing World",
-     "pages": "p.1-10"
+      "id": "chk_779zji1oed",
+      "date": "2026-09-02",
+      "kind": "dictation",
+      "note": "",
+      "scope": "bring about-product",
+      "classId": "cls_4",
+      "results": {
+        "stu_0fa2b551": 1,
+        "stu_1412fa5b": 1,
+        "stu_14f41b19": 0,
+        "stu_206ff598": 1,
+        "stu_21c3db5a": 1,
+        "stu_23333e0f": 1,
+        "stu_256a58f4": 1,
+        "stu_31860e88": 1,
+        "stu_4346202e": 1,
+        "stu_4d0357e0": 1,
+        "stu_4f6191d7": 1,
+        "stu_4f70447a": 1,
+        "stu_4f8c2901": 1,
+        "stu_59b78c6a": 1,
+        "stu_6522270d": 1,
+        "stu_69a5893e": 1,
+        "stu_742e3cc1": 1,
+        "stu_833e52bc": 0,
+        "stu_88c14594": 1,
+        "stu_8d71d833": 0,
+        "stu_8f113478": 1,
+        "stu_8feece3a": 1,
+        "stu_90445adf": 1,
+        "stu_914e9b05": 1,
+        "stu_a31521ab": 1,
+        "stu_a4b1f79c": 1,
+        "stu_af6dbd84": 0,
+        "stu_c0f993d5": 0,
+        "stu_ccb1123b": 0,
+        "stu_d2e59daa": 1,
+        "stu_d5d98fd8": 1,
+        "stu_db4ca9d8": 1,
+        "stu_dd97438e": 1,
+        "stu_f3cc0f37": 1,
+        "stu_f83c671e": 1,
+        "stu_f8e764ef": 1,
+        "stu_fe0fa301": 1,
+        "stu_fuicfv7p0i": 0,
+        "stu_fvlwfmr1a7": 1,
+        "stu_fwhr2s9fut": 1
+      }
     },
     {
-     "id": 2,
-     "name": "Inspiring People",
-     "pages": "p.11-20"
-    },
-    {
-     "id": 3,
-     "name": "Smart Learning",
-     "pages": "p.21-30"
-    },
-    {
-     "id": 4,
-     "name": "Our Memory",
-     "pages": "p.31-40"
-    },
-    {
-     "id": 5,
-     "name": "Making a Difference",
-     "pages": "p.41-50"
-    },
-    {
-     "id": 6,
-     "name": "Into the Unknown",
-     "pages": "p.51-60"
-    },
-    {
-     "id": 7,
-     "name": "Music and More",
-     "pages": "p.61-70"
-    },
-    {
-     "id": 8,
-     "name": "Champion Mindset",
-     "pages": "p.71-199"
+      "id": "chk_77dneynuri",
+      "date": "2026-09-02",
+      "kind": "dictation",
+      "note": "",
+      "scope": "bring about-product",
+      "classId": "cls_8",
+      "results": {
+        "stu_018001a0": 1,
+        "stu_02e6a1c4": 1,
+        "stu_0838b86a": 1,
+        "stu_09acf8c4": 1,
+        "stu_133a508f": 1,
+        "stu_1446e824": 1,
+        "stu_15c9f5a7": 1,
+        "stu_1c7c8407": 1,
+        "stu_1ce9c91a": 1,
+        "stu_2750d3cc": 1,
+        "stu_27803590": 1,
+        "stu_29087d1c": 1,
+        "stu_32989fc0": 1,
+        "stu_358f545a": 1,
+        "stu_3c1b9880": 1,
+        "stu_3e98aa37": 1,
+        "stu_40f282a4": 1,
+        "stu_45370564": 1,
+        "stu_49946f36": 1,
+        "stu_523e679c": 1,
+        "stu_6b6cd926": 1,
+        "stu_76720588": 1,
+        "stu_7ab7ddd2": 1,
+        "stu_7dc7f6b0": 1,
+        "stu_9e836fd4": 1,
+        "stu_a6794ea1": 1,
+        "stu_b300a0c7": 1,
+        "stu_bfc58bae": 1,
+        "stu_c6e4426b": 1,
+        "stu_cad1c13b": 1,
+        "stu_d06fb60a": 1,
+        "stu_de83481d": 1,
+        "stu_e7eedbde": 1,
+        "stu_ef1234c7": 1,
+        "stu_f0fe83a0": 1,
+        "stu_f493e327": 1,
+        "stu_f5c39344": 1,
+        "stu_fbd1adea": 1,
+        "stu_fbda36f9": 1
+      }
     }
-   ],
-   "words": [
-    {
-     "w": "hill",
-     "cn": "山丘",
-     "pos": "n.",
-     "page": 2,
-     "unit": 1
-    },
-    {
-     "w": "rough",
-     "cn": "崎岖的",
-     "pos": "adj.",
-     "page": 2,
-     "unit": 1
-    },
-    {
-     "w": "corn",
-     "cn": "玉米；谷物",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "farmland",
-     "cn": "耕地",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "government",
-     "cn": "政府",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "lack",
-     "cn": "缺乏",
-     "pos": "v.&n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "root",
-     "cn": "根",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "sandstorm",
-     "cn": "沙尘暴",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "sandy",
-     "cn": "铺满沙子的；含沙的",
-     "pos": "adj.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "shortage",
-     "cn": "短缺",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "soil",
-     "cn": "土壤",
-     "pos": "n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "support",
-     "cn": "支持",
-     "pos": "v.&n.",
-     "page": 3,
-     "unit": 1
-    },
-    {
-     "w": "greatly",
-     "cn": "大大地；非常",
-     "pos": "adv.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "greenhouse",
-     "cn": "温室",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "highway",
-     "cn": "公路",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "housing",
-     "cn": "住房；住宅",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "product",
-     "cn": "产品",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "railway",
-     "cn": "铁路",
-     "pos": "n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "socialist",
-     "cn": "社会主义的；社会主义者",
-     "pos": "adj.&n.",
-     "page": 4,
-     "unit": 1
-    },
-    {
-     "w": "digital",
-     "cn": "数字的",
-     "pos": "adj.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "track",
-     "cn": "小路；轨道",
-     "pos": "n.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "tunnel",
-     "cn": "隧道；地下通道",
-     "pos": "n.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "wide",
-     "cn": "宽的；宽阔的",
-     "pos": "adj.",
-     "page": 5,
-     "unit": 1
-    },
-    {
-     "w": "capital",
-     "cn": "首都",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "complete",
-     "cn": "完成；完整的",
-     "pos": "v.&adj.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "convenient",
-     "cn": "方便的",
-     "pos": "adj.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "ease",
-     "cn": "容易；自在",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "Kenyan",
-     "cn": "肯尼亚的；肯尼亚人",
-     "pos": "adj.&n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "link",
-     "cn": "链接；联系",
-     "pos": "n.&v.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "lorry",
-     "cn": "卡车",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "manager",
-     "cn": "经理",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "port",
-     "cn": "港口城市；港口",
-     "pos": "n.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "with ease",
-     "cn": "轻而易举地",
-     "pos": "adv.",
-     "page": 6,
-     "unit": 1
-    },
-    {
-     "w": "comment",
-     "cn": "评论；批评",
-     "pos": "v.&n.",
-     "page": 7,
-     "unit": 1
-    },
-    {
-     "w": "conclusion",
-     "cn": "总结",
-     "pos": "n.",
-     "page": 7,
-     "unit": 1
-    },
-    {
-     "w": "man-made",
-     "cn": "人造的；非天然的",
-     "pos": "adj.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "miracle",
-     "cn": "奇迹",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "narrow",
-     "cn": "狭窄的",
-     "pos": "adj.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "rail",
-     "cn": "铁路",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "the Olympics",
-     "cn": "奥林匹克运动会",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "villager",
-     "cn": "村民",
-     "pos": "n.",
-     "page": 8,
-     "unit": 1
-    },
-    {
-     "w": "discussion",
-     "cn": "讨论",
-     "pos": "n.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "flat",
-     "cn": "公寓；平坦的",
-     "pos": "n.&adj.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "junior",
-     "cn": "初级的；低年级的",
-     "pos": "adj.",
-     "page": 9,
-     "unit": 1
-    },
-    {
-     "w": "inspiring",
-     "cn": "鼓舞人心的；激励的",
-     "pos": "adj.",
-     "page": 11,
-     "unit": 2
-    },
-    {
-     "w": "calendar",
-     "cn": "日历",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "chemist",
-     "cn": "化学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "discovery",
-     "cn": "发现",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "historian",
-     "cn": "历史学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "hunger",
-     "cn": "饥饿",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "physicist",
-     "cn": "物理学家",
-     "pos": "n.",
-     "page": 12,
-     "unit": 2
-    },
-    {
-     "w": "century",
-     "cn": "世纪",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "disease",
-     "cn": "疾病",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "nation",
-     "cn": "国家；民族",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "pioneer",
-     "cn": "先驱；先锋",
-     "pos": "n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "spread",
-     "cn": "传播；散布",
-     "pos": "v.&n.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "wounded",
-     "cn": "受伤的；负伤的",
-     "pos": "adj.",
-     "page": 13,
-     "unit": 2
-    },
-    {
-     "w": "courage",
-     "cn": "勇气",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "live",
-     "cn": "现场直播的",
-     "pos": "adj.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "look up to",
-     "cn": "钦佩；仰慕",
-     "pos": "v.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "pyramid",
-     "cn": "金字塔",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "wisdom",
-     "cn": "智慧；学问",
-     "pos": "n.",
-     "page": 14,
-     "unit": 2
-    },
-    {
-     "w": "childhood",
-     "cn": "童年",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "dynasty",
-     "cn": "朝代；王朝",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "necessary",
-     "cn": "必要的；必需的",
-     "pos": "adj.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "region",
-     "cn": "区域；地区",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "seed",
-     "cn": "种子",
-     "pos": "n.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "western",
-     "cn": "西方的；西部的",
-     "pos": "adj.",
-     "page": 15,
-     "unit": 2
-    },
-    {
-     "w": "collection",
-     "cn": "收集物；收藏品",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "exploration",
-     "cn": "探索",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "forever",
-     "cn": "永远",
-     "pos": "adv.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "leave behind",
-     "cn": "留下；遗留",
-     "pos": "v.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "live on",
-     "cn": "继续存在；继续活着",
-     "pos": "v.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "radio",
-     "cn": "无线电；收音机",
-     "pos": "n.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "scientific",
-     "cn": "科学（上）的",
-     "pos": "adj.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "whole",
-     "cn": "所有的；完全的",
-     "pos": "adj.",
-     "page": 16,
-     "unit": 2
-    },
-    {
-     "w": "daughter",
-     "cn": "女儿",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "flight",
-     "cn": "飞行；航班",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "herself",
-     "cn": "她自己",
-     "pos": "pron.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "hole",
-     "cn": "洞；孔",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "socialism",
-     "cn": "社会主义",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "universe",
-     "cn": "宇宙",
-     "pos": "n.",
-     "page": 18,
-     "unit": 2
-    },
-    {
-     "w": "inventor",
-     "cn": "发明家",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "kindness",
-     "cn": "善良",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "mankind",
-     "cn": "人类",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "period",
-     "cn": "时期；一段时间",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "thinker",
-     "cn": "思想家",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "woodwork",
-     "cn": "木工手艺",
-     "pos": "n.",
-     "page": 19,
-     "unit": 2
-    },
-    {
-     "w": "learner",
-     "cn": "学习者",
-     "pos": "n.",
-     "page": 21,
-     "unit": 3
-    },
-    {
-     "w": "experiment",
-     "cn": "实验；试验",
-     "pos": "n.&v.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "project",
-     "cn": "专题研究；项目",
-     "pos": "n.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "website",
-     "cn": "网站",
-     "pos": "n.",
-     "page": 22,
-     "unit": 3
-    },
-    {
-     "w": "dialogue",
-     "cn": "对话；对白",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "dictionary",
-     "cn": "词典；字典",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "general",
-     "cn": "总的；大体的",
-     "pos": "adj.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "grammar",
-     "cn": "语法",
-     "pos": "n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "in general",
-     "cn": "总的来说",
-     "pos": "adv.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "look up",
-     "cn": "查阅；检查",
-     "pos": "v.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "speed",
-     "cn": "速度；加速",
-     "pos": "v.&n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "suit",
-     "cn": "适合；套装",
-     "pos": "v.&n.",
-     "page": 23,
-     "unit": 3
-    },
-    {
-     "w": "come across",
-     "cn": "遇见；发现",
-     "pos": "v.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "enjoyable",
-     "cn": "使人快乐的",
-     "pos": "adj.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "podcast",
-     "cn": "播客",
-     "pos": "n.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "step by step",
-     "cn": "逐步地",
-     "pos": "adv.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "strategy",
-     "cn": "策略",
-     "pos": "n.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "zero",
-     "cn": "零；最低程度",
-     "pos": "num.",
-     "page": 24,
-     "unit": 3
-    },
-    {
-     "w": "method",
-     "cn": "方法",
-     "pos": "n.",
-     "page": 25,
-     "unit": 3
-    },
-    {
-     "w": "suggest",
-     "cn": "建议；提议",
-     "pos": "v.",
-     "page": 25,
-     "unit": 3
-    },
-    {
-     "w": "summarize",
-     "cn": "总结；概括",
-     "pos": "v.",
-     "page": 25,
-     "unit": 3
-    },
-    {
-     "w": "feedback",
-     "cn": "反馈的意见",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "growth",
-     "cn": "成长；增长",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "guidance",
-     "cn": "指导",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "in addition",
-     "cn": "另外；此外",
-     "pos": "adv.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "in part",
-     "cn": "部分地",
-     "pos": "adv.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "internet",
-     "cn": "互联网",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "material",
-     "cn": "材料；资料",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "mindset",
-     "cn": "观念模式",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "resource",
-     "cn": "资源；资料",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "textbook",
-     "cn": "教科书；课本",
-     "pos": "n.",
-     "page": 26,
-     "unit": 3
-    },
-    {
-     "w": "efficiently",
-     "cn": "效率高地",
-     "pos": "adv.",
-     "page": 27,
-     "unit": 3
-    },
-    {
-     "w": "take advantage of",
-     "cn": "利用",
-     "pos": "v.",
-     "page": 27,
-     "unit": 3
-    },
-    {
-     "w": "valley",
-     "cn": "山谷；溪谷",
-     "pos": "n.",
-     "page": 27,
-     "unit": 3
-    },
-    {
-     "w": "click",
-     "cn": "点击",
-     "pos": "v.",
-     "page": 28,
-     "unit": 3
-    },
-    {
-     "w": "pronunciation",
-     "cn": "发音；读音",
-     "pos": "n.",
-     "page": 28,
-     "unit": 3
-    },
-    {
-     "w": "magazine",
-     "cn": "杂志；期刊",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "newspaper",
-     "cn": "报纸",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "open up",
-     "cn": "打开；开放",
-     "pos": "v.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "print",
-     "cn": "印刷品；打印",
-     "pos": "v.&n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "recent",
-     "cn": "最近的；最新的",
-     "pos": "adj.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "schoolwork",
-     "cn": "学校作业",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "shelf",
-     "cn": "（墙壁、书橱等的）架子；搁板",
-     "pos": "n.",
-     "page": 29,
-     "unit": 3
-    },
-    {
-     "w": "lecture",
-     "cn": "讲座；讲课",
-     "pos": "n.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "position",
-     "cn": "位置；安置",
-     "pos": "n.&v.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "react",
-     "cn": "作出反应；回应",
-     "pos": "v.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "run out",
-     "cn": "用完；耗尽",
-     "pos": "v.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "sadness",
-     "cn": "悲伤",
-     "pos": "n.",
-     "page": 32,
-     "unit": 4
-    },
-    {
-     "w": "chain",
-     "cn": "链条",
-     "pos": "n.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "memorize",
-     "cn": "记住；记忆",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "mix up",
-     "cn": "混淆；弄乱",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "put sth to good use",
-     "cn": "有效使用（或利用）某物",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "retell",
-     "cn": "复述；重述",
-     "pos": "v.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "stable",
-     "cn": "稳定的；稳固的",
-     "pos": "adj.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "tick",
-     "cn": "打勾；钩号",
-     "pos": "v.&n.",
-     "page": 33,
-     "unit": 4
-    },
-    {
-     "w": "case",
-     "cn": "情况；事例",
-     "pos": "n.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "go through",
-     "cn": "经历；仔细察看",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "grandson",
-     "cn": "孙子；外孙",
-     "pos": "n.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "happen",
-     "cn": "发生；碰巧",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "keep in mind",
-     "cn": "记住",
-     "pos": "v.",
-     "page": 34,
-     "unit": 4
-    },
-    {
-     "w": "grapevine",
-     "cn": "葡萄藤；葡萄树",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "gunshot",
-     "cn": "枪声；炮弹",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "mouth",
-     "cn": "嘴",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "opera",
-     "cn": "歌剧；歌剧院",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "pardon",
-     "cn": "原谅",
-     "pos": "v.&interj.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "picnic",
-     "cn": "野餐",
-     "pos": "n.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "recall",
-     "cn": "回忆起；回想起",
-     "pos": "v.",
-     "page": 35,
-     "unit": 4
-    },
-    {
-     "w": "discuss",
-     "cn": "讨论；谈论",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "effective",
-     "cn": "有效的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "engine",
-     "cn": "发动机",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "fuel",
-     "cn": "燃料",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "graph",
-     "cn": "图表",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "image",
-     "cn": "图像；形象",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "likely",
-     "cn": "很可能；可能的",
-     "pos": "adv.&adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "long-term",
-     "cn": "长期的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "organize",
-     "cn": "处理；组织",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "passage",
-     "cn": "段落；走廊",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "short-term",
-     "cn": "短期的",
-     "pos": "adj.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "technique",
-     "cn": "技巧",
-     "pos": "n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "to start with",
-     "cn": "首先",
-     "pos": "adv.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "view",
-     "cn": "观看；观点；视野",
-     "pos": "v.&n.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "wear out",
-     "cn": "使疲乏；磨损",
-     "pos": "v.",
-     "page": 36,
-     "unit": 4
-    },
-    {
-     "w": "paper",
-     "cn": "纸",
-     "pos": "n.",
-     "page": 37,
-     "unit": 4
-    },
-    {
-     "w": "password",
-     "cn": "密码；口令",
-     "pos": "n.",
-     "page": 37,
-     "unit": 4
-    },
-    {
-     "w": "dolphin",
-     "cn": "海豚",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "increase",
-     "cn": "增长；增加",
-     "pos": "v.&n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "mall",
-     "cn": "购物商场",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "notebook",
-     "cn": "笔记本；笔记本电脑",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "nut",
-     "cn": "坚果",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "recognize",
-     "cn": "辨认出；认可",
-     "pos": "v.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "squirrel",
-     "cn": "松鼠",
-     "pos": "n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "wild",
-     "cn": "野生的；自然生长的",
-     "pos": "adj.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "wound",
-     "cn": "使受伤；伤口",
-     "pos": "v.&n.",
-     "page": 38,
-     "unit": 4
-    },
-    {
-     "w": "divide",
-     "cn": "分；分成",
-     "pos": "v.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "fully",
-     "cn": "完全地",
-     "pos": "adv.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "one-size-fits-all",
-     "cn": "通用的",
-     "pos": "adj.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "outline",
-     "cn": "提纲；概述",
-     "pos": "n.&v.",
-     "page": 39,
-     "unit": 4
-    },
-    {
-     "w": "camera",
-     "cn": "照相机；摄影机",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "high-speed train",
-     "cn": "高速列车",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "invention",
-     "cn": "发明；创造",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "itself",
-     "cn": "它自己",
-     "pos": "pron.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "laptop",
-     "cn": "笔记本电脑",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "sunglass",
-     "cn": "墨镜",
-     "pos": "n.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "super",
-     "cn": "超级的；顶好的",
-     "pos": "adj.",
-     "page": 42,
-     "unit": 5
-    },
-    {
-     "w": "file",
-     "cn": "文件",
-     "pos": "n.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "plastic",
-     "cn": "塑料；塑料的",
-     "pos": "n.&adj.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "printer",
-     "cn": "打印机；印刷公司",
-     "pos": "n.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "produce",
-     "cn": "生产；养育",
-     "pos": "v.",
-     "page": 43,
-     "unit": 5
-    },
-    {
-     "w": "invent",
-     "cn": "发明；编造",
-     "pos": "v.",
-     "page": 44,
-     "unit": 5
-    },
-    {
-     "w": "eastern",
-     "cn": "东部的；东方的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "economic",
-     "cn": "经济的；经济学的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "frozen",
-     "cn": "冻结的；冰冷的",
-     "pos": "adj.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "gain",
-     "cn": "获得；取得",
-     "pos": "v.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "layer",
-     "cn": "层；表层",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "melt",
-     "cn": "融化；逐渐消失",
-     "pos": "v.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "pipe",
-     "cn": "管道；管子",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "suppose",
-     "cn": "认为；推断",
-     "pos": "v.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "telephone",
-     "cn": "电话",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "tourism",
-     "cn": "旅游业",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "wheel",
-     "cn": "车轮；轮子",
-     "pos": "n.",
-     "page": 45,
-     "unit": 5
-    },
-    {
-     "w": "certain",
-     "cn": "某（些）；确定的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "cheap",
-     "cn": "便宜的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "creation",
-     "cn": "创造；作品",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "expensive",
-     "cn": "昂贵的；价格高的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "fibre",
-     "cn": "纤维",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "ideal",
-     "cn": "理想的；理想",
-     "pos": "adj.&n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "jute",
-     "cn": "黄麻纤维",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "later on",
-     "cn": "后来；其后",
-     "pos": "adv.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "liquid",
-     "cn": "液体；液体的",
-     "pos": "n.&adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "none",
-     "cn": "没有一个；毫无",
-     "pos": "pron.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "officer",
-     "cn": "官员；军官",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "papermaking",
-     "cn": "造纸工艺；造纸业",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "rapid",
-     "cn": "迅速的；瞬间的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "reality",
-     "cn": "现实；事实",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "responsible",
-     "cn": "作为原因的；有责任的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "responsible for",
-     "cn": "引起某事的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "shape",
-     "cn": "塑造；形状",
-     "pos": "v.&n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "speed up",
-     "cn": "加速",
-     "pos": "v.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "stone",
-     "cn": "石头；岩石",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "suitable",
-     "cn": "合适的；适宜的",
-     "pos": "adj.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "ware",
-     "cn": "制品；陶器",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "workshop",
-     "cn": "作坊；讲习班",
-     "pos": "n.",
-     "page": 46,
-     "unit": 5
-    },
-    {
-     "w": "lead to",
-     "cn": "导致；造成",
-     "pos": "v.",
-     "page": 47,
-     "unit": 5
-    },
-    {
-     "w": "result in",
-     "cn": "造成；导致",
-     "pos": "v.",
-     "page": 47,
-     "unit": 5
-    },
-    {
-     "w": "company",
-     "cn": "公司；陪伴",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "gradually",
-     "cn": "逐渐地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "production",
-     "cn": "生产；制作",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "rapidly",
-     "cn": "迅速地；快速地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "songbook",
-     "cn": "歌曲集",
-     "pos": "n.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "sticky",
-     "cn": "黏（性）的；闷热的",
-     "pos": "adj.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "widely",
-     "cn": "广泛地；普遍地",
-     "pos": "adv.",
-     "page": 48,
-     "unit": 5
-    },
-    {
-     "w": "glider",
-     "cn": "滑翔机",
-     "pos": "n.",
-     "page": 49,
-     "unit": 5
-    },
-    {
-     "w": "launch",
-     "cn": "发射；发起",
-     "pos": "v.&n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "manned",
-     "cn": "载人的",
-     "pos": "adj.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "mission",
-     "cn": "任务；使命",
-     "pos": "n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "rover",
-     "cn": "探测器；漫游者",
-     "pos": "n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "telescope",
-     "cn": "望远镜",
-     "pos": "n.",
-     "page": 52,
-     "unit": 6
-    },
-    {
-     "w": "fall asleep",
-     "cn": "入睡",
-     "pos": "v.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "movement",
-     "cn": "运动；活动",
-     "pos": "n.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "tie",
-     "cn": "系上；领带",
-     "pos": "v.&n.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "weightless",
-     "cn": "失重的；无重量的",
-     "pos": "adj.",
-     "page": 53,
-     "unit": 6
-    },
-    {
-     "w": "crazy",
-     "cn": "疯狂的",
-     "pos": "adj.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "geology",
-     "cn": "地质；地质学",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "human being",
-     "cn": "人类",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "satellite",
-     "cn": "人造卫星；卫星",
-     "pos": "n.",
-     "page": 54,
-     "unit": 6
-    },
-    {
-     "w": "cancel",
-     "cn": "取消；终止",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "publish",
-     "cn": "刊登；出版",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "require",
-     "cn": "要求；需要",
-     "pos": "v.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "rocket",
-     "cn": "火箭",
-     "pos": "n.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "solar",
-     "cn": "太阳的；太阳能的",
-     "pos": "adj.",
-     "page": 55,
-     "unit": 6
-    },
-    {
-     "w": "god",
-     "cn": "神",
-     "pos": "n.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "in case",
-     "cn": "以防万一",
-     "pos": "conj.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "on board",
-     "cn": "在船（或车、飞机）上",
-     "pos": "adv.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "spacecraft",
-     "cn": "宇宙飞船",
-     "pos": "n.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "star",
-     "cn": "星；恒星",
-     "pos": "n.&adj.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "trillion",
-     "cn": "万亿；兆",
-     "pos": "n.",
-     "page": 56,
-     "unit": 6
-    },
-    {
-     "w": "cooperate",
-     "cn": "合作；协作",
-     "pos": "v.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "expectation",
-     "cn": "期望；希望",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "galaxy",
-     "cn": "星系",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "imagination",
-     "cn": "想象；想象力",
-     "pos": "n.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "set foot on",
-     "cn": "访问；参观（某地）",
-     "pos": "v.",
-     "page": 57,
-     "unit": 6
-    },
-    {
-     "w": "ship",
-     "cn": "（大）船；舰",
-     "pos": "n.",
-     "page": 58,
-     "unit": 6
-    },
-    {
-     "w": "spaceship",
-     "cn": "（航天）飞船",
-     "pos": "n.",
-     "page": 58,
-     "unit": 6
-    },
-    {
-     "w": "survey",
-     "cn": "测量；民意调查",
-     "pos": "v.&n.",
-     "page": 58,
-     "unit": 6
-    },
-    {
-     "w": "operate",
-     "cn": "操作；运转",
-     "pos": "v.",
-     "page": 59,
-     "unit": 6
-    },
-    {
-     "w": "rhythm",
-     "cn": "节奏；韵律",
-     "pos": "n.",
-     "page": 61,
-     "unit": 7
-    },
-    {
-     "w": "classical",
-     "cn": "古典乐的；古典的",
-     "pos": "adj.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "folk",
-     "cn": "民间的；人们",
-     "pos": "adj.&n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "jazz",
-     "cn": "爵士乐",
-     "pos": "n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "lyric",
-     "cn": "歌词；抒情的",
-     "pos": "n.&adj.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "pop",
-     "cn": "流行音乐；蹦出",
-     "pos": "n.&v.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "rap",
-     "cn": "说唱乐；表演说唱乐",
-     "pos": "v.&n.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "sing along",
-     "cn": "随着唱",
-     "pos": "v.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "traditional",
-     "cn": "传统的；习俗的",
-     "pos": "adj.",
-     "page": 62,
-     "unit": 7
-    },
-    {
-     "w": "electric",
-     "cn": "电的；令人激动的",
-     "pos": "adj.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "keyboard",
-     "cn": "电子琴；键盘",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "piece",
-     "cn": "一片；一篇",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "style",
-     "cn": "风格；方式",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "trumpet",
-     "cn": "小号；喇叭",
-     "pos": "n.",
-     "page": 63,
-     "unit": 7
-    },
-    {
-     "w": "golden",
-     "cn": "金色的",
-     "pos": "adj.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "lover",
-     "cn": "情人；爱好者",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "performance",
-     "cn": "演出；表演",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "performer",
-     "cn": "表演者",
-     "pos": "n.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "romantic",
-     "cn": "浪漫的；爱情的",
-     "pos": "adj.",
-     "page": 64,
-     "unit": 7
-    },
-    {
-     "w": "composer",
-     "cn": "作曲家",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "download",
-     "cn": "下载",
-     "pos": "v.&n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "electronic",
-     "cn": "电子的",
-     "pos": "adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "gifted",
-     "cn": "有天赋的",
-     "pos": "adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "poet",
-     "cn": "诗人",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "policewoman",
-     "cn": "女警察",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "purple",
-     "cn": "紫色；紫色的",
-     "pos": "n.&adj.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "rating",
-     "cn": "评分；等级",
-     "pos": "n.",
-     "page": 65,
-     "unit": 7
-    },
-    {
-     "w": "genius",
-     "cn": "天才人物；天赋",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "look down on",
-     "cn": "轻视；蔑视",
-     "pos": "v.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "mysterious",
-     "cn": "神秘的；奇怪的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "outdoor",
-     "cn": "户外的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "pianist",
-     "cn": "钢琴家",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "Polish",
-     "cn": "波兰的",
-     "pos": "adj.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "proudly",
-     "cn": "自豪地；壮观地",
-     "pos": "adv.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "soul",
-     "cn": "真挚情感；灵魂",
-     "pos": "n.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "widen",
-     "cn": "使变宽；扩展",
-     "pos": "v.",
-     "page": 66,
-     "unit": 7
-    },
-    {
-     "w": "contribution",
-     "cn": "贡献；捐款",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "funeral",
-     "cn": "葬礼",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "profession",
-     "cn": "职业；行业",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "young and old",
-     "cn": "老老少少",
-     "pos": "n.",
-     "page": 67,
-     "unit": 7
-    },
-    {
-     "w": "cartoon",
-     "cn": "动画片；漫画",
-     "pos": "n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "champion",
-     "cn": "冠军",
-     "pos": "n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "fair",
-     "cn": "公平的；合理的",
-     "pos": "adj.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "flowing",
-     "cn": "流畅的；松散的",
-     "pos": "adj.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "tap",
-     "cn": "轻拍；轻叩",
-     "pos": "v.&n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "tape",
-     "cn": "磁带；录像带",
-     "pos": "n.",
-     "page": 68,
-     "unit": 7
-    },
-    {
-     "w": "finger",
-     "cn": "手指",
-     "pos": "n.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "nowadays",
-     "cn": "现在；目前",
-     "pos": "adv.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "schoolmate",
-     "cn": "同学",
-     "pos": "n.",
-     "page": 69,
-     "unit": 7
-    },
-    {
-     "w": "competition",
-     "cn": "比赛",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "pull-up",
-     "cn": "引体向上",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "relay",
-     "cn": "接力赛",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "shot-put",
-     "cn": "推铅球",
-     "pos": "n.",
-     "page": 72,
-     "unit": 8
-    },
-    {
-     "w": "judge",
-     "cn": "裁判员；判断",
-     "pos": "n.&v.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "runner",
-     "cn": "参加赛跑的人",
-     "pos": "n.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "smooth",
-     "cn": "顺利的；光滑的",
-     "pos": "adj.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "take the lead",
-     "cn": "带头",
-     "pos": "v.",
-     "page": 73,
-     "unit": 8
-    },
-    {
-     "w": "figure",
-     "cn": "人物；数字",
-     "pos": "n.&v.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "figure skating",
-     "cn": "花样滑冰",
-     "pos": "n.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "swimming",
-     "cn": "游泳",
-     "pos": "n.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "truly",
-     "cn": "真正地；诚实地",
-     "pos": "adv.",
-     "page": 74,
-     "unit": 8
-    },
-    {
-     "w": "compete",
-     "cn": "比赛；竞争",
-     "pos": "v.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "neither",
-     "cn": "两者都不",
-     "pos": "adv.&conj.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "nor",
-     "cn": "也不",
-     "pos": "conj.&adv.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "tryout",
-     "cn": "参加选拔；试用",
-     "pos": "n.&v.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "unique",
-     "cn": "独一无二的；罕见的",
-     "pos": "adj.",
-     "page": 75,
-     "unit": 8
-    },
-    {
-     "w": "dramatic",
-     "cn": "激动的；出人意料的",
-     "pos": "adj.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "gold",
-     "cn": "金；金色的",
-     "pos": "n.&adj.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "in wonder",
-     "cn": "惊奇地",
-     "pos": "adv.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "mascot",
-     "cn": "吉祥物",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "medal",
-     "cn": "奖章；勋章",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "motto",
-     "cn": "口号；格言",
-     "pos": "n.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "set a record",
-     "cn": "创造纪录",
-     "pos": "v.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "talented",
-     "cn": "有才能的；天才的",
-     "pos": "adj.",
-     "page": 76,
-     "unit": 8
-    },
-    {
-     "w": "citizen",
-     "cn": "市民；公民",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "harmony",
-     "cn": "和谐；和睦",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "pride",
-     "cn": "自豪；骄傲",
-     "pos": "n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "reform",
-     "cn": "改革；变革",
-     "pos": "v.&n.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "worldwide",
-     "cn": "世界范围的；在全世界",
-     "pos": "adv.&adj.",
-     "page": 77,
-     "unit": 8
-    },
-    {
-     "w": "Greek",
-     "cn": "希腊的；希腊人",
-     "pos": "adj.&n.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "master",
-     "cn": "能手；掌握",
-     "pos": "n.&v.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "Roman",
-     "cn": "古罗马的；罗马人",
-     "pos": "adj.&n.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "satisfy",
-     "cn": "使（某人）满意",
-     "pos": "v.",
-     "page": 78,
-     "unit": 8
-    },
-    {
-     "w": "cheer",
-     "cn": "喝彩；欢呼",
-     "pos": "v.",
-     "page": 79,
-     "unit": 8
-    },
-    {
-     "w": "crowd",
-     "cn": "人群；观众",
-     "pos": "n.",
-     "page": 79,
-     "unit": 8
-    },
-    {
-     "w": "drown",
-     "cn": "淹死；溺死",
-     "pos": "v.",
-     "page": 79,
-     "unit": 8
-    }
-   ],
-   "source": "2026 秋人教版英语九年级上册（正式版）",
-   "version": 1,
-   "irregularVerbsNote": "见教材 p.127 及之后附录",
-   "primarySchoolReviewedAt": "p.126"
-  },
-  "discTypes": [
-   "迟到",
-   "作业未交",
-   "上课讲话",
-   "不带课本",
-   "顶撞老师",
-   "违规带手机",
-   "其他"
   ],
-  "fullScore": 120,
-  "focusLines": {
-   "aLow": 50,
-   "pass": 90,
-   "aHigh": 70
-  }
- },
- "students": [
-  {
-   "id": "stu_914e9b05",
-   "no": 1,
-   "name": "李欣怡",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "张金燕",
-   "parentName2": "李明亮",
-   "parentPhone": "18908070662",
-   "parentPhone2": "18980832615"
-  },
-  {
-   "id": "stu_f83c671e",
-   "no": 7,
-   "name": "刘璐",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "杨波",
-   "parentName2": "刘亚龙",
-   "parentPhone": "13993217033",
-   "parentPhone2": "13830233388"
-  },
-  {
-   "id": "stu_0fa2b551",
-   "no": 13,
-   "name": "李轲",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_6522270d",
-   "no": 20,
-   "name": "蔡佳欣",
-   "note": "另一联系电话：18728448133",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "蔡学富",
-   "parentName2": "",
-   "parentPhone": "13880063288",
-   "parentPhone2": "15828025756"
-  },
-  {
-   "id": "stu_31860e88",
-   "no": 26,
-   "name": "徐鼎洋",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "徐功宇",
-   "parentName2": "李琳",
-   "parentPhone": "18982086770",
-   "parentPhone2": "18281885855"
-  },
-  {
-   "id": "stu_d2e59daa",
-   "no": 33,
-   "name": "段茹轩",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "熊燕",
-   "parentName2": "段炳军",
-   "parentPhone": "15828578620",
-   "parentPhone2": "15928826569"
-  },
-  {
-   "id": "stu_4f8c2901",
-   "no": 34,
-   "name": "吕睿彤",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "吕麟",
-   "parentName2": "黄娟",
-   "parentPhone": "13880384067",
-   "parentPhone2": "13808096970"
-  },
-  {
-   "id": "stu_14f41b19",
-   "no": 27,
-   "name": "陈立言",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "陈婧",
-   "parentName2": "陈应宪",
-   "parentPhone": "18983426296",
-   "parentPhone2": "18982234870"
-  },
-  {
-   "id": "stu_4346202e",
-   "no": 21,
-   "name": "贺浩轩",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "陈莉",
-   "parentName2": "贺志强",
-   "parentPhone": "15108233702",
-   "parentPhone2": "13689025241"
-  },
-  {
-   "id": "stu_8f113478",
-   "no": 14,
-   "name": "朱泽兰",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "周清谊",
-   "parentName2": "朱定兵",
-   "parentPhone": "15777303498",
-   "parentPhone2": "18593274932"
-  },
-  {
-   "id": "stu_1412fa5b",
-   "no": 8,
-   "name": "张锦怡",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "张欣",
-   "parentName2": "柯易均",
-   "parentPhone": "15882278309",
-   "parentPhone2": "15828656609"
-  },
-  {
-   "id": "stu_d5d98fd8",
-   "no": 2,
-   "name": "唐闻博",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "任为",
-   "parentName2": "唐忠坤",
-   "parentPhone": "13458639124",
-   "parentPhone2": "19181782216"
-  },
-  {
-   "id": "stu_4f70447a",
-   "no": 3,
-   "name": "王子丹",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "徐露露",
-   "parentName2": "王崇宇",
-   "parentPhone": "18281863105",
-   "parentPhone2": "18200170272"
-  },
-  {
-   "id": "stu_f8e764ef",
-   "no": 9,
-   "name": "赖思辰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "赖绪洪",
-   "parentName2": "康秀英",
-   "parentPhone": "13541287613",
-   "parentPhone2": "15351222526"
-  },
-  {
-   "id": "stu_59b78c6a",
-   "no": 15,
-   "name": "张佳宜",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_88c14594",
-   "no": 22,
-   "name": "唐浩仁",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "郑婷",
-   "parentName2": "唐川",
-   "parentPhone": "18080855693",
-   "parentPhone2": "18108074717"
-  },
-  {
-   "id": "stu_fe0fa301",
-   "no": 28,
-   "name": "戚嘉航",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "贾红娟",
-   "parentName2": "戚秦",
-   "parentPhone": "13518135673",
-   "parentPhone2": "13056663336"
-  },
-  {
-   "id": "stu_a31521ab",
-   "no": 35,
-   "name": "梁心蕊",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "王厚娟",
-   "parentName2": "梁明才",
-   "parentPhone": "18402809269",
-   "parentPhone2": "13550310846"
-  },
-  {
-   "id": "stu_8d71d833",
-   "no": 36,
-   "name": "姚嘉杰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "李艳",
-   "parentName2": "姚建",
-   "parentPhone": "15756275700",
-   "parentPhone2": "15196508697"
-  },
-  {
-   "id": "stu_206ff598",
-   "no": 29,
-   "name": "黄婉婷",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "张采霞",
-   "parentName2": "黄永权",
-   "parentPhone": "13880194798",
-   "parentPhone2": "13668262220"
-  },
-  {
-   "id": "stu_4f6191d7",
-   "no": 23,
-   "name": "傅茂涵",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "蒋冬梅",
-   "parentName2": "傅强胜",
-   "parentPhone": "18123468611",
-   "parentPhone2": "18280488977"
-  },
-  {
-   "id": "stu_a4b1f79c",
-   "no": 16,
-   "name": "杨汶平",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "黄帮英",
-   "parentName2": "杨青才",
-   "parentPhone": "18780228564",
-   "parentPhone2": "13281164427"
-  },
-  {
-   "id": "stu_4d0357e0",
-   "no": 10,
-   "name": "荣博文",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "赵秀芳",
-   "parentName2": "荣勇",
-   "parentPhone": "18381006508",
-   "parentPhone2": "18284592826"
-  },
-  {
-   "id": "stu_8feece3a",
-   "no": 4,
-   "name": "罗钧耀",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_69a5893e",
-   "no": 5,
-   "name": "吴贤丞",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "吴波",
-   "parentName2": "伏静",
-   "parentPhone": "13980402898",
-   "parentPhone2": "13881680600"
-  },
-  {
-   "id": "stu_23333e0f",
-   "no": 11,
-   "name": "朱宇晨",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "朱波",
-   "parentName2": "朱凤娟",
-   "parentPhone": "17713539007",
-   "parentPhone2": "17708009007"
-  },
-  {
-   "id": "stu_21c3db5a",
-   "no": 17,
-   "name": "张恒溢",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "张鹏",
-   "parentName2": "符勇静",
-   "parentPhone": "15882399714",
-   "parentPhone2": "13683439199"
-  },
-  {
-   "id": "stu_833e52bc",
-   "no": 24,
-   "name": "张思瑞",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "张小波",
-   "parentName2": "",
-   "parentPhone": "18040373380",
-   "parentPhone2": ""
-  },
-  {
-   "id": "stu_db4ca9d8",
-   "no": 30,
-   "name": "熊文浚",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "赵小艳",
-   "parentName2": "熊运福",
-   "parentPhone": "18080428060",
-   "parentPhone2": "13715222618"
-  },
-  {
-   "id": "stu_dd97438e",
-   "no": 37,
-   "name": "陈泓州",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "闵艳茹",
-   "parentName2": "陈军",
-   "parentPhone": "13541199811",
-   "parentPhone2": "13699083922"
-  },
-  {
-   "id": "stu_90445adf",
-   "no": 6,
-   "name": "马天仪",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "1组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_c0f993d5",
-   "no": 12,
-   "name": "向泽成",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "2组",
-   "classId": "cls_4",
-   "parentName": "邱维婷",
-   "parentName2": "向建",
-   "parentPhone": "18215509099",
-   "parentPhone2": "13540273332"
-  },
-  {
-   "id": "stu_f3cc0f37",
-   "no": 18,
-   "name": "马梓瑞",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "马毅",
-   "parentName2": "苏萍",
-   "parentPhone": "13668259495",
-   "parentPhone2": "15928087397"
-  },
-  {
-   "id": "stu_af6dbd84",
-   "no": 25,
-   "name": "罗欣月",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "4组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_ccb1123b",
-   "no": 31,
-   "name": "伍民炜",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_256a58f4",
-   "no": 38,
-   "name": "汪羽辰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "冯文苹",
-   "parentName2": "汪松苹",
-   "parentPhone": "15208236256",
-   "parentPhone2": "18140007108"
-  },
-  {
-   "id": "stu_de83481d",
-   "no": "1",
-   "name": "吕沛翰",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_49946f36",
-   "no": "2",
-   "name": "罗星佑",
-   "note": "",
-   "tags": [],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_cad1c13b",
-   "no": "3",
-   "name": "李民赫",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_0838b86a",
-   "no": "4",
-   "name": "王梓涵",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_f0fe83a0",
-   "no": "5",
-   "name": "吕睿昕",
-   "note": "",
-   "tags": [
-    "全卷及格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_3c1b9880",
-   "no": "6",
-   "name": "杨啟彤",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_15c9f5a7",
-   "no": "7",
-   "name": "贺思宇",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_fbda36f9",
-   "no": "8",
-   "name": "罗文轩",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_ef1234c7",
-   "no": "9",
-   "name": "梁心怡",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_6b6cd926",
-   "no": "10",
-   "name": "黄诗瑶",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_3e98aa37",
-   "no": "11",
-   "name": "陈梓瑶",
-   "note": "",
-   "tags": [],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_018001a0",
-   "no": "12",
-   "name": "郭欣沂",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_27803590",
-   "no": "13",
-   "name": "陈诗文",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_f5c39344",
-   "no": "14",
-   "name": "周钰倩",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_7dc7f6b0",
-   "no": "15",
-   "name": "叶耀林",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_1ce9c91a",
-   "no": "16",
-   "name": "潘潇雅",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_1446e824",
-   "no": "17",
-   "name": "曹橙曦",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_fbd1adea",
-   "no": "18",
-   "name": "刘思枘",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_02e6a1c4",
-   "no": "19",
-   "name": "程炜森",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_2750d3cc",
-   "no": "20",
-   "name": "张钧淏",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_76720588",
-   "no": "21",
-   "name": "杨欣",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_e7eedbde",
-   "no": "22",
-   "name": "谢沉林",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_f493e327",
-   "no": "23",
-   "name": "王子祥",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_1c7c8407",
-   "no": "24",
-   "name": "赵晨",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_40f282a4",
-   "no": "25",
-   "name": "谭若熙",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_32989fc0",
-   "no": "26",
-   "name": "周鸿瑄",
-   "note": "",
-   "tags": [
-    "A卷合格生"
-   ],
-   "focus": true,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_a6794ea1",
-   "no": "27",
-   "name": "余馨蕾",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_358f545a",
-   "no": "28",
-   "name": "罗清朗文",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_d06fb60a",
-   "no": "29",
-   "name": "虞恩玥",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_09acf8c4",
-   "no": "30",
-   "name": "马辰越",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_c6e4426b",
-   "no": "31",
-   "name": "陈俊翔",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_133a508f",
-   "no": "32",
-   "name": "王馨悦",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_bfc58bae",
-   "no": "33",
-   "name": "程思禧",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_29087d1c",
-   "no": "34",
-   "name": "徐东辰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_523e679c",
-   "no": "35",
-   "name": "曾凡淋",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_9e836fd4",
-   "no": "36",
-   "name": "张耀添",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_45370564",
-   "no": "37",
-   "name": "龙晨菲",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_b300a0c7",
-   "no": "38",
-   "name": "刘谨睿",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_7ab7ddd2",
-   "no": "39",
-   "name": "林毅峰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_8",
-   "parentName": "",
-   "parentPhone": ""
-  },
-  {
-   "id": "stu_fuicfv7p0i",
-   "no": 19,
-   "name": "朱承熙",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "3组",
-   "classId": "cls_4",
-   "parentName": "朱刚",
-   "parentName2": "杨雪雯",
-   "parentPhone": "13981718264",
-   "parentPhone2": "13548011249"
-  },
-  {
-   "id": "stu_fvlwfmr1a7",
-   "no": 32,
-   "name": "伍溰虹",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "5组",
-   "classId": "cls_4",
-   "parentName": "蒋丽萍",
-   "parentName2": "伍兵",
-   "parentPhone": "13880963199",
-   "parentPhone2": "13709009088"
-  },
-  {
-   "id": "stu_fwhr2s9fut",
-   "no": 39,
-   "name": "邹昕然",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "邹振华",
-   "parentName2": "袁萍",
-   "parentPhone": "18615799911",
-   "parentPhone2": "18982214962"
-  },
-  {
-   "id": "stu_742e3cc1",
-   "no": 40,
-   "name": "周彦辰",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "group": "6组",
-   "classId": "cls_4",
-   "parentName": "",
-   "parentName2": "",
-   "parentPhone": "",
-   "parentPhone2": ""
-  },
-  {
-   "id": "stu_7fbde7bf",
-   "no": "40",
-   "name": "胡梓轩",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "胡兵",
-   "parentName2": "谭霞",
-   "parentPhone": "13908073206",
-   "parentPhone2": "15281036878"
-  },
-  {
-   "id": "stu_3dac0f37",
-   "no": "41",
-   "name": "李馥含",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "李丹怡",
-   "parentName2": "李华正",
-   "parentPhone": "15002892996",
-   "parentPhone2": "18121851318"
-  },
-  {
-   "id": "stu_d0c77427",
-   "no": "42",
-   "name": "张嫄琳",
-   "note": "",
-   "tags": [],
-   "focus": false,
-   "classId": "cls_4",
-   "parentName": "唐文书",
-   "parentName2": "张贵强",
-   "parentPhone": "13378224466",
-   "parentPhone2": "15983489631"
-  }
- ],
- "timetable": {
-  "1-1": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-2": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "1-5": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "1-6": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "2-1": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "2-7": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "2-8": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "3-8": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "4-1": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "4-3": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "4-5": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "4-6": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "5-1": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "5-4": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "5-5": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "5-7": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "5-8": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "2-10": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "3-10": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "3-11": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "3-12": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "3-13": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "3-14": {
-   "room": "",
-   "classId": "cls_4",
-   "content": ""
-  },
-  "4-12": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "4-13": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  },
-  "4-14": {
-   "room": "",
-   "classId": "cls_8",
-   "content": ""
-  }
- },
- "discipline": [
-  {
-   "id": "disc_be1o6krtjg",
-   "date": "2026-09-01",
-   "type": "其他",
-   "detail": "下午第一节上课睡觉",
-   "handled": false,
-   "studentId": "stu_ccb1123b"
-  },
-  {
-   "id": "disc_beyb9dhwoa",
-   "date": "2026-09-01",
-   "type": "其他",
-   "detail": "下午第一节上课睡觉",
-   "handled": false,
-   "studentId": "stu_fvlwfmr1a7"
-  },
-  {
-   "id": "disc_bfjv9vng9c",
-   "date": "2026-09-01",
-   "type": "其他",
-   "detail": "下午第一节上课睡觉",
-   "handled": false,
-   "studentId": "stu_fwhr2s9fut"
-  },
-  {
-   "id": "disc_bgfolpardf",
-   "date": "2026-09-01",
-   "type": "其他",
-   "detail": "下午第一节上课睡觉",
-   "handled": false,
-   "studentId": "stu_256a58f4"
-  }
- ]
+  "classes": [
+    {
+      "id": "cls_4",
+      "name": "初三四班",
+      "grade": "初三",
+      "gradYear": 2027
+    },
+    {
+      "id": "cls_8",
+      "name": "初三八班",
+      "grade": "初三",
+      "gradYear": 2027
+    }
+  ],
+  "retests": [
+    {
+      "id": "rt_779zjvne5p",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_c0f993d5"
+    },
+    {
+      "id": "rt_779zjxlvks",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_fuicfv7p0i"
+    },
+    {
+      "id": "rt_779zj3ni2g",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_833e52bc"
+    },
+    {
+      "id": "rt_779zj1e6vt",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_af6dbd84"
+    },
+    {
+      "id": "rt_779zj4whr5",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_14f41b19"
+    },
+    {
+      "id": "rt_779zj1dgb3",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_ccb1123b"
+    },
+    {
+      "id": "rt_779zjibyj7",
+      "date": "2026-09-02",
+      "done": false,
+      "kind": "dictation",
+      "scope": "bring about-product",
+      "srcId": "chk_779zji1oed",
+      "doneDate": "",
+      "studentId": "stu_8d71d833"
+    }
+  ],
+  "progress": [
+    {
+      "id": "pg_5smprs5yhr",
+      "date": "2026-09-02",
+      "note": "",
+      "unit": "1",
+      "classId": "cls_4",
+      "content": "2d完成，练习册讲了一二课时"
+    },
+    {
+      "id": "pg_5smprhli4w",
+      "date": "2026-09-02",
+      "note": "",
+      "unit": "1",
+      "classId": "cls_8",
+      "content": "SA 2C还要再听一次，知识点没讲，练习册没讲"
+    }
+  ],
+  "settings": {
+    "band": 8,
+    "days": 5,
+    "tags": [
+      "临界生",
+      "需家校跟进",
+      "偏科",
+      "待提升",
+      "进步显著",
+      "课堂活跃"
+    ],
+    "lines": {
+      "low": 90,
+      "mid": 80,
+      "high": 100
+    },
+    "parts": [
+      {
+        "full": 100,
+        "name": "英语A"
+      },
+      {
+        "full": 0,
+        "name": "听力表格"
+      },
+      {
+        "full": 0,
+        "name": "短文填空"
+      },
+      {
+        "full": 0,
+        "name": "阅读表达"
+      },
+      {
+        "full": 0,
+        "name": "回答问题"
+      },
+      {
+        "full": 0,
+        "name": "作文"
+      }
+    ],
+    "slots": [
+      {
+        "name": "早读",
+        "time": "07:30-07:55"
+      },
+      {
+        "name": "第一节",
+        "time": "08:00-08:40"
+      },
+      {
+        "name": "第二节",
+        "time": "09:10-09:50"
+      },
+      {
+        "name": "第三节",
+        "time": "10:00-10:40"
+      },
+      {
+        "name": "第四节",
+        "time": "10:50-11:30"
+      },
+      {
+        "name": "第五节",
+        "time": "11:40-12:20"
+      },
+      {
+        "name": "午辅",
+        "time": "12:40-13:00"
+      },
+      {
+        "name": "第六节",
+        "time": "14:00-14:40"
+      },
+      {
+        "name": "第七节",
+        "time": "14:50-15:30"
+      },
+      {
+        "name": "第八节",
+        "time": "15:45-16:25"
+      },
+      {
+        "name": "第九节",
+        "time": "16:35-17:15"
+      },
+      {
+        "name": "自习",
+        "time": "17:25-17:55"
+      },
+      {
+        "name": "晚辅",
+        "time": "18:35-19:20"
+      },
+      {
+        "name": "自习",
+        "time": "19:30-20:00"
+      },
+      {
+        "name": "培优",
+        "time": "20:00-20:40"
+      }
+    ],
+    "periods": 15,
+    "commWays": [
+      "电话",
+      "微信",
+      "面谈",
+      "家访",
+      "家长会"
+    ],
+    "supabase": {
+      "key": "sb_publishable_rlq1LndXZ2PRat5AaQVPjw_2wHdljGJ",
+      "url": "https://wnenjltqmvqemrbrkgub.supabase.co",
+      "auto": false,
+      "rowId": "hailey",
+      "table": "workbench",
+      "interval": 60
+    },
+    "wordBank": {
+      "units": [
+        {
+          "id": 1,
+          "name": "The Changing World",
+          "pages": "p.1-10"
+        },
+        {
+          "id": 2,
+          "name": "Inspiring People",
+          "pages": "p.11-20"
+        },
+        {
+          "id": 3,
+          "name": "Smart Learning",
+          "pages": "p.21-30"
+        },
+        {
+          "id": 4,
+          "name": "Our Memory",
+          "pages": "p.31-40"
+        },
+        {
+          "id": 5,
+          "name": "Making a Difference",
+          "pages": "p.41-50"
+        },
+        {
+          "id": 6,
+          "name": "Into the Unknown",
+          "pages": "p.51-60"
+        },
+        {
+          "id": 7,
+          "name": "Music and More",
+          "pages": "p.61-70"
+        },
+        {
+          "id": 8,
+          "name": "Champion Mindset",
+          "pages": "p.71-199"
+        }
+      ],
+      "words": [
+        {
+          "w": "hill",
+          "cn": "山丘",
+          "pos": "n.",
+          "page": 2,
+          "unit": 1
+        },
+        {
+          "w": "rough",
+          "cn": "崎岖的",
+          "pos": "adj.",
+          "page": 2,
+          "unit": 1
+        },
+        {
+          "w": "corn",
+          "cn": "玉米；谷物",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "farmland",
+          "cn": "耕地",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "government",
+          "cn": "政府",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "lack",
+          "cn": "缺乏",
+          "pos": "v.&n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "root",
+          "cn": "根",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "sandstorm",
+          "cn": "沙尘暴",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "sandy",
+          "cn": "铺满沙子的；含沙的",
+          "pos": "adj.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "shortage",
+          "cn": "短缺",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "soil",
+          "cn": "土壤",
+          "pos": "n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "support",
+          "cn": "支持",
+          "pos": "v.&n.",
+          "page": 3,
+          "unit": 1
+        },
+        {
+          "w": "greatly",
+          "cn": "大大地；非常",
+          "pos": "adv.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "greenhouse",
+          "cn": "温室",
+          "pos": "n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "highway",
+          "cn": "公路",
+          "pos": "n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "housing",
+          "cn": "住房；住宅",
+          "pos": "n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "product",
+          "cn": "产品",
+          "pos": "n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "railway",
+          "cn": "铁路",
+          "pos": "n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "socialist",
+          "cn": "社会主义的；社会主义者",
+          "pos": "adj.&n.",
+          "page": 4,
+          "unit": 1
+        },
+        {
+          "w": "digital",
+          "cn": "数字的",
+          "pos": "adj.",
+          "page": 5,
+          "unit": 1
+        },
+        {
+          "w": "track",
+          "cn": "小路；轨道",
+          "pos": "n.",
+          "page": 5,
+          "unit": 1
+        },
+        {
+          "w": "tunnel",
+          "cn": "隧道；地下通道",
+          "pos": "n.",
+          "page": 5,
+          "unit": 1
+        },
+        {
+          "w": "wide",
+          "cn": "宽的；宽阔的",
+          "pos": "adj.",
+          "page": 5,
+          "unit": 1
+        },
+        {
+          "w": "capital",
+          "cn": "首都",
+          "pos": "n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "complete",
+          "cn": "完成；完整的",
+          "pos": "v.&adj.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "convenient",
+          "cn": "方便的",
+          "pos": "adj.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "ease",
+          "cn": "容易；自在",
+          "pos": "n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "Kenyan",
+          "cn": "肯尼亚的；肯尼亚人",
+          "pos": "adj.&n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "link",
+          "cn": "链接；联系",
+          "pos": "n.&v.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "lorry",
+          "cn": "卡车",
+          "pos": "n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "manager",
+          "cn": "经理",
+          "pos": "n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "port",
+          "cn": "港口城市；港口",
+          "pos": "n.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "with ease",
+          "cn": "轻而易举地",
+          "pos": "adv.",
+          "page": 6,
+          "unit": 1
+        },
+        {
+          "w": "comment",
+          "cn": "评论；批评",
+          "pos": "v.&n.",
+          "page": 7,
+          "unit": 1
+        },
+        {
+          "w": "conclusion",
+          "cn": "总结",
+          "pos": "n.",
+          "page": 7,
+          "unit": 1
+        },
+        {
+          "w": "man-made",
+          "cn": "人造的；非天然的",
+          "pos": "adj.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "miracle",
+          "cn": "奇迹",
+          "pos": "n.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "narrow",
+          "cn": "狭窄的",
+          "pos": "adj.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "rail",
+          "cn": "铁路",
+          "pos": "n.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "the Olympics",
+          "cn": "奥林匹克运动会",
+          "pos": "n.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "villager",
+          "cn": "村民",
+          "pos": "n.",
+          "page": 8,
+          "unit": 1
+        },
+        {
+          "w": "discussion",
+          "cn": "讨论",
+          "pos": "n.",
+          "page": 9,
+          "unit": 1
+        },
+        {
+          "w": "flat",
+          "cn": "公寓；平坦的",
+          "pos": "n.&adj.",
+          "page": 9,
+          "unit": 1
+        },
+        {
+          "w": "junior",
+          "cn": "初级的；低年级的",
+          "pos": "adj.",
+          "page": 9,
+          "unit": 1
+        },
+        {
+          "w": "inspiring",
+          "cn": "鼓舞人心的；激励的",
+          "pos": "adj.",
+          "page": 11,
+          "unit": 2
+        },
+        {
+          "w": "calendar",
+          "cn": "日历",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "chemist",
+          "cn": "化学家",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "discovery",
+          "cn": "发现",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "historian",
+          "cn": "历史学家",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "hunger",
+          "cn": "饥饿",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "physicist",
+          "cn": "物理学家",
+          "pos": "n.",
+          "page": 12,
+          "unit": 2
+        },
+        {
+          "w": "century",
+          "cn": "世纪",
+          "pos": "n.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "disease",
+          "cn": "疾病",
+          "pos": "n.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "nation",
+          "cn": "国家；民族",
+          "pos": "n.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "pioneer",
+          "cn": "先驱；先锋",
+          "pos": "n.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "spread",
+          "cn": "传播；散布",
+          "pos": "v.&n.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "wounded",
+          "cn": "受伤的；负伤的",
+          "pos": "adj.",
+          "page": 13,
+          "unit": 2
+        },
+        {
+          "w": "courage",
+          "cn": "勇气",
+          "pos": "n.",
+          "page": 14,
+          "unit": 2
+        },
+        {
+          "w": "live",
+          "cn": "现场直播的",
+          "pos": "adj.",
+          "page": 14,
+          "unit": 2
+        },
+        {
+          "w": "look up to",
+          "cn": "钦佩；仰慕",
+          "pos": "v.",
+          "page": 14,
+          "unit": 2
+        },
+        {
+          "w": "pyramid",
+          "cn": "金字塔",
+          "pos": "n.",
+          "page": 14,
+          "unit": 2
+        },
+        {
+          "w": "wisdom",
+          "cn": "智慧；学问",
+          "pos": "n.",
+          "page": 14,
+          "unit": 2
+        },
+        {
+          "w": "childhood",
+          "cn": "童年",
+          "pos": "n.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "dynasty",
+          "cn": "朝代；王朝",
+          "pos": "n.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "necessary",
+          "cn": "必要的；必需的",
+          "pos": "adj.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "region",
+          "cn": "区域；地区",
+          "pos": "n.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "seed",
+          "cn": "种子",
+          "pos": "n.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "western",
+          "cn": "西方的；西部的",
+          "pos": "adj.",
+          "page": 15,
+          "unit": 2
+        },
+        {
+          "w": "collection",
+          "cn": "收集物；收藏品",
+          "pos": "n.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "exploration",
+          "cn": "探索",
+          "pos": "n.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "forever",
+          "cn": "永远",
+          "pos": "adv.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "leave behind",
+          "cn": "留下；遗留",
+          "pos": "v.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "live on",
+          "cn": "继续存在；继续活着",
+          "pos": "v.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "radio",
+          "cn": "无线电；收音机",
+          "pos": "n.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "scientific",
+          "cn": "科学（上）的",
+          "pos": "adj.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "whole",
+          "cn": "所有的；完全的",
+          "pos": "adj.",
+          "page": 16,
+          "unit": 2
+        },
+        {
+          "w": "daughter",
+          "cn": "女儿",
+          "pos": "n.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "flight",
+          "cn": "飞行；航班",
+          "pos": "n.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "herself",
+          "cn": "她自己",
+          "pos": "pron.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "hole",
+          "cn": "洞；孔",
+          "pos": "n.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "socialism",
+          "cn": "社会主义",
+          "pos": "n.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "universe",
+          "cn": "宇宙",
+          "pos": "n.",
+          "page": 18,
+          "unit": 2
+        },
+        {
+          "w": "inventor",
+          "cn": "发明家",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "kindness",
+          "cn": "善良",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "mankind",
+          "cn": "人类",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "period",
+          "cn": "时期；一段时间",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "thinker",
+          "cn": "思想家",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "woodwork",
+          "cn": "木工手艺",
+          "pos": "n.",
+          "page": 19,
+          "unit": 2
+        },
+        {
+          "w": "learner",
+          "cn": "学习者",
+          "pos": "n.",
+          "page": 21,
+          "unit": 3
+        },
+        {
+          "w": "experiment",
+          "cn": "实验；试验",
+          "pos": "n.&v.",
+          "page": 22,
+          "unit": 3
+        },
+        {
+          "w": "project",
+          "cn": "专题研究；项目",
+          "pos": "n.",
+          "page": 22,
+          "unit": 3
+        },
+        {
+          "w": "website",
+          "cn": "网站",
+          "pos": "n.",
+          "page": 22,
+          "unit": 3
+        },
+        {
+          "w": "dialogue",
+          "cn": "对话；对白",
+          "pos": "n.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "dictionary",
+          "cn": "词典；字典",
+          "pos": "n.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "general",
+          "cn": "总的；大体的",
+          "pos": "adj.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "grammar",
+          "cn": "语法",
+          "pos": "n.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "in general",
+          "cn": "总的来说",
+          "pos": "adv.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "look up",
+          "cn": "查阅；检查",
+          "pos": "v.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "speed",
+          "cn": "速度；加速",
+          "pos": "v.&n.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "suit",
+          "cn": "适合；套装",
+          "pos": "v.&n.",
+          "page": 23,
+          "unit": 3
+        },
+        {
+          "w": "come across",
+          "cn": "遇见；发现",
+          "pos": "v.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "enjoyable",
+          "cn": "使人快乐的",
+          "pos": "adj.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "podcast",
+          "cn": "播客",
+          "pos": "n.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "step by step",
+          "cn": "逐步地",
+          "pos": "adv.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "strategy",
+          "cn": "策略",
+          "pos": "n.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "zero",
+          "cn": "零；最低程度",
+          "pos": "num.",
+          "page": 24,
+          "unit": 3
+        },
+        {
+          "w": "method",
+          "cn": "方法",
+          "pos": "n.",
+          "page": 25,
+          "unit": 3
+        },
+        {
+          "w": "suggest",
+          "cn": "建议；提议",
+          "pos": "v.",
+          "page": 25,
+          "unit": 3
+        },
+        {
+          "w": "summarize",
+          "cn": "总结；概括",
+          "pos": "v.",
+          "page": 25,
+          "unit": 3
+        },
+        {
+          "w": "feedback",
+          "cn": "反馈的意见",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "growth",
+          "cn": "成长；增长",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "guidance",
+          "cn": "指导",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "in addition",
+          "cn": "另外；此外",
+          "pos": "adv.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "in part",
+          "cn": "部分地",
+          "pos": "adv.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "internet",
+          "cn": "互联网",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "material",
+          "cn": "材料；资料",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "mindset",
+          "cn": "观念模式",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "resource",
+          "cn": "资源；资料",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "textbook",
+          "cn": "教科书；课本",
+          "pos": "n.",
+          "page": 26,
+          "unit": 3
+        },
+        {
+          "w": "efficiently",
+          "cn": "效率高地",
+          "pos": "adv.",
+          "page": 27,
+          "unit": 3
+        },
+        {
+          "w": "take advantage of",
+          "cn": "利用",
+          "pos": "v.",
+          "page": 27,
+          "unit": 3
+        },
+        {
+          "w": "valley",
+          "cn": "山谷；溪谷",
+          "pos": "n.",
+          "page": 27,
+          "unit": 3
+        },
+        {
+          "w": "click",
+          "cn": "点击",
+          "pos": "v.",
+          "page": 28,
+          "unit": 3
+        },
+        {
+          "w": "pronunciation",
+          "cn": "发音；读音",
+          "pos": "n.",
+          "page": 28,
+          "unit": 3
+        },
+        {
+          "w": "magazine",
+          "cn": "杂志；期刊",
+          "pos": "n.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "newspaper",
+          "cn": "报纸",
+          "pos": "n.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "open up",
+          "cn": "打开；开放",
+          "pos": "v.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "print",
+          "cn": "印刷品；打印",
+          "pos": "v.&n.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "recent",
+          "cn": "最近的；最新的",
+          "pos": "adj.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "schoolwork",
+          "cn": "学校作业",
+          "pos": "n.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "shelf",
+          "cn": "（墙壁、书橱等的）架子；搁板",
+          "pos": "n.",
+          "page": 29,
+          "unit": 3
+        },
+        {
+          "w": "lecture",
+          "cn": "讲座；讲课",
+          "pos": "n.",
+          "page": 32,
+          "unit": 4
+        },
+        {
+          "w": "position",
+          "cn": "位置；安置",
+          "pos": "n.&v.",
+          "page": 32,
+          "unit": 4
+        },
+        {
+          "w": "react",
+          "cn": "作出反应；回应",
+          "pos": "v.",
+          "page": 32,
+          "unit": 4
+        },
+        {
+          "w": "run out",
+          "cn": "用完；耗尽",
+          "pos": "v.",
+          "page": 32,
+          "unit": 4
+        },
+        {
+          "w": "sadness",
+          "cn": "悲伤",
+          "pos": "n.",
+          "page": 32,
+          "unit": 4
+        },
+        {
+          "w": "chain",
+          "cn": "链条",
+          "pos": "n.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "memorize",
+          "cn": "记住；记忆",
+          "pos": "v.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "mix up",
+          "cn": "混淆；弄乱",
+          "pos": "v.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "put sth to good use",
+          "cn": "有效使用（或利用）某物",
+          "pos": "v.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "retell",
+          "cn": "复述；重述",
+          "pos": "v.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "stable",
+          "cn": "稳定的；稳固的",
+          "pos": "adj.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "tick",
+          "cn": "打勾；钩号",
+          "pos": "v.&n.",
+          "page": 33,
+          "unit": 4
+        },
+        {
+          "w": "case",
+          "cn": "情况；事例",
+          "pos": "n.",
+          "page": 34,
+          "unit": 4
+        },
+        {
+          "w": "go through",
+          "cn": "经历；仔细察看",
+          "pos": "v.",
+          "page": 34,
+          "unit": 4
+        },
+        {
+          "w": "grandson",
+          "cn": "孙子；外孙",
+          "pos": "n.",
+          "page": 34,
+          "unit": 4
+        },
+        {
+          "w": "happen",
+          "cn": "发生；碰巧",
+          "pos": "v.",
+          "page": 34,
+          "unit": 4
+        },
+        {
+          "w": "keep in mind",
+          "cn": "记住",
+          "pos": "v.",
+          "page": 34,
+          "unit": 4
+        },
+        {
+          "w": "grapevine",
+          "cn": "葡萄藤；葡萄树",
+          "pos": "n.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "gunshot",
+          "cn": "枪声；炮弹",
+          "pos": "n.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "mouth",
+          "cn": "嘴",
+          "pos": "n.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "opera",
+          "cn": "歌剧；歌剧院",
+          "pos": "n.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "pardon",
+          "cn": "原谅",
+          "pos": "v.&interj.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "picnic",
+          "cn": "野餐",
+          "pos": "n.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "recall",
+          "cn": "回忆起；回想起",
+          "pos": "v.",
+          "page": 35,
+          "unit": 4
+        },
+        {
+          "w": "discuss",
+          "cn": "讨论；谈论",
+          "pos": "v.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "effective",
+          "cn": "有效的",
+          "pos": "adj.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "engine",
+          "cn": "发动机",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "fuel",
+          "cn": "燃料",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "graph",
+          "cn": "图表",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "image",
+          "cn": "图像；形象",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "likely",
+          "cn": "很可能；可能的",
+          "pos": "adv.&adj.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "long-term",
+          "cn": "长期的",
+          "pos": "adj.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "organize",
+          "cn": "处理；组织",
+          "pos": "v.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "passage",
+          "cn": "段落；走廊",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "short-term",
+          "cn": "短期的",
+          "pos": "adj.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "technique",
+          "cn": "技巧",
+          "pos": "n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "to start with",
+          "cn": "首先",
+          "pos": "adv.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "view",
+          "cn": "观看；观点；视野",
+          "pos": "v.&n.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "wear out",
+          "cn": "使疲乏；磨损",
+          "pos": "v.",
+          "page": 36,
+          "unit": 4
+        },
+        {
+          "w": "paper",
+          "cn": "纸",
+          "pos": "n.",
+          "page": 37,
+          "unit": 4
+        },
+        {
+          "w": "password",
+          "cn": "密码；口令",
+          "pos": "n.",
+          "page": 37,
+          "unit": 4
+        },
+        {
+          "w": "dolphin",
+          "cn": "海豚",
+          "pos": "n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "increase",
+          "cn": "增长；增加",
+          "pos": "v.&n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "mall",
+          "cn": "购物商场",
+          "pos": "n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "notebook",
+          "cn": "笔记本；笔记本电脑",
+          "pos": "n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "nut",
+          "cn": "坚果",
+          "pos": "n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "recognize",
+          "cn": "辨认出；认可",
+          "pos": "v.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "squirrel",
+          "cn": "松鼠",
+          "pos": "n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "wild",
+          "cn": "野生的；自然生长的",
+          "pos": "adj.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "wound",
+          "cn": "使受伤；伤口",
+          "pos": "v.&n.",
+          "page": 38,
+          "unit": 4
+        },
+        {
+          "w": "divide",
+          "cn": "分；分成",
+          "pos": "v.",
+          "page": 39,
+          "unit": 4
+        },
+        {
+          "w": "fully",
+          "cn": "完全地",
+          "pos": "adv.",
+          "page": 39,
+          "unit": 4
+        },
+        {
+          "w": "one-size-fits-all",
+          "cn": "通用的",
+          "pos": "adj.",
+          "page": 39,
+          "unit": 4
+        },
+        {
+          "w": "outline",
+          "cn": "提纲；概述",
+          "pos": "n.&v.",
+          "page": 39,
+          "unit": 4
+        },
+        {
+          "w": "camera",
+          "cn": "照相机；摄影机",
+          "pos": "n.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "high-speed train",
+          "cn": "高速列车",
+          "pos": "n.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "invention",
+          "cn": "发明；创造",
+          "pos": "n.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "itself",
+          "cn": "它自己",
+          "pos": "pron.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "laptop",
+          "cn": "笔记本电脑",
+          "pos": "n.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "sunglass",
+          "cn": "墨镜",
+          "pos": "n.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "super",
+          "cn": "超级的；顶好的",
+          "pos": "adj.",
+          "page": 42,
+          "unit": 5
+        },
+        {
+          "w": "file",
+          "cn": "文件",
+          "pos": "n.",
+          "page": 43,
+          "unit": 5
+        },
+        {
+          "w": "plastic",
+          "cn": "塑料；塑料的",
+          "pos": "n.&adj.",
+          "page": 43,
+          "unit": 5
+        },
+        {
+          "w": "printer",
+          "cn": "打印机；印刷公司",
+          "pos": "n.",
+          "page": 43,
+          "unit": 5
+        },
+        {
+          "w": "produce",
+          "cn": "生产；养育",
+          "pos": "v.",
+          "page": 43,
+          "unit": 5
+        },
+        {
+          "w": "invent",
+          "cn": "发明；编造",
+          "pos": "v.",
+          "page": 44,
+          "unit": 5
+        },
+        {
+          "w": "eastern",
+          "cn": "东部的；东方的",
+          "pos": "adj.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "economic",
+          "cn": "经济的；经济学的",
+          "pos": "adj.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "frozen",
+          "cn": "冻结的；冰冷的",
+          "pos": "adj.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "gain",
+          "cn": "获得；取得",
+          "pos": "v.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "layer",
+          "cn": "层；表层",
+          "pos": "n.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "melt",
+          "cn": "融化；逐渐消失",
+          "pos": "v.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "pipe",
+          "cn": "管道；管子",
+          "pos": "n.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "suppose",
+          "cn": "认为；推断",
+          "pos": "v.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "telephone",
+          "cn": "电话",
+          "pos": "n.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "tourism",
+          "cn": "旅游业",
+          "pos": "n.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "wheel",
+          "cn": "车轮；轮子",
+          "pos": "n.",
+          "page": 45,
+          "unit": 5
+        },
+        {
+          "w": "certain",
+          "cn": "某（些）；确定的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "cheap",
+          "cn": "便宜的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "creation",
+          "cn": "创造；作品",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "expensive",
+          "cn": "昂贵的；价格高的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "fibre",
+          "cn": "纤维",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "ideal",
+          "cn": "理想的；理想",
+          "pos": "adj.&n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "jute",
+          "cn": "黄麻纤维",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "later on",
+          "cn": "后来；其后",
+          "pos": "adv.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "liquid",
+          "cn": "液体；液体的",
+          "pos": "n.&adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "none",
+          "cn": "没有一个；毫无",
+          "pos": "pron.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "officer",
+          "cn": "官员；军官",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "papermaking",
+          "cn": "造纸工艺；造纸业",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "rapid",
+          "cn": "迅速的；瞬间的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "reality",
+          "cn": "现实；事实",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "responsible",
+          "cn": "作为原因的；有责任的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "responsible for",
+          "cn": "引起某事的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "shape",
+          "cn": "塑造；形状",
+          "pos": "v.&n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "speed up",
+          "cn": "加速",
+          "pos": "v.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "stone",
+          "cn": "石头；岩石",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "suitable",
+          "cn": "合适的；适宜的",
+          "pos": "adj.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "ware",
+          "cn": "制品；陶器",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "workshop",
+          "cn": "作坊；讲习班",
+          "pos": "n.",
+          "page": 46,
+          "unit": 5
+        },
+        {
+          "w": "lead to",
+          "cn": "导致；造成",
+          "pos": "v.",
+          "page": 47,
+          "unit": 5
+        },
+        {
+          "w": "result in",
+          "cn": "造成；导致",
+          "pos": "v.",
+          "page": 47,
+          "unit": 5
+        },
+        {
+          "w": "company",
+          "cn": "公司；陪伴",
+          "pos": "n.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "gradually",
+          "cn": "逐渐地",
+          "pos": "adv.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "production",
+          "cn": "生产；制作",
+          "pos": "n.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "rapidly",
+          "cn": "迅速地；快速地",
+          "pos": "adv.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "songbook",
+          "cn": "歌曲集",
+          "pos": "n.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "sticky",
+          "cn": "黏（性）的；闷热的",
+          "pos": "adj.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "widely",
+          "cn": "广泛地；普遍地",
+          "pos": "adv.",
+          "page": 48,
+          "unit": 5
+        },
+        {
+          "w": "glider",
+          "cn": "滑翔机",
+          "pos": "n.",
+          "page": 49,
+          "unit": 5
+        },
+        {
+          "w": "launch",
+          "cn": "发射；发起",
+          "pos": "v.&n.",
+          "page": 52,
+          "unit": 6
+        },
+        {
+          "w": "manned",
+          "cn": "载人的",
+          "pos": "adj.",
+          "page": 52,
+          "unit": 6
+        },
+        {
+          "w": "mission",
+          "cn": "任务；使命",
+          "pos": "n.",
+          "page": 52,
+          "unit": 6
+        },
+        {
+          "w": "rover",
+          "cn": "探测器；漫游者",
+          "pos": "n.",
+          "page": 52,
+          "unit": 6
+        },
+        {
+          "w": "telescope",
+          "cn": "望远镜",
+          "pos": "n.",
+          "page": 52,
+          "unit": 6
+        },
+        {
+          "w": "fall asleep",
+          "cn": "入睡",
+          "pos": "v.",
+          "page": 53,
+          "unit": 6
+        },
+        {
+          "w": "movement",
+          "cn": "运动；活动",
+          "pos": "n.",
+          "page": 53,
+          "unit": 6
+        },
+        {
+          "w": "tie",
+          "cn": "系上；领带",
+          "pos": "v.&n.",
+          "page": 53,
+          "unit": 6
+        },
+        {
+          "w": "weightless",
+          "cn": "失重的；无重量的",
+          "pos": "adj.",
+          "page": 53,
+          "unit": 6
+        },
+        {
+          "w": "crazy",
+          "cn": "疯狂的",
+          "pos": "adj.",
+          "page": 54,
+          "unit": 6
+        },
+        {
+          "w": "geology",
+          "cn": "地质；地质学",
+          "pos": "n.",
+          "page": 54,
+          "unit": 6
+        },
+        {
+          "w": "human being",
+          "cn": "人类",
+          "pos": "n.",
+          "page": 54,
+          "unit": 6
+        },
+        {
+          "w": "satellite",
+          "cn": "人造卫星；卫星",
+          "pos": "n.",
+          "page": 54,
+          "unit": 6
+        },
+        {
+          "w": "cancel",
+          "cn": "取消；终止",
+          "pos": "v.",
+          "page": 55,
+          "unit": 6
+        },
+        {
+          "w": "publish",
+          "cn": "刊登；出版",
+          "pos": "v.",
+          "page": 55,
+          "unit": 6
+        },
+        {
+          "w": "require",
+          "cn": "要求；需要",
+          "pos": "v.",
+          "page": 55,
+          "unit": 6
+        },
+        {
+          "w": "rocket",
+          "cn": "火箭",
+          "pos": "n.",
+          "page": 55,
+          "unit": 6
+        },
+        {
+          "w": "solar",
+          "cn": "太阳的；太阳能的",
+          "pos": "adj.",
+          "page": 55,
+          "unit": 6
+        },
+        {
+          "w": "god",
+          "cn": "神",
+          "pos": "n.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "in case",
+          "cn": "以防万一",
+          "pos": "conj.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "on board",
+          "cn": "在船（或车、飞机）上",
+          "pos": "adv.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "spacecraft",
+          "cn": "宇宙飞船",
+          "pos": "n.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "star",
+          "cn": "星；恒星",
+          "pos": "n.&adj.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "trillion",
+          "cn": "万亿；兆",
+          "pos": "n.",
+          "page": 56,
+          "unit": 6
+        },
+        {
+          "w": "cooperate",
+          "cn": "合作；协作",
+          "pos": "v.",
+          "page": 57,
+          "unit": 6
+        },
+        {
+          "w": "expectation",
+          "cn": "期望；希望",
+          "pos": "n.",
+          "page": 57,
+          "unit": 6
+        },
+        {
+          "w": "galaxy",
+          "cn": "星系",
+          "pos": "n.",
+          "page": 57,
+          "unit": 6
+        },
+        {
+          "w": "imagination",
+          "cn": "想象；想象力",
+          "pos": "n.",
+          "page": 57,
+          "unit": 6
+        },
+        {
+          "w": "set foot on",
+          "cn": "访问；参观（某地）",
+          "pos": "v.",
+          "page": 57,
+          "unit": 6
+        },
+        {
+          "w": "ship",
+          "cn": "（大）船；舰",
+          "pos": "n.",
+          "page": 58,
+          "unit": 6
+        },
+        {
+          "w": "spaceship",
+          "cn": "（航天）飞船",
+          "pos": "n.",
+          "page": 58,
+          "unit": 6
+        },
+        {
+          "w": "survey",
+          "cn": "测量；民意调查",
+          "pos": "v.&n.",
+          "page": 58,
+          "unit": 6
+        },
+        {
+          "w": "operate",
+          "cn": "操作；运转",
+          "pos": "v.",
+          "page": 59,
+          "unit": 6
+        },
+        {
+          "w": "rhythm",
+          "cn": "节奏；韵律",
+          "pos": "n.",
+          "page": 61,
+          "unit": 7
+        },
+        {
+          "w": "classical",
+          "cn": "古典乐的；古典的",
+          "pos": "adj.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "folk",
+          "cn": "民间的；人们",
+          "pos": "adj.&n.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "jazz",
+          "cn": "爵士乐",
+          "pos": "n.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "lyric",
+          "cn": "歌词；抒情的",
+          "pos": "n.&adj.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "pop",
+          "cn": "流行音乐；蹦出",
+          "pos": "n.&v.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "rap",
+          "cn": "说唱乐；表演说唱乐",
+          "pos": "v.&n.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "sing along",
+          "cn": "随着唱",
+          "pos": "v.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "traditional",
+          "cn": "传统的；习俗的",
+          "pos": "adj.",
+          "page": 62,
+          "unit": 7
+        },
+        {
+          "w": "electric",
+          "cn": "电的；令人激动的",
+          "pos": "adj.",
+          "page": 63,
+          "unit": 7
+        },
+        {
+          "w": "keyboard",
+          "cn": "电子琴；键盘",
+          "pos": "n.",
+          "page": 63,
+          "unit": 7
+        },
+        {
+          "w": "piece",
+          "cn": "一片；一篇",
+          "pos": "n.",
+          "page": 63,
+          "unit": 7
+        },
+        {
+          "w": "style",
+          "cn": "风格；方式",
+          "pos": "n.",
+          "page": 63,
+          "unit": 7
+        },
+        {
+          "w": "trumpet",
+          "cn": "小号；喇叭",
+          "pos": "n.",
+          "page": 63,
+          "unit": 7
+        },
+        {
+          "w": "golden",
+          "cn": "金色的",
+          "pos": "adj.",
+          "page": 64,
+          "unit": 7
+        },
+        {
+          "w": "lover",
+          "cn": "情人；爱好者",
+          "pos": "n.",
+          "page": 64,
+          "unit": 7
+        },
+        {
+          "w": "performance",
+          "cn": "演出；表演",
+          "pos": "n.",
+          "page": 64,
+          "unit": 7
+        },
+        {
+          "w": "performer",
+          "cn": "表演者",
+          "pos": "n.",
+          "page": 64,
+          "unit": 7
+        },
+        {
+          "w": "romantic",
+          "cn": "浪漫的；爱情的",
+          "pos": "adj.",
+          "page": 64,
+          "unit": 7
+        },
+        {
+          "w": "composer",
+          "cn": "作曲家",
+          "pos": "n.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "download",
+          "cn": "下载",
+          "pos": "v.&n.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "electronic",
+          "cn": "电子的",
+          "pos": "adj.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "gifted",
+          "cn": "有天赋的",
+          "pos": "adj.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "poet",
+          "cn": "诗人",
+          "pos": "n.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "policewoman",
+          "cn": "女警察",
+          "pos": "n.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "purple",
+          "cn": "紫色；紫色的",
+          "pos": "n.&adj.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "rating",
+          "cn": "评分；等级",
+          "pos": "n.",
+          "page": 65,
+          "unit": 7
+        },
+        {
+          "w": "genius",
+          "cn": "天才人物；天赋",
+          "pos": "n.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "look down on",
+          "cn": "轻视；蔑视",
+          "pos": "v.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "mysterious",
+          "cn": "神秘的；奇怪的",
+          "pos": "adj.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "outdoor",
+          "cn": "户外的",
+          "pos": "adj.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "pianist",
+          "cn": "钢琴家",
+          "pos": "n.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "Polish",
+          "cn": "波兰的",
+          "pos": "adj.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "proudly",
+          "cn": "自豪地；壮观地",
+          "pos": "adv.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "soul",
+          "cn": "真挚情感；灵魂",
+          "pos": "n.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "widen",
+          "cn": "使变宽；扩展",
+          "pos": "v.",
+          "page": 66,
+          "unit": 7
+        },
+        {
+          "w": "contribution",
+          "cn": "贡献；捐款",
+          "pos": "n.",
+          "page": 67,
+          "unit": 7
+        },
+        {
+          "w": "funeral",
+          "cn": "葬礼",
+          "pos": "n.",
+          "page": 67,
+          "unit": 7
+        },
+        {
+          "w": "profession",
+          "cn": "职业；行业",
+          "pos": "n.",
+          "page": 67,
+          "unit": 7
+        },
+        {
+          "w": "young and old",
+          "cn": "老老少少",
+          "pos": "n.",
+          "page": 67,
+          "unit": 7
+        },
+        {
+          "w": "cartoon",
+          "cn": "动画片；漫画",
+          "pos": "n.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "champion",
+          "cn": "冠军",
+          "pos": "n.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "fair",
+          "cn": "公平的；合理的",
+          "pos": "adj.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "flowing",
+          "cn": "流畅的；松散的",
+          "pos": "adj.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "tap",
+          "cn": "轻拍；轻叩",
+          "pos": "v.&n.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "tape",
+          "cn": "磁带；录像带",
+          "pos": "n.",
+          "page": 68,
+          "unit": 7
+        },
+        {
+          "w": "finger",
+          "cn": "手指",
+          "pos": "n.",
+          "page": 69,
+          "unit": 7
+        },
+        {
+          "w": "nowadays",
+          "cn": "现在；目前",
+          "pos": "adv.",
+          "page": 69,
+          "unit": 7
+        },
+        {
+          "w": "schoolmate",
+          "cn": "同学",
+          "pos": "n.",
+          "page": 69,
+          "unit": 7
+        },
+        {
+          "w": "competition",
+          "cn": "比赛",
+          "pos": "n.",
+          "page": 72,
+          "unit": 8
+        },
+        {
+          "w": "pull-up",
+          "cn": "引体向上",
+          "pos": "n.",
+          "page": 72,
+          "unit": 8
+        },
+        {
+          "w": "relay",
+          "cn": "接力赛",
+          "pos": "n.",
+          "page": 72,
+          "unit": 8
+        },
+        {
+          "w": "shot-put",
+          "cn": "推铅球",
+          "pos": "n.",
+          "page": 72,
+          "unit": 8
+        },
+        {
+          "w": "judge",
+          "cn": "裁判员；判断",
+          "pos": "n.&v.",
+          "page": 73,
+          "unit": 8
+        },
+        {
+          "w": "runner",
+          "cn": "参加赛跑的人",
+          "pos": "n.",
+          "page": 73,
+          "unit": 8
+        },
+        {
+          "w": "smooth",
+          "cn": "顺利的；光滑的",
+          "pos": "adj.",
+          "page": 73,
+          "unit": 8
+        },
+        {
+          "w": "take the lead",
+          "cn": "带头",
+          "pos": "v.",
+          "page": 73,
+          "unit": 8
+        },
+        {
+          "w": "figure",
+          "cn": "人物；数字",
+          "pos": "n.&v.",
+          "page": 74,
+          "unit": 8
+        },
+        {
+          "w": "figure skating",
+          "cn": "花样滑冰",
+          "pos": "n.",
+          "page": 74,
+          "unit": 8
+        },
+        {
+          "w": "swimming",
+          "cn": "游泳",
+          "pos": "n.",
+          "page": 74,
+          "unit": 8
+        },
+        {
+          "w": "truly",
+          "cn": "真正地；诚实地",
+          "pos": "adv.",
+          "page": 74,
+          "unit": 8
+        },
+        {
+          "w": "compete",
+          "cn": "比赛；竞争",
+          "pos": "v.",
+          "page": 75,
+          "unit": 8
+        },
+        {
+          "w": "neither",
+          "cn": "两者都不",
+          "pos": "adv.&conj.",
+          "page": 75,
+          "unit": 8
+        },
+        {
+          "w": "nor",
+          "cn": "也不",
+          "pos": "conj.&adv.",
+          "page": 75,
+          "unit": 8
+        },
+        {
+          "w": "tryout",
+          "cn": "参加选拔；试用",
+          "pos": "n.&v.",
+          "page": 75,
+          "unit": 8
+        },
+        {
+          "w": "unique",
+          "cn": "独一无二的；罕见的",
+          "pos": "adj.",
+          "page": 75,
+          "unit": 8
+        },
+        {
+          "w": "dramatic",
+          "cn": "激动的；出人意料的",
+          "pos": "adj.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "gold",
+          "cn": "金；金色的",
+          "pos": "n.&adj.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "in wonder",
+          "cn": "惊奇地",
+          "pos": "adv.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "mascot",
+          "cn": "吉祥物",
+          "pos": "n.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "medal",
+          "cn": "奖章；勋章",
+          "pos": "n.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "motto",
+          "cn": "口号；格言",
+          "pos": "n.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "set a record",
+          "cn": "创造纪录",
+          "pos": "v.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "talented",
+          "cn": "有才能的；天才的",
+          "pos": "adj.",
+          "page": 76,
+          "unit": 8
+        },
+        {
+          "w": "citizen",
+          "cn": "市民；公民",
+          "pos": "n.",
+          "page": 77,
+          "unit": 8
+        },
+        {
+          "w": "harmony",
+          "cn": "和谐；和睦",
+          "pos": "n.",
+          "page": 77,
+          "unit": 8
+        },
+        {
+          "w": "pride",
+          "cn": "自豪；骄傲",
+          "pos": "n.",
+          "page": 77,
+          "unit": 8
+        },
+        {
+          "w": "reform",
+          "cn": "改革；变革",
+          "pos": "v.&n.",
+          "page": 77,
+          "unit": 8
+        },
+        {
+          "w": "worldwide",
+          "cn": "世界范围的；在全世界",
+          "pos": "adv.&adj.",
+          "page": 77,
+          "unit": 8
+        },
+        {
+          "w": "Greek",
+          "cn": "希腊的；希腊人",
+          "pos": "adj.&n.",
+          "page": 78,
+          "unit": 8
+        },
+        {
+          "w": "master",
+          "cn": "能手；掌握",
+          "pos": "n.&v.",
+          "page": 78,
+          "unit": 8
+        },
+        {
+          "w": "Roman",
+          "cn": "古罗马的；罗马人",
+          "pos": "adj.&n.",
+          "page": 78,
+          "unit": 8
+        },
+        {
+          "w": "satisfy",
+          "cn": "使（某人）满意",
+          "pos": "v.",
+          "page": 78,
+          "unit": 8
+        },
+        {
+          "w": "cheer",
+          "cn": "喝彩；欢呼",
+          "pos": "v.",
+          "page": 79,
+          "unit": 8
+        },
+        {
+          "w": "crowd",
+          "cn": "人群；观众",
+          "pos": "n.",
+          "page": 79,
+          "unit": 8
+        },
+        {
+          "w": "drown",
+          "cn": "淹死；溺死",
+          "pos": "v.",
+          "page": 79,
+          "unit": 8
+        }
+      ],
+      "source": "2026 秋人教版英语九年级上册（正式版）",
+      "version": 1,
+      "irregularVerbsNote": "见教材 p.127 及之后附录",
+      "primarySchoolReviewedAt": "p.126"
+    },
+    "discTypes": [
+      "迟到",
+      "作业未交",
+      "上课讲话",
+      "不带课本",
+      "顶撞老师",
+      "违规带手机",
+      "其他"
+    ],
+    "fullScore": 120,
+    "focusLines": {
+      "aLow": 50,
+      "pass": 90,
+      "aHigh": 70
+    }
+  },
+  "students": [
+    {
+      "id": "stu_914e9b05",
+      "no": 1,
+      "name": "李欣怡",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "张金燕",
+      "parentName2": "李明亮",
+      "parentPhone": "18908070662",
+      "parentPhone2": "18980832615"
+    },
+    {
+      "id": "stu_f83c671e",
+      "no": 7,
+      "name": "刘璐",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "杨波",
+      "parentName2": "刘亚龙",
+      "parentPhone": "13993217033",
+      "parentPhone2": "13830233388"
+    },
+    {
+      "id": "stu_0fa2b551",
+      "no": 13,
+      "name": "李轲",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_6522270d",
+      "no": 20,
+      "name": "蔡佳欣",
+      "note": "另一联系电话：18728448133",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "蔡学富",
+      "parentName2": "",
+      "parentPhone": "13880063288",
+      "parentPhone2": "15828025756"
+    },
+    {
+      "id": "stu_31860e88",
+      "no": 26,
+      "name": "徐鼎洋",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "徐功宇",
+      "parentName2": "李琳",
+      "parentPhone": "18982086770",
+      "parentPhone2": "18281885855"
+    },
+    {
+      "id": "stu_d2e59daa",
+      "no": 33,
+      "name": "段茹轩",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "熊燕",
+      "parentName2": "段炳军",
+      "parentPhone": "15828578620",
+      "parentPhone2": "15928826569"
+    },
+    {
+      "id": "stu_4f8c2901",
+      "no": 34,
+      "name": "吕睿彤",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "吕麟",
+      "parentName2": "黄娟",
+      "parentPhone": "13880384067",
+      "parentPhone2": "13808096970"
+    },
+    {
+      "id": "stu_14f41b19",
+      "no": 27,
+      "name": "陈立言",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "陈婧",
+      "parentName2": "陈应宪",
+      "parentPhone": "18983426296",
+      "parentPhone2": "18982234870"
+    },
+    {
+      "id": "stu_4346202e",
+      "no": 21,
+      "name": "贺浩轩",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "陈莉",
+      "parentName2": "贺志强",
+      "parentPhone": "15108233702",
+      "parentPhone2": "13689025241"
+    },
+    {
+      "id": "stu_8f113478",
+      "no": 14,
+      "name": "朱泽兰",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "周清谊",
+      "parentName2": "朱定兵",
+      "parentPhone": "15777303498",
+      "parentPhone2": "18593274932"
+    },
+    {
+      "id": "stu_1412fa5b",
+      "no": 8,
+      "name": "张锦怡",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "张欣",
+      "parentName2": "柯易均",
+      "parentPhone": "15882278309",
+      "parentPhone2": "15828656609"
+    },
+    {
+      "id": "stu_d5d98fd8",
+      "no": 2,
+      "name": "唐闻博",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "任为",
+      "parentName2": "唐忠坤",
+      "parentPhone": "13458639124",
+      "parentPhone2": "19181782216"
+    },
+    {
+      "id": "stu_4f70447a",
+      "no": 3,
+      "name": "王子丹",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "徐露露",
+      "parentName2": "王崇宇",
+      "parentPhone": "18281863105",
+      "parentPhone2": "18200170272"
+    },
+    {
+      "id": "stu_f8e764ef",
+      "no": 9,
+      "name": "赖思辰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "赖绪洪",
+      "parentName2": "康秀英",
+      "parentPhone": "13541287613",
+      "parentPhone2": "15351222526"
+    },
+    {
+      "id": "stu_59b78c6a",
+      "no": 15,
+      "name": "张佳宜",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_88c14594",
+      "no": 22,
+      "name": "唐浩仁",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "郑婷",
+      "parentName2": "唐川",
+      "parentPhone": "18080855693",
+      "parentPhone2": "18108074717"
+    },
+    {
+      "id": "stu_fe0fa301",
+      "no": 28,
+      "name": "戚嘉航",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "贾红娟",
+      "parentName2": "戚秦",
+      "parentPhone": "13518135673",
+      "parentPhone2": "13056663336"
+    },
+    {
+      "id": "stu_a31521ab",
+      "no": 35,
+      "name": "梁心蕊",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "王厚娟",
+      "parentName2": "梁明才",
+      "parentPhone": "18402809269",
+      "parentPhone2": "13550310846"
+    },
+    {
+      "id": "stu_8d71d833",
+      "no": 36,
+      "name": "姚嘉杰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "李艳",
+      "parentName2": "姚建",
+      "parentPhone": "15756275700",
+      "parentPhone2": "15196508697"
+    },
+    {
+      "id": "stu_206ff598",
+      "no": 29,
+      "name": "黄婉婷",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "张采霞",
+      "parentName2": "黄永权",
+      "parentPhone": "13880194798",
+      "parentPhone2": "13668262220"
+    },
+    {
+      "id": "stu_4f6191d7",
+      "no": 23,
+      "name": "傅茂涵",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "蒋冬梅",
+      "parentName2": "傅强胜",
+      "parentPhone": "18123468611",
+      "parentPhone2": "18280488977"
+    },
+    {
+      "id": "stu_a4b1f79c",
+      "no": 16,
+      "name": "杨汶平",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "黄帮英",
+      "parentName2": "杨青才",
+      "parentPhone": "18780228564",
+      "parentPhone2": "13281164427"
+    },
+    {
+      "id": "stu_4d0357e0",
+      "no": 10,
+      "name": "荣博文",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "赵秀芳",
+      "parentName2": "荣勇",
+      "parentPhone": "18381006508",
+      "parentPhone2": "18284592826"
+    },
+    {
+      "id": "stu_8feece3a",
+      "no": 4,
+      "name": "罗钧耀",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_69a5893e",
+      "no": 5,
+      "name": "吴贤丞",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "吴波",
+      "parentName2": "伏静",
+      "parentPhone": "13980402898",
+      "parentPhone2": "13881680600"
+    },
+    {
+      "id": "stu_23333e0f",
+      "no": 11,
+      "name": "朱宇晨",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "朱波",
+      "parentName2": "朱凤娟",
+      "parentPhone": "17713539007",
+      "parentPhone2": "17708009007"
+    },
+    {
+      "id": "stu_21c3db5a",
+      "no": 17,
+      "name": "张恒溢",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "张鹏",
+      "parentName2": "符勇静",
+      "parentPhone": "15882399714",
+      "parentPhone2": "13683439199"
+    },
+    {
+      "id": "stu_833e52bc",
+      "no": 24,
+      "name": "张思瑞",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "张小波",
+      "parentName2": "",
+      "parentPhone": "18040373380",
+      "parentPhone2": ""
+    },
+    {
+      "id": "stu_db4ca9d8",
+      "no": 30,
+      "name": "熊文浚",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "赵小艳",
+      "parentName2": "熊运福",
+      "parentPhone": "18080428060",
+      "parentPhone2": "13715222618"
+    },
+    {
+      "id": "stu_dd97438e",
+      "no": 37,
+      "name": "陈泓州",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "闵艳茹",
+      "parentName2": "陈军",
+      "parentPhone": "13541199811",
+      "parentPhone2": "13699083922"
+    },
+    {
+      "id": "stu_90445adf",
+      "no": 6,
+      "name": "马天仪",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "1组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_c0f993d5",
+      "no": 12,
+      "name": "向泽成",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "2组",
+      "classId": "cls_4",
+      "parentName": "邱维婷",
+      "parentName2": "向建",
+      "parentPhone": "18215509099",
+      "parentPhone2": "13540273332"
+    },
+    {
+      "id": "stu_f3cc0f37",
+      "no": 18,
+      "name": "马梓瑞",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "马毅",
+      "parentName2": "苏萍",
+      "parentPhone": "13668259495",
+      "parentPhone2": "15928087397"
+    },
+    {
+      "id": "stu_af6dbd84",
+      "no": 25,
+      "name": "罗欣月",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "4组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_ccb1123b",
+      "no": 31,
+      "name": "伍民炜",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_256a58f4",
+      "no": 38,
+      "name": "汪羽辰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "冯文苹",
+      "parentName2": "汪松苹",
+      "parentPhone": "15208236256",
+      "parentPhone2": "18140007108"
+    },
+    {
+      "id": "stu_de83481d",
+      "no": "1",
+      "name": "吕沛翰",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_49946f36",
+      "no": "2",
+      "name": "罗星佑",
+      "note": "",
+      "tags": [],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_cad1c13b",
+      "no": "3",
+      "name": "李民赫",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_0838b86a",
+      "no": "4",
+      "name": "王梓涵",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_f0fe83a0",
+      "no": "5",
+      "name": "吕睿昕",
+      "note": "",
+      "tags": [
+        "全卷及格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_3c1b9880",
+      "no": "6",
+      "name": "杨啟彤",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_15c9f5a7",
+      "no": "7",
+      "name": "贺思宇",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_fbda36f9",
+      "no": "8",
+      "name": "罗文轩",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_ef1234c7",
+      "no": "9",
+      "name": "梁心怡",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_6b6cd926",
+      "no": "10",
+      "name": "黄诗瑶",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_3e98aa37",
+      "no": "11",
+      "name": "陈梓瑶",
+      "note": "",
+      "tags": [],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_018001a0",
+      "no": "12",
+      "name": "郭欣沂",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_27803590",
+      "no": "13",
+      "name": "陈诗文",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_f5c39344",
+      "no": "14",
+      "name": "周钰倩",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_7dc7f6b0",
+      "no": "15",
+      "name": "叶耀林",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_1ce9c91a",
+      "no": "16",
+      "name": "潘潇雅",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_1446e824",
+      "no": "17",
+      "name": "曹橙曦",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_fbd1adea",
+      "no": "18",
+      "name": "刘思枘",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_02e6a1c4",
+      "no": "19",
+      "name": "程炜森",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_2750d3cc",
+      "no": "20",
+      "name": "张钧淏",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_76720588",
+      "no": "21",
+      "name": "杨欣",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_e7eedbde",
+      "no": "22",
+      "name": "谢沉林",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_f493e327",
+      "no": "23",
+      "name": "王子祥",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_1c7c8407",
+      "no": "24",
+      "name": "赵晨",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_40f282a4",
+      "no": "25",
+      "name": "谭若熙",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_32989fc0",
+      "no": "26",
+      "name": "周鸿瑄",
+      "note": "",
+      "tags": [
+        "A卷合格生"
+      ],
+      "focus": true,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_a6794ea1",
+      "no": "27",
+      "name": "余馨蕾",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_358f545a",
+      "no": "28",
+      "name": "罗清朗文",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_d06fb60a",
+      "no": "29",
+      "name": "虞恩玥",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_09acf8c4",
+      "no": "30",
+      "name": "马辰越",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_c6e4426b",
+      "no": "31",
+      "name": "陈俊翔",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_133a508f",
+      "no": "32",
+      "name": "王馨悦",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_bfc58bae",
+      "no": "33",
+      "name": "程思禧",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_29087d1c",
+      "no": "34",
+      "name": "徐东辰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_523e679c",
+      "no": "35",
+      "name": "曾凡淋",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_9e836fd4",
+      "no": "36",
+      "name": "张耀添",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_45370564",
+      "no": "37",
+      "name": "龙晨菲",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_b300a0c7",
+      "no": "38",
+      "name": "刘谨睿",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_7ab7ddd2",
+      "no": "39",
+      "name": "林毅峰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "classId": "cls_8",
+      "parentName": "",
+      "parentPhone": ""
+    },
+    {
+      "id": "stu_fuicfv7p0i",
+      "no": 19,
+      "name": "朱承熙",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "3组",
+      "classId": "cls_4",
+      "parentName": "朱刚",
+      "parentName2": "杨雪雯",
+      "parentPhone": "13981718264",
+      "parentPhone2": "13548011249"
+    },
+    {
+      "id": "stu_fvlwfmr1a7",
+      "no": 32,
+      "name": "伍溰虹",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "5组",
+      "classId": "cls_4",
+      "parentName": "蒋丽萍",
+      "parentName2": "伍兵",
+      "parentPhone": "13880963199",
+      "parentPhone2": "13709009088"
+    },
+    {
+      "id": "stu_fwhr2s9fut",
+      "no": 39,
+      "name": "邹昕然",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "邹振华",
+      "parentName2": "袁萍",
+      "parentPhone": "18615799911",
+      "parentPhone2": "18982214962"
+    },
+    {
+      "id": "stu_742e3cc1",
+      "no": 40,
+      "name": "周彦辰",
+      "note": "",
+      "tags": [],
+      "focus": false,
+      "group": "6组",
+      "classId": "cls_4",
+      "parentName": "",
+      "parentName2": "",
+      "parentPhone": "",
+      "parentPhone2": ""
+    }
+  ],
+  "timetable": {
+    "1-1": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "1-2": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "1-5": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "1-6": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "2-1": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "2-7": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "2-8": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "3-8": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "4-1": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "4-3": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "4-5": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "4-6": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "5-1": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "5-4": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "5-5": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "5-7": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "5-8": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "2-10": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "3-10": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "3-11": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "3-12": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "3-13": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "3-14": {
+      "room": "",
+      "classId": "cls_4",
+      "content": ""
+    },
+    "4-12": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "4-13": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    },
+    "4-14": {
+      "room": "",
+      "classId": "cls_8",
+      "content": ""
+    }
+  },
+  "discipline": [
+    {
+      "id": "disc_be1o6krtjg",
+      "date": "2026-09-01",
+      "type": "其他",
+      "detail": "下午第一节上课睡觉",
+      "handled": false,
+      "studentId": "stu_ccb1123b"
+    },
+    {
+      "id": "disc_beyb9dhwoa",
+      "date": "2026-09-01",
+      "type": "其他",
+      "detail": "下午第一节上课睡觉",
+      "handled": false,
+      "studentId": "stu_fvlwfmr1a7"
+    },
+    {
+      "id": "disc_bfjv9vng9c",
+      "date": "2026-09-01",
+      "type": "其他",
+      "detail": "下午第一节上课睡觉",
+      "handled": false,
+      "studentId": "stu_fwhr2s9fut"
+    },
+    {
+      "id": "disc_bgfolpardf",
+      "date": "2026-09-01",
+      "type": "其他",
+      "detail": "下午第一节上课睡觉",
+      "handled": false,
+      "studentId": "stu_256a58f4"
+    },
+    {
+      "id": "disc_78997xz5u0",
+      "date": "2026-09-02",
+      "type": "其他",
+      "detail": "上课发呆不做笔记",
+      "handled": false,
+      "studentId": "stu_358f545a"
+    }
+  ]
 }
