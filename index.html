@@ -1814,11 +1814,28 @@ window.App = window.App || { pages: {} };
         }).join('')}</div></div>` : ''}`;
 
     bind(view);
+    refreshStatus(view);
   }
 
   function kpi(label, value, icon, tone, go) {
     return `<div class="kpi ${tone || ''}" ${go ? `data-go="${go}"` : ''}><div class="kpi-ico">${icon}</div>
       <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
+  }
+
+  /* 同步页实时状态：显示本机/云端人数与更新时间，便于多设备核对（手机端排查尤其有用） */
+  async function refreshStatus(view) {
+    const box = UI.$('#sb-status', view);
+    if (!box) return;
+    if (!ready()) { box.innerHTML = '<span class="muted sm">未配置云端</span>'; return; }
+    box.innerHTML = '<span class="muted sm">正在读取云端状态…</span>';
+    const r = await remoteMeta();
+    if (r.n < 0) { box.innerHTML = '<span class="sm" style="color:#c0392b">连接云端失败，请检查网络</span>'; return; }
+    const fmt = s => (s ? String(s).slice(0, 19).replace('T', ' ') : '（无）');
+    const ln = Store.db.students.length, lt = fmt(Store.db.meta.updatedAt);
+    const ct = fmt(r.metaTime || r.time);
+    const warn = ln === r.n ? '' : '<div class="sm" style="color:#c0392b;margin-top:4px">人数不一致 —— 请先「⬇️ 从云端拉取」再推送</div>';
+    box.innerHTML = '<div class="sm">本机 <b>' + ln + '</b> 人 · 更新于 ' + UI.esc(lt) + '</div>'
+      + '<div class="sm">云端 <b>' + r.n + '</b> 人 · 更新于 ' + UI.esc(ct) + '</div>' + warn;
   }
 
   function bind(view) {
@@ -4925,15 +4942,20 @@ td.dt{font-size:13px;line-height:1.6}
   }
 
   // 查云端学生数 + 更新时间（用于判断本机是不是旧数据）
+  // 查云端学生数 + 更新时间（用于判断本机是不是旧数据）
   async function remoteMeta() {
     try {
       const r = await fetch(base() + '?id=eq.' + encodeURIComponent(cfg().rowId) + '&select=payload,updated_at',
         { headers: headers() });
-      if (!r.ok) return { n: -1, time: '' };
+      if (!r.ok) return { n: -1, time: '', metaTime: '' };
       const rows = await r.json();
       const p = (rows[0] && rows[0].payload) || {};
-      return { n: (p.students || []).length, time: (rows[0] && rows[0].updated_at) || '' };
-    } catch (e) { return { n: -1, time: '' }; }
+      return {
+        n: (p.students || []).length,
+        time: (rows[0] && rows[0].updated_at) || '',          // 写入数据库的时刻（仅供参考）
+        metaTime: (p.meta && p.meta.updatedAt) || ''          // 数据自身的最后修改时间（新旧比较用这个）
+      };
+    } catch (e) { return { n: -1, time: '', metaTime: '' }; }
   }
 
   async function push(silent, force) {
@@ -4962,12 +4984,26 @@ td.dt{font-size:13px;line-height:1.6}
     }
     // 安全防护 3：本机数据的时间戳比云端旧 → 同样判定为旧数据，拒绝覆盖
     // （防止"学生数相同但内容更旧"的旧 localStorage 把云端好数据覆盖掉）
+    //
+    // ⚠️ 关键修正：必须与「数据自身的修改时间」比较，不能用数据库 updated_at 列。
+    //    updated_at 是"写入数据库的时刻"，与 meta.updatedAt（数据最后一次保存的时刻）恒差 1~3 秒；
+    //    此前拿 updated_at 跟本机 meta 比，实测差 2066ms，即使加 2 秒容差仍判"本机更旧"→
+    //    拉取云端后依然无法推送，形成死锁（手机端表现为"点不动"）。
+    // 容差 60 秒：吸收多设备间的时钟偏差；真正陈旧的数据通常以小时/天计。
     const ts = s => { const t = Date.parse(s || ''); return isNaN(t) ? 0 : t; };
     const localTime = Store.db.meta.updatedAt || '';
-    if (!force && remoteN >= 0 && ts(remote.time) - ts(localTime) > 2000) {
-      const msg = '本机数据比云端旧，已阻止覆盖云端（请先「拉取云端」）';
-      log(msg, false);
-      if (!silent) toast(msg, 'err'); else App.updateSyncBadge();
+    const remoteDataTime = remote.metaTime || remote.time;   // 优先用数据自身时间
+    if (!force && remoteN >= 0 && ts(remoteDataTime) - ts(localTime) > 60000) {
+      const fmt = s => (s ? String(s).slice(0, 19).replace('T', ' ') : '（无）');
+      const msg = '本机数据比云端旧，已阻止覆盖云端（请先「从云端拉取」）';
+      log(msg + '｜本机 ' + fmt(localTime) + ' / 云端 ' + fmt(remoteDataTime), false);
+      if (!silent) {
+        UI.confirmBox(`本机数据更新于 <b>${esc(fmt(localTime))}</b>，云端更新于 <b>${esc(fmt(remoteDataTime))}</b>。<br><br>
+          直接推送会<b>覆盖云端的较新数据</b>。建议先点「⬇️ 从云端拉取」。<br><br>
+          仍要强制推送吗？`, () => forcePush(), { danger: true, okText: '强制推送' });
+      } else {
+        App.updateSyncBadge();
+      }
       return false;
     }
     return forcePush(silent);
@@ -5240,6 +5276,7 @@ td.dt{font-size:13px;line-height:1.6}
               <button class="btn primary" id="sb-push">⬆️ 推送到云端</button>
               <button class="btn" id="sb-pull">⬇️ 从云端拉取</button>
             </div>
+            <div id="sb-status" class="status-box">正在读取云端状态…</div>
 ${PORTABLE ? '            <p class="hint" style="color:#067">📌 <b>U 盘版联网即可自助同步</b>：<br>· 把 U 盘里的数据传上云端 → 点「⬆️ 推送到云端」（会确认一次，用 U 盘当前数据覆盖云端）<br>· 把云端最新数据取回 U 盘 → 点「⬇️ 从云端拉取」，然后在本页「💾 本地备份」区点 <b>保存U盘版</b> 覆盖 U 盘里的文件即可。</p>' : '            <p class="hint">建议用 anon key + 行级安全（RLS），把这张表设为仅自己可访问。</p>'}
             <details class="sql"><summary>📄 第一次使用？点开复制建表 SQL</summary>
 <pre class="code">create table if not exists workbench (
