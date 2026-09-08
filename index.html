@@ -3069,7 +3069,7 @@ window.App = window.App || { pages: {} };
       </div>`,
       onOk: (wrap) => {
         const scope = UI.$('#r-scope', wrap).value.trim();
-        if (!scope) { toast('请填写听写/背诵范围', 'err'); return false; }
+        if (!scope) { toast('请填写' + m.unit + '范围', 'err'); return false; }
         const results = {};
         UI.$$('.stu-chip', wrap).forEach(b => results[b.dataset.sid] = Number(b.dataset.v));
         if (!Object.keys(results).length) { toast('该班没有学生', 'err'); return false; }
