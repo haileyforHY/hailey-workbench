@@ -516,7 +516,7 @@ var LS = (function(){
         { id: 'cls_8', name: '初三八班', grade: '初三', gradYear: gy }
       ],
       students: [],   // {id,classId,name,no,parentPhone,parentName,tags[],focus,note}
-      checks: [],     // {id,kind:'dictation'|'recitation',classId,date,scope,note,results:{sid:1|0}}
+      checks: [],     // {id,kind:'dictation'|'recitation'|'essay',classId,date,scope,note,results:{sid:1|0}}
       retests: [],    // {id,studentId,kind,scope,date,srcId,done,doneDate}
       exams: [],      // {id,name,date,scope,parts:[{name,full}],lines:{high,mid,low},scores:[{studentId,total,parts:[]}]}
       comms: [],      // {id,studentId,date,way,topic,content,needFollow,followDate,followDone}
@@ -1467,6 +1467,7 @@ window.App = window.App || { pages: {} };
     { id: 'students', icon: '👥', name: '班级与学生' },
     { id: 'dictation', icon: '✏️', name: '听写过关' },
     { id: 'recitation', icon: '📖', name: '背诵过关' },
+    { id: 'essay', icon: '✍️', name: '作文过关' },
     { id: 'exams', icon: '📈', name: '成绩分析' },
     { id: 'comm', icon: '📞', name: '家校沟通' },
     { id: 'todos', icon: '✅', name: '待办清单' },
@@ -1519,6 +1520,7 @@ window.App = window.App || { pages: {} };
     dot('todos', Store.db.todos.filter(t => !t.done).length);
     dot('dictation', Store.pendingRetests().filter(r => r.kind === 'dictation').length);
     dot('recitation', Store.pendingRetests().filter(r => r.kind === 'recitation').length);
+    dot('essay', Store.pendingRetests().filter(r => r.kind === 'essay').length);
     dot('discipline', An.disciplineWarnings(3).length);
     dot('comm', An.followUps().length);
   }
@@ -1556,6 +1558,15 @@ window.App = window.App || { pages: {} };
           Store.students(c.id).forEach(s => results[s.id] = Math.random() > (0.12 + ki * 0.05) ? 1 : 0);
           Store.saveCheck({ kind, classId: c.id, date: UI.addDays(UI.today(), -(scopes.length - k) * 4 - ki), scope: sc, note: '', results });
         });
+      });
+    });
+
+    const essayScopes = ['Unit 1 作文', 'Unit 2 作文', 'Unit 3 作文'];
+    essayScopes.forEach((sc, k) => {
+      cls.forEach(c => {
+        const results = {};
+        Store.students(c.id).forEach(s => results[s.id] = Math.random() > 0.18 ? 1 : 0);
+        Store.saveCheck({ kind: 'essay', classId: c.id, date: UI.addDays(UI.today(), -(essayScopes.length - k) * 5), scope: sc, note: '', results });
       });
     });
 
@@ -1650,7 +1661,7 @@ window.App = window.App || { pages: {} };
 
     document.addEventListener('keydown', e => {
       if (e.target.matches('input,textarea,select')) return;
-      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable', '-': 'progress' };
+      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable', '-': 'progress', '=': 'essay' };
       if (map[e.key]) App.go(map[e.key]);
     });
 
@@ -1720,6 +1731,7 @@ window.App = window.App || { pages: {} };
         <div class="quick">
           <button class="qbtn" data-go="dictation">✏️ 记听写</button>
           <button class="qbtn" data-go="recitation">📖 记背诵</button>
+          <button class="qbtn" data-go="essay">✍️ 记作文</button>
           <button class="qbtn" data-add="todo">＋ 待办</button>
           <button class="qbtn" data-add="comm">📞 沟通</button>
           <button class="qbtn" data-add="disc">⚠️ 违纪</button>
@@ -2255,7 +2267,7 @@ window.App = window.App || { pages: {} };
         <div class="grid-2">
           <div><h4>✏️ 最近过关</h4>
             ${checks.length ? `<table class="tbl mini"><thead><tr><th>日期</th><th>类型</th><th>范围</th><th>结果</th></tr></thead>
-              <tbody>${checks.map(c => `<tr><td>${esc(c.date)}</td><td>${c.kind === 'dictation' ? '听写' : '背诵'}</td>
+              <tbody>${checks.map(c => `<tr><td>${esc(c.date)}</td><td>${c.kind === 'dictation' ? '听写' : c.kind === 'recitation' ? '背诵' : '作文'}</td>
                 <td>${esc(c.scope)}</td><td>${c.results[id] === 1 ? '<span class="pill ok">过</span>' : '<span class="pill bad">未过</span>'}</td></tr>`).join('')}
               </tbody></table>` : '<p class="hint">暂无记录</p>'}
           </div>
@@ -2738,10 +2750,15 @@ window.App = window.App || { pages: {} };
 (function () {
   const { esc, toast, modal, confirmBox, empty, classOptions } = UI;
   const META = {
-    dictation: { icon: '✏️', title: '听写过关', unit: '听写' },
-    recitation: { icon: '📖', title: '背诵过关', unit: '背诵' }
+    dictation: { icon: '✏️', title: '听写过关', unit: '听写', ph: '如 Unit 3 单词 / 课文 P42' },
+    recitation: { icon: '📖', title: '背诵过关', unit: '背诵', ph: '如 Unit 3 课文 / P42 段落' },
+    essay: { icon: '✍️', title: '作文过关', unit: '作文', ph: '如 Unit 3 作文 / 第三单元话题作文', library: false }
   };
-  const state = { dictation: { classId: '', stu: '', focusId: '' }, recitation: { classId: '', stu: '', focusId: '' } };
+  const state = {
+    dictation: { classId: '', stu: '', focusId: '' },
+    recitation: { classId: '', stu: '', focusId: '' },
+    essay: { classId: '', stu: '', focusId: '' }
+  };
 
   function render(view, kind) {
     const m = META[kind], st = state[kind];
@@ -2759,7 +2776,7 @@ window.App = window.App || { pages: {} };
         <div><h2>${m.icon} ${m.title}</h2><p class="sub">按班记录 · 未过关自动进入二次待办池</p></div>
         <div class="head-actions">
           <select class="inp" id="c-cls" style="max-width:160px">${classOptions(st.classId, '全部班级')}</select>
-          <button class="btn" id="c-library">📚 单词库/默写表</button>
+          ${m.library === false ? '' : '<button class="btn" id="c-library">📚 单词库/默写表</button>'}
           <button class="btn primary" id="c-add">＋ 新建${m.unit}记录</button>
         </div>
       </div>
@@ -2782,14 +2799,14 @@ window.App = window.App || { pages: {} };
         </div>
 
         <div class="card">
-          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">分每次听写 · ${stx.failed.length} 人</span></h3>
+          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">分每次${m.unit} · ${stx.failed.length} 人</span></h3>
             <button class="btn xs" id="c-exp-fail">📤 导出名单</button></div>
           ${stx.failed.length ? `<div class="session-list">${failedBySession(kind, st.classId).map(g => `
             <div class="session">
               <div class="session-head"><b>${esc(g.date)}</b> · ${esc(g.scope)} <span class="muted sm">${g.students.length} 人未过</span></div>
               <div class="name-grid">${g.students.map(sid => nameChip(sid, 'bad')).join('')}</div>
             </div>`).join('')}</div>
-            <p class="hint">按每次听写分组展示，补过后该项自动移入「已过关」。点名字可看该生详情。</p>`
+            <p class="hint">按每次${m.unit}分组展示，补过后该项自动移入「已过关」。点名字可看该生详情。</p>`
           : empty('全部过关，厉害 🎉', '🎉')}
         </div>
       </div>
@@ -3040,7 +3057,7 @@ window.App = window.App || { pages: {} };
         <div class="grid3">
           <label>班级<select class="inp" id="r-cls">${classOptions(classId)}</select></label>
           <label>日期<input class="inp" type="date" id="r-date" value="${esc(rec ? rec.date : UI.today())}"></label>
-          <label>范围<input class="inp" id="r-scope" value="${esc(rec ? rec.scope : '')}" placeholder="如 Unit 3 单词 / 课文 P42"></label>
+          <label>范围<input class="inp" id="r-scope" value="${esc(rec ? rec.scope : '')}" placeholder="${esc(m.ph || '如 Unit 3 单词 / 课文 P42')}"></label>
         </div>
         <div class="row-between">
           <p class="hint" style="margin:0">默认全部过关，点击学生姓名切换为「未过」。</p>
@@ -3086,7 +3103,7 @@ window.App = window.App || { pages: {} };
     const { $, $$ } = UI, st = state[kind];
     $('#c-cls', view).onchange = e => { st.classId = e.target.value; App.render(); };
     $('#c-add', view).onclick = () => editRecord(kind, null);
-    $('#c-library', view).onclick = () => openWordLibrary();
+    const lb = $('#c-library', view); if (lb) lb.onclick = () => openWordLibrary();
     $('#c-stu', view).onchange = e => { st.stu = e.target.value; App.render(); };
     $$('[data-edit]', view).forEach(b => b.onclick = () => editRecord(kind, b.dataset.edit));
     $$('[data-stu]', view).forEach(b => b.onclick = () => App.openStudent(b.dataset.stu));
@@ -3265,6 +3282,7 @@ td.dt{font-size:13px;line-height:1.6}
 
   App.pages.dictation = { title: '听写过关', render: v => render(v, 'dictation') };
   App.pages.recitation = { title: '背诵过关', render: v => render(v, 'recitation') };
+  App.pages.essay = { title: '作文过关', render: v => render(v, 'essay') };
 })();
 
 </script>
