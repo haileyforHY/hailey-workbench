@@ -420,6 +420,10 @@ tr.today-row-hl:hover{background:#fff8e6}
 .session{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fafbff}
 .session-head{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .mini-h{font-size:13px;font-weight:600;margin-bottom:6px}
+/* 未过关名单：每个学生后跟一个「✓过关」按钮，点一下即归已过关 */
+.nm-row{display:inline-flex;align-items:center;gap:5px;margin:2px}
+.mini-pass{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:26px;padding:0 7px;border-radius:7px;border:1px solid #c6ecd8;background:#eafaf1;color:#0f7a4a;font-size:12px;font-weight:600;cursor:pointer}
+.mini-pass:hover{background:#d6f3e4;border-color:#9fdcbd}
 
 </style>
 </head>
@@ -2804,9 +2808,9 @@ window.App = window.App || { pages: {} };
           ${stx.failed.length ? `<div class="session-list">${failedBySession(kind, st.classId).map(g => `
             <div class="session">
               <div class="session-head"><b>${esc(g.date)}</b> · ${esc(g.scope)} <span class="muted sm">${g.students.length} 人未过</span></div>
-              <div class="name-grid">${g.students.map(sid => nameChip(sid, 'bad')).join('')}</div>
+              <div class="name-grid">${g.students.map(x => `<span class="nm-row">${nameChip(x.sid, 'bad')}<button class="mini-pass" data-pass="${x.rid}" title="标记该生已过关">✓过关</button></span>`).join('')}</div>
             </div>`).join('')}</div>
-            <p class="hint">按每次${m.unit}分组展示，补过后该项自动移入「已过关」。点名字可看该生详情。</p>`
+            <p class="hint">按每次${m.unit}分组展示，补过后该项自动移入「已过关」。点名字看该生详情，点「✓过关」直接归入已过关。</p>`
           : empty('全部过关，厉害 🎉', '🎉')}
         </div>
       </div>
@@ -2921,7 +2925,9 @@ window.App = window.App || { pages: {} };
       // 保证同一场听写（同日期同范围）仍归为一组，避免全部挤到一个假分组里。
       const key = r.srcId || (r.date + '|' + r.scope);
       if (!map[key]) map[key] = { srcId: r.srcId, date: r.date, scope: r.scope, students: [] };
-      map[key].students.push(r.studentId);
+      // 记录该生对应的待补项 id，供「✓过关」按钮直接销项；同组同生去重。
+      const g = map[key];
+      if (!g.students.some(x => x.sid === r.studentId)) g.students.push({ sid: r.studentId, rid: r.id });
     });
     return Object.values(map).sort((a, b) => b.date.localeCompare(a.date) || String(a.scope).localeCompare(String(b.scope)));
   }
@@ -3114,7 +3120,7 @@ window.App = window.App || { pages: {} };
     $('#c-exp-fail', view).onclick = () => {
       const groups = failedBySession(kind, st.classId);
       const items = [];
-      groups.forEach(g => g.students.forEach(sid => items.push({ sid, scope: g.scope, date: g.date })));
+      groups.forEach(g => g.students.forEach(x => items.push({ sid: x.sid, scope: g.scope, date: g.date })));
       exportNames(`${META[kind].title}_未过关_${today}`, items, '未过范围');
     };
     const clearFocus = $('#c-clear-focus', view);
@@ -3126,6 +3132,8 @@ window.App = window.App || { pages: {} };
       stx.pending.map(r => ({ sid: r.studentId, scope: r.scope, date: r.date })), '欠账范围');
 
     $$('[data-clear]', view).forEach(b => b.onclick = () => markPassed(b.dataset.clear));
+    // 未过关名单里点「✓过关」直接归集到已过关（与待办池「已补过」同逻辑）
+    $$('[data-pass]', view).forEach(b => b.onclick = (e) => { e.stopPropagation(); markPassed(b.dataset.pass); });
     $('#c-topodo', view).onclick = () => {
       const pending = Store.pendingRetests().filter(r => r.kind === kind);
       if (!pending.length) { toast('没有待补项'); return; }
