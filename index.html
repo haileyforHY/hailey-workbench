@@ -419,6 +419,11 @@ tr.today-row-hl:hover{background:#fff8e6}
 .name-chip .muted{font-size:11px}
 .name-chip.ok{background:#eafaf1;border-color:#c6ecd8;color:#0f7a4a}
 .name-chip.bad{background:#fff3f3;border-color:#f7cfcf;color:#b02525}
+.sessions{display:flex;flex-direction:column;gap:10px;padding:4px 0}
+.sess{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
+.sess-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.sess-date{font-weight:650;color:#2a2f45}
+.sess-scope{color:#6b7189;font-size:13px}
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
@@ -2814,10 +2819,20 @@ window.App = window.App || { pages: {} };
         </div>
 
         <div class="card">
-          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${stx.failed.length} 人</span></h3>
+          <div class="card-head"><h3>❌ 未过关 <span class="muted sm">${failedSessions(kind, st.classId).length} 场听写有未过关</span></h3>
             <button class="btn xs" id="c-exp-fail">📤 导出名单</button></div>
-          ${stx.failed.length ? `<div class="name-grid">${stx.failed.map(sid => nameChip(sid, 'bad')).join('')}</div>
-            <p class="hint">补过后会自动移到「已过关」。点名字可看该生详情。</p>`
+          ${stx.failed.length ? `<div class="sessions">
+            ${failedSessions(kind, st.classId).map(({ c, fail }) => `
+              <div class="sess">
+                <div class="sess-head">
+                  <span class="sess-date">${esc(c.date)}</span>
+                  <span class="sess-scope">${esc(c.scope)}</span>
+                  <span class="badge sm danger">${fail.length} 人未过</span>
+                </div>
+                <div class="name-grid">${fail.map(sid => nameChip(sid, 'bad')).join('')}</div>
+              </div>`).join('')}
+          </div>
+          <p class="hint">按每次听写分组展示未过关学生；点名字看该生详情，补过后会自动移到「已过关」。</p>`
           : empty('全部过关，厉害 🎉', '🎉')}
         </div>
       </div>
@@ -2899,6 +2914,27 @@ window.App = window.App || { pages: {} };
     const s = Store.student(sid) || {};
     return `<a class="name-chip ${tone}" data-stu="${sid}" title="${esc(s.parentPhone || '')}">
       ${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>`;
+  }
+
+  /* ---------- 每次听写未过关（按场次分组） ----------
+   * 返回按日期倒序（最新在前）的场次，每场含该次 results==0 的未过关学生。
+   */
+  function failedSessions(kind, classId) {
+    const checks = Store.db.checks.filter(c => c.kind === kind && (!classId || c.classId === classId));
+    const out = [];
+    checks.forEach(c => {
+      const res = c.results || {};
+      const fail = Object.keys(res).filter(sid => res[sid] === 0);
+      if (fail.length) {
+        fail.sort((a, b) => {
+          const sa = Store.student(a) || {}, sb = Store.student(b) || {};
+          return String(sa.classId).localeCompare(String(sb.classId)) ||
+            String(sa.no || '').padStart(4, '0').localeCompare(String(sb.no || '').padStart(4, '0'));
+        });
+        out.push({ c, fail });
+      }
+    });
+    return out.sort((x, y) => y.c.date.localeCompare(x.c.date));
   }
 
   /* ---------- 补过：销项 + 归入已过关 ---------- */
