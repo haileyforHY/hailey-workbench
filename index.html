@@ -529,6 +529,7 @@ var LS = (function(){
       todos: [],      // {id,title,quadrant:1..4,due,done,source,refId,createdAt}
       discipline: [], // {id,studentId,date,type,detail,handled}
       progress: [],   // {id,date,classId,unit,content,note} 上课进度记录（每天每班一条）
+      countdowns: [], // {id,title,date,time,note} 考试倒计时
       timetable: {},  // {'1-3': {classId,content,room}}
       settings: {
         parts: DEFAULT_PARTS,
@@ -1523,7 +1524,6 @@ window.App = window.App || { pages: {} };
     { id: 'todos', icon: '✅', name: '待办清单' },
     { id: 'discipline', icon: '⚠️', name: '违纪记录' },
     { id: 'timetable', icon: '🗓️', name: '我的课表' },
-    { id: 'progress', icon: '📍', name: '上课进度' },
     { id: 'sync', icon: '☁️', name: '云端同步' }
   ];
 
@@ -1701,7 +1701,7 @@ window.App = window.App || { pages: {} };
 
     document.addEventListener('keydown', e => {
       if (e.target.matches('input,textarea,select')) return;
-      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable', '-': 'progress' };
+      const map = { '1': 'dashboard', '2': 'focus', '3': 'students', '4': 'dictation', '5': 'recitation', '6': 'exams', '7': 'comm', '8': 'todos', '9': 'discipline', '0': 'timetable' };
       if (map[e.key]) App.go(map[e.key]);
     });
 
@@ -1760,6 +1760,8 @@ window.App = window.App || { pages: {} };
     const follows = An.followUps();
     const weekChecks = An.checks(null, null, week.start, week.end);
     const wAgg = weekChecks.reduce((a, c) => { const r = An.recordRate(c); a.t += r.total; a.p += r.pass; return a; }, { t: 0, p: 0 });
+    const cds = (Store.db.countdowns || []).slice()
+      .sort((a, b) => (a.date + 'T' + (a.time || '00:00')).localeCompare(b.date + 'T' + (b.time || '00:00')));
 
     view.innerHTML = `
       <div class="dash-hero">
@@ -1860,6 +1862,25 @@ window.App = window.App || { pages: {} };
               <button class="btn xs" data-stu="${p.student.id}">档案</button>
             </div>`).join('')}</div>` : `<p class="hint">重点学生暂无异常，或名单为空</p>`}
         </div>
+
+        <!-- 考试倒计时 -->
+        <div class="card">
+          <div class="card-head"><h3>⏰ 考试倒计时</h3>
+            <button class="btn xs primary" data-cd-add>＋ 添加</button></div>
+          ${cds.length ? `<div class="list tight">${cds.map(c => {
+            const tgt = c.date + 'T' + (c.time || '00:00');
+            const r = fmtCountdown(tgt);
+            const cls = r.past ? 'ok' : (r.days <= 3 ? 'bad' : r.days <= 7 ? 'warn' : '');
+            return `<div class="list-item cd-item" data-cd-edit="${c.id}">
+              <div><b>${esc(c.title)}</b>
+                <span class="muted sm">${esc(c.date)}${c.time ? ' ' + esc(c.time) : ''}</span>
+                ${c.note ? `<div class="muted sm ellip">${esc(c.note)}</div>` : ''}</div>
+              <span class="pill ${cls}" data-cd-num data-target="${esc(tgt)}">${esc(r.text)}</span>
+              <button class="icon-btn danger" data-cd-del="${c.id}" title="删除">🗑</button>
+            </div>`;
+          }).join('')}</div>`
+            : `<p class="hint">还没有倒计时，点「＋ 添加」设置考试日期 📅</p>`}
+        </div>
       </div>
 
       ${follows.length ? `<div class="card">
@@ -1872,6 +1893,8 @@ window.App = window.App || { pages: {} };
         }).join('')}</div></div>` : ''}`;
 
     bind(view);
+    if (window.__cdTimer) clearInterval(window.__cdTimer);
+    window.__cdTimer = setInterval(() => tickCountdowns(view), 1000);
   }
 
   function kpi(label, value, icon, tone, go) {
@@ -1892,6 +1915,69 @@ window.App = window.App || { pages: {} };
       if (t === 'todo') App.pages.todos.edit(null, 1);
       if (t === 'comm') App.pages.comm.edit(null);
       if (t === 'disc') App.pages.discipline.edit(null);
+    });
+    $$('[data-cd-add]', view).forEach(b => b.onclick = () => editCountdown(null));
+    $$('[data-cd-edit]', view).forEach(b => b.onclick = () => editCountdown(b.dataset.cdEdit));
+    $$('[data-cd-del]', view).forEach(b => b.onclick = e => {
+      e.stopPropagation();
+      const cd = (Store.db.countdowns || []).find(c => c.id === b.dataset.cdDel);
+      UI.confirmBox(`删除倒计时 <b>${esc((cd && cd.title) || '')}</b>？`, () => {
+        Store.db.countdowns = (Store.db.countdowns || []).filter(c => c.id !== b.dataset.cdDel);
+        Store.save(); UI.toast('已删除'); App.render();
+      }, { danger: true, okText: '删除' });
+    });
+  }
+
+  function fmtCountdown(target) {
+    const t = new Date(target).getTime();
+    let ms = t - Date.now();
+    if (ms <= 0) return { text: '已结束', past: true, days: -1 };
+    const s = Math.floor(ms / 1000);
+    const d = Math.floor(s / 86400);
+    const h = Math.floor((s % 86400) / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    let text;
+    if (d > 0) text = `还剩 ${d} 天 ${h} 时`;
+    else if (h > 0) text = `还剩 ${h} 时 ${m} 分`;
+    else text = `还剩 ${m} 分 ${sec} 秒`;
+    return { text, past: false, days: d };
+  }
+
+  function tickCountdowns(view) {
+    UI.$$('.cd-num', view).forEach(el => {
+      const r = fmtCountdown(el.dataset.target);
+      el.textContent = r.text;
+      el.className = 'pill ' + (r.past ? 'ok' : (r.days <= 3 ? 'bad' : r.days <= 7 ? 'warn' : ''));
+    });
+  }
+
+  function editCountdown(id) {
+    const list = Store.db.countdowns || (Store.db.countdowns = []);
+    const cur = id ? list.find(c => c.id === id) : null;
+    const today = UI.today();
+    const body = `
+      <div class="form">
+        <label class="fld"><span>标题</span><input class="inp" id="cd-title" placeholder="如：初三一模" value="${cur ? esc(cur.title) : ''}"></label>
+        <label class="fld"><span>日期</span><input class="inp" id="cd-date" type="date" value="${cur ? esc(cur.date) : today}"></label>
+        <label class="fld"><span>时间（可选）</span><input class="inp" id="cd-time" type="time" value="${cur ? esc(cur.time || '') : ''}"></label>
+        <label class="fld"><span>备注（可选）</span><input class="inp" id="cd-note" placeholder="如：全区统考" value="${cur ? esc(cur.note || '') : ''}"></label>
+      </div>`;
+    UI.modal({
+      title: id ? '编辑倒计时' : '添加考试倒计时', body, okText: '保存',
+      onOk: (wrap) => {
+        const title = UI.$('#cd-title', wrap).value.trim();
+        const date = UI.$('#cd-date', wrap).value;
+        const time = UI.$('#cd-time', wrap).value || '';
+        const note = UI.$('#cd-note', wrap).value.trim();
+        if (!title) { UI.toast('请填写标题', 'err'); return false; }
+        if (!date) { UI.toast('请选择日期', 'err'); return false; }
+        if (cur) Object.assign(cur, { title, date, time, note });
+        else list.push({ id: 'cd' + Date.now(), title, date, time, note });
+        Store.save();
+        UI.toast('已保存 ⏰');
+        App.render();
+      }
     });
   }
 
@@ -5040,228 +5126,7 @@ td.dt{font-size:13px;line-height:1.6}
 })();
 
 </script>
-<script>
-/* ===========================================================
- * pages/progress.js — 📍 上课进度记录（每天结束记录两个班各上到哪里）
- * =========================================================== */
-(function () {
-  const { esc, toast, modal, confirmBox, empty } = UI;
-  const state = { showAll: false };
 
-  // 单元取自词库（没有则用默认）
-  function units() {
-    const wb = Store.db.settings.wordBank;
-    if (wb && wb.units && wb.units.length) return wb.units;
-    return [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({ id: i, name: 'Unit ' + i }));
-  }
-  function unitName(id) {
-    const u = units().find(x => String(x.id) === String(id));
-    return u ? u.name : (id ? 'Unit ' + id : '');
-  }
-
-  // 某天某班的记录
-  function recordOf(date, cid) {
-    return (Store.db.progress || []).find(p => p.date === date && p.classId === cid);
-  }
-
-  // 按日期聚合：{date: {clsId: record}}
-  function byDate() {
-    const map = {};
-    (Store.db.progress || []).forEach(p => {
-      (map[p.date] = map[p.date] || {})[p.classId] = p;
-    });
-    return Object.keys(map).sort((a, b) => b.localeCompare(a)).map(d => ({ date: d, rec: map[d] }));
-  }
-
-  // 两班进度差：用单元号相减（0 表示同步）
-  function gap(rec) {
-    const cls = Store.classes();
-    if (cls.length < 2) return null;
-    const a = rec[cls[0].id], b = rec[cls[1].id];
-    if (!a || !b || !a.unit || !b.unit) return null;
-    const d = Number(a.unit) - Number(b.unit);
-    return d === 0 ? null : { d, fast: d > 0 ? cls[0].name : cls[1].name, slow: d > 0 ? cls[1].name : cls[0].name };
-  }
-
-  function render(view) {
-    const dates = byDate();
-    const cls = Store.classes();
-    const today = UI.today();
-    const showDates = state.showAll ? dates : dates.slice(0, 14);
-
-    // 最近一次记录（用于 KPI）
-    const latest = dates[0];
-    const thisWeek = UI.weekRange();
-    const weekN = dates.filter(d => d.date >= thisWeek.start && d.date <= thisWeek.end).length;
-
-    view.innerHTML = `
-      <div class="page-head">
-        <div><h2>📍 上课进度</h2><p class="sub">每天结束记一笔 · 两个班各上到哪里，一眼看出进度差</p></div>
-        <div class="head-actions">
-          <button class="btn" id="p-history">${state.showAll ? '最近 14 天' : '查看全部'}（${dates.length}）</button>
-          <button class="btn primary" id="p-add">＋ 记录今天进度</button>
-        </div>
-      </div>
-
-      <div class="kpi-row">
-        ${kpi('累计记录', dates.length + ' 天', '📅')}
-        ${kpi('本周记录', weekN + ' 天', '🗓️')}
-        ${kpi('最近记录', latest ? latest.date : '—', '🕐')}
-        ${kpi('今日进度', recordOf(today, (cls[0] || {}).id) ? '已记' : '未记', '✅',
-          recordOf(today, (cls[0] || {}).id) ? '' : 'warn')}
-      </div>
-
-      <div class="card">
-        <div class="card-head"><h3>📝 快速记录</h3><span class="muted sm">填完直接保存，同一天重复保存会覆盖</span></div>
-        <form class="form" id="p-form">
-          <div class="toolbar">
-            <label>日期<input class="inp" type="date" id="p-date" value="${today}" style="width:150px"></label>
-            <span class="flex1"></span>
-          </div>
-          <div id="p-classes">${cls.map(c => clsRow(c, today)).join('')}</div>
-          <div class="toolbar">
-            <span class="flex1"></span>
-            <button type="button" class="btn primary" id="p-save">💾 保存进度</button>
-          </div>
-        </form>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><h3>🗂 进度时间线</h3><span class="muted sm">共 ${dates.length} 天</span></div>
-        ${showDates.length ? `<div class="table-wrap"><table class="tbl">
-          <thead><tr>
-            <th style="width:110px">日期</th>
-            ${cls.map(c => `<th>${esc(c.name)}</th>`).join('')}
-            <th style="width:130px">进度差</th>
-            <th style="width:90px">操作</th>
-          </tr></thead>
-          <tbody>${showDates.map(row => {
-            const g = gap(row.rec);
-            return `<tr class="${row.date === today ? 'today-row-hl' : ''}">
-              <td><b>${esc(row.date)}</b>${row.date === today ? ' <span class="badge sm">今天</span>' : ''}</td>
-              ${cls.map(c => {
-                const r = row.rec[c.id];
-                return `<td>${r ? `<div><b>${esc(r.unit ? r.unit + ' · ' : '')}</b>${esc(r.content || '')}</div>
-                  ${r.note ? `<div class="muted sm">${esc(r.note)}</div>` : ''}`
-                  : '<span class="muted">—</span>'}</td>`;
-              }).join('')}
-              <td>${g ? `<span class="pill warn">${esc(g.fast)} 快 ${Math.abs(g.d)} 单元</span>` : '<span class="pill ok">同步</span>'}</td>
-              <td class="nowrap"><button class="icon-btn" data-edit="${row.date}">✎</button>
-                <button class="icon-btn danger" data-del="${row.date}">🗑</button></td>
-            </tr>`;
-          }).join('')}</tbody></table></div>` : empty('还没有进度记录，上面记一笔吧', '📍')}
-      </div>`;
-
-    bind(view);
-  }
-
-  function clsRow(c, date) {
-    const r = recordOf(date, c.id) || {};
-    const opts = '<option value="">（不填）</option>' +
-      units().map(u => `<option value="${u.id}"${String(r.unit || '') === String(u.id) ? ' selected' : ''}>${esc(u.name)}</option>`).join('');
-    return `<div class="pg-cls">
-      <div class="pg-cls-h"><b>${esc(c.name)}</b>
-        ${r.content ? '<span class="muted sm">今天已记</span>' : ''}</div>
-      <div class="toolbar">
-        <label>单元<select class="inp" data-unit="${c.id}">${opts}</select></label>
-        <label>上到哪里<input class="inp" data-content="${c.id}" value="${esc(r.content || '')}"
-          placeholder="如：Section A 1a-2d 完成" style="min-width:180px"></label>
-        <label>备注<input class="inp" data-note="${c.id}" value="${esc(r.note || '')}"
-          placeholder="如：听力没讲完" style="min-width:150px"></label>
-      </div></div>`;
-  }
-
-  function kpi(label, value, icon, tone) {
-    return `<div class="kpi ${tone || ''}"><div class="kpi-ico">${icon}</div>
-      <div><div class="kpi-v">${esc(value)}</div><div class="kpi-l">${esc(label)}</div></div></div>`;
-  }
-
-  /* -------- 编辑某天（弹窗，两个班一起改） -------- */
-  function editDay(date) {
-    const cls = Store.classes();
-    const body = cls.map(c => {
-      const r = recordOf(date, c.id) || {};
-      const opts = '<option value="">（不填）</option>' +
-        units().map(u => `<option value="${u.id}"${String(r.unit || '') === String(u.id) ? ' selected' : ''}>${esc(u.name)}</option>`).join('');
-      return `<div class="pg-cls">
-        <div class="pg-cls-h"><b>${esc(c.name)}</b></div>
-        <label>单元<select class="inp" id="pg-u-${c.id}">${opts}</select></label>
-        <label>上到哪里<input class="inp" id="pg-c-${c.id}" value="${esc(r.content || '')}" placeholder="如：Section A 1a-2d 完成"></label>
-        <label>备注<input class="inp" id="pg-n-${c.id}" value="${esc(r.note || '')}" placeholder="选填"></label>
-      </div>`;
-    }).join('');
-
-    modal({
-      title: '📍 ' + date + ' 上课进度',
-      width: 560,
-      body: `<div class="form">${body}</div>`,
-      onOk: (wrap) => {
-        Store.classes().forEach(c => {
-          saveOne(date, c.id, {
-            unit: UI.$('#pg-u-' + c.id, wrap).value,
-            content: UI.$('#pg-c-' + c.id, wrap).value.trim(),
-            note: UI.$('#pg-n-' + c.id, wrap).value.trim()
-          });
-        });
-        Store.save(); toast('已保存'); App.render();
-      }
-    });
-  }
-
-  // 写入/覆盖某天某班（内容全空则删除该条）
-  function saveOne(date, cid, data) {
-    const list = Store.db.progress || (Store.db.progress = []);
-    const i = list.findIndex(p => p.date === date && p.classId === cid);
-    const empty = !data.unit && !data.content && !data.note;
-    if (i >= 0) {
-      if (empty) list.splice(i, 1);
-      else Object.assign(list[i], data);
-    } else if (!empty) {
-      Store.push('progress', Object.assign({ date, classId: cid }, data), 'pg');
-    }
-  }
-
-  function bind(view) {
-    const { $, $$ } = UI;
-    $('#p-add', view).onclick = () => editDay(UI.today());
-    $('#p-history', view).onclick = () => { state.showAll = !state.showAll; App.render(); };
-
-    // 日期切换 → 重新载入该天已有内容
-    const dateInput = $('#p-date', view);
-    dateInput.onchange = () => {
-      const d = dateInput.value || UI.today();
-      $('#p-classes', view).innerHTML = Store.classes().map(c => clsRow(c, d)).join('');
-    };
-
-    $('#p-save', view).onclick = () => {
-      const d = dateInput.value || UI.today();
-      let n = 0;
-      Store.classes().forEach(c => {
-        const u = $('[data-unit="' + c.id + '"]', view);
-        const ct = $('[data-content="' + c.id + '"]', view);
-        const nt = $('[data-note="' + c.id + '"]', view);
-        if (!u || !ct) return;
-        const data = { unit: u.value, content: ct.value.trim(), note: nt ? nt.value.trim() : '' };
-        if (data.unit || data.content || data.note) n++;
-        saveOne(d, c.id, data);
-      });
-      Store.save();
-      toast(n ? `已保存 ${n} 个班的进度 ✅` : '内容为空，未保存');
-      App.render();
-    };
-
-    $$('[data-edit]', view).forEach(b => b.onclick = () => editDay(b.dataset.edit));
-    $$('[data-del]', view).forEach(b => b.onclick = () => confirmBox(
-      `删除 <b>${esc(b.dataset.del)}</b> 这一天的进度记录？`, () => {
-        Store.db.progress = (Store.db.progress || []).filter(p => p.date !== b.dataset.del);
-        Store.save(); toast('已删除'); App.render();
-      }, { danger: true, okText: '删除' }));
-  }
-
-  App.pages.progress = { title: '上课进度', render };
-})();
-
-</script>
 <script>
 /* ===========================================================
  * pages/sync.js — ☁️ Supabase 云端同步 + ⚙️ 偏好设置
