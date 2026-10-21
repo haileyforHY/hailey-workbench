@@ -421,6 +421,8 @@ tr.today-row-hl:hover{background:#fff8e6}
 .name-chip.bad{background:#fff3f3;border-color:#f7cfcf;color:#b02525}
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+<script>window.XLSX||document.write('<script src="https://unpkg.com/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"><\/script>');</script>
 </head>
 <body>
 
@@ -882,6 +884,42 @@ var LS = (function(){
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
+  function exportXLSX(filename, aoa, widths) {
+    if (typeof XLSX !== 'undefined' && XLSX.utils && XLSX.utils.aoa_to_sheet) {
+      try {
+        const ws = XLSX.utils.aoa_to_sheet(aoa);
+        if (widths) ws['!cols'] = widths.map(w => ({ wch: w }));
+        const nRows = aoa.length, nCols = (aoa[0] || []).length;
+        const lastCol = nCols > 26 ? 'Z' : String.fromCharCode(64 + nCols);
+        ws['!autofilter'] = { ref: 'A1:' + lastCol + nRows };
+        for (let c = 0; c < nCols; c++) {
+          const addr = (c > 25 ? 'A' + String.fromCharCode(65 + c - 26) : String.fromCharCode(65 + c)) + '1';
+          if (ws[addr]) ws[addr].s = {
+            font: { bold: true, color: { rgb: 'FFFFFF' } },
+            fill: { fgColor: { rgb: '4472C4' } },
+            alignment: { horizontal: 'center', vertical: 'center' }
+          };
+        }
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, '汇总');
+        XLSX.writeFile(wb, filename);
+        toast('已导出 Excel ✅');
+        return true;
+      } catch (e) { /* 落到 CSV 兜底 */ }
+    }
+    const csv = '﻿' + aoa.map(r => r.map(v => {
+      const s = String(v == null ? '' : v).replace(/"/g, '""');
+      return /[",\n]/.test(s) ? '"' + s + '"' : s;
+    }).join(',')).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = filename.replace(/\.xlsx$/i, '.csv');
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast('Excel 组件未加载，已导出 CSV（内容一致）', 'warn');
+    return false;
+  }
+
   function pct(n, d) { return d ? Math.round((n / d) * 1000) / 10 : 0; }
 
   function tagChip(t) { return `<span class="chip">${esc(t)}</span>`; }
@@ -910,7 +948,7 @@ var LS = (function(){
 
   window.UI = {
     $, $$, esc, ymd, today, addDays, diffDays, weekday, weekRange, mdLabel,
-    toast, modal, confirmBox, download, pct, tagChip, selectOptions,
+    toast, modal, confirmBox, download, exportXLSX, pct, tagChip, selectOptions,
     classOptions, studentOptions, empty
   };
 })();
@@ -2663,6 +2701,7 @@ window.App = window.App || { pages: {} };
         <button class="btn block" id="e-json">💾 全量备份（JSON，可再次导入恢复）</button>
         <button class="btn block" id="e-roster">📋 学生名单（CSV）</button>
         <button class="btn block" id="e-phone">📞 家长通讯录（CSV）</button>
+        <button class="btn block" id="e-summary">📊 听写未过关汇总（Excel）</button>
         <p class="hint">数据默认只存在本机浏览器，建议每学期导出一次备份；开启云同步后也会存到你自己的 Supabase。</p>
       </div>`
     });
@@ -2679,6 +2718,10 @@ window.App = window.App || { pages: {} };
       Store.students().filter(s => s.parentPhone).forEach(s => rows.push([s.name, Store.className(s.classId), s.parentName, s.parentPhone]));
       download(`家长通讯录_${stamp}.csv`, rows.map(r => r.map(csvCell).join(',')).join('\n'), 'text/csv');
       toast('已导出通讯录');
+    };
+    UI.$('#e-summary').onclick = () => {
+      if (window.WBExport && window.WBExport.dictationSummary) { window.WBExport.dictationSummary('dictation', ''); }
+      else toast('模块未就绪', 'err');
     };
   }
 
@@ -2782,6 +2825,7 @@ window.App = window.App || { pages: {} };
       <div class="card">
         <div class="card-head"><h3>🔁 二次待办池 <span class="muted sm">${pending.length} 项</span></h3>
           <div><button class="btn xs" id="c-exp-pend">📤 导出名单</button>
+               <button class="btn xs" id="c-exp-summary">📊 未过关汇总Excel</button>
                <button class="btn xs" id="c-topodo">生成待办</button></div></div>
           ${pending.length ? `<div class="table-wrap max360"><table class="tbl">
             <thead><tr><th>学生</th><th>班级</th><th>范围</th><th>首次未过</th><th style="width:96px">操作</th></tr></thead>
@@ -2907,6 +2951,29 @@ window.App = window.App || { pages: {} };
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     toast(`已导出 ${ids.length} 人 📄`);
+  }
+
+  /* ---------- 导出未过关汇总 Excel（按学生聚合：姓名 / 未过关次数 / 未过关内容） ---------- */
+  function exportDictationSummary(kind, classId) {
+    const checks = Store.db.checks
+      .filter(c => c.kind === kind && (!classId || c.classId === classId))
+      .slice().sort((a, b) => a.date.localeCompare(b.date));
+    if (!checks.length) { toast('还没有' + META[kind].unit + '记录', 'err'); return; }
+    const failMap = {};
+    checks.forEach(c => {
+      const res = c.results || {};
+      Object.keys(res).forEach(sid => { if (res[sid] === 0) (failMap[sid] = failMap[sid] || []).push(c.scope); });
+    });
+    const ids = Object.keys(failMap);
+    if (!ids.length) { toast('暂时没有未过关记录 🎉', 'err'); return; }
+    const rows = ids.map(sid => {
+      const s = Store.student(sid) || {};
+      return { name: s.name || '?', no: (typeof s.no === 'number' ? s.no : 1e9), scopes: failMap[sid] };
+    }).sort((a, b) => b.scopes.length - a.scopes.length || (a.no - b.no));
+    const aoa = [['姓名', '未过关次数', '未过关内容']].concat(
+      rows.map(r => [r.name, r.scopes.length, r.scopes.join('、')])
+    );
+    UI.exportXLSX(`${META[kind].title}_未过关汇总_${UI.today()}.xlsx`, aoa, [10, 12, 60]);
   }
 
   function kpi(label, value, icon, tone) {
@@ -3045,6 +3112,8 @@ window.App = window.App || { pages: {} };
     $('#c-exp-pend', view).onclick = () => exportNames(
       `${META[kind].title}_二次待办_${today}`,
       stx.pending.map(r => ({ sid: r.studentId, scope: r.scope, date: r.date })), '欠账范围');
+    const sumBtn = $('#c-exp-summary', view);
+    if (sumBtn) sumBtn.onclick = () => exportDictationSummary(kind, st.classId);
 
     $$('[data-clear]', view).forEach(b => b.onclick = () => markPassed(b.dataset.clear));
     $('#c-topodo', view).onclick = () => {
@@ -3203,6 +3272,8 @@ td.dt{font-size:13px;line-height:1.6}
 
   App.pages.dictation = { title: '听写过关', render: v => render(v, 'dictation') };
   App.pages.recitation = { title: '背诵过关', render: v => render(v, 'recitation') };
+  window.WBExport = window.WBExport || {};
+  window.WBExport.dictationSummary = exportDictationSummary;
 })();
 
 </script>
