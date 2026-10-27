@@ -419,6 +419,10 @@ tr.today-row-hl:hover{background:#fff8e6}
 .name-chip .muted{font-size:11px}
 .name-chip.ok{background:#eafaf1;border-color:#c6ecd8;color:#0f7a4a}
 .name-chip.bad{background:#fff3f3;border-color:#f7cfcf;color:#b02525}
+.name-chip .nc-name{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.mini-ok{margin-left:4px;border:1px solid #0f7a4a;background:#eafaf1;color:#0f7a4a;border-radius:6px;
+  font-size:11px;line-height:1;padding:3px 6px;cursor:pointer;white-space:nowrap}
+.mini-ok:hover{background:#0f7a4a;color:#fff}
 .sessions{display:flex;flex-direction:column;gap:10px;padding:4px 0}
 .sess{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
 .sess-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
@@ -2915,7 +2919,7 @@ window.App = window.App || { pages: {} };
                   <span class="sess-scope">${esc(c.scope)}</span>
                   <span class="badge sm danger">${fail.length} 人未过</span>
                 </div>
-                <div class="name-grid">${fail.map(sid => nameChip(sid, 'bad')).join('')}</div>
+                <div class="name-grid">${fail.map(sid => passChip(sid, c.id)).join('')}</div>
               </div>`).join('')}
           </div>
           <p class="hint">按每次听写分组展示未过关学生；点名字看该生详情，补过后会自动移到「已过关」。</p>`
@@ -3000,6 +3004,27 @@ window.App = window.App || { pages: {} };
     const s = Store.student(sid) || {};
     return `<a class="name-chip ${tone}" data-stu="${sid}" title="${esc(s.parentPhone || '')}">
       ${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>`;
+  }
+
+  /* 未过关名单里的「标过关」chip：名字可点详情，右侧 ✓ 一键标记本次过关 */
+  function passChip(sid, cid) {
+    const s = Store.student(sid) || {};
+    return `<span class="name-chip bad">
+      <a class="nc-name" data-stu="${sid}" title="${esc(s.parentPhone || '')}">${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>
+      <button class="mini-ok" data-pass="${cid}|${sid}" title="标记本次过关">✓</button>
+    </span>`;
+  }
+
+  /* 按 场次+学生 直接标过关，免去去二次待办池操作 */
+  function markPassedByCheck(cid, sid) {
+    const chk = Store.db.checks.find(c => c.id === cid);
+    if (!chk) { toast('记录不存在', 'err'); return; }
+    let rt = Store.db.retests.find(r => r.srcId === cid && r.studentId === sid);
+    if (!rt) {
+      rt = { id: uid('rt'), studentId: sid, kind: chk.kind, scope: chk.scope, date: chk.date, srcId: cid, done: false, doneDate: '' };
+      Store.db.retests.push(rt);
+    }
+    markPassed(rt.id);
   }
 
   /* ---------- 每次听写未过关（按场次分组） ----------
@@ -3238,6 +3263,11 @@ window.App = window.App || { pages: {} };
     if (sumBtn) sumBtn.onclick = () => exportDictationSummary(kind, st.classId);
 
     $$('[data-clear]', view).forEach(b => b.onclick = () => markPassed(b.dataset.clear));
+    $$('[data-pass]', view).forEach(b => b.onclick = e => {
+      e.stopPropagation();
+      const [cid, sid] = b.dataset.pass.split('|');
+      markPassedByCheck(cid, sid);
+    });
     $('#c-topodo', view).onclick = () => {
       const pending = Store.pendingRetests().filter(r => r.kind === kind);
       if (!pending.length) { toast('没有待补项'); return; }
