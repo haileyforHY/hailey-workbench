@@ -423,6 +423,9 @@ tr.today-row-hl:hover{background:#fff8e6}
 .mini-ok{margin-left:4px;border:1px solid #0f7a4a;background:#eafaf1;color:#0f7a4a;border-radius:6px;
   font-size:11px;line-height:1;padding:3px 6px;cursor:pointer;white-space:nowrap}
 .mini-ok:hover{background:#0f7a4a;color:#fff}
+.mini-undo{margin-left:4px;border:1px solid #c9a227;background:#fffbe9;color:#9a7b00;border-radius:6px;
+  font-size:11px;line-height:1;padding:3px 6px;cursor:pointer;white-space:nowrap}
+.mini-undo:hover{background:#9a7b00;color:#fff}
 .sessions{display:flex;flex-direction:column;gap:10px;padding:4px 0}
 .sess{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
 .sess-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
@@ -2904,7 +2907,8 @@ window.App = window.App || { pages: {} };
         <div class="card">
           <div class="card-head"><h3>✅ 已过关 <span class="muted sm">${stx.passed.length} 人</span></h3>
             <button class="btn xs" id="c-exp-pass">📤 导出名单</button></div>
-          ${stx.passed.length ? `<div class="name-grid">${stx.passed.map(sid => nameChip(sid, 'ok')).join('')}</div>`
+          ${stx.passed.length ? `<div class="name-grid">${stx.passed.map(sid => okChip(sid, kind)).join('')}</div>
+          <p class="hint">点名字看详情；标错的可点 ↩ 标回未过关（仅对补过/标记过关过的人有效）。</p>`
           : empty('还没有过关记录', '✅')}
         </div>
 
@@ -3015,6 +3019,21 @@ window.App = window.App || { pages: {} };
     </span>`;
   }
 
+  /* 已过关名单里的 chip：名字可点详情，右侧 ↩ 一键标回未过关（仅对「补过/标记过关」过的人有效） */
+  function okChip(sid, kind) {
+    const s = Store.student(sid) || {};
+    const canUndo = hasDoneRetest(sid, kind);
+    return `<span class="name-chip ok">
+      <a class="nc-name" data-stu="${sid}" title="${esc(s.parentPhone || '')}">${esc(s.name || '?')}<span class="muted sm">${esc(Store.className(s.classId))}</span></a>
+      ${canUndo ? `<button class="mini-undo" data-undo="${kind}|${sid}" title="标回未过关">↩</button>` : ''}
+    </span>`;
+  }
+
+  /* 该生本类型是否存在「已补过/已标记过关」的欠账（有则可撤销） */
+  function hasDoneRetest(sid, kind) {
+    return Store.db.retests.some(r => r.kind === kind && r.studentId === sid && r.done);
+  }
+
   /* 按 场次+学生 直接标过关，免去去二次待办池操作 */
   function markPassedByCheck(cid, sid) {
     const chk = Store.db.checks.find(c => c.id === cid);
@@ -3025,6 +3044,23 @@ window.App = window.App || { pages: {} };
       Store.db.retests.push(rt);
     }
     markPassed(rt.id);
+  }
+
+  /* 在「已过关」名单里把该生最近一次过关标回未过关，回到对应场次与待补池 */
+  function markFailedByUndo(kind, sid) {
+    const done = Store.db.retests
+      .filter(r => r.kind === kind && r.studentId === sid && r.done)
+      .sort((a, b) => String(b.doneDate || '').localeCompare(String(a.doneDate || '')));
+    if (!done.length) { toast('该生没有可撤销的过关记录', 'err'); return; }
+    const rt = done[0];
+    // ① 最近一次欠账重新打开
+    rt.done = false; rt.doneDate = '';
+    // ② 对应听写/背诵记录里该生改回未过关，回到那次未过关名单
+    const chk = Store.db.checks.find(c => c.id === rt.srcId);
+    if (chk) { chk.results = chk.results || {}; chk.results[sid] = 0; }
+    Store.save();
+    toast(`${Store.studentName(sid)} 已标回未过关 ↩`);
+    App.render();
   }
 
   /* ---------- 每次听写未过关（按场次分组） ----------
@@ -3267,6 +3303,11 @@ window.App = window.App || { pages: {} };
       e.stopPropagation();
       const [cid, sid] = b.dataset.pass.split('|');
       markPassedByCheck(cid, sid);
+    });
+    $$('[data-undo]', view).forEach(b => b.onclick = e => {
+      e.stopPropagation();
+      const [kind2, sid] = b.dataset.undo.split('|');
+      markFailedByUndo(kind2, sid);
     });
     $('#c-topodo', view).onclick = () => {
       const pending = Store.pendingRetests().filter(r => r.kind === kind);
